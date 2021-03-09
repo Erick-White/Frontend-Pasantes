@@ -11,32 +11,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  Usuario: User = {
-    nombre:"",
-    email: "",
-    password: ""
-  }
-  constructor(private Auth: LoginService,
-  private router :Router) { }
 
-  
+  Usuario: User = {
+    nombre:'',
+    email: '',
+    password: ''
+  };
+  constructor(private Auth: LoginService,
+              private router: Router) { }
+
+
+  // tslint:disable-next-line: typedef
   ngOnInit() {
-    let token = localStorage.getItem('email');
+    const token = localStorage.getItem('email');
     this.Usuario = new User();
-    if(token){
+    if (token){
       this.Usuario.email = token;
-      
+
     }
-    
+
   }
-    
+
+  // tslint:disable-next-line: typedef
   login(form: NgForm) {
     this.Auth.login(this.Usuario).subscribe(resp => {
-      localStorage.setItem('token', resp['token'])
-      this.router.navigate(['/recuperar-cuenta'])
-         
-    })
-    
+      localStorage.setItem('token', resp.token);
+      this.router.navigate(['/admin']);
+
+    });
+
   }
 }
