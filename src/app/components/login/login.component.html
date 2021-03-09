@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/db56b02818.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="login.component.css">
+
+    <title>Login - AIlogic Pasantes</title>
+</head>
+
+
+<body>
+    <div class="login">
+        <div class="form text-center mt-5">
+            <div class="mt-4">
+                <a href="/login"><img src="../../../assets/logo.svg">
+                </a>
+                <div class=" d-flex justify-content-center mt-3 ">
+                    <form (ngSubmit)="login( f )" #f="ngForm" class="col-6">
+
+                        <div class="form-group inputWithIcon">
+                            <span><i class="fas fa-user"></i></span>
+                            <input type="email" [(ngModel)]="Usuario.email" name="email" class="form-control form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Correo Electronico">
+                        </div>
+                        <div class="form-group inputWithIcon">
+                            <span><i class="fas fa-lock"></i></span>
+                            <input type="password" [(ngModel)]="Usuario.password" name="password" id="password" class="form-control form-control-lg" placeholder="Contraseña">
+                        </div>
+                        <div class="mt-2 mr-3">
+                            <a class="text-decoration-none" href="">
+                                <div class="d-inline">
+                                    <img src="../../../assets/chechmarl.svg" alt="">
+                                </div>
+                                <p class="d-inline mt-3">Recordar contraseña<a routerLink="/recuperar-clave"> Haz click aqui</a> </p>
+                            </a>
+                        </div>
+                        <div class=" d-flex justify-content-center mt-2 ">
+
+                            <button type="submit" class=" button btn btn-primary custom-btn  shadow-lg">Iniciar sesion</button>
+                            <p></p>
+
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class=" d-flex justify-content-center mt-3 ">
+
+                    <p>¿Olvidates tu contraseña? <a routerLink="/recuperar-cuenta">Haz click aqui</a> </p>
+                </div>
+            </div>
+            <div class="vector   position-absolute bottom-0 start-0">
+
+                <img class="img-fluid w-100 hidden-md" width="100%" src="../../../assets/efectoInferior.svg" alt="">
+
+
+            </div>
+        </div>
+        <div class="image d-none d-md-block  ">
+
+            <div class="im"></div>
+            <!--     <img width="100%" class="h-100" src="/assets/erick.jpg" alt="">-->
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/db56b02818.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

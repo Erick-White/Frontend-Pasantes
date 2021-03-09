@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+p,
+label {
+    font-family: 'Varela Round', sans-serif;
+    ;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #908C8C;
+}
+
+.image {
+    width: 50%;
+    justify-content: right;
+    display: flex;
+    float: right;
+    height: 100%;
+}
+
+.im {
+    background-image: url(/assets/fotoLogin2.jpg);
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form {
+    width: 50%;
+    float: left;
+    align-items: center;
+}
+
+
+/* Vector 3 */
+
+.vector {
+    left: 0;
+    bottom: 0;
+    width: 50%;
+}
+
+.login {
+    width: auto;
+    height: auto;
+}
+
+.button {
+    width: 60%;
+    height: 45px;
+    border-radius: 8px;
+}
+
+.btn-primary.custom-btn {
+    background-color: #49ABC6;
+    color: whitesmoke;
+    border-color: #49ABC6;
+    font-family: 'Varela Round', sans-serif;
+    ;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+    .form,
+    .vector {
+        width: 100%;
+    }
+}
+
+.input-icons i {
+    position: absolute;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.inputWithIcon input[type=email] {
+    padding-left: 35px;
+}
+
+.inputWithIcon input[type=password] {
+    padding-left: 35px;
+}
+
+.inputWithIcon {
+    position: relative;
+}
+
+.inputWithIcon i {
+    position: absolute;
+    left: 12px;
+    top: 17px;
+    color: #908C8C;
+}
+
+.inputWithIcon input:focus+i {
+    color: dodgerblue;
+}

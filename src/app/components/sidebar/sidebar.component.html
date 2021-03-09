@@ -1,0 +1,23 @@
+    <!-- Sidebar -->
+    
+    <div class="p-3" id="sidebar-wrapper">
+
+        <div class="list-group list-group-flush rounded">
+           <a href="index.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+               <i class="fas fa-th-list"></i> Pasantias</a>
+           <a href="formulario1.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+               <i class="fas fa-book"></i> Formulario</a>
+           <a href="#" class="list-group-item list-group-item-action bg-light m-1 border ">
+               <i class="fas fa-upload"></i> Repositorio</a>
+           <a href="lista.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+               <i class="fas fa-users"></i> Pasantes</a>
+       </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+        

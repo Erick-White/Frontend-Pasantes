@@ -1,0 +1,147 @@
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 13rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+.navbar {
+    background-color: #49ABC6;
+}
+
+.card {
+    width: auto;
+    height: auto;
+    box-shadow: 0px 2px 2px rgb(156, 156, 156);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.klk {
+    background-color: #49ABC6;
+    height: 56px;
+    color: #fff;
+}
+
+.klkk {
+    width: 50px;
+}
+
+.divs {
+    width: 90%;
+    margin-bottom: 50%;
+}
+
+.divdetalle {
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    .divdetalle {
+        display: block;
+        width: 100%;
+        margin-bottom: -5%;
+    }
+}
+
+.mobile-only {
+    display: none !important;
+}
+
+@media screen and (max-width: 769px) {
+    .mobile-only {
+        display: block !important;
+    }
+}
+
+.img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.img-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98%;
+    height: 100%;
+    background-color: #49abc6dc;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+    border-radius: 75%;
+}
+
+.img-container:hover .overlay {
+    opacity: 1;
+}
+#output{
+
+    border-radius: 75%;
+}
+.overlay span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.mta {
+    margin-top: 10%;
+}
+
+.size {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.btn-primary.custom-btn {
+    background-color: #49ABC6;
+    color: whitesmoke;
+    border-color: #49ABC6;
+    font-family: 'Varela Round', sans-serif;
+    ;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 16px;
+}
+a:link, a:hover {
+    text-decoration: none;
+ }

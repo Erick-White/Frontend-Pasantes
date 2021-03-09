@@ -1,0 +1,283 @@
+<!-- Page Content -->
+<div id="page-content-wrapper">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <div class="divs">
+        <div class="card shadow-sm mr-4 w-100">
+          <div class="card-body">
+            <input
+              class="custom-file-input d-none"
+              name="photo"
+              type="file"
+              accept="image/*"
+              onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])"
+            />
+            <div class="img-container">
+              <a
+                href="#"
+                class="text-decoration-none"
+                onclick="$('.custom-file-input').trigger( 'click' )"
+              >
+                <img
+                  id="output"
+                  width="128"
+                  height="104"
+                  class="ml-1"
+                  src="../../assets/user.svg"
+                />
+                <div class="overlay ml-1">
+                  <span>Modificar</span>
+                </div>
+              </a>
+            </div>
+            <h5 class="d-inline card-title ml-2">Erick Morales</h5>
+          </div>
+        </div>
+        <div class="divdetalle float-left p-2">
+          <div class="d-block justify-content-center">
+            <div class="card">
+              <div class="card-header">
+                <strong>Detalles del usuario</strong>
+                <button
+                  type="button"
+                  class="btn pr-1 pl-1 pt-0 pb-0 bg-info float-right"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  <i class="fas fa-pen"></i>
+                </button>
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Detalles del usuario
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="input-email" class="col-form-label"
+                              >Email:</label
+                            >
+                            <input
+                              type="email"
+                              class="form-control"
+                              id="input-email"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="input-cedula" class="col-form-label"
+                              >Cedula:</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="input-cedula"
+                              maxlength="13"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="input-telefono" class="col-form-label"
+                              >Telefono:</label
+                            >
+                            <input
+                              type="tel"
+                              class="form-control"
+                              maxlength="12"
+                              id="input-telefono"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="input-linkedin" class="col-form-label"
+                              >Linkedin:</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="input-linkedin"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="input-github" class="col-form-label"
+                              >Github:</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="input-github"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="input-cv" class="col-form-label"
+                              >CV:</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="input-cv"
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <p>
+                              <a
+                                class="btn btn-light"
+                                data-toggle="collapse"
+                                href="#collapseExample"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                              >
+                                Contraseña
+                                <span
+                                  ><i
+                                    class="fas fa-sort-down"
+                                    style="font-size: 25px"
+                                  ></i
+                                ></span>
+                              </a>
+                            </p>
+                            <div class="collapse" id="collapseExample">
+                              <div class="card card-body shadow-sm">
+                                <label
+                                  for="input-contraseña"
+                                  class="col-form-label"
+                                  >Contraseña:</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="input-contraseña"
+                                  required
+                                  onclick="showrep()"
+                                />
+                                <label
+                                  for="input-repetircontraseña"
+                                  class="col-form-label d-none"
+                                  id="labelrepeat"
+                                >
+                                  Repetir Contraseña:</label
+                                >
+                                <input
+                                  type="hidden"
+                                  class="form-control"
+                                  id="input-repetircontraseña"
+                                  required
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          onclick="savemodal()"
+                        >
+                          Save changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"><strong>Email.</strong></p>
+                <p id="emailp">erickenmanuel25@gmail.com</p>
+                <p class="card-text"><strong>Cedula.</strong></p>
+                <p id="cedulap">001-0021771-8</p>
+                <p class="card-text"><strong>Telefono.</strong></p>
+                <p id="telefonop">809-568-5321</p>
+                <p class="card-text"><strong>Linkedin.</strong></p>
+                <p id="linkedinp">linkedin.com/alvaroelmejor</p>
+                <p class="card-text"><strong>Github.</strong></p>
+                <p id="githubp">github.com/erickklk</p>
+                <p class="card-text"><strong>CV.</strong></p>
+                <p id="cvp">
+                  https://drive.google.com/file/d/1lYgMphlvQtc7Pv_W7xmEHanbm-OMDVWY/view?usp=sharing
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divdetalle float-right p-2">
+          <div class="d-block justify-content-center">
+            <div class="card">
+              <div class="card-header">
+                <strong> Equipo de trabajo : Nombre del Equipo </strong>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p>Luis Franco</p>
+                <p>Erick Emmanuel Morales</p>
+                <p>Alvaron Herrera</p>
+                <p>David Solano</p>
+                <p>Roman Castillo</p>
+              </div>
+            </div>
+            <div class="card mt-3">
+              <div class="card-header">
+                <strong>Evaluaciones tomadas</strong>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <ul>
+                  <li>
+                    <p class="card-text">Examen de HTML</p>
+                  </li>
+                  <li>
+                    <p class="card-text">Creación de un menú responsive</p>
+                  </li>
+                  <li>
+                    <p class="card-text">Primer parcial Programación Web</p>
+                  </li>
+                  <li>
+                    <p class="card-text">Segundo parcial Programación 3</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /#page-content-wrapper -->
+<!-- /#wrapper -->
+
+<!--Modal Crear Pasantia-->
+<!-- Modal -->
+
+<!--Fin Modal Crear Pasantia-->
