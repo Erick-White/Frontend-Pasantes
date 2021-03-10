@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'formulario', component: RegisterComponent},
   { path: 'recuperar-clave', component: RecuperarClaveComponent},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
-  {path : '**', pathMatch: 'full' , redirectTo: 'login'},
+   {path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];
 
