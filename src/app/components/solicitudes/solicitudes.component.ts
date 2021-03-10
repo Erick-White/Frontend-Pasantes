@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pasantes } from 'src/app/models/pasantes';
 
 @Component({
   selector: 'app-solicitudes',
@@ -11,5 +12,10 @@ export class SolicitudesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  public pasantes: Pasantes[] = [
+  
+    
+]
+
 
 }

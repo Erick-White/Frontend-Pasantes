@@ -23,9 +23,6 @@ export class LoginService {
     const AuthUser = { email: User.email, password: User.password };
 
     const header = new HttpHeaders().set('Content-Type', 'application/json');
-
-
-
     return this.http.post(`${this.URL}/api/Auth/login`, AuthUser, { headers: header });
 
 
