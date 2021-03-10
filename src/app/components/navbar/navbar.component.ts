@@ -7,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   
+  Mostrar = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  Toggle() {
+    this.Mostrar = !this.Mostrar;
   }
 
 }

@@ -56,8 +56,8 @@ import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perf
     AppRoutingModule,
     FormsModule,
     HttpClientModule
-   
-    
+
+
 
   ],
   providers: [],

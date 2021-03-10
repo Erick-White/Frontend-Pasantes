@@ -1,35 +1,50 @@
-    <!--NAV ADMIN-->
+<!--NAV ADMIN-->
 
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm    " style="background-color: #49ABC6;">
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm    " style="background-color: #49ABC6;">
 
-        <button class="btn btn-light mobile " id="menu-toggle"><i class="fas fa-bars"></i></button>
+    <button class="btn btn-light mobile" (click)="Toggle()" id="menu-toggle"><i class="fas fa-bars"></i></button>
 
-        <a href="#" class="text-white">
-            <img src="/assets/logoBlanco.png" width="40px" alt="" class="m-1 ml-5"> Menu
-        </a>
+    <a href="#" class="text-white">
+        <img src="/assets/logoBlanco.png" width="40px" alt="" class="m-1 ml-5"> Menu
+    </a>
 
 
-        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon text-primary"></span>
-        </button>
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-primary"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto ">
-                <div class="dropdown">
-                    <button class="btn text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/assets/user.svg" width="35" alt="">
-                       Jorge Coronado
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/components/login/login.html">Salir</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto ">
+            <div class="dropdown">
+                <button class="btn text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/assets/user.svg" width="35" alt="">
+                    Jorge Coronado
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" routerLink="/login">Salir</a>
 
-                    </div>
                 </div>
+            </div>
 
 
-            </ul>
+        </ul>
 
-        </div>
+    </div>
 
-    </nav>
-    <!--FIN NAV ADMIN-->
+</nav>
+<!--FIN NAV ADMIN-->
+<!-- Sidebar -->
+<div class="p-3" id="sidebar-wrapper" *ngIf="Mostrar">
+
+    <div class="list-group list-group-flush rounded">
+        <a href="index.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <i class="fas fa-th-list"></i> Pasantias</a>
+        <a href="formulario1.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <i class="fas fa-book"></i> Formulario</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <i class="fas fa-upload"></i> Repositorio</a>
+        <a href="lista.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <i class="fas fa-users"></i> Pasantes</a>
+    </div>
+
+</div>
