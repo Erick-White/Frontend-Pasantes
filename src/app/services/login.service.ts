@@ -18,8 +18,8 @@ export class LoginService {
 
   login(User: User) {
     const AuthUser = { email: User.email, password: User.password }
-   
-    return this.http.post<any>(this.URL, AuthUser);
+   const headers = new HttpHeaders().set('content-type','text/plain')
+    return this.http.post<any>(this.URL, AuthUser,{headers: headers});
   }
 
   Loggeado() {
