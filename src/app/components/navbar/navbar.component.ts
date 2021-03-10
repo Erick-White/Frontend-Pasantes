@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  
+
   Mostrar = false;
 
   constructor() { }
@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // tslint:disable-next-line: typedef
   Toggle() {
     this.Mostrar = !this.Mostrar;
   }
