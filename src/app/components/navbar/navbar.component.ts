@@ -6,15 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  mostrar = false;
-  
+
+  Mostrar = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  toggle() {
-    this.mostrar = !this.mostrar;
+  Toggle() {
+    this.Mostrar = !this.Mostrar;
   }
+
 }

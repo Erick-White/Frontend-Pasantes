@@ -23,9 +23,9 @@
 
                         <div class="form-group inputWithIcon">
                             <span><i class="fas fa-user"></i></span>
-                            <input type="email" [(ngModel)]="Usuario.email" name="email" class="form-control form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Correo Electronico">
+                            <input type="email" [(ngModel)]="Usuario.email" name="password" id="email" class="form-control form-control-lg" placeholder="Correo">
                         </div>
-                        <div class="form-group inputWithIcon">
+                        <div class="form-group inputWithIcon mt-1">
                             <span><i class="fas fa-lock"></i></span>
                             <input type="password" [(ngModel)]="Usuario.password" name="password" id="password" class="form-control form-control-lg" placeholder="Contraseña">
                         </div>
@@ -51,6 +51,12 @@
 
                     <p>¿Olvidates tu contraseña? <a routerLink="/recuperar-cuenta">Haz click aqui</a> </p>
                 </div>
+
+                <div class=" d-flex justify-content-center mt-3 ">
+
+                    <p>¿No tienes Cuenta? <a routerLink="/registro">Haz click aqui</a> </p>
+                </div>
+
             </div>
             <div class="vector   position-absolute bottom-0 start-0">
 
