@@ -6,6 +6,7 @@ import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recupera
 import { AdminComponent } from './components/admin/admin.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'registro', component: FormularioComponent },
   { path: 'formulario', component: RegisterComponent},
+  { path: 'solicitudes', component: SolicitudesComponent},
   { path: 'recuperar-clave', component: RecuperarClaveComponent},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
    {path : '**', pathMatch: 'full' , redirectTo: 'login'},

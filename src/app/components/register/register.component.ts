@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   constructor(private Services: PasantesService) { }
 
   ngOnInit(): void {
-    this.registro = new RegisterResponse();
+   // this.registro = new RegisterResponse();
   }
 
   // tslint:disable-next-line: typedef
