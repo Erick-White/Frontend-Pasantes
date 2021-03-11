@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class FormularioComponent implements OnInit {
 
+  // tslint:disable-next-line: new-parens
   usuario: User = new User;
   recordar = false;
 
