@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   login(form: NgForm) {
     this.Auth.login(this.Usuario).subscribe(resp => {
       localStorage.setItem('token', resp.token);
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/lista-pasante']);
 
     });
 

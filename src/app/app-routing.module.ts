@@ -6,6 +6,9 @@ import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recupera
 import { AdminComponent } from './components/admin/admin.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ListaPasantesComponent } from './components/lista-pasantes/lista-pasantes.component';
+import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perfil.component';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 
 
 const routes: Routes = [
@@ -16,7 +19,11 @@ const routes: Routes = [
   { path: 'formulario', component: RegisterComponent},
   { path: 'recuperar-clave', component: RecuperarClaveComponent},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
-   {path : '**', pathMatch: 'full' , redirectTo: 'login'},
+  { path: 'lista-pasante', component: ListaPasantesComponent },
+  { path: 'perfil/:id', component: PasantePerfilComponent },
+  {path:'solicitudes',component:SolicitudesComponent},
+  { path: '**', pathMatch: 'full', redirectTo: 'login' },
+   
 
 ];
 
