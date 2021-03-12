@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-    const token = localStorage.getItem('email');
+    const token = localStorage.getItem('token');
     this.Usuario = new User();
     if (token){
       this.Usuario.email = token;
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   login(form: NgForm) {
     this.Auth.login(this.Usuario).subscribe(resp => {
       localStorage.setItem('token', resp.token);
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/lista-pasante']);
 
     });
 
