@@ -14,16 +14,26 @@ export class AdminService {
   URL = "https://internshipailogic.azurewebsites.net"
 
 
-  getAllPasantes():Observable<any> {
-    return this.http.get<any>(this.URL + '/api/Intern');
+  getAllPasantes(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.get<any>(this.URL + '/api/Intern',{ headers });
   }
 
+ 
   getPasantesById(id:any):Observable<PasantesAll> {
-    return this.http.get<PasantesAll>(`${this.URL}/api/Intern/${id}`)
+    
+    return this.http.get<PasantesAll>(`${this.URL}/api/Intern/${id}`);
   }
 
-  DeletedPasantes(id:any):Observable<any> {
-    return this.http.delete<any>(`${this.URL}/api/Intern/${id}`)
+  DeletedPasantes(id: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.delete<any>(`${this.URL}/api/Intern/${id}`,{ headers } )
   }
 }
   
