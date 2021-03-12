@@ -14,7 +14,7 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
   { path: 'admin', component: AdminComponent },
-  { path:'p-config/:id', component: PasantiaConfigComponent },
+  { path:'admin/config/:id', component: PasantiaConfigComponent },
   { path: 'registro', component: FormularioComponent },
   { path: 'formulario', component: RegisterComponent},
   { path: 'solicitudes', component: SolicitudesComponent},
