@@ -1,79 +1,45 @@
 <!-- Page Content -->
 <div id="page-content-wrapper">
-  <div class="container">
-    <div class="d-flex justify-content-center">
-      <div class="divs">
-        <div class="card shadow-sm mr-4 w-100">
-          <div class="card-body">
-            <input
-              class="custom-file-input d-none"
-              name="photo"
-              type="file"
-              accept="image/*"
-              onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])"
-            />
-            <div class="img-container">
-              <a
-                href="#"
-                class="text-decoration-none"
-                onclick="$('.custom-file-input').trigger( 'click' )"
-              >
-                <img
-                  id="output"
-                  width="128"
-                  height="104"
-                  class="ml-1"
-                  src="../../assets/user.svg"
-                />
-                <div class="overlay ml-1">
-                  <span>Modificar</span>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="divs">
+                <div class="card shadow-sm mr-4 w-100">
+                    <div class="card-body">
+                        <input class="custom-file-input d-none" name="photo" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
+                        <div class="img-container">
+                            <a href="#" class="text-decoration-none" onclick="$('.custom-file-input').trigger( 'click' )">
+                                <img id="output" width="128" height="104" class="ml-1" src="../../assets/user.svg" />
+                                <div class="overlay ml-1">
+                                    <span>Modificar</span>
+                                </div>
+                            </a>
+                        </div>
+                        <h5 class="d-inline card-title ml-2">Erick Morales</h5>
+                    </div>
                 </div>
-              </a>
-            </div>
-            <h5 class="d-inline card-title ml-2">Erick Morales</h5>
-          </div>
-        </div>
-        <div class="divdetalle float-left p-2">
-          <div class="d-block justify-content-center">
-            <div class="card">
-              <div class="card-header">
-                <strong>Detalles del usuario</strong>
-                <button
-                  type="button"
-                  class="btn pr-1 pl-1 pt-0 pb-0 bg-info float-right"
-                  data-toggle="modal"
-                  data-target="#exampleModal"
-                >
+                <div class="divdetalle float-left p-2">
+                    <div class="d-block justify-content-center">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Detalles del usuario</strong>
+                                <button type="button" class="btn pr-1 pl-1 pt-0 pb-0 bg-info float-right" data-toggle="modal" data-target="#exampleModal">
                   <i class="fas fa-pen"></i>
                 </button>
-                <div
-                  class="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  role="dialog"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                          Detalles del usuario
-                        </h5>
-                        <button
-                          type="button"
-                          class="close"
-                          data-dismiss="modal"
-                          aria-label="Close"
-                        >
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                    Detalles del usuario
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
-                      </div>
-                      <div class="modal-body">
-                        <form>
-                          <div class="form-group">
-                            <label for="input-email" class="col-form-label"
-                              >Email:</label
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="input-email" class="col-form-label">Email:</label
                             >
                             <input
                               type="email"

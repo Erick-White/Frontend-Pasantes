@@ -27,6 +27,7 @@ import { PasanteCalificacionesComponent } from './components/pasante-calificacio
 import { PasanteRepoComponent } from './components/pasante-repo/pasante-repo.component';
 import { PasanteRepoVistaComponent } from './components/pasante-repo-vista/pasante-repo-vista.component';
 import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perfil.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -49,15 +50,16 @@ import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perf
     PasanteCalificacionesComponent,
     PasanteRepoComponent,
     PasanteRepoVistaComponent,
-    PasantePerfilComponent
+    PasantePerfilComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
-   
-    
+
+
 
   ],
   providers: [],

@@ -1,0 +1,121 @@
+<!-- <div class="limiter animated fadeInRight">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form (ngSubmit)="onSubmit( f )" #f="ngForm" class="login100-form validate-form flex-sb flex-w">
+
+                <span class="login100-form-title p-b-51">
+                    Crear nueva cuenta
+                </span>
+
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="name" required [(ngModel)]="registro.name" placeholder="Nombre">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="lastname" required [(ngModel)]="registro.lastname" placeholder="Apellido">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="cedula" required [(ngModel)]="registro.cedula" placeholder="Cedula">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="phone" required [(ngModel)]="registro.phone" placeholder="Phone">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="github" required [(ngModel)]="registro.github" placeholder="Github">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="linkendin" required [(ngModel)]="registro.linkedin" placeholder="Linkendin">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="cv" required [(ngModel)]="registro.cv" placeholder="Linkendin">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="date" name="birthdate" required [(ngModel)]="registro.birthDate">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="email" name="email" required [(ngModel)]="registro.email" placeholder="Correo">
+
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit">
+                        Finalizar
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<div class="container fondoContainer p-5 shadow margenT">
+    <h2>Formulario de Pasantia</h2>
+    <h3></h3>
+    <form id="msform" (ngSubmit)="onSubmit( f )" #f="ngForm">
+        <ul id="progressbar" class="d-flex justify-content-center">
+            <li class="active m-auto" id="iG"><strong>Informacion Solicitada</strong></li>
+        </ul>
+        <br>
+        <fieldset id="field1">
+            <div class="form-card form-group">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="fs-title">Informacion General:</h2>
+                    </div>
+                    <div class="col-5">
+                    </div>
+                </div>
+                <label for="nombre1">Nombre</label>
+                <input type="nombre" class="form-control" id="nombre1" name="name" required [(ngModel)]="registro.name" placeholder="Nombre">
+                <label for="apellido1">Apellido</label>
+                <input type="telefono" class="form-control" name="lastname" required [(ngModel)]="registro.lastname" id="apellido1" placeholder="Apellido">
+                <label for="cedula1">Cedula</label>
+                <input type="cedula" class="form-control" name="cedula" required [(ngModel)]="registro.cedula" id="cedula1" placeholder="Cedula">
+                <label for="telefono1">Telefono</label>
+                <input type="telefono" class="form-control" name="phone" required [(ngModel)]="registro.phone" id="telefono1" placeholder="Telefono">
+                <label for="email1">Email</label>
+                <input type="email" class="form-control" name="email" required [(ngModel)]="registro.email" id="email1" placeholder="Email">
+                <label for="linkedin1">Linkedin</label>
+                <input type="linkedin" class="form-control" name="linkendin" required [(ngModel)]="registro.linkedin" id="linkedin1" placeholder="Enlace de Linkedin (Opcional)">
+                <label for="nacimiento1">Fecha de Nacimiento</label>
+                <input type="date" class="form-control " name="birthDate" required [(ngModel)]="registro.birthDate" id="nacimiento1">
+                <label for="github1">Github</label>
+                <input type="github" class="form-control" name="github" required [(ngModel)]="registro.github" id="github1" placeholder="Enlace de Github (Opcional)">
+
+                <label for="github1">CV</label>
+
+                <input type="github" class="form-control" name="cv" required [(ngModel)]="registro.cv" id="github1" placeholder="Curriculum">
+            </div>
+            <a type="button" href="/components/Main/index.html" name="volver inicio" class="volver btn btn-primary float-left mt-5">Volver Inicio</a>
+            <input type="submit" name="siguiente" class="siguiente btn btn-primary float-right m-4 mt-5" value="Finalizar" />
+        </fieldset>
+
+
+    </form>
+</div>
