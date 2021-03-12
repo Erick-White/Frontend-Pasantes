@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-pasantia-asignacion',
   templateUrl: './pasantia-asignacion.component.html',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasantiaAsignacionComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
+
+
   }
+
+
 
 }

@@ -8,4 +8,5 @@ export class Pasantes {
   linkedin?: string;
   cv?: string;
   birthday?: string;
+  email?: string;
 }
