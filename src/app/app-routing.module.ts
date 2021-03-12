@@ -8,6 +8,7 @@ import { PasantiaConfigComponent } from './components/pasantia-config/pasantia-c
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { ListaPasantesComponent } from './components/lista-pasantes/lista-pasantes.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'solicitudes', component: SolicitudesComponent},
   { path: 'recuperar-clave', component: RecuperarClaveComponent},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
+  { path: 'lista-pasante', component: ListaPasantesComponent },
   {path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];

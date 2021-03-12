@@ -29,7 +29,7 @@ export class LoginService {
   }
 
   // tslint:disable-next-line: typedef
-  register(usuario: User) {
+  register(usuario: User): Observable<any> {
     const authData = {
       email: usuario.email,
       password: usuario.password,
