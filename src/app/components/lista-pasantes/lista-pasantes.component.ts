@@ -13,23 +13,19 @@ import { Router,ActivatedRoute } from '@angular/router';
 export class ListaPasantesComponent implements OnInit {
 
   pasantes: PasantesAll[] = [];
-  pasante: any;
-
+ 
   
   
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.GetAllPasantes();
-    let pacientesId = this.route.snapshot.paramMap.get('id');
-    console.log(pacientesId)
-
+   
   }
 
   GetAllPasantes() {
     this.admin.getAllPasantes().subscribe(resp => {
       this.pasantes = <PasantesAll[]>resp
-     
       console.log(resp);
     })
   }
