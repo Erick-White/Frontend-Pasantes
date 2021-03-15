@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ConvocatoriaService {
 
-  URL = 'https://internshipailogic.azurewebsites.net/api/Internship/';
+  URL = 'https://internshipailogic.azurewebsites.net/api/Internship';
 
   constructor(private http: HttpClient) { }
 
@@ -34,10 +34,18 @@ export class ConvocatoriaService {
     );
   }
 
-  getSingleConvocatoria(id: string):Observable<Convocatorias>{
-  let direccion = `${this.URL}/${id}`;
+  //Problema: En vez de cojer el id que esta en la base datos, no coje ningun valor por ende aparece null
+  getSingleConvocatoria(id: number):Observable<Convocatorias>{
     return this.http
-    .get<Convocatorias>(direccion);
+    .get<Convocatorias>( `${this.URL}/${id}`)
+    .pipe(
+      tap(()=> 
+      console.log(`fetch convocatoria id=${id}`))
+      )
+      
+    
+    
   }
+  
 
 }

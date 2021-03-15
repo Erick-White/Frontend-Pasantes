@@ -24,16 +24,16 @@ export class AdminComponent implements OnInit {
     this.convocatoriaService.refreshNeeded$.subscribe(()=>{
       this.getAllConvocatorias();
     });
-
     this.getAllConvocatorias();
-    
     this.convito = new Convocatorias();
   }
 
   private getAllConvocatorias(){
-    this.convocatoriaService.convocatorias().subscribe(convoc => {this.convocatoriaArray = convoc},
+
+    this.convocatoriaService.convocatorias().subscribe(convoc => {this.convocatoriaArray = convoc },
       error =>{console.log(<any>error)
       });
+      
   }
 
   saveNew(){

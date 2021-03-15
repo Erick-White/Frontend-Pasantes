@@ -1,4 +1,5 @@
 export class Pasantes {
+  idRequestInternship!: string;
   name?: string;
   lastname?: string;
   cedula?: string;
