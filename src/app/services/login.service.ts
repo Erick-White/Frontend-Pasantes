@@ -48,14 +48,14 @@ export class LoginService {
     );
   }
   // tslint:disable-next-line: typedef
-  // Loggeado() {
-  //   if (localStorage.getItem('token') != null) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false;
-  //   }
-  // }
+  Loggeado() {
+  if (localStorage.getItem('token') != null) {
+  return true;
+  }
+    else {
+     return false;
+    }
+   }
 
   // Logout(){
   //   if (window.confirm('Desea cerrar la session??')){

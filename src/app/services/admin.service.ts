@@ -23,7 +23,7 @@ export class AdminService {
   }
 
  
-  getPasantesById(id:any):Observable<PasantesAll> {
+  getPasantesById(id:string):Observable<PasantesAll> {
     
     return this.http.get<PasantesAll>(`${this.URL}/api/Intern/${id}`);
   }
