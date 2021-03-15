@@ -9,12 +9,13 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { RegisterComponent } from './components/register/register.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { ListaPasantesComponent } from './components/lista-pasantes/lista-pasantes.component';
-
+import { PasantiaAsignacionComponent } from './components/pasantia-asignacion/pasantia-asignacion.component';
 
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
   { path: 'admin', component: AdminComponent },
+  { path: 'admin/:id', component: PasantiaAsignacionComponent },
   { path:'admin/config/:id', component: PasantiaConfigComponent },
   { path: 'registro', component: FormularioComponent },
   { path: 'formulario', component: RegisterComponent},
