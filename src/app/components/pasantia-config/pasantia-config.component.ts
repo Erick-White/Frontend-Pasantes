@@ -14,12 +14,14 @@ export class PasantiaConfigComponent implements OnInit {
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService) { }
 
+  
   ngOnInit(): void {
     
-    let convocatoriaId = this.activerouter.snapshot.paramMap.get('id');
-    this.convocatoriaService.getSingleConvocatoria(convocatoriaId!).subscribe(data =>{
-      this.convoConfig = data
-    })
+    
+    // let convocatoriaId = +this.activerouter.snapshot.paramMap.get('id');
+    // this.convocatoriaService.getSingleConvocatoria(convocatoriaId).subscribe(data =>{
+    //   this.convoConfig = data
+    // })
   
   }
 
