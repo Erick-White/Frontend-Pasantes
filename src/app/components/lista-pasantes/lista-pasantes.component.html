@@ -17,21 +17,23 @@
                                         <th>Configuración</th>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let Pasantes of pasantes">
-                                    <tr class="shadow-sm bg-light">
+                                <tbody>
+                                    <tr *ngFor="let Pasantes of pasantes" class="shadow-sm bg-light">
                                         <td>
                                             <img src="/assets/user.svg" alt="" width="60" class="img-fluid rounded-circle" />
                                         </td>
                                         <td>
                                             <span class="d-block mt-2">{{Pasantes.name}}</span>
+
                                             <!-- <small>Gamma</small> -->
                                         </td>
 
                                         <td class=""> <button class="btn btn-light text-decoration-none">Usuario</button> </td>
                                         <td class="text-success"> <button class="btn btn-light text-success"> Activo </button> </td>
                                         <td class="text-center">
-                                            <a class=" text-center btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Configuracion <i class="fas fa-cog"></i>
-                                                    </a>
+                                            <a class="text-center btn btn-secondary" (click)="contactInfo(Pasantes.idInternt)" data-toggle="modal" data-target="#exampleModal">Configuracion<i class="fas fa-cog"></i>
+                                                    
+                                            </a>
 
                                         </td>
                                     </tr>
@@ -68,7 +70,7 @@
 <!--Modal Mostrar Informacion-->
 
 <!-- Modal -->
-<div *ngFor="let Pasantes of pasantes let i=index" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center">
             <div class="modal-header ">
@@ -79,14 +81,14 @@
             </div>
             <div class="modal-body">
                 <img src="/assets/user.svg" alt="">
-                <p class="mt-2 h3">{{Pasantes.name}}</p>
+                <p class="mt-2 h3">{{currentContactInfo.name}}</p>
                 <!-- <p>Gamma - Lider</p> -->
-                <p class="text-primary">{{Pasantes?.user?.email}}</p>
+                <p class="text-primary">{{currentContactInfo?.user?.email}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary shadow-sm" data-dismiss="modal">Cerrar</button>
-                <a [routerLink]="['/perfil,Pacientes.idInternt']" class="btn btn-primary shadow-sm ">Ver Perfil</a>
-                <button type="button " (click)="DeletedPasante(Pasantes,i) " class="btn btn-danger shadow-sm ">Eliminar Pasante.</button>
+                <a [routerLink]="['/perfil',currentContactInfo.idInternt]" data-dismiss="modal" class="btn btn-primary shadow-sm ">Ver Perfil</a>
+                <button type="button " (click)="DeletedPasante(currentContactInfo,currentContactInfo.idInternt) " class="btn btn-danger shadow-sm ">Eliminar Pasante.</button>
             </div>
         </div>
     </div>

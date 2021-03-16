@@ -9,6 +9,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { RegisterComponent } from './components/register/register.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { ListaPasantesComponent } from './components/lista-pasantes/lista-pasantes.component';
+import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perfil.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'recuperar-clave', component: RecuperarClaveComponent},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
   { path: 'lista-pasante', component: ListaPasantesComponent },
+  {path: 'perfil/:id',component:PasantePerfilComponent},
   {path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];

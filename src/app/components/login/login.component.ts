@@ -3,7 +3,7 @@ import { LoginService } from '../../services/login.service';
 import { User } from '../../models/user';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -35,9 +35,22 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line: typedef
   login(form: NgForm) {
     this.Auth.login(this.Usuario).subscribe(resp => {
+      Swal.close();
       localStorage.setItem('token', resp.token);
+      Swal.fire({
+        icon: 'success',
+        title: 'Inicio de sesión correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.router.navigate(['/lista-pasante']);
 
+    }, (err) => {
+      Swal.fire({
+        icon: 'error',
+        title: "Error al Autenticarse",
+        text: "Correo o contraseña incorrecta",
+      });
     });
 
   }

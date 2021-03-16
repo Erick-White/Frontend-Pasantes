@@ -1,5 +1,5 @@
 export interface PasantesAll {
-    idInternt: number;
+    idInternt: string;
     name?: string;
     lastname?: string;
     idUser?: string;
