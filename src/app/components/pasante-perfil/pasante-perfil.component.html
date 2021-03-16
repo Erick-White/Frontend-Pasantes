@@ -14,7 +14,7 @@
                                 </div>
                             </a>
                         </div>
-                        <h5 class="d-inline card-title ml-2">Erick Morales</h5>
+                        <h5 class="d-inline card-title ml-2">{{pasantee?.name}}</h5>
                     </div>
                 </div>
                 <div class="divdetalle float-left p-2">
@@ -179,18 +179,18 @@
               <div class="card-body">
                 <h5 class="card-title"></h5>
                 <p class="card-text"><strong>Email.</strong></p>
-                <p id="emailp">erickenmanuel25@gmail.com</p>
+                <p id="emailp">{{pasantee?.user?.email}}</p>
                 <p class="card-text"><strong>Cedula.</strong></p>
-                <p id="cedulap">001-0021771-8</p>
+                <p id="cedulap">{{pasantee.cedula}}</p>
                 <p class="card-text"><strong>Telefono.</strong></p>
-                <p id="telefonop">809-568-5321</p>
+                <p id="telefonop">{{pasantee. phone}}</p>
                 <p class="card-text"><strong>Linkedin.</strong></p>
-                <p id="linkedinp">linkedin.com/alvaroelmejor</p>
+                <p id="linkedinp">{{pasantee.linkedin}}</p>
                 <p class="card-text"><strong>Github.</strong></p>
-                <p id="githubp">github.com/erickklk</p>
+                <p id="githubp">{{pasantee.github}}</p>
                 <p class="card-text"><strong>CV.</strong></p>
                 <p id="cvp">
-                  https://drive.google.com/file/d/1lYgMphlvQtc7Pv_W7xmEHanbm-OMDVWY/view?usp=sharing
+                  {{pasantee.cv}}
                 </p>
               </div>
             </div>

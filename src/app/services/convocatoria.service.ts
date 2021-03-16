@@ -34,7 +34,6 @@ export class ConvocatoriaService {
     );
   }
 
-  //Problema: En vez de cojer el id que esta en la base datos, no coje ningun valor por ende aparece null
   getSingleConvocatoria(id: number):Observable<Convocatorias>{
     return this.http
     .get<Convocatorias>( `${this.URL}/${id}`)
@@ -42,10 +41,20 @@ export class ConvocatoriaService {
       tap(()=> 
       console.log(`fetch convocatoria id=${id}`))
       )
-      
-    
-    
   }
-  
 
-}
+  updateConvo(convo:Convocatorias,id: number):Observable<void>{
+    return this.http.put<void>(`${this.URL}/${id}`,convo)
+  }
+
+  deleteConvo(id:number):Observable<void>{
+    return this.http
+    .delete<void>( `${this.URL}/${id}`)
+    .pipe(
+      tap(()=> {
+        this._refreshNeeded$.next();
+      })
+      )
+  }
+  }
+
