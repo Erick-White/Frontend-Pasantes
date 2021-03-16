@@ -63,7 +63,7 @@ export class SolicitudesComponent implements OnInit {
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
         console.log(resp)
-        
+
 
       });
 
@@ -76,17 +76,43 @@ export class SolicitudesComponent implements OnInit {
   // tslint:disable-next-line: typedef
   borrar(id: string) {
     const user = this.pasante.find(x => x.idRequestInternship === id);
+    console.log(user);
     if (!user) { return; }
 
     this.Services.borrar(id)
       .pipe(first())
       // tslint:disable-next-line: deprecation
       .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+    console.log(id);
+  }
+
+    Update(id: string) {
+    const user = this.pasante.find(x => x.idRequestInternship === id);
+    console.log(user);
+    let userToSend = new Object();
+    userToSend = {
+     "name":user?.name,
+     "lastname":user?.lastname,
+     "cedula": user?.cedula,
+    "phone": user?.phone,
+    "github": user?.github,
+    "linkedin": user?.linkedin,
+    "cv": user?.cv,
+    "birthDate": user?.birthDate,
+    "email": user?.email
+   }
+    if (!user) { return; }
+    this.Services.AcceptIntern(userToSend)
+      .pipe(first())
+      // tslint:disable-next-line: deprecation
+      .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+
+      this.borrar(id);
   }
 
   // tslint:disable-next-line: typedef
-  onSubmit(f: NgForm){
-    // console.log(this.pasante);
+  /*onSubmit(f: NgForm){
+     console.log(this.pasante);
      this.Services.aceptar(this.pasantes)
         // tslint:disable-next-line: deprecation
          .subscribe(resp => {
@@ -94,7 +120,7 @@ export class SolicitudesComponent implements OnInit {
          });
 
 
-  }
+  }*/
 
 
 }
