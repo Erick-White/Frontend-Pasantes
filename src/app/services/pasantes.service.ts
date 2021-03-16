@@ -69,4 +69,9 @@ export class PasantesService {
 
   }
 
+  decirNumero(){
+    var numero = Math.random()*2 +3;
+    return numero;
+  }
+
 }
