@@ -39,5 +39,7 @@ export class AdminService {
     });
     return this.http.delete<any>(`${this.URL}/api/Intern/${id}`,{ headers } )
   }
+
+  // Holaa
 }
   
