@@ -1,6 +1,6 @@
 export class Convocatorias {
 
-    idInternship?: string;
+    idInternship?: number;
     name?: string;
     description?: string;
     initial_date?: Date;
