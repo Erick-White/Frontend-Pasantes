@@ -12,17 +12,23 @@
           >
             <i class="fas fa-plus"></i> Asignaciones
           </button>
-          <a href="solicitudes.html" class="m-5 text-dark">
+          <a 
+          [routerLink]="'/solicitudes'" class="m-5 text-dark">
             <i class="fas fa-user-plus"></i> Solicitudes
         </a>
-        <a [routerLink]="'/admin/config/'+ convoAsig.idInternship" class="m-4 text-dark">
+        <a 
+        [routerLink]="'/admin/config/'+ convoAsig.idInternship" class="m-4 text-dark">
             <i class="fas fa-cog"></i> Configuracion
         </a>
 
         <p
         *ngIf="convoAsig.status == true"
         class="float-right text-success mt-3">
-        Estado: {{convoAsig.status}}</p>
+        Estado: Activa</p>
+        <p
+        *ngIf="convoAsig.status == false"
+        class="float-right text-danger mt-3">
+        Estado: Finalizada</p>
           <div class="row" id="divCartas">
             <div
               class="col-md-5 shadow-sm rounded m-4"
@@ -73,9 +79,11 @@
                             <div class="form-group">
                               <label for="inputAddress">Titulo</label>
                               <input
+                                name="title"
                                 type="text"
                                 class="form-control"
                                 id="txtTitulo"
+                                [(ngModel)]="asigna.title"
                               />
                             </div>
 
@@ -95,20 +103,23 @@
                               <div class="form-group col-md-6">
                                 <label for="inputPassword4">Hasta</label>
                                 <input
+                                  name="date"
                                   type="date"
                                   class="form-control"
                                   id="txtHasta"
+                                  [(ngModel)]="asigna.date"
                                 />
                               </div>
                             </div>
                             <div class="form-group">
                               <label for="">Descripcion</label>
                               <textarea
-                                name=""
+                                name="description"
                                 id="txtDescripcion"
                                 cols="30"
                                 rows="10"
                                 class="form-control"
+                                [(ngModel)]="asigna.description"
                               ></textarea>
                             </div>
 
@@ -123,7 +134,7 @@
                               <button
                                 type="submit"
                                 class="btn btn-primary"
-                                onclick="CrearCarta()"
+                                (click)="saveNewAsigna()"
                                 data-dismiss="modal"
                               >
                                 Guardar

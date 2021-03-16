@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Convocatorias } from '../../models/convocatorias';
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -40,7 +41,13 @@ export class AdminComponent implements OnInit {
 
     this.convocatoriaService.addNewConvocatoria(this.convito).subscribe(response =>{
       console.log(response);
-      console.log(this.convito);
+      Swal.fire({
+        icon: 'success',
+        title: 'La Convocatoria ha sido Creada.',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      // console.log(this.convito);
     },error =>{console.log(<any>error)
     })
 
