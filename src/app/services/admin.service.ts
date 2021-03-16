@@ -40,6 +40,14 @@ export class AdminService {
     return this.http.delete<any>(`${this.URL}/api/Intern/${id}`,{ headers } )
   }
 
+
+  ChangedButtom(email :any) {
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.get<any>(`${this.URL}/api/Roles/${email}`,{ headers } )
+  }
   // Holaa
 }
   
