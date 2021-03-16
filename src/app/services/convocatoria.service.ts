@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Convocatorias} from '../models/convocatorias'
 import { Observable, Subject } from "rxjs";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -20,13 +20,21 @@ export class ConvocatoriaService {
   }
 
   convocatorias():Observable<Convocatorias[]>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
     return this.http
-    .get<Convocatorias[]>(this.URL);
+    .get<Convocatorias[]>(this.URL,{headers});
   }
 
   addNewConvocatoria(convoca:Convocatorias):Observable<Convocatorias>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
     return this.http
-    .post<Convocatorias>(this.URL, convoca)
+    .post<Convocatorias>(this.URL, convoca, {headers})
     .pipe(
       tap(()=>{
         this._refreshNeeded$.next();
@@ -35,8 +43,12 @@ export class ConvocatoriaService {
   }
 
   getSingleConvocatoria(id: number):Observable<Convocatorias>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
     return this.http
-    .get<Convocatorias>( `${this.URL}/${id}`)
+    .get<Convocatorias>( `${this.URL}/${id}`,{headers})
     .pipe(
       tap(()=> 
       console.log(`fetch convocatoria id=${id}`))
@@ -44,12 +56,20 @@ export class ConvocatoriaService {
   }
 
   updateConvo(convo:Convocatorias,id: number):Observable<void>{
-    return this.http.put<void>(`${this.URL}/${id}`,convo)
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.put<void>(`${this.URL}/${id}`,convo,{headers})
   }
 
   deleteConvo(id:number):Observable<void>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
     return this.http
-    .delete<void>( `${this.URL}/${id}`)
+    .delete<void>( `${this.URL}/${id}`,{headers})
     .pipe(
       tap(()=> {
         this._refreshNeeded$.next();
