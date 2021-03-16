@@ -10,6 +10,7 @@ import { PasantesService } from '../../services/pasantes.service';
 })
 export class RegisterComponent implements OnInit {
 
+
   registro = new RegisterResponse();
 
   constructor(private Services: PasantesService) { }
