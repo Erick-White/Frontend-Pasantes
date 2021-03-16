@@ -11,16 +11,41 @@ import {Router, ActivatedRoute } from '@angular/router';
 export class PasantiaConfigComponent implements OnInit {
 
   convoConfig: Convocatorias = new Convocatorias;
+  
+  con = new Convocatorias();
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService) { }
 
+   convocatoriaId: number = 0;
+  
   ngOnInit(): void {
     
-    let convocatoriaId = this.activerouter.snapshot.paramMap.get('id');
-    this.convocatoriaService.getSingleConvocatoria(convocatoriaId!).subscribe(data =>{
+    
+    this.convocatoriaId = +this.activerouter.snapshot.params['id']
+    
+    this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoConfig = data
     })
   
   }
+  
+
+  updateInfo():void{
+    this.convocatoriaService.updateConvo(this.con,this.convocatoriaId).subscribe(() =>{
+      this.router.navigate(['/admin'])
+    },
+    error =>{console.log(<any>error)
+    })
+  }
+
+  deleteConvo():void{
+    this.convocatoriaService.deleteConvo(this.convocatoriaId).subscribe(()=>{
+    })
+
+    this.router.navigate(['/admin'])
+
+  }
+
+  
 
 }

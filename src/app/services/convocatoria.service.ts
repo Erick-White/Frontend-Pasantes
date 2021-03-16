@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ConvocatoriaService {
 
-  URL = 'https://internshipailogic.azurewebsites.net/api/Internship/';
+  URL = 'https://internshipailogic.azurewebsites.net/api/Internship';
 
   constructor(private http: HttpClient) { }
 
@@ -34,10 +34,27 @@ export class ConvocatoriaService {
     );
   }
 
-  getSingleConvocatoria(id: string):Observable<Convocatorias>{
-  let direccion = `${this.URL}/${id}`;
+  getSingleConvocatoria(id: number):Observable<Convocatorias>{
     return this.http
-    .get<Convocatorias>(direccion);
+    .get<Convocatorias>( `${this.URL}/${id}`)
+    .pipe(
+      tap(()=> 
+      console.log(`fetch convocatoria id=${id}`))
+      )
   }
 
-}
+  updateConvo(convo:Convocatorias,id: number):Observable<void>{
+    return this.http.put<void>(`${this.URL}/${id}`,convo)
+  }
+
+  deleteConvo(id:number):Observable<void>{
+    return this.http
+    .delete<void>( `${this.URL}/${id}`)
+    .pipe(
+      tap(()=> {
+        this._refreshNeeded$.next();
+      })
+      )
+  }
+  }
+

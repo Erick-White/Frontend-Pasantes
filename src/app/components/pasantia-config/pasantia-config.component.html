@@ -4,38 +4,50 @@
   class="container">
     <div class="row">
       <div class="col-lg-9">
-        <h2 class="mt-3 ml-5">Pasantias</h2>
-        <div class="container bg-light p-3 shadow-sm">
-          <div class="col-md-12">
+        <h2 class="mt-5 ml-5">Configuracion de pasantia</h2>
+        <div class="container bg-light p-3 shadow-sm mt-3">
+          <div class="col-md-12 ">
             <form>
               <div>
                 <div>
                   <p>Nombre de la pasantia</p>
                   <input
                     type="text"
+                    name="name"
                     class="form-control"
-                    placeholder="Pasantia software"
+                    value={{convoConfig.name}}
+                    [(ngModel)]="con.name"
                   />
                   <div>
                     <p>Cantidad de pasantes</p>
-                    <input type="text" class="form-control" placeholder="50" />
+                    <input 
+                    type="text" 
+                    name="intern_limit"
+                    class="form-control" 
+                    value="{{convoConfig.intern_limit}}"
+                    [(ngModel)]="con.intern_limit" />
                   </div>
                   <div>
                     <p>Fecha de Finalización</p>
                     <input
                       type="text"
+                      name="final_date"
                       class="form-control"
-                      placeholder="15/8/21"
+                      value="{{convoConfig.final_date}}"
+                      [(ngModel)]="con.final_date"
                     />
                   </div>
                   <div>
                     <p>Descripcion</p>
                     <div class="input-group">
                       <textarea
+                        name="description"
                         class="form-control"
                         cols="30"
                         aria-label="With textarea"
-                      >Descripcion</textarea
+                        value="{{convoConfig.description}}"
+                        [(ngModel)]="con.description"                                     
+                      ></textarea
                       >
                     </div>
                   </div>
@@ -44,16 +56,21 @@
             </form>
             <a
               type="button"
-              href="admin.html"
+              [routerLink]="'/admin/'+convoConfig.idInternship"
               name="volver inicio"
               class="volver btn btn-info float-left mt-5 text-white"
               style="background-color: #49abc6"
               >Volver</a
             >
-            <button type="button" class="btn btn-danger mt-5">
+            <button
+            (click)="deleteConvo()"
+            type="button" 
+            class="btn btn-danger mt-5"
+            >
               Eliminar pasantia
             </button>
             <button
+              (click) ="updateInfo()"
               type="button"
               class="btn btn-info mt-5 float-right text-white"
               style="background-color: #49abc6"
@@ -63,8 +80,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 mt-5">
-        <div class="card mt-3 mr-3 bg-light">
+      <!-- <div class="col-md-3 mt-5">
+        <div class="card mt-5 mr-3 bg-light">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <a href="solicitudes.html" class="m-3 text-dark">
@@ -79,7 +96,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- /#page-content-wrapper -->

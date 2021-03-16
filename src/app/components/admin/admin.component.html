@@ -24,9 +24,9 @@
       *ngFor="let convocatoria of convocatoriaArray"
       class="col-md-3 bg-light shadow-sm rounded m-4">
         <div>
-        <a [routerLink]="['/p-config/{{convocatoria.idInternship}}']" routerLinkActive="router-link-active"  class="text-dark text-center">
+        <a [routerLink]="'/admin/'+convocatoria.idInternship" class="text-dark text-center">
             <h3 class="m-2 mt-4">{{convocatoria.name}}</h3>
-            <p class="mt-5">{{convocatoria.initial_date}}</p>
+            <p class="mt-5">{{convocatoria.initial_date}} - {{convocatoria.final_date}}</p>
             <p>Estado: {{convocatoria.status}}</p>
           </a>
         </div>

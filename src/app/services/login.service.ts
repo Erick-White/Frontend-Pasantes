@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -48,14 +49,14 @@ export class LoginService {
     );
   }
   // tslint:disable-next-line: typedef
-  // Loggeado() {
-  //   if (localStorage.getItem('token') != null) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false;
-  //   }
-  // }
+  Loggeado() {
+  if (localStorage.getItem('token') != null) {
+  return true;
+  }
+    else {
+     return false;
+    }
+   }
 
   // Logout(){
   //   if (window.confirm('Desea cerrar la session??')){
@@ -63,4 +64,6 @@ export class LoginService {
   //     this.router.navigate(['/login']);
   //   }
   // }
+
+  
 }

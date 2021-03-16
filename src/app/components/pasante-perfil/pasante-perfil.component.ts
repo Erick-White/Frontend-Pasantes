@@ -10,21 +10,26 @@ import { PasantesAll } from '../../models/pasantes-all';
 })
 export class PasantePerfilComponent implements OnInit {
   
-  pasantee:any; 
+  pasantee: any;
 
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.GetPansantesById();
+    let pasantesId = this.route.snapshot.params['id'];
+    this.admin.getPasantesById(pasantesId).subscribe(res => {
+      this.pasantee = res;
+    })
   }
 
-  GetPansantesById() {
+  GetPansantesById(id: string) {
     this.route.paramMap.subscribe(res => {
       this.admin.getPasantesById(res.get('id')).subscribe(pasant => {
-        this.pasantee = pasant.idInternt;
-        
-      })
-    })
+       this.pasantee = pasant.idInternt;
+       
+     })
+   })
     
   }
 }
+
+

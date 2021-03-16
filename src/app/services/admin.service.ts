@@ -23,9 +23,20 @@ export class AdminService {
   }
 
 
+
   getPasantesById(id: any): Observable<PasantesAll> {
 
     return this.http.get<PasantesAll>(`${this.URL}/api/Intern/${id}`);
+
+ 
+  getPasantesById(id:any): Observable<PasantesAll> {
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    
+    return this.http.get<PasantesAll>(`${this.URL}/api/Intern/${id}`,{ headers });
+
   }
 
   DeletedPasantes(id: any): Observable<any> {
