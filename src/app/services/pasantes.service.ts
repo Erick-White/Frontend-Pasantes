@@ -13,8 +13,10 @@ export class PasantesService {
 
   private url = 'https://internshipailogic.azurewebsites.net';
 
+  // tslint:disable-next-line: variable-name
   private _refreshNeeded$ = new Subject<void>();
 
+  // tslint:disable-next-line: typedef
   get refreshNeeded$() {
     return this._refreshNeeded$;
   }
@@ -36,12 +38,21 @@ export class PasantesService {
 
   }
 
+  aceptar(pasante: Pasantes):Observable<Pasantes[]>{
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token')
+
+    });
+
+    return this._http.post<Pasantes[]>(`${this.url}/api/Intern`, pasante, { headers } );
+  }
+
 
 
   // tslint:disable-next-line: typedef
-  solicitudes(): Observable<Pasantes[]>{
+  solicitudes(): Observable<any>{
     const header = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.get<Pasantes[]>(`${this.url}/api/Request`, { headers: header});
+    return this._http.get<any>(`${this.url}/api/Request`, { headers: header});
   }
 
   // tslint:disable-next-line: typedef

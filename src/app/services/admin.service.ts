@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PasantesAll } from '../models/pasantes-all';
 
@@ -8,32 +8,32 @@ import { PasantesAll } from '../models/pasantes-all';
 })
 export class AdminService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  
-  URL = "https://internshipailogic.azurewebsites.net"
+
+  URL = 'https://internshipailogic.azurewebsites.net';
 
 
   getAllPasantes(): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + localStorage.getItem('token')
+      Authorization: 'Bearer ' + localStorage.getItem('token')
 
     });
-    return this.http.get<any>(this.URL + '/api/Intern',{ headers });
+    return this.http.get<any>(this.URL + '/api/Intern', { headers });
   }
 
- 
-  getPasantesById(id:any):Observable<PasantesAll> {
-    
+
+  getPasantesById(id: any): Observable<PasantesAll> {
+
     return this.http.get<PasantesAll>(`${this.URL}/api/Intern/${id}`);
   }
 
   DeletedPasantes(id: any): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + localStorage.getItem('token')
+      Authorization: 'Bearer ' + localStorage.getItem('token')
 
     });
-    return this.http.delete<any>(`${this.URL}/api/Intern/${id}`,{ headers } )
+    return this.http.delete<any>(`${this.URL}/api/Intern/${id}`, { headers } );
   }
 }
-  
+

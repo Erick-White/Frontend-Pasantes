@@ -8,6 +8,8 @@ export class Pasantes {
   github?: string;
   linkedin?: string;
   cv?: string;
-  birthday?: string;
+  birthDate?: string;
   email?: string;
+
+  
 }
