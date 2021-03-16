@@ -38,13 +38,13 @@ export class PasantesService {
 
   }
 
-  aceptar(pasante: Pasantes):Observable<Pasantes[]>{
+  AcceptIntern(pasante: Object):Observable<any>{
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token')
 
     });
 
-    return this._http.post<Pasantes[]>(`${this.url}/api/Intern`, pasante, { headers } );
+    return this._http.post(`${this.url}/api/Intern`, pasante, { headers } );
   }
 
 

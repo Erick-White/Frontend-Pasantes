@@ -6,8 +6,8 @@
         <div id="solicitud">
             <div class="card text-center" *ngFor="let p of pasante; let i = index">
                 <div class="card-body">
-                    <form id="msform" (ngSubmit)="onSubmit( f )" #f="ngForm">
-                        <button type="submit" class="btn btn-primary float-right ml-2">Aceptar</button>
+                    <form id="msform"  #f="ngForm">
+                        <button type="button" (click)="Update(p.idRequestInternship)" class="btn btn-primary float-right ml-2">Aceptar</button>
                         <button type="button" (click)="borrar(p.idRequestInternship)" class="btn btn-danger float-right ml-2" style="margin-left: 12px;">Declinar</button>
 
                         <div class="row" style="margin-top: 19px;">
@@ -71,7 +71,7 @@
                             <label for="linkedin1">Linkedin</label>
                             <input type="linkedin" class="form-control" name="linkendin" [(ngModel)]="p.linkedin" id="linkedin1" placeholder="Enlace de Linkedin (Opcional)">
                             <label for="nacimiento1">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control " name="birthDate" [(ngModel)]="p.birthDate" id="nacimiento1">
+                            <input type="text" class="form-control " name="birthDate" [(ngModel)]="p.birthDate" id="nacimiento1">
                             <label for="github1">Github</label>
                             <input type="github" class="form-control" name="github" [(ngModel)]="p.github" id="github1" placeholder="Enlace de Github (Opcional)">
 
