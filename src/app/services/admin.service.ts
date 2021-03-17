@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { PasantesAll } from '../models/pasantes-all';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,24 @@ export class AdminService {
 
   
   URL = "https://internshipailogic.azurewebsites.net"
+  
+  private _refreshNeeded$ = new Subject<void>();
 
+  get refreshNeeded$(){
+    return this._refreshNeeded$;
+  }
 
   getAllPasantes(): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
-    return this.http.get<any>(this.URL + '/api/Intern',{ headers });
+    return this.http.get<any>(this.URL + '/api/Intern', { headers })
+    .pipe(
+      tap(()=>{
+        this._refreshNeeded$.next();
+      })
+    );
   }
 
  
@@ -29,7 +40,12 @@ export class AdminService {
 
     });
     
-    return this.http.get<PasantesAll>(`${this.URL}/api/Intern/${id}`,{ headers });
+    return this.http.get<PasantesAll>(`${this.URL}/api/Intern/${id}`, { headers })
+    .pipe(
+      tap(()=>{
+        this._refreshNeeded$.next();
+      })
+    );
   }
 
   DeletedPasantes(id: any): Observable<any> {
@@ -37,17 +53,16 @@ export class AdminService {
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
-    return this.http.delete<any>(`${this.URL}/api/Intern/${id}`,{ headers } )
+    return this.http.delete<any>(`${this.URL}/api/Intern/${id}`, { headers })
+    .pipe(
+      tap(()=>{
+        this._refreshNeeded$.next();
+      })
+    );
   }
 
 
-  ChangedButtom(email :any) {
-    const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + localStorage.getItem('token')
-
-    });
-    return this.http.get<any>(`${this.URL}/api/Roles/${email}`,{ headers } )
-  }
+  
   // Holaa
 }
   

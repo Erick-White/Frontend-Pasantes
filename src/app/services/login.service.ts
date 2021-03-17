@@ -18,17 +18,16 @@ export class LoginService {
 
   URL = 'https://internshipailogic.azurewebsites.net';
 
-
+  Correo: string = "";
   login(User: User): Observable<any> {
-
     const AuthUser = { email: User.email, password: User.password };
-
     const header = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(`${this.URL}/api/Auth/login`, AuthUser, { headers: header });
-
-
   }
 
+
+
+  
   // tslint:disable-next-line: typedef
   register(usuario: User): Observable<any> {
     const authData = {
@@ -65,5 +64,12 @@ export class LoginService {
   //   }
   // }
 
-  
+  ChangedButtom(email :string) {
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+    });
+    
+    return this.http.get<any>(`${this.URL}/api/Roles/${email}`, { headers })
+    
+  }
 }

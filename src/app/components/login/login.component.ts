@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   };
+
+  Correo: any;
   constructor(private Auth: LoginService,
               private router: Router) { }
 
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.Usuario = new User();
     if (token){
-      this.Usuario.email = token;
+      this.Correo = this.Usuario.email;
 
     }
 
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
     this.Auth.login(this.Usuario).subscribe(resp => {
       Swal.close();
       localStorage.setItem('token', resp.token);
+      localStorage.setItem('email', this.Correo);
       Swal.fire({
         icon: 'success',
         title: 'Inicio de sesión correctamente',
