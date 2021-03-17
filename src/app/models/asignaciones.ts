@@ -1,7 +1,7 @@
 export class Asignaciones {
-    
+
     id_Assigment?: number
-    id_Intership?: number
+    Id_Internship?: number
     title?: string
     description?:string
     limitDate?: Date

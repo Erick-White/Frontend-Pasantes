@@ -28,19 +28,20 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let convocatoriaId = +this.activerouter.snapshot.params['id']
-    
-    this.convocatoriaService.getSingleConvocatoria(convocatoriaId).subscribe(data =>{
-      this.convoAsig = data
-    })
-    
-    this.asignacionesService.refreshNeeded$.subscribe(()=>{
-      this.getAllAsignaciones();
-    });
-    this.getAllAsignaciones();
-    this.asigna = new Asignaciones();
+     this.convocatoriaId = +this.activerouter.snapshot.params['id'];
 
-    
+    console.log(this.asigna.Id_Internship);
+
+    this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
+      this.convoAsig = data;
+    });
+
+    this.asignacionesService.refreshNeeded$.subscribe(
+      response =>{
+        this.getAllAsignaciones();
+      });
+    this.getAllAsignaciones();
+
 
   }
 
@@ -49,17 +50,19 @@ export class PasantiaAsignacionComponent implements OnInit {
     this.asignacionesService.asignaciones().subscribe(asign => {this.asignacionesArray = asign},
       error =>{console.log(<any>error)
       });
-      
+
   }
 
 saveNewAsigna(){
-  this.asigna.id_Assigment = 0;
-  this.asigna.id_Intership = this.convoAsig.idInternship;
-    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(response =>{
-     
-    },error =>{console.log(<any>error)
-    })
-    
+    this.asigna.Id_Internship = this.convocatoriaId;
+    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(
+      response => {
+
+      },
+      error =>{
+        console.log(<any>error)
+      });
+
   }
 
 }

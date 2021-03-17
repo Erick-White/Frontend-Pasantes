@@ -8,7 +8,7 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class AsignacionesService {
 
-  URL = 'https://ailogicinternship.azurewebsites.net/api/Assignments'
+  URL = 'https://ailogicinternship.azurewebsites.net/api/assignments'
 
   constructor(private http: HttpClient) { }
 
@@ -54,7 +54,7 @@ export class AsignacionesService {
     return this.http
     .get<Asignaciones>( `${this.URL}/${id}`,{headers})
     .pipe(
-      tap(()=> 
+      tap(()=>
       console.log(`fetch convocatoria id=${id}`))
       )
   }

@@ -12,12 +12,12 @@
           >
             <i class="fas fa-plus"></i> Asignaciones
           </button>
-          <a 
+          <a
           [routerLink]="'/solicitudes'" class="m-5 text-dark">
             <i class="fas fa-user-plus"></i> Solicitudes
         </a>
-        <a 
-        [routerLink]="'/admin/config/'+ convoAsig.idInternship" class="m-4 text-dark">
+        <a
+        [routerLink]="'/admin/config/convoAsig.idInternship'" class="m-4 text-dark">
             <i class="fas fa-cog"></i> Configuracion
         </a>
 
@@ -42,7 +42,7 @@
                   <p>{{asigna.limitDate | date}}</p>
                 </a>
               </div>
-            </div>   
+            </div>
 
                   <!-- /#page-content-wrapper -->
 
@@ -86,7 +86,7 @@
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="inputEmail4">Tipo</label>
-                                <input 
+                                <input
                                 type="text"
                                 name="modality"
                                   id="txtTipo"
