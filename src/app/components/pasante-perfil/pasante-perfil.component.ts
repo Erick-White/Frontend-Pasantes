@@ -11,6 +11,7 @@ import { PasantesAll } from '../../models/pasantes-all';
 export class PasantePerfilComponent implements OnInit {
   
   pasantee: any;
+  mostrar = true;
 
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute) { }
 
@@ -29,6 +30,13 @@ export class PasantePerfilComponent implements OnInit {
      })
    })
     
+  }
+
+  ChangeButtom(email:string) {
+    this.admin.ChangedButtom(email).subscribe(res => {
+      console.log(res);
+      
+    });
   }
 }
 
