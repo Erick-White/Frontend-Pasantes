@@ -23,6 +23,9 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
+  convocatoriaId: number = 0;
+
+
   ngOnInit(): void {
 
     let convocatoriaId = +this.activerouter.snapshot.params['id']
@@ -30,32 +33,33 @@ export class PasantiaAsignacionComponent implements OnInit {
     this.convocatoriaService.getSingleConvocatoria(convocatoriaId).subscribe(data =>{
       this.convoAsig = data
     })
-
+    
     this.asignacionesService.refreshNeeded$.subscribe(()=>{
       this.getAllAsignaciones();
     });
     this.getAllAsignaciones();
+    this.asigna = new Asignaciones();
+
+    
 
   }
 
   private getAllAsignaciones(){
 
-    this.asignacionesService.asignaciones().subscribe(asign => {this.asignacionesArray = asign },
+    this.asignacionesService.asignaciones().subscribe(asign => {this.asignacionesArray = asign},
       error =>{console.log(<any>error)
       });
       
   }
 
 saveNewAsigna(){
-
+  this.asigna.id_Assigment = 0;
+  this.asigna.id_Intership = this.convoAsig.idInternship;
     this.asignacionesService.addNewAsignacion(this.asigna).subscribe(response =>{
-      console.log(response);
-      console.log(this.asigna);
+     
     },error =>{console.log(<any>error)
     })
-
+    
   }
-
-
 
 }

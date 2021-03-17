@@ -28,25 +28,21 @@
         <p
         *ngIf="convoAsig.status == false"
         class="float-right text-danger mt-3">
-        Estado: Finalizada</p>
+        Estado: Inactiva</p>
           <div class="row" id="divCartas">
             <div
               class="col-md-5 shadow-sm rounded m-4"
               style="background-color: #efefef"
+              *ngFor="let asigna of asignacionesArray"
             >
               <div>
-                  
-                <a class="text-dark text-center">
-                  <a
-                    href="../../components/Admin/AsignacionSubida.html"
-                    class="text-dark text-center"
-                  >
-                    <h4 class="m-2 mt-4">Patrones de Diseño</h4>
-                    <p>
-                      Crear presentacion acerca del tema Patrones de diseño.
-                    </p>
-                    <p class="float-right">01/04/2021</p>
-                  </a>
+                <a [routerLink]="" class="text-dark text-center">
+                  <h3 class="m-2 mt-4">{{asigna.title}}</h3>
+                  <p>{{asigna.description}}</p>
+                  <p>{{asigna.limitDate | date}}</p>
+                </a>
+              </div>
+            </div>   
 
                   <!-- /#page-content-wrapper -->
 
@@ -90,24 +86,32 @@
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="inputEmail4">Tipo</label>
-
-                                <select
-                                  name=""
+                                <input 
+                                type="text"
+                                name="modality"
                                   id="txtTipo"
                                   class="form-control"
+                                  [(ngModel)]="asigna.modality">
+                                <!-- <select
+                                  name="modality"
+                                  id="txtTipo"
+                                  class="form-control"
+                                  [(ngModel)]="asigna.modality"
                                 >
                                   <option value="">Individual</option>
                                   <option value="">Grupal</option>
-                                </select>
+                                </select> -->
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="inputPassword4">Hasta</label>
                                 <input
                                   name="date"
-                                  type="date"
+                                  type="text"
                                   class="form-control"
                                   id="txtHasta"
-                                  [(ngModel)]="asigna.date"
+                                  datepicker ="true"
+                                  datepicker_format ="yyyy-MM-dd"
+                                  [(ngModel)]="asigna.limitDate"
                                 />
                               </div>
                             </div>
@@ -146,12 +150,7 @@
                     </div>
                     <!--Fin Modal Crear Pasantia-->
                   </div>
-
-                  <!-- Menu Toggle Script -->
-                </a>
-              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

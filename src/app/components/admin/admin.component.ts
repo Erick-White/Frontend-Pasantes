@@ -47,10 +47,9 @@ export class AdminComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
-      // console.log(this.convito);
     },error =>{console.log(<any>error)
     })
-
+    console.log(this.convito)
   }
 
 }
