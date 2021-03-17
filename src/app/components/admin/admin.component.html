@@ -95,20 +95,24 @@
             <div class="form-group col-md-6">
               <label for="fecha1">Desde</label>
               <input 
-              type="text" 
+              type="date" 
               name="initial_date"
               #date = "ngModel"
               class="form-control" 
               id="fecha1"
+              datepicker ="true"
+              datepicker_format ="yyyy-MM-dd"
               [(ngModel)]="convito.initial_date"/>
             </div>
             <div class="form-group col-md-6">
               <label for="fecha2">Hasta</label>
               <input 
-              type="text"
+              type="date"
               name="final_date" 
               class="form-control" 
-              id="fecha2" 
+              id="fecha2"
+              datepicker ="true"
+              datepicker_format ="yyyy-MM-dd" 
               [(ngModel)]="convito.final_date"
               />
             </div>
