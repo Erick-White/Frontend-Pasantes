@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AsignacionesService {
 
-  URL = ''
+  URL = 'https://ailogicinternship.azurewebsites.net/api/Assignments'
 
   constructor(private http: HttpClient) { }
 

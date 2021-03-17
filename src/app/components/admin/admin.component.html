@@ -26,7 +26,7 @@
         <div>
         <a [routerLink]="'/admin/'+convocatoria.idInternship" class="text-dark text-center">
             <h3 class="m-2 mt-4">{{convocatoria.name}}</h3>
-            <p class="mt-5">{{convocatoria.initial_date}} - {{convocatoria.final_date}}</p>
+            <p class="mt-5">{{convocatoria.initial_date | date }} - {{convocatoria.final_date | date}}</p>
             <p
         *ngIf="convocatoria.status == true"
         class="float-right text-success mt-3">

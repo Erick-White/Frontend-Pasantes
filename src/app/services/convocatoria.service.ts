@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Convocatorias} from '../models/convocatorias'
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject, Subscription } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap } from 'rxjs/operators';
 
