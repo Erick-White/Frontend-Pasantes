@@ -3,8 +3,8 @@ export class Convocatorias {
     idInternship?: number;
     name?: string;
     description?: string;
-    initial_date?: Date;
-    final_date?: Date;
+    initial_date?: string;
+    final_date?: string;
     intern_limit?: 0; 
     status?: boolean = true;
     

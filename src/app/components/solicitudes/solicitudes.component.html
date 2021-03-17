@@ -6,7 +6,7 @@
         <div id="solicitud">
             <div class="card text-center" *ngFor="let p of pasante; let i = index">
                 <div class="card-body">
-                    <form id="msform"  #f="ngForm">
+                    <form id="msform" #f="ngForm">
                         <button type="button" (click)="Update(p.idRequestInternship)" class="btn btn-primary float-right ml-2">Aceptar</button>
                         <button type="button" (click)="borrar(p.idRequestInternship)" class="btn btn-danger float-right ml-2" style="margin-left: 12px;">Declinar</button>
 
@@ -23,8 +23,26 @@
                                 </p>
                             </div>
 
+            <div class="row" style="margin-top: 19px">
+              <div class="col-xs-2 text-center">
+                <img src="/assets/user.svg" class="" alt="" />
+                <p class="text-center m-1">
+                  <a
+                    class="text-sm-left text-secondary"
+                    href="https://github.com/David-PX"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/david-solano-a766731b0/"
+                    class="text-sm-left text-secondary"
+                  >
+                    <i class="fab fa-linkedin" style="margin-left: 10px"></i>
+                  </a>
+                </p>
+              </div>
 
-                            <!-- <div class="col-xs-3">
+              <!-- <div class="col-xs-3">
 
                                 <h5 class="card-title text-sm-left">{{p.email}}</h5>
                                 <input class="form-control" name="email" id="disabledInput" required type="email" [(ngModel)]="p.email" value={{p.email}}>
@@ -35,7 +53,7 @@
                                     {{p.name}} {{p.lastname}}
                                 </p> -->
 
-                            <!-- <label for="exampleInputEmail1" class="form-label">Telefono</label>
+              <!-- <label for="exampleInputEmail1" class="form-label">Telefono</label>
                                 <input class="form-control" name="phone" type="text" required [(ngModel)]="p.phone" value={{p.phone}}>
                                 <p class="text-sm-left text-secondary">{{p.phone}}</p>
                             </div>
@@ -77,90 +95,146 @@
 
                             <label for="github1">CV</label>
 
-                            <input type="github" class="form-control" name="cv" [(ngModel)]="p.cv" id="github1" placeholder="Curriculum">
+              <label for="github1">CV</label>
 
-
-                        </div>
-
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Informacion adicional.
-                             </button>
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card mt-3 card-body text-left">
-                                        <p>
-                                            <b>Carrera:</b> <br /> Desarrollo de Software.
-                                        </p>
-                                        <p>
-                                            <b>¿Cuanto tiempo le falta para terminar su carrera?</b>
-                                            <br /> 2 Cuatrimestres.
-                                        </p>
-                                        <p>
-                                            <b>¿Trabaja actualmente?</b> <br /> Si
-                                        </p>
-                                        <p>
-                                            <b>¿Por que quiere realizar la pasantia con AI Logic?</b>
-                                            <br /> Porque es una empresa muy competente y puedo aprender muchas cosas nuevas y poner en practica las que ya se y asimismo aportar todo lo que pueda a la empresa dando lo mejor de mi.
-                                        </p>
-                                        <hr />
-                                        <p><a href="">Descargar carta de pasantia.</a></p>
-                                        <p><a href="">Descargar Curriculum Vitae.</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-                                    Auto Evaluaciones.
-                                             </button>
-                                <div class="collapse" id="collapseExample2">
-                                    <div class="card mt-3 card-body">
-                                        <h3 class="text-left">Auto evaluaciones</h3>
-                                        <p class="text-left m-0">HTML</p>
-                                        <div class="progress m-2">
-                                            <div class="progress-bar m-2" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p class="text-left m-0">CSS</p>
-                                        <div class="progress m-2">
-                                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p class="text-left m-0">JAVASCRIPT</p>
-                                        <div class="progress m-2">
-                                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p class="text-left m-0">PHP</p>
-                                        <div class="progress m-2">
-                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p class="text-left m-0">C#</p>
-                                        <div class="progress m-2">
-                                            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer text-muted">
-                    <span class="float-right">Hace 2 dias</span>
-                </div>
+              <input
+                type="github"
+                class="form-control"
+                name="cv"
+                [(ngModel)]="p.cv"
+                id="github1"
+                placeholder="Curriculum"
+              />
             </div>
+
+            <br />
+
+            <div class="row">
+              <div class="col-md-6">
+                <button
+                  class="btn btn-info btn-block"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseExample"
+                  aria-expanded="false"
+                  aria-controls="collapseExample"
+                >
+                  Informacion adicional.
+                </button>
+                <div class="collapse" id="collapseExample">
+                  <div class="card mt-3 card-body text-left">
+                    <p>
+                      <b>Carrera:</b> <br />
+                      Desarrollo de Software.
+                    </p>
+                    <p>
+                      <b>¿Cuanto tiempo le falta para terminar su carrera?</b>
+                      <br />
+                      2 Cuatrimestres.
+                    </p>
+                    <p>
+                      <b>¿Trabaja actualmente?</b> <br />
+                      Si
+                    </p>
+                    <p>
+                      <b>¿Por que quiere realizar la pasantia con AI Logic?</b>
+                      <br />
+                      Porque es una empresa muy competente y puedo aprender
+                      muchas cosas nuevas y poner en practica las que ya se y
+                      asimismo aportar todo lo que pueda a la empresa dando lo
+                      mejor de mi.
+                    </p>
+                    <hr />
+                    <p><a href="">Descargar carta de pasantia.</a></p>
+                    <p><a href="">Descargar Curriculum Vitae.</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <button
+                  class="btn btn-info btn-block"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseExample2"
+                  aria-expanded="false"
+                  aria-controls="collapseExample"
+                >
+                  Auto Evaluaciones.
+                </button>
+                <div class="collapse" id="collapseExample2">
+                  <div class="card mt-3 card-body">
+                    <h3 class="text-left">Auto evaluaciones</h3>
+                    <p class="text-left m-0">HTML</p>
+                    <div class="progress m-2">
+                      <div
+                        class="progress-bar m-2"
+                        role="progressbar"
+                        aria-valuenow="0"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="text-left m-0">CSS</p>
+                    <div class="progress m-2">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 25%"
+                        aria-valuenow="25"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="text-left m-0">JAVASCRIPT</p>
+                    <div class="progress m-2">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 50%"
+                        aria-valuenow="50"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="text-left m-0">PHP</p>
+                    <div class="progress m-2">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 75%"
+                        aria-valuenow="75"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="text-left m-0">C#</p>
+                    <div class="progress m-2">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 100%"
+                        aria-valuenow="100"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
         </div>
-        <!--FIN SOLICITUD-->
+        <div class="card-footer text-muted">
+          <span class="float-right">Hace 2 dias</span>
+        </div>
 
-        <!--INICIO SOLICITUD-->
+    <!--FIN SOLICITUD-->
 
-        <div id="solicitud" class="mt-4">
-            <div class="card text-center">
+    <!--INICIO SOLICITUD-->
 
-
-
-
-                <br />
-
+    <div id="solicitud" class="mt-4">
+      <div class="card text-center">
+        <br />
 
                 <div class="collapse" id="collapseExample3">
                     <div class="card mt-3 card-body text-left">

@@ -16,7 +16,7 @@
                     name="name"
                     class="form-control"
                     value={{convoConfig.name}}
-                    [(ngModel)]="con.name"
+                    [(ngModel)]="convoConfig.name"
                   />
                   <div>
                     <p>Cantidad de pasantes</p>
@@ -25,16 +25,25 @@
                     name="intern_limit"
                     class="form-control" 
                     value="{{convoConfig.intern_limit}}"
-                    [(ngModel)]="con.intern_limit" />
+                    [(ngModel)]="convoConfig.intern_limit" />
                   </div>
                   <div>
                     <p>Fecha de Finalización</p>
+                    <input 
+                    type="hidden"
+                    name="initial_date"
+                    class="form-control"
+                    value="{{convoConfig.initial_date | date: 'yyyy-MM-dd'}}"
+                    [(ngModel)]="convoConfig.initial_date"
+                    />
                     <input
-                      type="text"
+                      type="date"
                       name="final_date"
                       class="form-control"
-                      value="{{convoConfig.final_date}}"
-                      [(ngModel)]="con.final_date"
+                      datepicker ="true"
+                      datepicker_format ="yyyy-MM-dd"
+                      value="{{convoConfig.final_date | date: 'yyyy-MM-dd'}}"
+                      [(ngModel)]="convoConfig.final_date"
                     />
                   </div>
                   <div>
@@ -46,7 +55,7 @@
                         cols="30"
                         aria-label="With textarea"
                         value="{{convoConfig.description}}"
-                        [(ngModel)]="con.description"                                     
+                        [(ngModel)]="convoConfig.description"                                     
                       ></textarea
                       >
                     </div>

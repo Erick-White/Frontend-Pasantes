@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { PasantesAll } from '../../models/pasantes-all';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-pasante-perfil',
@@ -12,14 +13,15 @@ export class PasantePerfilComponent implements OnInit {
   
   pasantee: any;
   mostrar = true;
-
-  constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute) { }
+  correo: any;
+  constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,private Auth:LoginService) { }
 
   ngOnInit(): void {
     let pasantesId = this.route.snapshot.params['id'];
     this.admin.getPasantesById(pasantesId).subscribe(res => {
       this.pasantee = res;
     })
+    
   }
 
   GetPansantesById(id: string) {
@@ -32,8 +34,10 @@ export class PasantePerfilComponent implements OnInit {
     
   }
 
-  ChangeButtom(email:string) {
-    this.admin.ChangedButtom(email).subscribe(res => {
+  ChangeButtom(email: string,) {
+    
+    this.correo = localStorage.getItem('email');
+    this.Auth.ChangedButtom(this.correo).subscribe(res => {
       console.log(res);
       
     });
