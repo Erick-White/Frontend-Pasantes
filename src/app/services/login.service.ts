@@ -16,13 +16,13 @@ export class LoginService {
   constructor(private http: HttpClient, private router: Router, ) { }
 
 
-  URL = 'https://internshipailogic.azurewebsites.net';
+  URL = 'https://ailogicinternship.azurewebsites.net/api/';
 
   Correo: string = "";
   login(User: User): Observable<any> {
     const AuthUser = { email: User.email, password: User.password };
     const header = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(`${this.URL}/api/Auth/login`, AuthUser, { headers: header });
+    return this.http.post(`${this.URL}Auth/login`, AuthUser, { headers: header });
   }
 
 
@@ -37,7 +37,7 @@ export class LoginService {
     };
     const header = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(
-      `${this.URL}/api/Auth/create`,
+      `${this.URL}Auth/create`,
       authData, { headers: header }
     ).pipe(
       map(resp => {
@@ -69,7 +69,7 @@ export class LoginService {
       'Authorization':'Bearer ' + localStorage.getItem('token')
     });
     
-    return this.http.get<any>(`${this.URL}/api/Roles/${email}`, { headers })
+    return this.http.get<any>(`${this.URL}Roles/${email}`, { headers })
     
   }
 }

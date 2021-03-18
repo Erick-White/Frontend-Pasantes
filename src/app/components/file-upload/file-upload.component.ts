@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-file-upload',
@@ -8,43 +10,34 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class FileUploadComponent implements OnInit {
   public previsualizacion: string = "";
-  public archivos: any = [];
-  constructor(private sanitizer:DomSanitizer) { }
-
-  ngOnInit(): void {
-  }
-
-  capturarFile(event: any) {
-    const archivoCapturado = event.target.files[0];
-    this.extraerBase64(archivoCapturado).then((imagen:any) => {
-      this.previsualizacion = imagen.base;
-      console.log(imagen)
-    })
-    this.archivos.push(archivoCapturado);
-    //console.log(event.target.files);
-    
-  }
-
-  extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
-    
-      const unsafeImg = window.URL.createObjectURL($event);
-      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-      const reader = new FileReader();
-      reader.readAsDataURL($event);
-      reader.onload = () => {
-        resolve({
-          base: reader.result
-        });
-      };
-      reader.onerror = error => {
-        resolve({
-          base: null
-        });
-      };
-  })
-
-  subirArchivo() {
-    
+  public archivos: any = [];  
+ 
+  constructor(private http:HttpClient,private sanitizer:DomSanitizer) {
+     
   }
   
+  ngOnInit() {
+    
+  }
+  capturarFile(event: any) {
+    const archivoCapturado = event.target.files[0];
+    // this.extraerBase64(archivoCapturado).then((imagen: any) => {
+    //   this.previsualizacion = imagen.base;
+    //   console.log(imagen);
+    // })
+    this.archivos.push(archivoCapturado);
+  }
+  
+  subirArchivo() {
+    const formularioDatos = new FormData();
+    this.archivos.forEach((archivo: any) => {
+      console.log(archivo);
+      formularioDatos.append('file', archivo);
+      
+    })
+   
+    this.http.post('https://ailogicinternship.azurewebsites.net/api/Files', formularioDatos).subscribe(res => {
+      console.log("Respuesta", res);
+    })
+  }
 }
