@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <!-- Page Content -->
 <div id="page-content-wrapper">
   <div class="container">
@@ -36,18 +37,18 @@
               *ngFor="let asigna of asignacionesArray"
             >
               <div>
-                <a 
+                <a
                 class="text-dark text-center"
                 data-toggle="modal"
                 data-target="#exampleModal1"
                 >
                   <h3 class="m-2 mt-4">{{asigna.title}}</h3>
                   <p>{{asigna.description}}</p>
-                  <p>{{asigna.limitDate | date}}</p> 
+                  <p>{{asigna.limitDate | date}}</p>
                 </a>
               </div>
             </div>
-            
+
 
                   <!-- /#page-content-wrapper -->
 

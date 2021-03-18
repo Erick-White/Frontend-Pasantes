@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
         title: 'Inicio de sesión correctamente',
         showConfirmButton: false,
         timer: 1500
-      })
-      this.router.navigate(['/lista-pasante']);
+      });
+      this.router.navigate(['/admin']);
 
     }, (err) => {
       Swal.fire({
