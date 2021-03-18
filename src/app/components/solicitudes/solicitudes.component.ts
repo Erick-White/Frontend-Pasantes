@@ -50,6 +50,7 @@ export class SolicitudesComponent implements OnInit {
     // );
 
      this.getAll();
+     
 
 
   }
@@ -63,6 +64,7 @@ export class SolicitudesComponent implements OnInit {
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
         console.log(resp)
+        
 
 
       });

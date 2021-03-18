@@ -6,7 +6,7 @@
         <div id="solicitud">
             <div class="card text-center" *ngFor="let p of pasante; let i = index">
                 <div class="card-body">
-                    <form id="msform"  #f="ngForm">
+                    <form id="msform" #f="ngForm">
                         <button type="button" (click)="Update(p.idRequestInternship)" class="btn btn-primary float-right ml-2">Aceptar</button>
                         <button type="button" (click)="borrar(p.idRequestInternship)" class="btn btn-danger float-right ml-2" style="margin-left: 12px;">Declinar</button>
 
@@ -19,6 +19,7 @@
                                     </a>
                                     <a href="https://www.linkedin.com/in/david-solano-a766731b0/" class="text-sm-left text-secondary">
                                         <i class="fab fa-linkedin" style="margin-left: 10px;"></i>
+
                                     </a>
                                 </p>
                             </div>

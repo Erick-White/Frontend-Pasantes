@@ -28,7 +28,7 @@
                                             <!-- <small>Gamma</small> -->
                                         </td>
 
-                                        <td class=""> <button class="btn btn-light text-decoration-none">Usuario</button> </td>
+                                        <td class=""> <button type="button" (click)="Update(Pasantes.idUser)" class="btn btn-primary float-right ml-2">Secreatario</button> </td>
                                         <td class="text-success"> <button class="btn btn-light text-success"> Activo </button> </td>
                                         <td class="text-center">
                                             <a class="text-center btn btn-secondary" (click)="contactInfo(Pasantes.idInternt)" data-toggle="modal" data-target="#exampleModal">Configuracion<i class="fas fa-cog"></i>
@@ -84,12 +84,15 @@
                 <p class="mt-2 h3">{{currentContactInfo.name}}</p>
                 <!-- <p>Gamma - Lider</p> -->
                 <p class="text-primary">{{currentContactInfo?.user?.email}}</p>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary shadow-sm" data-dismiss="modal">Cerrar</button>
                 <a [routerLink]="['/perfil',currentContactInfo.idInternt]" data-dismiss="modal" class="btn btn-primary shadow-sm ">Ver Perfil</a>
+
                 <button type="button " (click)="DeletedPasante(currentContactInfo,currentContactInfo.idInternt) " class="btn btn-danger shadow-sm ">Eliminar Pasante.</button>
             </div>
+
         </div>
     </div>
 </div>

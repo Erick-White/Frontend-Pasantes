@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { PasantesAll } from '../models/pasantes-all';
+import { RolesResponse } from '../models/Roles';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,16 @@ export class AdminService {
     });
     return this.http.get<any>(`${this.URL}/api/Roles/${email}`,{ headers } )
   }
+
+  Create(Roles: RolesResponse) {
+
+    const header = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(`${this.URL}/api/Roles/AssignSecretaryRole`, Roles, { headers: header });
+
+
+  }
+
+
   // Holaa
 }
 

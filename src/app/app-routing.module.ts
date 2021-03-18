@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'admin/:id', component: PasantiaAsignacionComponent },
-  { path:'admin/config/:id', component: PasantiaConfigComponent },
+  { path: 'admin/config/:id', component: PasantiaConfigComponent },
   { path: 'registro', component: FormularioComponent },
   { path: 'formulario', component: RegisterComponent},
   { path: 'solicitudes', component: SolicitudesComponent},
@@ -26,8 +26,8 @@ const routes: Routes = [
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
   { path: 'lista-pasante', component: ListaPasantesComponent },
   { path: 'perfil/:id', component: PasantePerfilComponent },
-  {path:'pasante-subir-asig',component:PasanteSubirAsigComponent},
-  {path : '**', pathMatch: 'full' , redirectTo: 'login'},
+  { path: 'pasante-subir-asig',component:PasanteSubirAsigComponent},
+  { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];
 
