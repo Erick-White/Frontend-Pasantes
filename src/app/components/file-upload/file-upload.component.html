@@ -1,11 +1,9 @@
-<div class="container">
-    <div class="mt-5">
-        <input (change)="capturarFile($event)" type="file">
-    </div>
+<div class="container mt-5">
+    <input type="file" (change)="capturarFile($event)">
 
-    <button type="button" (click)="subirArchivo()">Enviar</button>
-
+    <button class="btn btn-primary" type="button" (click)="subirArchivo()">Upload</button>
     <div *ngIf="previsualizacion">
         <img width="200px" [src]="previsualizacion" alt="">
     </div>
+
 </div>

@@ -31,7 +31,8 @@ export class AdminComponent implements OnInit {
 
   private getAllConvocatorias(){
 
-    this.convocatoriaService.convocatorias().subscribe(convoc => {this.convocatoriaArray = convoc },
+    this.convocatoriaService.convocatorias().subscribe(convoc => {this.convocatoriaArray = convoc
+    },
       error =>{console.log(<any>error)
       });
       

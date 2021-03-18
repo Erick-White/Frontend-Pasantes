@@ -4,7 +4,7 @@ import { Asignaciones } from "../../models/asignaciones";
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { AsignacionesService } from "../../services/asignaciones.service";
 import {Router, ActivatedRoute } from '@angular/router';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-pasantia-asignacion',
   templateUrl: './pasantia-asignacion.component.html',
@@ -15,24 +15,27 @@ export class PasantiaAsignacionComponent implements OnInit {
   // Informacion de la Pasantia en la que se encuetra
   convoAsig: Convocatorias = new Convocatorias;
 
+  //Array para guardar las Asignaciones
   asignacionesArray: Asignaciones[] = [
   ];
 
+  //Variable para crear Asignaciones
   asigna = new Asignaciones();
 
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
   convocatoriaId: number = 0;
-
+  
+  asignacionId: number = 0;
+  
 
   ngOnInit(): void {
 
+    console.log(this.asigna)
      this.convocatoriaId = +this.activerouter.snapshot.params['id'];
 
-    console.log(this.asigna.Id_Internship);
-
-    this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
+      this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoAsig = data;
     });
 
@@ -43,6 +46,12 @@ export class PasantiaAsignacionComponent implements OnInit {
     this.getAllAsignaciones();
 
 
+    // this.asignacionesService.getSingleAsignacion(this.asignacionId).subscribe(data =>{
+    //   this.asigna =data
+    // })
+    
+   
+
   }
 
   private getAllAsignaciones(){
@@ -50,14 +59,20 @@ export class PasantiaAsignacionComponent implements OnInit {
     this.asignacionesService.asignaciones().subscribe(asign => {this.asignacionesArray = asign},
       error =>{console.log(<any>error)
       });
-
+      console.log(this.asigna.id_Assigment)
   }
 
-saveNewAsigna(){
+
+  saveNewAsigna(){
     this.asigna.Id_Internship = this.convocatoriaId;
     this.asignacionesService.addNewAsignacion(this.asigna).subscribe(
       response => {
-
+        Swal.fire({
+          icon: 'success',
+          title: 'La Asignacion ha sido Creada.',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       error =>{
         console.log(<any>error)
@@ -65,4 +80,16 @@ saveNewAsigna(){
 
   }
 
+  // deleteAsig():void{
+  //   this.asignacionesService.deleteAsignacion()
+  // }
+
+  updateInfo():void{
+    this.asignacionesService.updateAsig(this.asigna,this.convocatoriaId).subscribe(()=>{
+
+    })
+  }
+
 }
+
+
