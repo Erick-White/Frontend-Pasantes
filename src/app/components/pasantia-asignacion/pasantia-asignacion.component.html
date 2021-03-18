@@ -21,6 +21,10 @@
         [routerLink]="'/admin/config/'+convoAsig.idInternship" class="m-4 text-dark">
             <i class="fas fa-cog"></i> Configuracion
         </a>
+        <a
+        [routerLink]="'/admin'" class="m-4 text-dark">
+            <i class="fas fa-cog"></i>Volver
+        </a>
 
         <p
         *ngIf="convoAsig.status == true"
@@ -36,11 +40,11 @@
               style="background-color: #efefef"
               *ngFor="let asigna of asignacionesArray"
             >
+            <!-- [routerLink]="'/admin/asignacion/'+asigna.id_Assigment" -->
               <div>
                 <a
                 class="text-dark text-center"
-                data-toggle="modal"
-                data-target="#exampleModal1"
+                [routerLink]="'/admin/asignacion/'+asigna.id_Assignment"
                 >
                   <h3 class="m-2 mt-4">{{asigna.title}}</h3>
                   <p>{{asigna.description}}</p>
