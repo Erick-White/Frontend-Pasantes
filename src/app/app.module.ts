@@ -28,6 +28,7 @@ import { PasanteRepoVistaComponent } from './components/pasante-repo-vista/pasan
 import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perfil.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
 
 
 
@@ -54,6 +55,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     PasantePerfilComponent,
     RegisterComponent,
     FileUploadComponent,
+    PasantiaAsignacionVistaComponent,
     
   ],
   imports: [
