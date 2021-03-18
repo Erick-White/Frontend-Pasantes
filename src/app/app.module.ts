@@ -27,6 +27,8 @@ import { PasanteRepoComponent } from './components/pasante-repo/pasante-repo.com
 import { PasanteRepoVistaComponent } from './components/pasante-repo-vista/pasante-repo-vista.component';
 import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perfil.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { RegisterComponent } from './components/register/register.component';
     PasanteRepoComponent,
     PasanteRepoVistaComponent,
     PasantePerfilComponent,
-    RegisterComponent
+    RegisterComponent,
+    FileUploadComponent,
+    
   ],
   imports: [
     BrowserModule,

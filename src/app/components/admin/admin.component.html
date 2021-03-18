@@ -26,8 +26,15 @@
         <div>
         <a [routerLink]="'/admin/'+convocatoria.idInternship" class="text-dark text-center">
             <h3 class="m-2 mt-4">{{convocatoria.name}}</h3>
-            <p class="mt-5">{{convocatoria.initial_date}} - {{convocatoria.final_date}}</p>
-            <p>Estado: {{convocatoria.status}}</p>
+            <p class="mt-5">{{convocatoria.initial_date | date }} - {{convocatoria.final_date | date}}</p>
+            <p
+        *ngIf="convocatoria.status == true"
+        class="float-right text-success mt-3">
+        Estado: Activa</p>
+        <p
+        *ngIf="convocatoria.status == false"
+        class="float-right text-danger mt-3">
+        Estado: Inactivo</p>
           </a>
         </div>
       </div>
@@ -88,20 +95,24 @@
             <div class="form-group col-md-6">
               <label for="fecha1">Desde</label>
               <input 
-              type="text" 
+              type="date" 
               name="initial_date"
               #date = "ngModel"
               class="form-control" 
               id="fecha1"
+              datepicker ="true"
+              datepicker_format ="yyyy-MM-dd"
               [(ngModel)]="convito.initial_date"/>
             </div>
             <div class="form-group col-md-6">
               <label for="fecha2">Hasta</label>
               <input 
-              type="text"
+              type="date"
               name="final_date" 
               class="form-control" 
-              id="fecha2" 
+              id="fecha2"
+              datepicker ="true"
+              datepicker_format ="yyyy-MM-dd" 
               [(ngModel)]="convito.final_date"
               />
             </div>

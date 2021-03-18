@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Convocatorias} from '../models/convocatorias'
-import { Observable, Subject, Subscription } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { tap } from 'rxjs/operators';
-
+import { Asignaciones } from "../models/asignaciones";
+import { Observable, Subject, throwError } from "rxjs";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
+import { tap, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ConvocatoriaService {
+export class AsignacionesService {
 
-  URL = 'https://internshipailogic.azurewebsites.net/api/Internship';
+  URL = 'https://ailogicinternship.azurewebsites.net/api/assignments'
 
   constructor(private http: HttpClient) { }
 
@@ -19,51 +18,56 @@ export class ConvocatoriaService {
     return this._refreshNeeded$;
   }
 
-  convocatorias():Observable<Convocatorias[]>{
+  asignaciones():Observable<Asignaciones[]>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
     return this.http
-    .get<Convocatorias[]>(this.URL,{headers});
+    .get<Asignaciones[]>(this.URL,{headers});
   }
 
-  addNewConvocatoria(convoca:Convocatorias):Observable<Convocatorias>{
+  addNewAsignacion(Asig:Asignaciones):Observable<any>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
-
     });
     return this.http
-    .post<Convocatorias>(this.URL, convoca, {headers})
+    .post(this.URL, Asig,{headers})
     .pipe(
       tap(()=>{
         this._refreshNeeded$.next();
       })
+    ).pipe(
+      catchError(this.handleError)
     );
   }
 
-  getSingleConvocatoria(id: number):Observable<Convocatorias>{
+  handleError(error: HttpErrorResponse){
+    return throwError(error)
+  }
+
+  getSingleAsignacion(id: number):Observable<Asignaciones>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
     return this.http
-    .get<Convocatorias>( `${this.URL}/${id}`,{headers})
+    .get<Asignaciones>( `${this.URL}/${id}`,{headers})
     .pipe(
-      tap(()=> 
+      tap(()=>
       console.log(`fetch convocatoria id=${id}`))
       )
   }
 
-  updateConvo(convo:Convocatorias,id: number):Observable<void>{
+  updateAsig(Asig:Asignaciones,id: number):Observable<void>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
-    return this.http.put<void>(`${this.URL}/${id}`,convo,{headers})
+    return this.http.put<void>(`${this.URL}/${id}`,Asig,{headers})
   }
 
-  deleteConvo(id:number):Observable<void>{
+  deleteAsignacion(id:number):Observable<void>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
@@ -76,5 +80,6 @@ export class ConvocatoriaService {
       })
       )
   }
-  }
 
+
+}
