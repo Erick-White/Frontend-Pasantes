@@ -59,6 +59,14 @@ export class AsignacionesService {
       )
   }
 
+  updateAsig(Asig:Asignaciones,id: number):Observable<void>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.put<void>(`${this.URL}/${id}`,Asig,{headers})
+  }
+
   deleteAsignacion(id:number):Observable<void>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
