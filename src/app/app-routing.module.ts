@@ -14,13 +14,15 @@ import { PasantiaAsignacionComponent } from './components/pasantia-asignacion/pa
 import { PasanteSubirAsigComponent } from './components/pasante-subir-asig/pasante-subir-asig.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { GuardGuard } from './guards/guard.guard';
+import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
 
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'admin/:id', component: PasantiaAsignacionComponent },
-  { path: 'admin/config/:id', component: PasantiaConfigComponent },
+  { path:'admin/config/:id', component: PasantiaConfigComponent },
+  { path: 'admin/asignacion/:id', component: PasantiaAsignacionVistaComponent },
   { path: 'registro', component: FormularioComponent },
   { path: 'formulario', component: RegisterComponent},
   { path: 'solicitudes', component: SolicitudesComponent},

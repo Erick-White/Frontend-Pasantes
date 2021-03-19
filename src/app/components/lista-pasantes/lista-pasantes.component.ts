@@ -19,7 +19,7 @@ export class ListaPasantesComponent implements OnInit {
   pasantee: any;
   pasantes: PasantesAll[] = [];
   public Role : RolesResponse[] = [];
-
+  
 
 //Algo
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,

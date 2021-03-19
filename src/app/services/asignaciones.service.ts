@@ -18,13 +18,13 @@ export class AsignacionesService {
     return this._refreshNeeded$;
   }
 
-  asignaciones():Observable<Asignaciones[]>{
+  asignaciones(id:number):Observable<Asignaciones[]>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
     return this.http
-    .get<Asignaciones[]>(this.URL,{headers});
+    .get<Asignaciones[]>(`${this.URL}/Internship/${id}`,{headers});
   }
 
   addNewAsignacion(Asig:Asignaciones):Observable<any>{
@@ -55,7 +55,7 @@ export class AsignacionesService {
     .get<Asignaciones>( `${this.URL}/${id}`,{headers})
     .pipe(
       tap(()=>
-      console.log(`fetch convocatoria id=${id}`))
+      console.log(`fetch asignacion id=${id}` ))
       )
   }
 
