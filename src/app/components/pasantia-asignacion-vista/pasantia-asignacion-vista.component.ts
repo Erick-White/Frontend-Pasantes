@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Convocatorias } from "../../models/convocatorias";
 import { Asignaciones } from "../../models/asignaciones";
-import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { AsignacionesService } from "../../services/asignaciones.service";
 import {Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common'
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,9 +12,11 @@ import Swal from 'sweetalert2';
 })
 export class PasantiaAsignacionVistaComponent implements OnInit {
 
+
+
   asigna: Asignaciones = new Asignaciones()
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private convocatoriaService: ConvocatoriaService) { }
+  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private location: Location) { }
 
   asignacionId: number = 0;
 
@@ -33,7 +34,9 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
       }
     })
     
+
   }
+
 
 
   confirmBox(){
@@ -49,6 +52,7 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.deleteAsig();
+  
         Swal.fire(
           'Borrado!',
           'La Asignacion ha sido Borrada.',
@@ -58,9 +62,9 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
     })
   }
 
+ 
   deleteAsig():void{
     this.asignacionesService.deleteAsignacion(this.asignacionId).subscribe(()=>{
-      this.router.navigate(['/admin/',this.asigna.id_Internship])
     },error =>{console.log(<any>error)
     })
   }
