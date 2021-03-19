@@ -4,7 +4,7 @@ import { Asignaciones } from "../../models/asignaciones";
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { AsignacionesService } from "../../services/asignaciones.service";
 import {Router, ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-pasantia-asignacion',
   templateUrl: './pasantia-asignacion.component.html',
@@ -20,7 +20,7 @@ export class PasantiaAsignacionComponent implements OnInit {
   ];
 
   //Variable para crear Asignaciones
-  asigna = new Asignaciones();
+  asigna: Asignaciones = new Asignaciones()
 
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
@@ -32,11 +32,12 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.asigna)
+    
      this.convocatoriaId = +this.activerouter.snapshot.params['id'];
-
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoAsig = data;
+      console.log(data)
+      
     });
 
     this.asignacionesService.refreshNeeded$.subscribe(
@@ -45,26 +46,24 @@ export class PasantiaAsignacionComponent implements OnInit {
       });
     this.getAllAsignaciones();
 
-
-    // this.asignacionesService.getSingleAsignacion(this.asignacionId).subscribe(data =>{
-    //   this.asigna =data
-    // })
     
-   
-
+    
   }
 
+  //Nos trae todas las asignaciones por convocatoria
   private getAllAsignaciones(){
 
-    this.asignacionesService.asignaciones().subscribe(asign => {this.asignacionesArray = asign},
+    this.asignacionesService.asignaciones(this.convocatoriaId).subscribe(asign => {this.asignacionesArray = asign
+    console.log(asign)
+    },
       error =>{console.log(<any>error)
       });
-      console.log(this.asigna.id_Assigment)
+      console.log(this.asigna.id_Assignment)
   }
 
-
+  //Nos guarda las asignaciones creadas
   saveNewAsigna(){
-    this.asigna.Id_Internship = this.convocatoriaId;
+    this.asigna.id_Internship = this.convocatoriaId;
     this.asignacionesService.addNewAsignacion(this.asigna).subscribe(
       response => {
         Swal.fire({
@@ -80,12 +79,14 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   }
 
-  // deleteAsig():void{
-  //   this.asignacionesService.deleteAsignacion()
-  // }
+  deleteAsig():void{
+    this.asignacionesService.deleteAsignacion(this.asignacionId).subscribe(()=>{
+
+    })
+  }
 
   updateInfo():void{
-    this.asignacionesService.updateAsig(this.asigna,this.convocatoriaId).subscribe(()=>{
+    this.asignacionesService.updateAsig(this.asigna,this.asignacionId).subscribe(()=>{
 
     })
   }

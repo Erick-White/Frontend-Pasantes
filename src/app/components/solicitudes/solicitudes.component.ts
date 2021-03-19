@@ -50,6 +50,7 @@ export class SolicitudesComponent implements OnInit {
     // );
 
      this.getAll();
+     
 
 
   }
@@ -63,6 +64,7 @@ export class SolicitudesComponent implements OnInit {
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
         console.log(resp)
+        
 
 
       });
@@ -77,19 +79,20 @@ export class SolicitudesComponent implements OnInit {
   borrar(id: string) {
     const user = this.pasante.find(x => x.idRequestInternship === id);
     console.log(user);
-    if (user) { return; }
+    if (!user) { return; }
 
     this.Services.borrar(id)
       .pipe(first())
       // tslint:disable-next-line: deprecation
       .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+    console.log(id);
   }
 
     Update(id: string) {
     const user = this.pasante.find(x => x.idRequestInternship === id);
     console.log(user);
-   let userToSend = new Object();
-   userToSend = {
+    let userToSend = new Object();
+    userToSend = {
      "name":user?.name,
      "lastname":user?.lastname,
      "cedula": user?.cedula,
@@ -105,6 +108,8 @@ export class SolicitudesComponent implements OnInit {
       .pipe(first())
       // tslint:disable-next-line: deprecation
       .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+
+      this.borrar(id);
   }
 
   // tslint:disable-next-line: typedef
