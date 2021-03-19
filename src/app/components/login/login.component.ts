@@ -12,7 +12,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loading: boolean = false;
   Usuario: User = {
     nombre:'',
     email: '',
@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   login(form: NgForm) {
+    this.loading = true;
     this.Auth.login(this.Usuario).subscribe(resp => {
       Swal.close();
       localStorage.setItem('token', resp.token);

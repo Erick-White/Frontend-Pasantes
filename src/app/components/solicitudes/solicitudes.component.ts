@@ -4,6 +4,7 @@ import { Pasantes } from 'src/app/models/pasantes';
 import { PasantesService } from 'src/app/services/pasantes.service';
 import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-solicitudes',
@@ -13,7 +14,7 @@ import { NgForm } from '@angular/forms';
 export class SolicitudesComponent implements OnInit {
 
  pasante: Pasantes[] = [];
-
+  loading = false;
  pasantes  = new Pasantes();
 
   // tslint:disable-next-line: new-parens
@@ -48,9 +49,9 @@ export class SolicitudesComponent implements OnInit {
     //     console.log(val);
     //   }
     // );
-
+      this.loading = true;
      this.getAll();
-     
+
 
 
   }
@@ -63,8 +64,9 @@ export class SolicitudesComponent implements OnInit {
       .subscribe(resp => {
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
+        this.loading = false;
         console.log(resp)
-        
+
 
 
       });
@@ -81,11 +83,25 @@ export class SolicitudesComponent implements OnInit {
     console.log(user);
     if (!user) { return; }
 
-    this.Services.borrar(id)
-      .pipe(first())
-      // tslint:disable-next-line: deprecation
-      .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
-    console.log(id);
+    Swal.fire({
+      title: 'Esta Seguro?',
+      text: `Esta seguro de rechazar, a ${user.name} ${user.lastname}`,
+      icon: 'question',
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then(resp =>{
+
+      if(resp.value){
+        this.Services.borrar(id)
+          .pipe(first())
+          // tslint:disable-next-line: deprecation
+          .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+        console.log(id);
+      }
+
+    });
+
+
   }
 
     Update(id: string) {

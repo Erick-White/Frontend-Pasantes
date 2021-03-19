@@ -14,11 +14,14 @@
 
 <body>
     <div class="login">
+
         <div class="form text-center mt-5">
+
             <div class="mt-4">
                 <a href="/login"><img src="../../../assets/logo.svg">
                 </a>
-                <div class=" d-flex justify-content-center mt-3 ">
+                <div class=" d-flex justify-content-center mt-3">
+
                     <form (ngSubmit)="login( f )" #f="ngForm" class="col-6">
 
                         <div class="form-group inputWithIcon">
@@ -56,7 +59,13 @@
 
                     <p>¿No tienes Cuenta? <a routerLink="/registro">Haz click aqui</a> </p>
                 </div>
-
+                <div *ngIf="loading" class="alert alert-info text-center mt-2 animated fadeIn fast">
+                    <h4 class="alert-heading">Cargando</h4>
+                    <p>
+                        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+                    </p>
+                    <p class="mb-0">Espere Por favor...</p>
+                </div>
             </div>
             <div class="vector   position-absolute bottom-0 start-0">
 
