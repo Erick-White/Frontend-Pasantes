@@ -81,6 +81,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
             </div>
+
+            <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast">
+                <h4 class="alert-heading">Cargando</h4>
+                <p>
+                    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+                </p>
+                <p class="mb-0">Espere Por favor...</p>
+            </div>
             <div class="modal-body">
                 <img src="/assets/user.svg" alt="" />
                 <p class="mt-2 h3">{{ currentContactInfo.name }}</p>

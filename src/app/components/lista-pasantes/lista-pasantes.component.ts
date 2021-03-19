@@ -86,15 +86,18 @@ export class ListaPasantesComponent implements OnInit {
     this.route.paramMap.subscribe(res => {
       this.admin.getPasantesById(res.get('id')).subscribe(pasant => {
        this.pasantee = pasant.idInternt;
-
+      
      })
    })
 
   }
  // Metodo para traer la info by ID
-  contactInfo(id:string){
+  contactInfo(id: string) {
+    this.loading = true;
     this.admin.getPasantesById(id).subscribe(res => {
-       this.currentContactInfo = res;
+      this.currentContactInfo = res;
+      this.loading = false;
+      
    });
   }
 
