@@ -5,6 +5,7 @@ import { PasantesService } from 'src/app/services/pasantes.service';
 import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-solicitudes',
@@ -50,7 +51,7 @@ export class SolicitudesComponent implements OnInit {
     //   }
     // );
       this.loading = true;
-     this.getAll();
+      this.getAll();
 
 
 
@@ -65,7 +66,7 @@ export class SolicitudesComponent implements OnInit {
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
         this.loading = false;
-        console.log(resp)
+        console.log(resp);
 
 
 
@@ -83,23 +84,14 @@ export class SolicitudesComponent implements OnInit {
     console.log(user);
     if (!user) { return; }
 
-    Swal.fire({
-      title: 'Esta Seguro?',
-      text: `Esta seguro de rechazar, a ${user.name} ${user.lastname}`,
-      icon: 'question',
-      showConfirmButton: true,
-      showCancelButton: true
-    }).then(resp =>{
-
-      if(resp.value){
-        this.Services.borrar(id)
+    this.Services.borrar(id)
           .pipe(first())
           // tslint:disable-next-line: deprecation
           .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
-        console.log(id);
-      }
+    console.log(id);
 
-    });
+
+
 
 
   }
@@ -109,23 +101,35 @@ export class SolicitudesComponent implements OnInit {
     console.log(user);
     let userToSend = new Object();
     userToSend = {
-     "name":user?.name,
-     "lastname":user?.lastname,
-     "cedula": user?.cedula,
-    "phone": user?.phone,
-    "github": user?.github,
-    "linkedin": user?.linkedin,
-    "cv": user?.cv,
-    "birthDate": user?.birthDate,
-    "email": user?.email
-   }
-    if (!user) { return; }
-    this.Services.AcceptIntern(userToSend)
-      .pipe(first())
-      // tslint:disable-next-line: deprecation
-      .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+     name: user?.name,
+     lastname: user?.lastname,
+     cedula: user?.cedula,
+    phone: user?.phone,
+    github: user?.github,
+    linkedin: user?.linkedin,
+    cv: user?.cv,
+    birthDate: user?.birthDate,
+    email: user?.email
+   };
 
-      this.borrar(id);
+    Swal.fire({
+        title: 'Esta Seguro?',
+        text: `Esta seguro de aceptar a: ${user?.name} ${ user?.lastname}`,
+        icon: 'question',
+        showConfirmButton: true,
+        showCancelButton: true
+      }).then(resp => {
+        if (resp.value){
+          if (!user) { return; }
+          this.Services.AcceptIntern(userToSend)
+            .pipe(first())
+            // tslint:disable-next-line: deprecation
+            .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+
+          this.borrar(id);
+        }
+      });
+
   }
 
   // tslint:disable-next-line: typedef
