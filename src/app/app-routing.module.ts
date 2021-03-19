@@ -14,6 +14,7 @@ import { PasantiaAsignacionComponent } from './components/pasantia-asignacion/pa
 import { PasanteSubirAsigComponent } from './components/pasante-subir-asig/pasante-subir-asig.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
+import { PasanteHomeComponent } from './components/pasante-home/pasante-home.component';
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'lista-pasante', component: ListaPasantesComponent },
   { path: 'perfil/:id', component: PasantePerfilComponent },
   { path: 'pasante-subir-asig',component:PasanteSubirAsigComponent},
+  { path: 'home-pasantes', component:PasanteHomeComponent},
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];
