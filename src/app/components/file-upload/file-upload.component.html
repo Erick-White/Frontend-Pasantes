@@ -1,9 +1,12 @@
 <div class="container mt-5">
-    <input type="file" (change)="capturarFile($event)">
+    <form (ngSubmit)=" subirArchivo( f )" #f="ngForm">
+        <input type="file" (change)="capturarFile($event)">
 
-    <button class="btn btn-primary" type="button" (click)="subirArchivo()">Upload</button>
-    <div *ngIf="previsualizacion">
-        <img width="200px" [src]="previsualizacion" alt="">
-    </div>
+        <button class="btn btn-primary" type="submit">Upload</button>
+        <div *ngIf="previsualizacion">
+            <img width="200px" [src]="previsualizacion" alt="">
+        </div>
+    </form>
+
 
 </div>

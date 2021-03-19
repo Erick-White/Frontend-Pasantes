@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { NgForm } from '@angular/forms';
+import { Files } from '../../models/files';
 
 @Component({
   selector: 'app-file-upload',
@@ -11,7 +12,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class FileUploadComponent implements OnInit {
   public previsualizacion: string = "";
   public archivos: any = [];  
- 
+  file: Files = {
+    idUser:"",
+   file: "",
+  };
   constructor(private http:HttpClient,private sanitizer:DomSanitizer) {
      
   }
@@ -28,7 +32,7 @@ export class FileUploadComponent implements OnInit {
     this.archivos.push(archivoCapturado);
   }
   
-  subirArchivo() {
+  subirArchivo(form: NgForm) {
     const formularioDatos = new FormData();
     this.archivos.forEach((archivo: any) => {
       console.log(archivo);
