@@ -30,6 +30,7 @@ export class ListaPasantesComponent implements OnInit {
   ngOnInit(): void {
     this.admin.refreshNeeded$.subscribe(res => {
       this.GetAllPasantes();
+      console.log(res);
     })
     this.loading = true;
     this.GetAllPasantes();
