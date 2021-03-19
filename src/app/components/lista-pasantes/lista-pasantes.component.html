@@ -84,20 +84,16 @@
                 <button type="button" class="btn btn-secondary shadow-sm" data-dismiss="modal">
           Cerrar
         </button>
-                <a [routerLink]="['/perfil', currentContactInfo.idInternt]" data-dismiss="modal" class="btn btn-primary shadow-sm">Ver Perfil</a
-        >
-        <button
-          type="button "
-          (click)="
+                <a [routerLink]="['/perfil', currentContactInfo.idInternt]" data-dismiss="modal" class="btn btn-primary shadow-sm">Ver Perfil</a>
+
+                <button type="button " (click)="
             DeletedPasante(currentContactInfo, currentContactInfo.idInternt)
-          "
-          class="btn btn-danger shadow-sm"
-        >
+          " class="btn btn-danger shadow-sm">
           Eliminar Pasante.
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!--Fin Modal Mostrar Informacion-->
 
