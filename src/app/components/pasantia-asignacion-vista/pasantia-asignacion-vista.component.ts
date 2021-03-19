@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Convocatorias } from "../../models/convocatorias";
 import { Asignaciones } from "../../models/asignaciones";
+import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { AsignacionesService } from "../../services/asignaciones.service";
 import {Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -13,7 +15,7 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
 
   asigna: Asignaciones = new Asignaciones()
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService) { }
+  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private convocatoriaService: ConvocatoriaService) { }
 
   asignacionId: number = 0;
 
@@ -23,10 +25,10 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
     this.asignacionesService.getSingleAsignacion(this.asignacionId).subscribe(data =>{
       this.asigna = data
       if(data.limitDate)  {
-        const initialDate = new Date(data.limitDate )
-        const month = initialDate.getMonth() + 1;
-        const day = initialDate.getDate();
-        const year = initialDate.getFullYear();
+        const limitDate = new Date(data.limitDate )
+        const month = limitDate.getMonth() + 1;
+        const day = limitDate.getDate();
+        const year = limitDate.getFullYear();
         this.asigna.limitDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}` 
       }
     })
