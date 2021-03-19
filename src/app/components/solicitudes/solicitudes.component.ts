@@ -51,9 +51,9 @@ export class SolicitudesComponent implements OnInit {
     // );
 
       this.Services.refreshNeeded$.subscribe(
-        resp =>{
+        resp => {
           this.getAll();
-          
+
         }
       );
 
