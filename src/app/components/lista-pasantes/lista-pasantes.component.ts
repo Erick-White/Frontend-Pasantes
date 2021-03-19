@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { PasantesAll} from '../../models/pasantes-all';
 import { Pasantes } from 'src/app/models/pasantes';
-import { Router, ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2'
+import { Router,ActivatedRoute } from '@angular/router';
+import { RolesService } from '../../services/roles.service';
+import { RolesResponse } from 'src/app/models/Roles';
+import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,10 +18,14 @@ export class ListaPasantesComponent implements OnInit {
   currentContactInfo: any = {};
   pasantee: any;
   pasantes: PasantesAll[] = [];
- 
-  
-  
-  constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute) { }
+  public Role : RolesResponse[] = [];
+
+
+
+  constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
+              private Roles : RolesService
+
+    ) { }
 
   ngOnInit(): void {
     this.admin.refreshNeeded$.subscribe(res => {
@@ -28,7 +35,7 @@ export class ListaPasantesComponent implements OnInit {
   //   this.route.params.subscribe(params => {
   //     this.GetPansantesById(params['id']);
   // })
-   
+
   }
 
 //Traer todos los Pasantes
@@ -74,17 +81,37 @@ export class ListaPasantesComponent implements OnInit {
     this.route.paramMap.subscribe(res => {
       this.admin.getPasantesById(res.get('id')).subscribe(pasant => {
        this.pasantee = pasant.idInternt;
-       
+
      })
    })
-    
+
   }
  // Metodo para traer la info by ID
   contactInfo(id:string){
     this.admin.getPasantesById(id).subscribe(res => {
        this.currentContactInfo = res;
    });
-  } 
+  }
+
+  // tslint:disable-next-line: typedef
+  Update(id: any) {
+    const user = this.pasantes.find(x => x.idUser === id);
+    console.log(user);
+    let userToSend = new Object();
+    userToSend = {
+      "idUser": user?.idUser,
+      
+    }
+    if (user) { return; }
+    this.Roles.AssignRole(userToSend)
+      .pipe(first())
+      // tslint:disable-next-line: deprecation
+      .subscribe(() => this.Role = this.Role.filter(x => x.idUser === id));
+
+    
+  }
+
+
 }
 
 

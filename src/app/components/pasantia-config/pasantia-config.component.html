@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <!-- Page Content -->
 <div id="page-content-wrapper">
   <div
@@ -20,16 +21,16 @@
                   />
                   <div>
                     <p>Cantidad de pasantes</p>
-                    <input 
-                    type="text" 
+                    <input
+                    type="text"
                     name="intern_limit"
-                    class="form-control" 
+                    class="form-control"
                     value="{{convoConfig.intern_limit}}"
                     [(ngModel)]="convoConfig.intern_limit" />
                   </div>
                   <div>
                     <p>Fecha de Finalización</p>
-                    <input 
+                    <input
                     type="hidden"
                     name="initial_date"
                     class="form-control"
@@ -55,7 +56,7 @@
                         cols="30"
                         aria-label="With textarea"
                         value="{{convoConfig.description}}"
-                        [(ngModel)]="convoConfig.description"                                     
+                        [(ngModel)]="convoConfig.description"
                       ></textarea
                       >
                     </div>
@@ -73,15 +74,15 @@
             >
             <button
             (click)="confirmBox()"
-            type="button" 
-            class="btn btn-danger mt-5"
+            type="button"
+            class="btn btn-danger mt-5 m-2"
             >
               Eliminar pasantia
             </button>
             <button
               (click) ="updateInfo()"
               type="button"
-              class="btn btn-info mt-5 float-right text-white"
+              class="btn btn-info  mt-5 float-right text-white"
               style="background-color: #49abc6"
             >
               Guardar

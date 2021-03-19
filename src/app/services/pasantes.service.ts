@@ -38,7 +38,7 @@ export class PasantesService {
 
   }
 
-  AcceptIntern(pasante: Object):Observable<any>{
+  AcceptIntern(pasante: Object): Observable<any>{
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token')
 
@@ -69,8 +69,9 @@ export class PasantesService {
 
   }
 
+  // tslint:disable-next-line: typedef
   decirNumero(){
-    var numero = Math.random()*2 +3;
+    const numero = Math.random() * 2 + 3;
     return numero;
   }
 
