@@ -69,7 +69,8 @@ export class PasantiaConfigComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      cancelButtonText:'Cancelar',
+      confirmButtonText: 'Si, Eliminalo!'
     }).then((result) => {
       if (result.isConfirmed) {
         this.deleteConvo();
@@ -78,6 +79,7 @@ export class PasantiaConfigComponent implements OnInit {
           'La Convocatoria ha sido Borrada.',
           'success'
         )
+        this.router.navigate(['/admin'])
       }
     })
   }
@@ -86,7 +88,7 @@ export class PasantiaConfigComponent implements OnInit {
     this.convocatoriaService.deleteConvo(this.convocatoriaId).subscribe(()=>{
     })
 
-    this.router.navigate(['/admin'])
+    
 
   }
 
