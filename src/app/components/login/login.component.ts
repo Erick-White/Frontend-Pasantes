@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loading: boolean = false;
   Usuario: User = {
     nombre:'',
     email: '',
@@ -29,13 +29,14 @@ export class LoginComponent implements OnInit {
     this.Usuario = new User();
     if (token){
       this.Correo = this.Usuario.email;
-
+     
     }
 
   }
 
   // tslint:disable-next-line: typedef
   login(form: NgForm) {
+    this.loading = true;
     this.Auth.login(this.Usuario).subscribe(resp => {
       Swal.close();
       localStorage.setItem('token', resp.token);
@@ -46,6 +47,7 @@ export class LoginComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      this.loading = false;
       this.router.navigate(['/admin']);
 
     }, (err) => {
@@ -55,6 +57,6 @@ export class LoginComponent implements OnInit {
         text: "Correo o contraseña incorrecta",
       });
     });
-
+  
   }
 }

@@ -18,7 +18,8 @@ export class ListaPasantesComponent implements OnInit {
   currentContactInfo: any = {};
   pasantee: any;
   pasantes: PasantesAll[] = [];
-  public Role : RolesResponse[] = [];
+  public Role: RolesResponse[] = [];
+  loading: boolean = false;
 
 
 
@@ -31,7 +32,10 @@ export class ListaPasantesComponent implements OnInit {
     this.admin.refreshNeeded$.subscribe(res => {
       this.GetAllPasantes();
     })
+    this.loading = true;
     this.GetAllPasantes();
+   
+    
   //   this.route.params.subscribe(params => {
   //     this.GetPansantesById(params['id']);
   // })
@@ -42,6 +46,7 @@ export class ListaPasantesComponent implements OnInit {
   GetAllPasantes() {
     this.admin.getAllPasantes().subscribe(resp => {
       this.pasantes = <PasantesAll[]>resp
+      this.loading = false;
 
     })
   }
@@ -68,6 +73,7 @@ export class ListaPasantesComponent implements OnInit {
         )
         this.admin.DeletedPasantes(Pasantes.idInternt).subscribe(resp => {
           this.pasantes.splice(i, 1)
+         
       })
         
     }
