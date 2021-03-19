@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
         timer: 1500
       });
     }, (err) => {
+      this.loading = false;
       Swal.fire({
         icon: 'error',
         title: "Error al Autenticarse",
