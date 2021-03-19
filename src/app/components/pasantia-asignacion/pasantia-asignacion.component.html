@@ -14,16 +14,21 @@
             <i class="fas fa-plus"></i> Asignaciones
           </button>
           <a
-          [routerLink]="'/solicitudes'" class="m-5 text-dark">
+          [routerLink]="'/solicitudes'" class="m-2 text-dark">
             <i class="fas fa-user-plus"></i> Solicitudes
         </a>
         <a
-        [routerLink]="'/admin/config/'+convoAsig.idInternship" class="m-4 text-dark">
+        [routerLink]="'/admin/config/'+convoAsig.idInternship" class="m-2 text-dark">
             <i class="fas fa-cog"></i> Configuracion
         </a>
         <a
-        [routerLink]="'/admin'" class="m-4 text-dark">
-            <i class="fas fa-cog"></i>Volver
+        [routerLink]="'/lista-pasante'" class="m-2 text-dark">
+        <i class="fas fa-user-friends"></i> Lista de Pasantes
+        </a>
+
+        <a
+        [routerLink]="'/admin'" class="m-2 text-dark">
+        <i class="fas fa-backspace"></i> Volver
         </a>
 
         <p
@@ -46,6 +51,7 @@
                 class="text-dark text-center"
                 [routerLink]="'/admin/asignacion/'+asigna.id_Assignment"
                 >
+                <p>{{asigna.id_Assignment}}</p>
                   <h3 class="m-2 mt-4">{{asigna.title}}</h3>
                   <p>{{asigna.description}}</p>
                   <p>{{asigna.limitDate | date}}</p>
