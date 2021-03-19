@@ -1,9 +1,25 @@
 <div class="container mt-5">
-    <input type="file" (change)="capturarFile($event)">
+    <form  [formGroup]="uploadForm" (ngSubmit)=" subirArchivo()" >
+        <input type="file" name="profile" (change)="capturarFile($event)">
 
-    <button class="btn btn-primary" type="button" (click)="subirArchivo()">Upload</button>
-    <div *ngIf="previsualizacion">
-        <img width="200px" [src]="previsualizacion" alt="">
-    </div>
+        <button class="btn btn-primary">Upload</button>
+        <div *ngIf="previsualizacion">
+            <img width="200px" [src]="previsualizacion" alt="">
+        </div>
+    </form>
+
 
 </div>
+
+<!-- <h1>Angular 10 FormData (multipart/data-form) Example</h1>
+<div>
+    <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()">
+      <div>
+        <input type="file" name="profile" (change)="onFileSelect($event)" />
+      </div>
+      <div>
+        <button type="submit">Upload</button>
+      </div>
+    </form>
+  </div>
+</div> -->

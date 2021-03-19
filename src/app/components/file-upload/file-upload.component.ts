@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+
 
 
 @Component({
@@ -10,32 +14,51 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class FileUploadComponent implements OnInit {
   public previsualizacion: string = "";
-  public archivos: any = [];  
- 
-  constructor(private http:HttpClient,private sanitizer:DomSanitizer) {
-     
+  public archivos: any = [];
+  uploadForm: FormGroup | any;
+  userEmail: string | Blob = "";
+
+  constructor(private http:HttpClient, private formBuilder: FormBuilder) {
+
   }
-  
+
+
+
   ngOnInit() {
-    
+    this.uploadForm = this.formBuilder.group({
+      EmailUser:[''],
+      File: ['']
+    });
+
+    this.userEmail = localStorage.getItem('email')!;
   }
-  capturarFile(event: any) {
-    const archivoCapturado = event.target.files[0];
-    // this.extraerBase64(archivoCapturado).then((imagen: any) => {
-    //   this.previsualizacion = imagen.base;
-    //   console.log(imagen);
-    // })
-    this.archivos.push(archivoCapturado);
-  }
-  
+
+    capturarFile(event : any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.patchValue({
+          File: file
+      });
+      this.uploadForm.get('File').updateValueAndValidity();    }
+    }
+  // capturarFile(event: any) {
+  //   const archivoCapturado = event.target.files[0];
+  //   // this.extraerBase64(archivoCapturado).then((imagen: any) => {
+  //   //   this.previsualizacion = imagen.base;
+  //   //   console.log(imagen);
+  //   // })
+  //   this.archivos.push(archivoCapturado);
+  // }
+
   subirArchivo() {
     const formularioDatos = new FormData();
-    this.archivos.forEach((archivo: any) => {
-      console.log(archivo);
-      formularioDatos.append('file', archivo);
-      
-    })
-   
+     formularioDatos.append('EmailUser', this.userEmail);
+     formularioDatos.append('File', this.uploadForm.get('profile').value);
+    // let formToSend = {
+    // EmailUser: localStorage.getItem('email'),
+    // File: formularioDatos
+    // }
+
     this.http.post('https://ailogicinternship.azurewebsites.net/api/Files', formularioDatos).subscribe(res => {
       console.log("Respuesta", res);
     })
