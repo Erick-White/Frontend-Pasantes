@@ -15,7 +15,7 @@ import { PasanteSubirAsigComponent } from './components/pasante-subir-asig/pasan
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { GuardGuard } from './guards/guard.guard';
 import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
-
+import { PasanteHomeComponent } from './components/pasante-home/pasante-home.component';
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
@@ -32,6 +32,7 @@ const routes: Routes = [
   { path: 'lista-pasante', component: ListaPasantesComponent, canActivate: [GuardGuard] },
   { path: 'perfil/:id', component: PasantePerfilComponent },
   { path: 'pasante-subir-asig',component:PasanteSubirAsigComponent},
+  { path: 'home-pasantes', component:PasanteHomeComponent},
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];

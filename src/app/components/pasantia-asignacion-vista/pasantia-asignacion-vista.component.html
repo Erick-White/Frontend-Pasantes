@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <!-- Page Content -->
 <div id="page-content-wrapper">
   <div class="container">
@@ -119,16 +120,16 @@
                     </div>
                     <div>
                       <p>Fecha de Finalización</p>
-                      <input 
+                      <input
                       type="hidden"
                       name="initial_date"
                       class="form-control"
                       value=""
-                      
+
                       />
                       <input
                         type="date"
-                        name="final_date"
+                        name="limitDate"
                         class="form-control"
                         datepicker ="true"
                         datepicker_format ="yyyy-MM-dd"
@@ -145,7 +146,7 @@
                           cols="30"
                           aria-label="With textarea"
                           value="{{asigna.description}}"
-                          [(ngModel)]="asigna.description"                                 
+                          [(ngModel)]="asigna.description"
                         ></textarea
                         >
                       </div>
@@ -155,23 +156,23 @@
               </form>
               <a
                 type="button"
-                [routerLink]="'/admin/'+asigna.id_Internship"
+                [routerLink]="'/admin/'" + asigna.id_Internship
                 name="volver inicio"
                 class="volver btn btn-info float-left mt-5 text-white"
                 style="background-color: #49abc6"
                 >Volver</a
               >
               <button
-              type="button" 
+              type="button"
               class="btn btn-danger mt-5"
               (click)="confirmBox()"
               >
                 Eliminar Asignacion
               </button>
               <button
-                
+
                 type="button"
-                class="btn btn-info mt-5 right text-white"
+                class="btn btn-info mt-5 right float-right text-white"
                 style="background-color: #49abc6"
                 (click)="updateInfo()"
               >

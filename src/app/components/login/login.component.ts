@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { User } from '../../models/user';
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loading: boolean = false;
   Usuario: User = {
     nombre:'',
     email: '',
@@ -36,18 +37,35 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   login(form: NgForm) {
+    this.loading = true;
     this.Auth.login(this.Usuario).subscribe(resp => {
       Swal.close();
       localStorage.setItem('token', resp.token);
-      localStorage.setItem('email', this.Correo);
+      localStorage.setItem('email',  this.Usuario.email);
+      this.Auth.getRoleByEmail(this.Usuario.email).subscribe(response => {
+
+      if(response === "Admin"){
+         this.router.navigate(['/Admin']);
+      }
+      else{
+          this.router.navigate(['/home-pasantes']);
+      }
+    },error => {
+      if(error.error['text'] == "Admin"){
+
+         this.router.navigate(['/admin']);
+      }
+      else{
+
+          this.router.navigate(['/home-pasantes']);
+      }
+    });
       Swal.fire({
         icon: 'success',
         title: 'Inicio de sesión correctamente',
         showConfirmButton: false,
         timer: 1500
       });
-      this.router.navigate(['/admin']);
-
     }, (err) => {
       Swal.fire({
         icon: 'error',
@@ -55,6 +73,10 @@ export class LoginComponent implements OnInit {
         text: "Correo o contraseña incorrecta",
       });
     });
+
+
+
+
 
   }
 }
