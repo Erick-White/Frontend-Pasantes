@@ -12,8 +12,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
 import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recuperar-cuenta.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
-
 import { AdminComponent } from './components/admin/admin.component';
 import { PasantiaAsignacionComponent } from './components/pasantia-asignacion/pasantia-asignacion.component';
 import { AsignacionSubidaComponent } from './components/asignacion-subida/asignacion-subida.component';
