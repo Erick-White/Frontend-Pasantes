@@ -21,7 +21,7 @@ export class ListaPasantesComponent implements OnInit {
   public Role : RolesResponse[] = [];
 
 
-
+//Algo
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
               private Roles : RolesService
 
