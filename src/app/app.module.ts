@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +27,7 @@ import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perf
 import { RegisterComponent } from './components/register/register.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -54,13 +55,16 @@ import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignaci
     RegisterComponent,
     FileUploadComponent,
     PasantiaAsignacionVistaComponent,
-    
+    ErrorComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+
 
 
 
