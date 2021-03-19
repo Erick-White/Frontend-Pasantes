@@ -13,7 +13,9 @@ import { PasantePerfilComponent } from './components/pasante-perfil/pasante-perf
 import { PasantiaAsignacionComponent } from './components/pasantia-asignacion/pasantia-asignacion.component';
 import { PasanteSubirAsigComponent } from './components/pasante-subir-asig/pasante-subir-asig.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { GuardGuard } from './guards/guard.guard';
 import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
+
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
@@ -27,7 +29,7 @@ const routes: Routes = [
   { path: 'recuperar-clave', component: RecuperarClaveComponent},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
   { path: 'file-upload', component: FileUploadComponent},
-  { path: 'lista-pasante', component: ListaPasantesComponent },
+  { path: 'lista-pasante', component: ListaPasantesComponent, canActivate: [GuardGuard] },
   { path: 'perfil/:id', component: PasantePerfilComponent },
   { path: 'pasante-subir-asig',component:PasanteSubirAsigComponent},
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
