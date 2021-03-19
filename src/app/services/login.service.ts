@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
+
 
 
 
@@ -19,6 +21,13 @@ export class LoginService {
   URL = 'https://ailogicinternship.azurewebsites.net/api/';
 
   Correo: string = "";
+
+  private _refreshNeeded$ = new Subject<void>();
+
+  get refreshNeeded$(){
+    return this._refreshNeeded$;
+  }
+
   login(User: User): Observable<any> {
     const AuthUser = { email: User.email, password: User.password };
     const header = new HttpHeaders().set('Content-Type', 'application/json');
@@ -26,8 +35,19 @@ export class LoginService {
   }
 
 
+ getRoleByEmail(email: string): Observable<any> {
+     const headers = new HttpHeaders({
+       'Authorization':'Bearer ' + localStorage.getItem('token')
 
-  
+     });
+
+    console.log(email);
+    return this.http.get(`${this.URL}Roles/${email}`, {headers});
+  }
+
+
+
+
   // tslint:disable-next-line: typedef
   register(usuario: User): Observable<any> {
     const authData = {
@@ -68,8 +88,8 @@ export class LoginService {
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
     });
-    
+
     return this.http.get<any>(`${this.URL}Roles/${email}`, { headers })
-    
+
   }
 }
