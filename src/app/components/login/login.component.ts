@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
       Swal.close();
       localStorage.setItem('token', resp.token);
       localStorage.setItem('email',  this.Usuario.email);
+      
       this.Auth.getRoleByEmail(this.Usuario.email).subscribe(response => {
 
       if(response === "Admin"){
