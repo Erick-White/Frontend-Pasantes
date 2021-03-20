@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'pasante-subir-asig',component:PasanteSubirAsigComponent},
   { path: 'home-pasantes', component:PasanteHomeComponent},
   { path: '404', component:ErrorComponent},
-  { path : '**', pathMatch: 'full' , redirectTo: '404'},
+  { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];
 

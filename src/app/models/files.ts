@@ -1,4 +1,4 @@
 export interface Files {
-  idUser: number;
+  idUser: string;
   file: string;
 }
