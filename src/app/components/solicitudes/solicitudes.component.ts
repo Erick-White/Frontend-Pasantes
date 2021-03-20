@@ -73,7 +73,6 @@ export class SolicitudesComponent implements OnInit {
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
         this.loading = false;
-        console.log(resp);
 
 
 
