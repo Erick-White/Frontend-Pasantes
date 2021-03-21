@@ -17,6 +17,14 @@ export class AsignacionesService {
   get refreshNeeded$(){
     return this._refreshNeeded$;
   }
+  asignacion():Observable<Asignaciones[]>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http
+    .get<Asignaciones[]>(this.URL,{headers});
+  }
 
   asignaciones(id:number):Observable<Asignaciones[]>{
     const headers = new HttpHeaders({

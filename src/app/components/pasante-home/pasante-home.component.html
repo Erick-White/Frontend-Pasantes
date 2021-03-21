@@ -1,58 +1,34 @@
 <app-navbar></app-navbar>
 <!-- Page Content -->
-        <div id="page-content-wrapper">
-
-
-
-            <div class="container">
-                <div class="row" id="divCartas">
-                    <div class="col-md-3 bg-light shadow-sm rounded m-4">
-
-                        <div>
-                            <a class="text-dark text-center" href="subirAsignacion.html">
-                                <h5 class="card-title">Patrones de Diseño</h5>
-                                <p class="">Investigar de forma individual el siguiente concepto, PATRONES DE DISEÑO, y crear una presentacion PowerPoint. </p>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-3 bg-light shadow-sm rounded m-4">
-
-                        <div>
-                            <a class="text-dark text-center" href="subirAsignacion.html">
-                                <h5 class="card-title">Tarea 2</h5>
-                                <p class="">Realizar el examen de w3school de HTML.</p>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-3 bg-light shadow-sm rounded m-4">
-
-                        <div>
-                            <a class="text-dark text-center" href="subirAsignacion.html">
-                                <h5 class="card-title">Tarea 3</h5>
-                                <p class="">Realizar el examen de w3school de CSS.</p>
-                            </a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+<div id="page-content-wrapper">
+  <div class="container">
+    <div class="row" id="divCartas">
+      <div
+        class="col-md-5 shadow-sm rounded m-4"
+        style="background-color: #efefef"
+        *ngFor="let asigna of asignacionesArray"
+      >
+        <div>
+          <a
+            class="text-dark text-center"
+            [routerLink]="'/admin/asignacion/'+asigna.id_Assignment"
+          >
+            <h3 class="m-2 mt-4">{{ asigna.title }}</h3>
+            <p>{{ asigna.description }}</p>
+            <p>{{ asigna.limitDate | date }}</p>
+          </a>
         </div>
-        <!-- /#page-content-wrapper -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /#page-content-wrapper -->
 
-    <!-- /#wrapper -->
+<!-- /#wrapper -->
 
-    <!--Modal Crear Pasantia-->
-    <!-- Modal -->
+<!--Modal Crear Pasantia-->
+<!-- Modal -->
 
-    <!--Fin Modal Crear Pasantia-->
+<!--Fin Modal Crear Pasantia-->
 
-
-
-
-    <!-- Menu Toggle Script -->
+<!-- Menu Toggle Script -->
