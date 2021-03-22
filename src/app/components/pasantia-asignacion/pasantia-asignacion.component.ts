@@ -15,11 +15,11 @@ export class PasantiaAsignacionComponent implements OnInit {
   // Informacion de la Pasantia en la que se encuetra
   convoAsig: Convocatorias = new Convocatorias;
 
-  //Array para guardar las Asignaciones
+  //Array de las Asignaciones
   asignacionesArray: Asignaciones[] = [
   ];
 
-  //Variable para crear Asignaciones
+  //Variable para traer Asignaciones
   asigna: Asignaciones = new Asignaciones()
 
 
@@ -33,7 +33,7 @@ export class PasantiaAsignacionComponent implements OnInit {
   ngOnInit(): void {
 
     
-     this.convocatoriaId = +this.activerouter.snapshot.params['id'];
+      this.convocatoriaId = +this.activerouter.snapshot.params['id'];
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoAsig = data;
       console.log(data)

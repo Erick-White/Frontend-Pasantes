@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'file-upload', component: FileUploadComponent},
   { path: 'lista-pasante', component: ListaPasantesComponent },
   { path: 'perfil/:id', component: PasantePerfilComponent },
-  { path: 'pasante-subir-asig',component:PasanteSubirAsigComponent},
+  { path: 'pasante-subir-asig/:id',component:PasanteSubirAsigComponent},
   { path: 'home-pasantes', component:PasanteHomeComponent},
   { path: '404', component:ErrorComponent},
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
