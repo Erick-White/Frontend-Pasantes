@@ -17,10 +17,12 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { GuardGuard } from './guards/guard.guard';
 import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
 import { PasanteHomeComponent } from './components/pasante-home/pasante-home.component';
+import { RolesResponse } from 'src/app/models/Roles';
+
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [GuardGuard] },
   { path: 'admin/:id', component: PasantiaAsignacionComponent },
   { path:'admin/config/:id', component: PasantiaConfigComponent },
   { path: 'admin/asignacion/:id', component: PasantiaAsignacionVistaComponent },
@@ -30,7 +32,7 @@ const routes: Routes = [
   { path: 'recuperar-clave', component: RecuperarClaveComponent},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
   { path: 'file-upload', component: FileUploadComponent},
-  { path: 'lista-pasante', component: ListaPasantesComponent, canActivate: [GuardGuard] },
+  { path: 'lista-pasante', component: ListaPasantesComponent },
   { path: 'perfil/:id', component: PasantePerfilComponent },
   { path: 'pasante-subir-asig',component:PasanteSubirAsigComponent},
   { path: 'home-pasantes', component:PasanteHomeComponent},
