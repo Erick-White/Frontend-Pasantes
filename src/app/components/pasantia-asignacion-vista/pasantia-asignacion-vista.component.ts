@@ -12,8 +12,6 @@ import Swal from 'sweetalert2';
 })
 export class PasantiaAsignacionVistaComponent implements OnInit {
 
-
-
   asigna: Asignaciones = new Asignaciones();
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private location: Location) { }

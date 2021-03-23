@@ -29,7 +29,7 @@ export class PasanteHomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.convocatoriaId = +this.activerouter.snapshot.params['id'];
+    //   this.convocatoriaId = +this.activerouter.snapshot.params['id'];
     //   this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
     //   this.convoAsig = data;
     //   console.log(data)
