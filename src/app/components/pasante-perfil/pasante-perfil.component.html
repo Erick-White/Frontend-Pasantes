@@ -22,9 +22,11 @@
                     <div class="d-block justify-content-center">
                         <div class="card">
                             <div class="card-header">
+                                <!-- *ngIf="mostrar === correo || !mostrar === correo" 
+                                (click)="currentContactInfo.idInternt"
+                                -->
                                 <strong>Detalles del usuario</strong>
-
-                                <button *ngIf="mostrar === correo || !mostrar === correo" type="button" class="btn pr-1 pl-1 pt-0 pb-0 bg-info float-right" data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" (click)="pasantee.idInternt" class="btn pr-1 pl-1 pt-0 pb-0 bg-info float-right" data-toggle="modal" data-target="#exampleModal">
                   <i class="fas fa-pen"></i>
                 </button>
 
@@ -42,25 +44,45 @@
                                             <div class="modal-body">
                                                 <form>
                                                     <div class="form-group">
-                                                        <label for="input-email" class="col-form-label">Email:</label
-                            >
-                            <input
-                              type="email"
-                              class="form-control"
-                              id="input-email"
-                              required
-                            />
-                          </div>
-                          <div class="form-group">
-                            <label for="input-cedula" class="col-form-label"
-                              >Cedula:</label
+                                                        <label for="input-nombre" class="col-form-label">Nombre:</label
+                                                    >
+                                                    <input
+                                                      type="text"
+                                                      readonly
+                                                      class="form-control"
+                                                      maxlength="12"
+                                                      id="input-nombre"
+                                                      required
+                                                      name="nombre"
+                                                      [(ngModel)]="pasantee.name"
+                                                    />
+                                                  </div>
+
+                                                  <div class="form-group">
+                                                    <label for="input-nombre" class="col-form-label">Apellido:</label
+                                                >
+                                                <input
+                                                  type="tex"
+                                                  class="form-control"
+                                                  readonly
+                                                  maxlength="12"
+                                                  id="input-lastname"
+                                                  required
+                                                  name="lastname"
+                                                  [(ngModel)]="pasantee.lastname"
+                                                />
+                                              </div>
+                                                    <div class="form-group">
+                                                        <label for="input-cedula" class="col-form-label">Cedula:</label
                             >
                             <input
                               type="text"
                               class="form-control"
                               id="input-cedula"
                               maxlength="13"
+                              name="cedula"
                               required
+                              [(ngModel)]="pasantee.cedula"
                             />
                           </div>
                           <div class="form-group">
@@ -73,8 +95,11 @@
                               maxlength="12"
                               id="input-telefono"
                               required
+                              name="phone"
+                              [(ngModel)]="pasantee. phone"
                             />
                           </div>
+
                           <div class="form-group">
                             <label for="input-linkedin" class="col-form-label"
                               >Linkedin:</label
@@ -84,6 +109,8 @@
                               class="form-control"
                               id="input-linkedin"
                               required
+                              name="linkedin"
+                              [(ngModel)]="pasantee.linkedin"
                             />
                           </div>
                           <div class="form-group">
@@ -95,6 +122,9 @@
                               class="form-control"
                               id="input-github"
                               required
+                              name ="github"
+                              [(ngModel)]="pasantee.github"
+                              
                             />
                           </div>
                           <div class="form-group">
@@ -106,57 +136,53 @@
                               class="form-control"
                               id="input-cv"
                               required
+                              name="cv"
+                              [(ngModel)]="pasantee.cv"
                             />
                           </div>
-                          <div class="form-group">
-                            <p>
-                              <a
-                                class="btn btn-light"
-                                data-toggle="collapse"
-                                href="#collapseExample"
-                                role="button"
-                                aria-expanded="false"
-                                aria-controls="collapseExample"
-                              >
-                                Contraseña
-                                <span
-                                  ><i
-                                    class="fas fa-sort-down"
-                                    style="font-size: 25px"
-                                  ></i
-                                ></span>
-                              </a>
-                            </p>
-                            <div class="collapse" id="collapseExample">
-                              <div class="card card-body shadow-sm">
-                                <label
-                                  for="input-contraseña"
-                                  class="col-form-label"
-                                  >Contraseña:</label
-                                >
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="input-contraseña"
-                                  required
-                                  onclick="showrep()"
-                                />
-                                <label
-                                  for="input-repetircontraseña"
-                                  class="col-form-label d-none"
-                                  id="labelrepeat"
-                                >
-                                  Repetir Contraseña:</label
-                                >
-                                <input
-                                  type="hidden"
-                                  class="form-control"
-                                  id="input-repetircontraseña"
-                                  required
-                                />
-                              </div>
-                            </div>
-                          </div>
+                      <div class="form-group">
+                            <label for="input-birthdate" class="col-form-label">Fecha:</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          maxlength="12"
+                          id="input-birthday"
+                          required
+                         
+                          name="birthdate"
+                          [(ngModel)]="pasantee.birthDate"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="input-email" class="col-form-label">Email:</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      maxlength="12"
+                      id="input-email"
+                      required
+                      readonly
+                      name="email"
+                      [(ngModel)]="pasantee.user.email"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="input-img" class="col-form-label"></label
+                >
+                <input
+                  type="hidden"
+                  class="form-control"
+                  maxlength="12"
+                  id="input-img"
+                  required
+                  readonly
+                  name="img"
+                  [(ngModel)]="pasantee.userImg"
+                />
+              </div>
                         </form>
                       </div>
                       <div class="modal-footer">
@@ -170,7 +196,7 @@
                         <button
                           type="button"
                           class="btn btn-primary"
-                          onclick="savemodal()"
+                          (click)="UpdatePasante(pasantee,pasantee.idInternt,pasantee.user.email)"
                         >
                           Save changes
                         </button>

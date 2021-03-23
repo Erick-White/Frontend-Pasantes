@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Password } from '../../models/password';
 
 @Component({
   selector: 'app-recuperar-clave',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recuperar-clave.component.css']
 })
 export class RecuperarClaveComponent implements OnInit {
+  password: Password = {
+    NewPassword: "",
+    RepeatNewPassword:""
 
+  }
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  CambiarClave(form: NgForm) {
+    
+  }
 }

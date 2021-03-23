@@ -1,4 +1,3 @@
-import { ErrorComponent } from './error/error.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -34,7 +33,6 @@ const routes: Routes = [
   { path: 'perfil/:id', component: PasantePerfilComponent },
   { path: 'pasante-subir-asig',component:PasanteSubirAsigComponent},
   { path: 'home-pasantes', component:PasanteHomeComponent},
-  { path: '404', component:ErrorComponent},
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];
