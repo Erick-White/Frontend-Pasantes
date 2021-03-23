@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Password } from '../models/password';
 
 
 
@@ -91,5 +92,16 @@ export class LoginService {
 
     return this.http.get<any>(`${this.URL}Roles/${email}`, { headers })
 
+  }
+
+
+  CambiarClave() {
+    
+  }
+
+  RecuperarClave(password:Password,id:any): Observable<any> {
+    const Change = { NewPass: password.NewPassword, RepeatNewPass: password.RepeatNewPassword };
+    return this.http.post(`${this.URL}Auth/${id}`, Change);
+    
   }
 }
