@@ -23,7 +23,7 @@
                     <div class="row" id="divCartas">
                         <div class="col-md-5 shadow-sm rounded m-4" style="background-color: #efefef" *ngFor="let asigna of asignacionesArray">
                             <div>
-                                <a class="text-dark text-center" data-toggle="modal" data-target="#exampleModal1">
+                                <a class="text-dark text-center" [routerLink]="'/admin/asignacion/'+asigna.id_Assignment">
                                     <h3 class="m-2 mt-4">{{asigna.title}}</h3>
                                     <p>{{asigna.description}}</p>
                                     <p>{{asigna.limitDate | date}}</p>

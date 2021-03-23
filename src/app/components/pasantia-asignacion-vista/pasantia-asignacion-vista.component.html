@@ -156,7 +156,7 @@
               </form>
               <a
                 type="button"
-                [routerLink]="'/admin/'" + asigna.id_Internship
+                [routerLink]="'/admin/'+asigna.id_Internship" 
                 name="volver inicio"
                 class="volver btn btn-info float-left mt-5 text-white"
                 style="background-color: #49abc6"
@@ -164,7 +164,7 @@
               >
               <button
               type="button"
-              class="btn btn-danger mt-5"
+              class="btn btn-danger mt-5 m-2"
               (click)="confirmBox()"
               >
                 Eliminar Asignacion
