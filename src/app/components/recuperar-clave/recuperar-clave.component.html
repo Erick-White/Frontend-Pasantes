@@ -17,15 +17,15 @@
                 <a routerLink="/login"><img src="../../../assets/logo.svg">
                 </a>
                 <div class=" d-flex justify-content-center mt-3 ">
-                    <form class="col-6 mt-4">
+                    <form (ngSubmit)="CambiarClave( Form )" #Form="ngForm" class="col-6 mt-4">
                         <p>Ingresa tu nueva contraseña</p>
                         <div class="form-group inputWithIcon">
                             <span><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control form-control-lg  " id="exampleInputPassword1" placeholder="Nueva contraseña">
+                            <input type="password" class="form-control form-control-lg" name="NewPass" [(ngModel)]="password.NewPassword" id="exampleInputPassword1" placeholder="Nueva contraseña">
                         </div>
                         <div class="form-group inputWithIcon">
                             <span><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control form-control-lg  " id="exampleInputPassword1" placeholder="Repetir contraseña">
+                            <input type="password" class="form-control form-control-lg" name="RepeatNewPass" [(ngModel)]="password.RepeatNewPassword" id="exampleInputPassword1" placeholder="Repetir contraseña">
                         </div>
                         <div class=" d-block justify-content-center mt-1 ">
 

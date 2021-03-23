@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute } from '@angular/router';
+
 import { Convocatorias } from "../../models/convocatorias";
 import { Asignaciones } from "../../models/asignaciones";
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { AsignacionesService } from "../../services/asignaciones.service";
-import {Router, ActivatedRoute } from '@angular/router';
+
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-pasantia-asignacion',

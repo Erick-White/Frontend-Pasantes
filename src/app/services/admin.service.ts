@@ -53,6 +53,7 @@ export class AdminService {
     );
   }
 
+  
   DeletedPasantes(id: any): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
@@ -66,6 +67,18 @@ export class AdminService {
     );
   }
 
+  UpdatePasantes(id: any,pasante:Object): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.put<any>(`${this.URL}Intern/${id}`,pasante, { headers })
+    .pipe(
+      tap(()=>{
+        this._refreshNeeded$.next();
+      })
+    );
+  }
 
   ChangedButtom(email :any) {
     const headers = new HttpHeaders({
