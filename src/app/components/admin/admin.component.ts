@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { SharedService } from './../../shared/shared';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Convocatorias } from '../../models/convocatorias';
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -16,11 +18,20 @@ export class AdminComponent implements OnInit {
 
   convito = new Convocatorias();
 
+   _opened = true;
+
+  constructor(private convocatoriaService: ConvocatoriaService, private router: Router, private sharedService : SharedService) { }
 
 
-  constructor(private convocatoriaService: ConvocatoriaService, private router: Router) { }
+   _toggleSidebar(_opened : any) {
+     console.log("Desde admin "+_opened);
+    this._opened = _opened;
+
+  }
+
 
   ngOnInit(): void {
+  
 
     this.convocatoriaService.refreshNeeded$.subscribe(()=>{
       this.getAllConvocatorias();
@@ -35,7 +46,7 @@ export class AdminComponent implements OnInit {
     },
       error =>{console.log(<any>error)
       });
-      
+
   }
 
   saveNew(){

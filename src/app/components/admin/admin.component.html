@@ -1,6 +1,22 @@
-<app-navbar></app-navbar>
-<div id="page-content-wrapper">
-  <div class="container">
+<app-navbar (isOpen)="_toggleSidebar($event)" >
+
+</app-navbar >
+<ng-sidebar-container>
+<ng-sidebar class="m-4" [opened]="_opened" >
+         <div class="list-group list-group-flush rounded mx-3 mt-2">
+                <a href="index.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+                    <i class="fas fa-th-list"></i> Pasantias</a>
+                <a href="formulario1.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+                    <i class="fas fa-book"></i> Formulario</a>
+                <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+                    <i class="fas fa-upload"></i> Repositorio</a>
+                <a href="lista.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+                    <i class="fas fa-users"></i> Pasantes</a>
+            </div>
+      </ng-sidebar>
+
+<div id="page-content-wrapper" ng-sidebar-content >
+  <div class="container" >
     <h1 class="mt-3 text-center">Convocatoria</h1>
 
     <div class="row" id="divCartas">
@@ -44,6 +60,8 @@
     </div>
   </div>
 </div>
+
+</ng-sidebar-container>
 <!-- /#page-content-wrapper -->
 
 <!-- /#wrapper -->
