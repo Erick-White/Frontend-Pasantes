@@ -9,6 +9,9 @@
     <div class="row">
         <div class="col-lg-9">
             <h2 class="mt-3 ml-5">Lista Pasantes</h2>
+            <nav class="navbar">
+                <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" class="form-control" placeholder="Ingrese el primer Nombre para buscar...">
+            </nav>
             <div class="container p-3">
                 <div class="row" id="divCartas">
                     <div class="table-responsive animated fadeIn fast">
@@ -24,7 +27,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let Pasantes of pasantes" class="shadow-sm bg-light">
+                                <tr *ngFor="let Pasantes of pasantes |paginate: {itemsPerPage:5,currentPage:p};" class="shadow-sm bg-light">
                                     <td>
                                         <img src="/assets/user.svg" alt="" width="60" class="img-fluid rounded-circle" />
                                     </td>
@@ -50,6 +53,9 @@
                                 </tr>
                             </tbody>
                         </table>
+
+                        <pagination-controls (pageChange)=" p = $event"></pagination-controls>
+
                     </div>
                 </div>
             </div>
@@ -95,7 +101,7 @@
                      Cerrar
                 </button>
 
-                <td class="text-center"><button type="button" class="btn btn-secondary shadow-sm" (click)="Update(currentContactInfo.idUser)" data-dismiss="modal">Asignar
+                <td class="text-center"><button type="button" class="btn btn-success shadow-sm" (click)="Update(currentContactInfo.idUser)" data-dismiss="modal">Asignar
                         Secretario</button></td>
 
                 <a [routerLink]="['/perfil', currentContactInfo.idInternt]" data-dismiss="modal" class="btn btn-primary shadow-sm">Ver Perfil</a>

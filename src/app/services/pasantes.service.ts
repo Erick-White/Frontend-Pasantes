@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
 })
 export class PasantesService {
 
-  private url = 'https://internshipailogic.azurewebsites.net';
+  private url = 'https://ailogicinternship.azurewebsites.net';
 
   // tslint:disable-next-line: variable-name
   private _refreshNeeded$ = new Subject<void>();

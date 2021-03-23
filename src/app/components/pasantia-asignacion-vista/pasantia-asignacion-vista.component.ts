@@ -12,9 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class PasantiaAsignacionVistaComponent implements OnInit {
 
-
-
-  asigna: Asignaciones = new Asignaciones()
+  asigna: Asignaciones = new Asignaciones();
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private location: Location) { }
 
@@ -58,6 +56,7 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
           'La Asignacion ha sido Borrada.',
           'success'
         )
+        this.router.navigate(['/admin',this.asigna.id_Internship])
       }
     })
   }
@@ -65,8 +64,10 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
  
   deleteAsig():void{
     this.asignacionesService.deleteAsignacion(this.asignacionId).subscribe(()=>{
+    
     },error =>{console.log(<any>error)
     })
+    
   }
 
   updateInfo():void{
