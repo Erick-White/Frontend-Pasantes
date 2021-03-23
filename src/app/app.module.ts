@@ -32,6 +32,9 @@ import { ErrorComponent } from './error/error.component';
 
 
 
+import { CookieService } from 'ngx-cookie-service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +74,7 @@ import { ErrorComponent } from './error/error.component';
 
 
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,9 @@ import { Convocatorias } from '../../models/convocatorias';
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { AdminService } from '../../services/admin.service';
+
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -18,7 +21,9 @@ export class AdminComponent implements OnInit {
 
 
 
-  constructor(private convocatoriaService: ConvocatoriaService, private router: Router) { }
+  constructor(private convocatoriaService: ConvocatoriaService, private router: Router 
+             
+    ) { }
 
   ngOnInit(): void {
 
@@ -53,4 +58,5 @@ export class AdminComponent implements OnInit {
     console.log(this.convito)
   }
 
+  
 }

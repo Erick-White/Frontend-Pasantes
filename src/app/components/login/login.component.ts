@@ -5,6 +5,7 @@ import { User } from '../../models/user';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   Correo: any;
   constructor(private Auth: LoginService,
-              private router: Router) { }
+              private router: Router, private cookie : CookieService) { }
 
 
   // tslint:disable-next-line: typedef
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
       Swal.close();
       localStorage.setItem('token', resp.token);
       localStorage.setItem('email',  this.Usuario.email);
-      
+      this.cookie.set('token_access', resp.accesToken, 4 , '/')
       this.Auth.getRoleByEmail(this.Usuario.email).subscribe(response => {
 
       if(response === "Admin"){

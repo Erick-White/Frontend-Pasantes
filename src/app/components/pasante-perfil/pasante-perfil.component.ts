@@ -3,6 +3,7 @@ import { AdminService } from '../../services/admin.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { PasantesAll } from '../../models/pasantes-all';
 import { LoginService } from '../../services/login.service';
+import { RolesResponse } from '../../models/Roles';
 
 @Component({
   selector: 'app-pasante-perfil',
@@ -14,7 +15,11 @@ export class PasantePerfilComponent implements OnInit {
   pasantee: any;
   mostrar = true;
   correo: any;
-  constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,private Auth:LoginService) { }
+  role : RolesResponse = new RolesResponse();
+
+  public readonly roleSuper = 'Admin';
+  roleIntern = 'Intern';
+  constructor(private admin: AdminService, private router: Router, private route: ActivatedRoute, private Auth: LoginService) { }
 
   ngOnInit(): void {
     let pasantesId = this.route.snapshot.params['id'];

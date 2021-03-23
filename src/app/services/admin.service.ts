@@ -34,6 +34,10 @@ export class AdminService {
     );
   }
 
+  logout() {
+    localStorage.removeItem('token');
+
+  }
  
   getPasantesById(id:any): Observable<PasantesAll> {
     const headers = new HttpHeaders({
