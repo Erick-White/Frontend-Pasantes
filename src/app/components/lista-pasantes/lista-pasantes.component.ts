@@ -22,7 +22,7 @@ export class ListaPasantesComponent implements OnInit {
   pasants = new Pasantes();
   loading: boolean = false;
   name : any;
-  p: number = 1;
+  p : number = 1;
   
 //Algo
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
@@ -76,6 +76,7 @@ export class ListaPasantesComponent implements OnInit {
         )
         this.admin.DeletedPasantes(Pasantes.idInternt).subscribe(resp => {
           this.pasantes.splice(i, 1)
+          
          
       })
         
@@ -124,12 +125,12 @@ export class ListaPasantesComponent implements OnInit {
   }
 
   search(){
-    if(this.name == ""){
+    if(this.name === ""){
       this.ngOnInit();
     } else{
       this.pasantes = this.pasantes.filter(res =>{
         return res.name?.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-      })
+      });
     }
   }
 
