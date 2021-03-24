@@ -29,7 +29,7 @@ export class RecuperarClaveComponent implements OnInit {
   CambiarClave(Form: NgForm) {
     console.log("Hola desde el componente",this.Password);
     this.auth.CambiarClave(this.Password, this.id).subscribe(res => {
-      
+      Swal.close();
       Swal.fire({
         icon: 'success',
         title: 'Cambio de contraseña exitoso!',
