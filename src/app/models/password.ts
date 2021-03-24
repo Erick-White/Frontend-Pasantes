@@ -1,6 +1,5 @@
-export interface Password{
-  idUser:string,
-  password: string,
-  confirmpassword: string;
+export class Password{
+  password?: string;
+  confirmpassword?: string;
   
 }

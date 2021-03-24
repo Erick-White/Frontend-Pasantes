@@ -107,9 +107,9 @@ export class LoginService {
 
 
 
-  RecuperarClave(password:Password,id:any): Observable<any> {
+  RecuperarClave(password:Password,id:string): Observable<any> {
     const Change = { NewPass: password.password, RepeatNewPass: password.confirmpassword };
-    return this.http.post(`${this.URL}Auth/resetpassword/${id}`, Change);
+    return this.http.post<any>(`${this.URL}Auth/resetpassword/${id}`,Change);
     
   }
 }
