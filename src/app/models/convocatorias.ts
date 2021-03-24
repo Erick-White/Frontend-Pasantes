@@ -6,6 +6,6 @@ export class Convocatorias {
     initial_date?: string;
     final_date?: string;
     intern_limit?: 0; 
-    status?: boolean = true;
+    status?: string;
     
 }
