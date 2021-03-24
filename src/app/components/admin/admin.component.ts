@@ -4,10 +4,7 @@ import { Convocatorias } from '../../models/convocatorias';
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
-<<<<<<< HEAD
 import { AdminService } from '../../services/admin.service';
-=======
->>>>>>> 927667283cd90ac3fccaabba70f9267598b12935
 
 
 @Component({
@@ -35,6 +32,8 @@ export class AdminComponent implements OnInit {
     });
     this.getAllConvocatorias();
     this.convito = new Convocatorias();
+    
+
 
   }
 
