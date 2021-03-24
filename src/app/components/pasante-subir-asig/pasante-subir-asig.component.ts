@@ -17,10 +17,27 @@ export class PasanteSubirAsigComponent implements OnInit {
 
   asignacionId: number = 0;
 
+  currentDate = new Date;
+  
+
+  buttonDisable : boolean = false;
+
   ngOnInit(): void {
     this.asignacionId = +this.activerouter.snapshot.params['id'];
     this.asignacionesService.getSingleAsignacion(this.asignacionId).subscribe(data =>{
       this.asigna = data
+      if(data.limitDate){
+        const limitDate = new Date(data.limitDate)
+        const month = limitDate.getMonth() + 1;
+        const day = limitDate.getDate();
+        const year = limitDate.getFullYear();
+        this.asigna.limitDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}` 
+        
+        if(this.currentDate > limitDate){
+          this.buttonDisable = true
+        }
+      }
+       
     })
 
   }

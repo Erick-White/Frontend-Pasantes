@@ -12,8 +12,14 @@
                     <a [routerLink]="'/solicitudes'" class="m-2 text-dark">
                         <i class="fas fa-user-plus"></i> Solicitudes
                     </a>
-                    <a [routerLink]="'/admin/config/{{convoAsig.idInternship}}'" class="m-2 text-dark">
+                    <a [routerLink]="'/lista-pasante'" class="m-2 text-dark">
+                        <i class="fas fa-users"></i> Lista Pasantes
+                    </a>
+                    <a [routerLink]="'/admin/config/'+convoAsig.idInternship" class="m-2 text-dark">
                         <i class="fas fa-cog"></i> Configuracion
+                    </a>
+                    <a [routerLink]="'/admin'" class="m-2 text-dark">
+                        <i class="fas fa-backspace"></i> Volver
                     </a>
 
                     <p *ngIf="convoAsig.status == true" class="float-right text-success mt-3">
