@@ -26,8 +26,8 @@ export class RecuperarClaveComponent implements OnInit {
     
   }
   CambiarClave(Form: NgForm) {
-    console.log(this.Password);
-    this.auth.RecuperarClave(this.Password, this.id).subscribe(res => {
+    console.log("Hola desde el componente",this.Password);
+    this.auth.CambiarClave(this.Password, this.id).subscribe(res => {
       console.log(res);
       console.log("Klk submit");
   })

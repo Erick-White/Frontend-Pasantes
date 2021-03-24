@@ -20,9 +20,9 @@ export class RecuperarCuentaComponent implements OnInit {
     
   }
 
-  RecuperarClave(Form:NgForm) {
+  RecuperarCuenta(Form:NgForm) {
     console.log(this.recovery);
-    this.auth.CambiarClave(this.recovery).subscribe(resp => {
+    this.auth.RecuperarCuenta(this.recovery).subscribe(resp => {
       console.log(resp);
       
     })
