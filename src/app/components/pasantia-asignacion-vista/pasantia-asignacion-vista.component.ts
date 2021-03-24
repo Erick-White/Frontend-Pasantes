@@ -12,15 +12,20 @@ import Swal from 'sweetalert2';
 })
 export class PasantiaAsignacionVistaComponent implements OnInit {
 
+  //Informacion de la asignacion en la que se encuentra
   asigna: Asignaciones = new Asignaciones();
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private location: Location) { }
-
+  
+  //Variable que guarda el Id de la asignacion
   asignacionId: number = 0;
 
   ngOnInit(): void {
 
+    //Aqui se le pasa el Id a la variable
     this.asignacionId = +this.activerouter.snapshot.params['id'];
+
+    //Servicio que nos trae la info de la Asignacion en la que nos encontramos
     this.asignacionesService.getSingleAsignacion(this.asignacionId).subscribe(data =>{
       this.asigna = data
       if(data.limitDate)  {
@@ -36,7 +41,7 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
   }
 
 
-
+  //Funcion para confirmar la eliminacion de la asignacion
   confirmBox(){
     Swal.fire({
       title: 'Seguro que quieres borrar la Convocatoria?',
@@ -61,7 +66,7 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
     })
   }
 
- 
+ //Funcion para eliminar Asignacion
   deleteAsig():void{
     this.asignacionesService.deleteAsignacion(this.asignacionId).subscribe(()=>{
     
@@ -70,6 +75,7 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
     
   }
 
+  //Funcion para actualizar la Asignacion
   updateInfo():void{
     this.asignacionesService.updateAsig(this.asigna,this.asignacionId).subscribe(()=>{
       this.router.navigate(['/admin/',this.asigna.id_Internship])

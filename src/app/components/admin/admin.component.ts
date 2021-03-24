@@ -13,9 +13,10 @@ import Swal from 'sweetalert2'
 })
 export class AdminComponent implements OnInit {
 
+  //Array donde se encuentran las Convocatoria
   convocatoriaArray: Convocatorias[] = [
   ];
-
+  //Variable donde se agrega una nueva Convocatoria
   convito = new Convocatorias();
 
    _opened = true;
@@ -32,8 +33,8 @@ export class AdminComponent implements OnInit {
   
 
   ngOnInit(): void {
-
-
+    
+    //Refrescar la pagina para mostrar una nueva Convocatoria
     this.convocatoriaService.refreshNeeded$.subscribe(()=>{
       this.getAllConvocatorias();
     });
@@ -42,6 +43,7 @@ export class AdminComponent implements OnInit {
 
   }
 
+  //Funcion para traer todas la Convocatoria
   private getAllConvocatorias(){
 
     this.convocatoriaService.convocatorias().subscribe(convoc => {this.convocatoriaArray = convoc
@@ -51,6 +53,7 @@ export class AdminComponent implements OnInit {
 
   }
 
+  //Guardar una nueva Convocatoria
   saveNew(){
 
     this.convocatoriaService.addNewConvocatoria(this.convito).subscribe(response =>{

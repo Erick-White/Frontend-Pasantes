@@ -31,20 +31,19 @@ export class PasantiaAsignacionComponent implements OnInit {
   
   asignacionId: number = 0;
 
-  counter = 0;
-  
+
 
   ngOnInit(): void {
 
-    
+    //Variable para mostrar la Convocatoria en la que se encuentra
       this.convocatoriaId = +this.activerouter.snapshot.params['id'];
+
+      //Servicio para traer la informacion de una sola Convocatoria
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoAsig = data;
-      this.internLimit;
-      console.log(data)
-      
     });
 
+    //Servicio para refrescar las pagina la agregar una nueva asignacion
     this.asignacionesService.refreshNeeded$.subscribe(
       response =>{
         this.getAllAsignaciones();
@@ -53,23 +52,17 @@ export class PasantiaAsignacionComponent implements OnInit {
     
   }
 
-  internLimit(){
-    if(this.counter === this.convoAsig.intern_limit){
-      console.log("No mas pasantes")
-    }else{
-      this.counter++;
-    }
-  }
+
+  
 
   //Nos trae todas las asignaciones por convocatoria
   private getAllAsignaciones(){
 
     this.asignacionesService.asignaciones(this.convocatoriaId).subscribe(asign => {this.asignacionesArray = asign
-    console.log(asign)
+
     },
       error =>{console.log(<any>error)
       });
-      console.log(this.asigna.id_Assignment)
   }
 
   //Nos guarda las asignaciones creadas
@@ -89,19 +82,6 @@ export class PasantiaAsignacionComponent implements OnInit {
       });
 
   }
-//Borrar Asignacion
-  deleteAsig():void{
-    this.asignacionesService.deleteAsignacion(this.asignacionId).subscribe(()=>{
-
-    })
-  }
-//Actualizar Asignacion
-  updateInfo():void{
-    this.asignacionesService.updateAsig(this.asigna,this.asignacionId).subscribe(()=>{
-
-    })
-  }
-
 }
 
 
