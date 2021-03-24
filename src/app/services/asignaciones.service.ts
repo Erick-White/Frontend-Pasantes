@@ -23,7 +23,7 @@ export class AsignacionesService {
 
     });
     return this.http
-    .get<Asignaciones[]>(`${this.URL}/Internship/active`,{headers});
+    .get<Asignaciones[]>(`${this.URL}`,{headers});
   }
 
   asignaciones(id:number):Observable<Asignaciones[]>{
