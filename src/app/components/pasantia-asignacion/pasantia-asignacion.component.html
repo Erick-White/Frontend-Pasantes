@@ -1,5 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar (isOpen)="_toggleSidebar($event)">
 
+</app-navbar>
+<!-- Page Content -->
 <ng-sidebar-container>
   <ng-sidebar class="m-4" [opened]="_opened">
     <div class="list-group list-group-flush rounded mx-3 mt-2">
@@ -58,19 +60,6 @@
             <a [routerLink]="'/admin'" class="m-2 text-dark">
               <i class="fas fa-backspace"></i> Volver
             </a>
-
-            <p
-              *ngIf="convoAsig.status == true"
-              class="float-right text-success mt-3"
-            >
-              Estado: Activa
-            </p>
-            <p
-              *ngIf="convoAsig.status == false"
-              class="float-right text-danger mt-3"
-            >
-              Estado: Inactiva
-            </p>
             <div class="row" id="divCartas">
               <div
                 class="col-md-5 shadow-sm rounded m-4"
@@ -293,4 +282,5 @@
       </div>
     </div>
   </div>
+
 </ng-sidebar-container>
