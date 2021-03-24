@@ -107,9 +107,12 @@ export class LoginService {
 
 
 
-  RecuperarClave(password:Password,id:string): Observable<any> {
+  RecuperarClave(password: Password, id: string): Observable<any> {
+    const header = new HttpHeaders().set('Content-Type', 'application/json');
     const Change = { NewPass: password.password, RepeatNewPass: password.confirmpassword };
-    return this.http.post<any>(`${this.URL}Auth/resetpassword/${id}`,Change);
+    console.log("Hola desde password " + password)
+    console.log("klk desde el change" +Change)
+    return this.http.post<any>(`${this.URL}Auth/resetpassword/${id}`,Change,{ headers: header });
     
   }
 }
