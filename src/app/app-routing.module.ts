@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'admin/asignacion/:id', component: PasantiaAsignacionVistaComponent, canActivate: [GuardGuard] },
   { path: 'registro', component: FormularioComponent },
   { path: 'formulario', component: RegisterComponent},
-  { path: 'admin/solicitudes', component: SolicitudesComponent, canActivate: [GuardGuard]},
+  { path: 'admin/solicitudes/:id', component: SolicitudesComponent, canActivate: [GuardGuard]},
   { path: 'recuperar-clave/:id', component: RecuperarClaveComponent},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
   { path: 'file-upload', component: FileUploadComponent, canActivate: [GuardGuard]},

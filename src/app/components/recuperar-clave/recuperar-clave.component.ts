@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Password } from '../../models/password';
 import { LoginService } from '../../services/login.service';
 import { PasantesAll } from '../../models/pasantes-all';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,16 +14,18 @@ import { PasantesAll } from '../../models/pasantes-all';
 export class RecuperarClaveComponent implements OnInit {
   
   Password: Password = {
-    idUser:"",
     password: "",
     confirmpassword:""
   }
   id: string = "";
-  constructor(private auth:LoginService) { }
+  constructor(private auth:LoginService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    
   }
   CambiarClave(form: NgForm) {
+    console.log(this.Password);
     this.auth.RecuperarClave(this.Password, this.id).subscribe(res => {
       console.log(res);
     
