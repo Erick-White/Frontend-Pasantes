@@ -23,43 +23,26 @@ export class RecuperarClaveComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
+    
     
   }
   CambiarClave(Form: NgForm) {
-    console.log("Hola desde el componente",this.Password);
     this.auth.CambiarClave(this.Password, this.id).subscribe(res => {
       
       Swal.fire({
-        title: 'Estás seguro?',
-        text: `Deseas cambiar la contraseña?`,
-        icon: 'question',
-        showCancelButton: true,
-        showConfirmButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, cambiala!',
-        allowOutsideClick: false
-      }).then((result) => {
-        
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Contraseña cambiada correctamente',
-            'success'
-          )
-        }
+        icon: 'success',
+        title: 'Inicio de sesión correctamente',
+        showConfirmButton: false,
+        timer: 1500
       });
-
-    }, (err) => {
+    
+    },(err) => {
       Swal.fire({
         icon: 'error',
-        title: "Error al cambiar la contraseña",
-        text: "Contraseñas incorrectas",
+        title: "Error al Autenticarse",
+        text: "Correo o contraseña incorrecta",
       });
     })
-      
-    
-    
+  
   }
 }

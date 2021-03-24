@@ -110,8 +110,6 @@ export class LoginService {
  CambiarClave(pass: Password, id: string): Observable<any> {
     const header = new HttpHeaders().set('Content-Type', 'application/json');
     const Change = { password: pass.password, confirmpassword: pass.confirmpassword };
-    console.log("Hola desde password ",pass)
-    console.log("klk desde el change" ,Change)
     return this.http.post<string>(`${this.URL}Auth/resetpassword/${id}`,Change,{ headers: header });
     
   }
