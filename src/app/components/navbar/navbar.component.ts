@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedService } from 'src/app/shared/shared';
+import { Router } from '@angular/router';
+import { AdminService } from '../../services/admin.service';
+import { CookieService } from 'ngx-cookie-service';
+import { RolesResponse } from '../../models/Roles';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +17,8 @@ export class NavbarComponent implements OnInit {
   public _opened: boolean = true;
   @Output() isOpen = new EventEmitter<boolean>();
 
-  constructor(private sharedService: SharedService ) { }
+
+  constructor(private _adminService: AdminService, private router: Router, private cookie : CookieService ) { }
 
 
 
@@ -44,8 +49,14 @@ public _toggleSidebar() {
   }
 
   // tslint:disable-next-line: typedef
-  Toggle() {
-    this.sharedService._opened = !this.sharedService._opened;
+  // Toggle() {
+  //   this.sharedService._opened = !this.sharedService._opened;
+  // }
+
+  logout() {
+    this._adminService.logout();
+    this.cookie.delete('token_access');
+    this.router.navigateByUrl('/login');
   }
 
 

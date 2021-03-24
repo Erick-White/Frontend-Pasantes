@@ -14,7 +14,7 @@
                             {{asigna.description}}
                         </p>
                         <div class="margin">
-                            <h5 style="margin-left: 25%">Subir Asignación</h5>
+                            <h5 style="margin-left: 25%">Subir {{asigna.title}}</h5>
                             <div class="d-flex justify-content-center">
                                 <div id="dropContainer" style="border: 1px solid black; height: 30%; width: 50%">
                                     Arrastra
@@ -31,10 +31,10 @@
                             <div class="d-flex justify-content-center">
                                 <input type="file" id="fileInput " />
                             </div>
-                            <button class="text-white btn btn-group-lg float-right " type="submit " style="background-color: #49abc6 ">
+                            <button class="text-white btn btn-group-lg float-right" [disabled]="buttonDisable" type="submit " style="background-color: #49abc6 ">
                 Enviar
               </button>
-                            <a type="button " href="/home-pasantes" name="finalizar " class="volver text-white btn btn-group-lg float-left " style="background-color: #49abc6 ">Volver</a
+                            <a type="button " href="/home-pasantes" name="finalizar " class="volver text-white btn btn-group-lg float-left" style="background-color: #49abc6 ">Volver</a
               >
             </div>
           </div>

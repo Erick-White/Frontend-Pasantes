@@ -35,6 +35,9 @@ import { SidebarModule } from 'ng-sidebar';
 
 
 
+import { CookieService } from 'ngx-cookie-service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +75,7 @@ import { SidebarModule } from 'ng-sidebar';
     SidebarModule.forRoot(),
     NgxPaginationModule
   ],
-  providers: [SharedService],
+  providers: [SharedService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
