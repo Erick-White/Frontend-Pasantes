@@ -26,8 +26,7 @@
                                 (click)="currentContactInfo.idInternt"
                                 -->
                                 <strong>Detalles del usuario</strong>
-
-                                <button *ngIf="role.roleName == roleIntern" type="button" class="btn pr-1 pl-1 pt-0 pb-0 bg-info float-right" data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" *ngIf="role.roleName === roleIntern" (click)="pasantee.idInternt" class="btn pr-1 pl-1 pt-0 pb-0 bg-info float-right" data-toggle="modal" data-target="#exampleModal">
                   <i class="fas fa-pen"></i>
                 </button>
 
@@ -45,230 +44,122 @@
                                             <div class="modal-body">
                                                 <form>
                                                     <div class="form-group">
-                                                        <label for="input-nombre" class="col-form-label">Nombre:</label
-                                                    >
-                                                    <input
-                                                      type="text"
-                                                      readonly
-                                                      class="form-control"
-                                                      maxlength="12"
-                                                      id="input-nombre"
-                                                      required
-                                                      name="nombre"
-                                                      [(ngModel)]="pasantee.name"
-                                                    />
-                                                  </div>
-
-                                                  <div class="form-group">
-                                                    <label for="input-nombre" class="col-form-label">Apellido:</label
-                                                >
-                                                <input
-                                                  type="tex"
-                                                  class="form-control"
-                                                  readonly
-                                                  maxlength="12"
-                                                  id="input-lastname"
-                                                  required
-                                                  name="lastname"
-                                                  [(ngModel)]="pasantee.lastname"
-                                                />
-                                              </div>
+                                                        <label for="input-nombre" class="col-form-label">Nombre:</label>
+                                                        <input type="text" readonly class="form-control" maxlength="12" id="input-nombre" required name="nombre" [(ngModel)]="pasantee.name" />
+                                                    </div>
                                                     <div class="form-group">
-                                                        <label for="input-cedula" class="col-form-label">Cedula:</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="input-cedula"
-                              maxlength="13"
-                              name="cedula"
-                              required
-                              [(ngModel)]="pasantee.cedula"
-                            />
-                          </div>
-                          <div class="form-group">
-                            <label for="input-telefono" class="col-form-label"
-                              >Telefono:</label
-                            >
-                            <input
-                              type="tel"
-                              class="form-control"
-                              maxlength="12"
-                              id="input-telefono"
-                              required
-                              name="phone"
-                              [(ngModel)]="pasantee. phone"
-                            />
-                          </div>
-
-                          <div class="form-group">
-                            <label for="input-linkedin" class="col-form-label"
-                              >Linkedin:</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="input-linkedin"
-                              required
-                              name="linkedin"
-                              [(ngModel)]="pasantee.linkedin"
-                            />
-                          </div>
-                          <div class="form-group">
-                            <label for="input-github" class="col-form-label"
-                              >Github:</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="input-github"
-                              required
-                              name ="github"
-                              [(ngModel)]="pasantee.github"
-                              
-                            />
-                          </div>
-                          <div class="form-group">
-                            <label for="input-cv" class="col-form-label"
-                              >CV:</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="input-cv"
-                              required
-                              name="cv"
-                              [(ngModel)]="pasantee.cv"
-                            />
-                          </div>
-                      <div class="form-group">
-                            <label for="input-birthdate" class="col-form-label">Fecha:</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          maxlength="12"
-                          id="input-birthday"
-                          required
-                         
-                          name="birthdate"
-                          [(ngModel)]="pasantee.birthDate"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="input-email" class="col-form-label">Email:</label
-                    >
-                    <input
-                      type="email"
-                      class="form-control"
-                      maxlength="12"
-                      id="input-email"
-                      required
-                      readonly
-                      name="email"
-                      [(ngModel)]="pasantee.user.email"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="input-img" class="col-form-label"></label
-                >
-                <input
-                  type="hidden"
-                  class="form-control"
-                  maxlength="12"
-                  id="input-img"
-                  required
-                  readonly
-                  name="img"
-                  [(ngModel)]="pasantee.userImg"
-                />
-              </div>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                        >
+                                                        <label for="input-nombre" class="col-form-label">Apellido:</label>
+                                                        <input type="tex" class="form-control" readonly maxlength="12" id="input-lastname" required name="lastname" [(ngModel)]="pasantee.lastname" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="input-cedula" class="col-form-label">Cedula:</label>
+                                                        <input type="text" class="form-control" id="input-cedula" maxlength="13" name="cedula" required [(ngModel)]="pasantee.cedula" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="input-telefono" class="col-form-label">Telefono:</label>
+                                                        <input type="tel" class="form-control" maxlength="12" id="input-telefono" required name="phone" [(ngModel)]="pasantee. phone" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="input-linkedin" class="col-form-label">Linkedin:</label>
+                                                        <input type="text" class="form-control" id="input-linkedin" required name="linkedin" [(ngModel)]="pasantee.linkedin" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="input-github" class="col-form-label">Github:</label>
+                                                        <input type="text" class="form-control" id="input-github" required name="github" [(ngModel)]="pasantee.github" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="input-cv" class="col-form-label">CV:</label>
+                                                        <input type="text" class="form-control" id="input-cv" required name="cv" [(ngModel)]="pasantee.cv" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="input-birthdate" class="col-form-label">Fecha:</label>
+                                                        <input type="text" class="form-control" maxlength="12" id="input-birthday" required name="birthdate" [(ngModel)]="pasantee.birthDate" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="input-email" class="col-form-label">Email:</label>
+                                                        <input type="email" class="form-control" maxlength="12" id="input-email" required readonly name="email" [(ngModel)]="pasantee.user.email" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="input-img" class="col-form-label"></label>
+                                                        <input type="hidden" class="form-control" maxlength="12" id="input-img" required readonly name="img" [(ngModel)]="pasantee.userImg" />
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
                           Close
                         </button>
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          (click)="UpdatePasante(pasantee,pasantee.idInternt,pasantee.user.email)"
-                        >
+                                                <button type="button" class="btn btn-primary" (click)="UpdatePasante(pasantee,pasantee.idInternt,pasantee.user.email)">
                           Save changes
                         </button>
-                      </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text"><strong>Email.</strong></p>
+                                <p id="emailp">{{pasantee?.user?.email}}</p>
+                                <p class="card-text"><strong>Cedula.</strong></p>
+                                <p id="cedulap">{{pasantee.cedula}}</p>
+                                <p class="card-text"><strong>Telefono.</strong></p>
+                                <p id="telefonop">{{pasantee. phone}}</p>
+                                <p class="card-text"><strong>Linkedin.</strong></p>
+                                <p id="linkedinp">{{pasantee.linkedin}}</p>
+                                <p class="card-text"><strong>Github.</strong></p>
+                                <p id="githubp">{{pasantee.github}}</p>
+                                <p class="card-text"><strong>CV.</strong></p>
+                                <p id="cvp">
+                                    {{pasantee.cv}}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"><strong>Email.</strong></p>
-                <p id="emailp">{{pasantee?.user?.email}}</p>
-                <p class="card-text"><strong>Cedula.</strong></p>
-                <p id="cedulap">{{pasantee.cedula}}</p>
-                <p class="card-text"><strong>Telefono.</strong></p>
-                <p id="telefonop">{{pasantee. phone}}</p>
-                <p class="card-text"><strong>Linkedin.</strong></p>
-                <p id="linkedinp">{{pasantee.linkedin}}</p>
-                <p class="card-text"><strong>Github.</strong></p>
-                <p id="githubp">{{pasantee.github}}</p>
-                <p class="card-text"><strong>CV.</strong></p>
-                <p id="cvp">
-                  {{pasantee.cv}}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="divdetalle float-right p-2">
-          <div class="d-block justify-content-center">
-            <div class="card">
-              <div class="card-header">
-                <strong> Equipo de trabajo : Nombre del Equipo </strong>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p>Luis Franco</p>
-                <p>Erick Emmanuel Morales</p>
-                <p>Alvaron Herrera</p>
-                <p>David Solano</p>
-                <p>Roman Castillo</p>
-              </div>
+                <div class="divdetalle float-right p-2">
+                    <div class="d-block justify-content-center">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong> Equipo de trabajo : Nombre del Equipo </strong>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p>Luis Franco</p>
+                                <p>Erick Emmanuel Morales</p>
+                                <p>Alvaron Herrera</p>
+                                <p>David Solano</p>
+                                <p>Roman Castillo</p>
+                            </div>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <strong>Evaluaciones tomadas</strong>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <ul>
+                                    <li>
+                                        <p class="card-text">Examen de HTML</p>
+                                    </li>
+                                    <li>
+                                        <p class="card-text">Creación de un menú responsive</p>
+                                    </li>
+                                    <li>
+                                        <p class="card-text">Primer parcial Programación Web</p>
+                                    </li>
+                                    <li>
+                                        <p class="card-text">Segundo parcial Programación 3</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card mt-3">
-              <div class="card-header">
-                <strong>Evaluaciones tomadas</strong>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"></h5>
-                <ul>
-                  <li>
-                    <p class="card-text">Examen de HTML</p>
-                  </li>
-                  <li>
-                    <p class="card-text">Creación de un menú responsive</p>
-                  </li>
-                  <li>
-                    <p class="card-text">Primer parcial Programación Web</p>
-                  </li>
-                  <li>
-                    <p class="card-text">Segundo parcial Programación 3</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- /#page-content-wrapper -->
 <!-- /#wrapper -->

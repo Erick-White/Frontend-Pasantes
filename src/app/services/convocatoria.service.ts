@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ConvocatoriaService {
 
-  URL = 'https://internshipailogic.azurewebsites.net/api/Internship';
+  URL = 'https://ailogicinternship.azurewebsites.net/api/Internship';
 
   constructor(private http: HttpClient) { }
 

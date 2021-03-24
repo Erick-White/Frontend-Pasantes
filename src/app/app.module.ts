@@ -1,3 +1,4 @@
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +10,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
 import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recuperar-cuenta.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -30,6 +30,9 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
 import { ErrorComponent } from './error/error.component';
 
+import { SharedService } from './shared/shared';
+import { SidebarModule } from 'ng-sidebar';
+
 
 
 import { CookieService } from 'ngx-cookie-service';
@@ -40,7 +43,6 @@ import { CookieService } from 'ngx-cookie-service';
     AppComponent,
     LoginComponent,
     FormularioComponent,
-    SidebarComponent,
     RecuperarClaveComponent,
     RecuperarCuentaComponent,
     NavbarComponent,
@@ -59,7 +61,9 @@ import { CookieService } from 'ngx-cookie-service';
     RegisterComponent,
     FileUploadComponent,
     PasantiaAsignacionVistaComponent,
+    SidebarComponent,
     ErrorComponent,
+
 
   ],
   imports: [
@@ -68,13 +72,10 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SidebarModule.forRoot(),
     NgxPaginationModule
-
-
-
-
   ],
-  providers: [CookieService],
+  providers: [SharedService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

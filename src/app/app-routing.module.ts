@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
@@ -22,6 +22,13 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent},
   { path: 'admin', component: AdminComponent, canActivate: [GuardGuard] },
+  { path: 'admin/:id', component: PasantiaAsignacionComponent },
+  { path:'admin/config/:id', component: PasantiaConfigComponent },
+  { path: 'admin/asignacion/:id', component: PasantiaAsignacionVistaComponent },
+  { path: 'formulario', component: FormularioComponent },
+  { path: 'registro', component: RegisterComponent},
+  { path: 'solicitudes', component: SolicitudesComponent},
+  { path: 'recuperar-clave', component: RecuperarClaveComponent},
   { path: 'admin/:id', component: PasantiaAsignacionComponent, canActivate: [GuardGuard] },
   { path: 'admin/config/:id', component: PasantiaConfigComponent, canActivate: [GuardGuard] },
   { path: 'admin/asignacion/:id', component: PasantiaAsignacionVistaComponent, canActivate: [GuardGuard] },

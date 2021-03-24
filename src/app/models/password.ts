@@ -1,5 +1,6 @@
 export interface Password{
-  NewPassword: string,
-  RepeatNewPassword: string;
+  idInternt: string;
+  password: string,
+  confirmpassword: string;
   
 }
