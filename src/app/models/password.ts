@@ -1,5 +1,5 @@
-export class Password{
-  password?: string;
-  confirmpassword?: string;
+export interface Password{
+  password: string;
+  confirmpassword: string;
   
 }

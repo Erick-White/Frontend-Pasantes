@@ -22,13 +22,14 @@ export class RecuperarClaveComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
     
   }
-  CambiarClave(form: NgForm) {
+  CambiarClave(Form: NgForm) {
     console.log(this.Password);
     this.auth.RecuperarClave(this.Password, this.id).subscribe(res => {
       console.log(res);
-    
+      console.log("Klk submit");
   })
   }
 }
