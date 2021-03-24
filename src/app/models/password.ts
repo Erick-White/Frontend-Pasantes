@@ -1,5 +1,5 @@
 export interface Password{
-  idInternt: string;
+  idUser:string,
   password: string,
   confirmpassword: string;
   
