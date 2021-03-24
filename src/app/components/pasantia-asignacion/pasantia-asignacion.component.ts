@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class PasantiaAsignacionComponent implements OnInit {
 
+  _opened = true;
+
   // Informacion de la Pasantia en la que se encuetra
   convoAsig: Convocatorias = new Convocatorias;
 
@@ -28,21 +30,21 @@ export class PasantiaAsignacionComponent implements OnInit {
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
   convocatoriaId: number = 0;
-  
+
   asignacionId: number = 0;
 
   counter = 0;
-  
+
 
   ngOnInit(): void {
 
-    
+
       this.convocatoriaId = +this.activerouter.snapshot.params['id'];
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoAsig = data;
       this.internLimit;
       console.log(data)
-      
+
     });
 
     this.asignacionesService.refreshNeeded$.subscribe(
@@ -50,7 +52,7 @@ export class PasantiaAsignacionComponent implements OnInit {
         this.getAllAsignaciones();
       });
     this.getAllAsignaciones();
-    
+
   }
 
   internLimit(){
@@ -101,6 +103,13 @@ export class PasantiaAsignacionComponent implements OnInit {
 
     })
   }
+
+   _toggleSidebar(_opened : any) {
+     console.log("Desde asignaciones "+_opened);
+    this._opened = _opened;
+
+  }
+
 
 }
 
