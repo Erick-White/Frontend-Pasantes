@@ -11,18 +11,21 @@ import Swal from 'sweetalert2'
 })
 export class PasantiaConfigComponent implements OnInit {
 
+  //Informacion de la convocatoria en la que se encuentra
   convoConfig: Convocatorias = new Convocatorias();
   
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService) { }
 
+  //Variable que guarda el Id de la convocatoria
    convocatoriaId: number = 0;
   
   ngOnInit(): void {
     
-    
+    //Aqui se le pasa el Id a la variable
     this.convocatoriaId = +this.activerouter.snapshot.params['id']
     
+    //Servicio que nos trae la info de la Asignacion en la que nos encontramos
     this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoConfig = data
       if(data.initial_date) {
@@ -45,7 +48,7 @@ export class PasantiaConfigComponent implements OnInit {
   
   }
 
-
+  //Funcion para actualizar la Convocatoria
   updateInfo():void{
     this.convocatoriaService.updateConvo(this.convoConfig,this.convocatoriaId).subscribe(() =>{
       this.router.navigate(['/admin'])
@@ -61,6 +64,7 @@ export class PasantiaConfigComponent implements OnInit {
     
   }
 
+  //Funcion para confirmar la eliminacion de la Convocatoria 
   confirmBox(){
     Swal.fire({
       title: 'Seguro que quieres borrar la Convocatoria?',
@@ -86,6 +90,7 @@ export class PasantiaConfigComponent implements OnInit {
     })
   }
 
+  //Funcion para eliminar Asignacion
   deleteConvo():void{
     this.convocatoriaService.deleteConvo(this.convocatoriaId).subscribe(()=>{
     })

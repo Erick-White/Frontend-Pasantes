@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Password } from '../models/password';
+import { Recovery } from '../models/recovery';
 
 
 
@@ -95,13 +96,20 @@ export class LoginService {
   }
 
 
-  CambiarClave() {
-    
+  CambiarClave(Recovery: Recovery): Observable<any> {
+    const change = { email: Recovery.email};
+    const header = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<any>(`${this.URL}Auth/linkchangepassword`,change,{ headers: header });
+
   }
 
+
+
+
+
   RecuperarClave(password:Password,id:any): Observable<any> {
-    const Change = { NewPass: password.NewPassword, RepeatNewPass: password.RepeatNewPassword };
-    return this.http.post(`${this.URL}Auth/${id}`, Change);
+    const Change = { NewPass: password.password, RepeatNewPass: password.confirmpassword };
+    return this.http.post(`${this.URL}Auth/resetpassword/${id}`, Change);
     
   }
 }
