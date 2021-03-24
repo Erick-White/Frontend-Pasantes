@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { User } from 'src/app/models/user';
+import { Recovery } from '../../models/recovery';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-recuperar-cuenta',
@@ -7,11 +10,24 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./recuperar-cuenta.component.css']
 })
 export class RecuperarCuentaComponent implements OnInit {
-
-  constructor() { }
-
+ 
+  recovery: Recovery = {
+    email:""
+  }
+  constructor(private auth:LoginService) { }
+  
   ngOnInit(): void {
+    
   }
 
+  RecuperarClave(Form:NgForm) {
+    console.log(this.recovery);
+    this.auth.CambiarClave(this.recovery).subscribe(resp => {
+      console.log(resp);
+      
+    })
+    
+    
+  }
   
 }

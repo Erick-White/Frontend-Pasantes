@@ -76,6 +76,7 @@ export class ListaPasantesComponent implements OnInit {
         )
         this.admin.DeletedPasantes(Pasantes.idInternt).subscribe(resp => {
           this.pasantes.splice(i, 1)
+          
          
       })
         
