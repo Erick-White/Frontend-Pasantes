@@ -28,20 +28,7 @@ export class RecuperarClaveComponent implements OnInit {
   }
   CambiarClave(Form: NgForm) {
     this.auth.CambiarClave(this.Password, this.id).subscribe(res => {
-      
-      Swal.fire({
-        icon: 'success',
-        title: 'Inicio de sesión correctamente',
-        showConfirmButton: false,
-        timer: 1500
-      });
-    
-    },(err) => {
-      Swal.fire({
-        icon: 'error',
-        title: "Error al Autenticarse",
-        text: "Correo o contraseña incorrecta",
-      });
+     
     })
   
   }
