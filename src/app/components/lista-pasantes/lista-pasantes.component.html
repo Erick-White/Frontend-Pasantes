@@ -9,16 +9,12 @@
     <div class="row">
         <div class="col-lg-9">
             <h2 class="mt-3 ml-5">Lista Pasantes</h2>
+            <nav class="navbar">
+                <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" class="form-control" placeholder="Ingrese el primer Nombre para buscar...">
+            </nav>
             <div class="container p-3">
                 <div class="row" id="divCartas">
                     <div class="table-responsive animated fadeIn fast">
-                        <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast">
-                            <h4 class="alert-heading">Cargando</h4>
-                            <p>
-                                <i class="fa fa-sync-alt fa-spin fa-2x"></i>
-                            </p>
-                            <p class="mb-0">Espere Por favor...</p>
-                        </div>
                         <table class="table mb-5">
 
                             <thead class="thead-dark">
@@ -31,7 +27,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let Pasantes of pasantes" class="shadow-sm bg-light">
+                                <tr *ngFor="let Pasantes of pasantes |paginate: {itemsPerPage:5,currentPage:p};" class="shadow-sm bg-light">
                                     <td>
                                         <img src="/assets/user.svg" alt="" width="60" class="img-fluid rounded-circle" />
                                     </td>
@@ -46,7 +42,9 @@
 
                                     <td class=""> <button class="btn btn-light text-decoration-none">Usuario</button> </td>
                                     <td class="text-success"><button class="btn btn-light text-success"> Activo </button> </td>
+
                                     <td class="text-center">
+
                                         <a class="text-center btn btn-secondary" (click)="contactInfo(Pasantes.idInternt)" data-toggle="modal" data-target="#exampleModal">Configuracion<i class="fas fa-cog"></i>
 
                                             </a>
@@ -55,6 +53,9 @@
                                 </tr>
                             </tbody>
                         </table>
+
+                        <pagination-controls (pageChange)=" p = $event"></pagination-controls>
+
                     </div>
                 </div>
             </div>
@@ -97,8 +98,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary shadow-sm" data-dismiss="modal">
-          Cerrar
-        </button>
+                     Cerrar
+                </button>
+
+                <td class="text-center"><button type="button" class="btn btn-success shadow-sm" (click)="Update(currentContactInfo.idUser)" data-dismiss="modal">Asignar
+                        Secretario</button></td>
+
                 <a [routerLink]="['/perfil', currentContactInfo.idInternt]" data-dismiss="modal" class="btn btn-primary shadow-sm">Ver Perfil</a>
 
                 <button type="button " (click)="
@@ -113,6 +118,14 @@
 <!--Fin Modal Mostrar Informacion-->
 
 <!-- Menu Toggle Script-->
+
+<div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast col-md-7" style="margin-left: 10%;">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">Espere Por favor...</p>
+</div>
 
 <div *ngIf="!loading && pasantes.length === 0" class=" m-5 alert-warning text-center mt-3 animated fadeIn fast col-md-11">
     <h4 class="alert-heading">No Hay Pasantes</h4>

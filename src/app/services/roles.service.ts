@@ -6,8 +6,11 @@ import { RolesResponse } from '../models/Roles';
   providedIn: 'root'
 })
 export class RolesService {
+  
+  /*Url ANtigua
+  private url = 'https://internshipailogic.azurewebsites.net';*/
 
-  private url = 'https://internshipailogic.azurewebsites.net';
+  private url = 'https://ailogicinternship.azurewebsites.net';
 
   constructor(private http: HttpClient) { }
 

@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
 })
 export class PasantesService {
 
-  private url = 'https://internshipailogic.azurewebsites.net';
+  private url = 'https://ailogicinternship.azurewebsites.net';
 
   // tslint:disable-next-line: variable-name
   private _refreshNeeded$ = new Subject<void>();
@@ -24,6 +24,7 @@ export class PasantesService {
   // tslint:disable-next-line: variable-name
   constructor(private _http: HttpClient) { }
 
+  
   // tslint:disable-next-line: variable-name
 
   // tslint:disable-next-line: typedef
@@ -44,7 +45,12 @@ export class PasantesService {
 
     });
 
-    return this._http.post(`${this.url}/api/Intern`, pasante, { headers } );
+    return this._http.post(`${this.url}/api/Intern`, pasante, { headers } )
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      );
   }
 
 
@@ -52,7 +58,12 @@ export class PasantesService {
   // tslint:disable-next-line: typedef
   solicitudes(): Observable<any>{
     const header = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.get<any>(`${this.url}/api/Request`, { headers: header});
+    return this._http.get<any>(`${this.url}/api/Request`, { headers: header})
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      );
   }
 
   // tslint:disable-next-line: typedef

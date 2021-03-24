@@ -19,8 +19,11 @@ export class ListaPasantesComponent implements OnInit {
   pasantee: any;
   pasantes: PasantesAll[] = [];
   public Role: RolesResponse[] = [];
+  pasants = new Pasantes();
   loading: boolean = false;
-
+  name : any;
+  p: number = 1;
+  
 //Algo
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
               private Roles : RolesService
@@ -28,9 +31,10 @@ export class ListaPasantesComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.admin.refreshNeeded$.subscribe(res => {
-      this.GetAllPasantes();
-    })
+    // this.admin.refreshNeeded$.subscribe(res => {
+    //   this.GetAllPasantes();
+    //   console.log(res);
+    // })
     this.loading = true;
     this.GetAllPasantes();
    
@@ -117,6 +121,16 @@ export class ListaPasantesComponent implements OnInit {
       .subscribe(() => this.Role = this.Role.filter(x => x.idUser === id));
 
     
+  }
+
+  search(){
+    if(this.name == ""){
+      this.ngOnInit();
+    } else{
+      this.pasantes = this.pasantes.filter(res =>{
+        return res.name?.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      })
+    }
   }
 
 

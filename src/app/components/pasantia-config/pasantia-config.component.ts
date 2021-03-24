@@ -79,7 +79,9 @@ export class PasantiaConfigComponent implements OnInit {
           'La Convocatoria ha sido Borrada.',
           'success'
         )
-        this.router.navigate(['/admin'])
+        this.router.navigate(['/admin']).then(() => {
+          window.location.reload();
+        });
       }
     })
   }

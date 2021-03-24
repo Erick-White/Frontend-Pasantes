@@ -31,13 +31,14 @@ export class AdminComponent implements OnInit {
 
 
   ngOnInit(): void {
-  
+
 
     this.convocatoriaService.refreshNeeded$.subscribe(()=>{
       this.getAllConvocatorias();
     });
     this.getAllConvocatorias();
     this.convito = new Convocatorias();
+
   }
 
   private getAllConvocatorias(){

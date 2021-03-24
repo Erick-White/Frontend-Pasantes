@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
@@ -28,8 +29,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
 import { ErrorComponent } from './error/error.component';
-import { SidebarModule } from 'ng-sidebar';
+
 import { SharedService } from './shared/shared';
+import { SidebarModule } from 'ng-sidebar';
 
 
 
@@ -68,11 +70,7 @@ import { SharedService } from './shared/shared';
     HttpClientModule,
     ReactiveFormsModule,
     SidebarModule.forRoot(),
-
-
-
-
-
+    NgxPaginationModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

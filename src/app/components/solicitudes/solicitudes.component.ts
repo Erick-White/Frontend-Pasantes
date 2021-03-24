@@ -19,7 +19,6 @@ export class SolicitudesComponent implements OnInit {
  pasantes  = new Pasantes();
 
   // tslint:disable-next-line: new-parens
-  private updateSubscription: Subscription = new Subscription;
 
   // pasants: Pasantes = new Pasantes();
 
@@ -50,6 +49,14 @@ export class SolicitudesComponent implements OnInit {
     //     console.log(val);
     //   }
     // );
+
+      this.Services.refreshNeeded$.subscribe(
+        resp => {
+          this.getAll();
+
+        }
+      );
+
       this.loading = true;
       this.getAll();
 
@@ -66,7 +73,6 @@ export class SolicitudesComponent implements OnInit {
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
         this.loading = false;
-        console.log(resp);
 
 
 

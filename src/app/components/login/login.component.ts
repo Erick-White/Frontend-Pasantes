@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { User } from '../../models/user';
@@ -68,6 +67,7 @@ export class LoginComponent implements OnInit {
         timer: 1500
       });
     }, (err) => {
+      this.loading = false;
       Swal.fire({
         icon: 'error',
         title: "Error al Autenticarse",

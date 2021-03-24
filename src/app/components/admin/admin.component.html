@@ -6,7 +6,7 @@
          <div class="list-group list-group-flush rounded mx-3 mt-2">
                 <a href="index.html" class="list-group-item list-group-item-action bg-light m-1 border ">
                     <i class="fas fa-th-list"></i> Pasantias</a>
-                <a href="formulario1.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border ">
                     <i class="fas fa-book"></i> Formulario</a>
                 <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border ">
                     <i class="fas fa-upload"></i> Repositorio</a>
@@ -40,7 +40,9 @@
       *ngFor="let convocatoria of convocatoriaArray"
       class="col-md-3 bg-light shadow-sm rounded m-4">
         <div>
-        <a [routerLink]="'/admin/'+convocatoria.idInternship" class="text-dark text-center">
+        <a [routerLink]="'/admin/'+convocatoria.idInternship"
+
+        class="text-dark text-center">
             <h3 class="m-2 mt-4">{{convocatoria.name}}</h3>
             <p class="mt-5">{{convocatoria.initial_date | date }} - {{convocatoria.final_date | date}}</p>
             <p
