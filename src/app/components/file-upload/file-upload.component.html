@@ -1,14 +1,77 @@
+<app-navbar></app-navbar>
+
 <div class="container mt-5">
-    <form [formGroup]="uploadForm" (ngSubmit)=" subirArchivo()">
-        <input type="file" name="profile" (change)="capturarFile($event)">
+  <div class="d-flex justify-content-center">
+    <div class="divs">
+      <div class="card shadow-sm mr-4 w-100">
+        <div class="card-body">
+          <h3 class="d-inline card-title">Subir Asignación</h3>
+          <br />
+          <br />
+          <h5>Patrones de diseño.</h5>
+          <p>
+            Investigar de forma individual el siguiente concepto, Patrones de
+            diseño, y crear una presentación powepoint.
+          </p>
+          <div class="margin">
+            <h5 style="margin-left: 25%">Subir Asignación</h5>
+            <div class="d-flex justify-content-center">
+              <div
+                id="dropContainer"
+                style="border: 1px solid black; height: 30%; width: 50%"
+              >
+                Arrastra
+                <p class="mt-4">
+                  Permite:
+                  <i class="fas fa-file-powerpoint fa-2x p-1 text-warning"></i>
+                  <i class="fas fa-file-pdf fa-2x p-1 text-danger"></i>
+                  <i class="fas fa-file-word fa-2x p-1 text-info"></i>
+                  <i class="fas fa-file-archive fa-2x p-1"></i>
+                </p>
+              </div>
+            </div>
+            <br />
+            <div class="d-flex justify-content-center">
+              <div class="container text-center">
+                <input
+                  type="file"
+                  name="profile"
+                  (change)="capturarFile($event)"
+                />
 
-        <button class="btn btn-primary">Upload</button>
-        <div *ngIf="previsualizacion">
-            <img width="200px" [src]="previsualizacion" alt="">
+                <button
+                  (click)="subirArchivo()"
+                  class="btn btn-primary m-2"
+                  type="button"
+                  style="background-color: #49abc6"
+                >
+                  Upload
+                </button>
+                <div *ngIf="previsualizacion">
+                  <img width="200px" [src]="previsualizacion" alt="" />
+                </div>
+              </div>
+            </div>
+            <button
+              class="text-white btn btn-group-lg float-right"
+              type="submit "
+
+            >
+              Enviar
+            </button>
+            <a
+              type="button "
+              href="index.html "
+              name="finalizar "
+              class="volver text-white btn btn-group-lg float-left"
+              style="background-color: #49abc6"
+              >Volver</a
+            >
+          </div>
         </div>
-    </form>
-
-
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- <h1>Angular 10 FormData (multipart/data-form) Example</h1>
