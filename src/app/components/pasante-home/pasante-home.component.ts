@@ -21,7 +21,7 @@ export class PasanteHomeComponent implements OnInit {
   ];
 
   //Variable para traer Asignaciones
-  asigna = new Asignaciones()
+  asigna: Asignaciones = new Asignaciones()
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
@@ -52,7 +52,6 @@ export class PasanteHomeComponent implements OnInit {
     },
       error =>{console.log(<any>error)
       });
-      console.log(this.asigna.id_Assignment)
   }
 
 }

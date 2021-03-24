@@ -4,6 +4,7 @@ import { Password } from '../../models/password';
 import { LoginService } from '../../services/login.service';
 import { PasantesAll } from '../../models/pasantes-all';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -28,8 +29,20 @@ export class RecuperarClaveComponent implements OnInit {
   CambiarClave(Form: NgForm) {
     console.log("Hola desde el componente",this.Password);
     this.auth.CambiarClave(this.Password, this.id).subscribe(res => {
-      console.log(res);
-      console.log("Klk submit");
-  })
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Cambio de contraseña exitoso!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }, (err) => {
+      Swal.fire({
+        icon: 'error',
+        title: "Error al cambiar la contraseña",
+        text: "La clave no es la misma",
+      });
+    })
+    
   }
 }
