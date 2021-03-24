@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class PasantiaAsignacionComponent implements OnInit {
 
+  _opened = true;
+
   // Informacion de la Pasantia en la que se encuetra
   convoAsig: Convocatorias = new Convocatorias;
 
@@ -28,48 +30,44 @@ export class PasantiaAsignacionComponent implements OnInit {
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
   convocatoriaId: number = 0;
-  
+
   asignacionId: number = 0;
 
-  counter = 0;
-  
+
 
   ngOnInit(): void {
 
-    
+    //Variable para mostrar la Convocatoria en la que se encuentra
       this.convocatoriaId = +this.activerouter.snapshot.params['id'];
+
+      //Servicio para traer la informacion de una sola Convocatoria
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoAsig = data;
-      this.internLimit;
+      // this.internLimit;
       console.log(data)
-      
+
     });
 
+    //Servicio para refrescar las pagina la agregar una nueva asignacion
     this.asignacionesService.refreshNeeded$.subscribe(
       response =>{
         this.getAllAsignaciones();
       });
     this.getAllAsignaciones();
-    
+
   }
 
-  internLimit(){
-    if(this.counter === this.convoAsig.intern_limit){
-      console.log("No mas pasantes")
-    }else{
-      this.counter++;
-    }
-  }
+
+
 
   //Nos trae todas las asignaciones por convocatoria
   private getAllAsignaciones(){
 
     this.asignacionesService.asignaciones(this.convocatoriaId).subscribe(asign => {this.asignacionesArray = asign
-    console.log(asign)
+
     },
       error =>{console.log(<any>error)
       });
-      console.log(this.asigna.id_Assignment)
   }
 
   //Nos guarda las asignaciones creadas
@@ -101,6 +99,13 @@ export class PasantiaAsignacionComponent implements OnInit {
 
     })
   }
+
+   _toggleSidebar(_opened : any) {
+     console.log("Desde asignaciones "+_opened);
+    this._opened = _opened;
+
+  }
+
 
 }
 
