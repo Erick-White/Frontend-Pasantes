@@ -12,9 +12,9 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  
+
   URL = "https://ailogicinternship.azurewebsites.net/api/"
-  
+
   private _refreshNeeded$ = new Subject<void>();
 
   get refreshNeeded$(){
@@ -38,13 +38,13 @@ export class AdminService {
     localStorage.removeItem('token');
 
   }
- 
+
   getPasantesById(id:any): Observable<PasantesAll> {
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
-    
+
     return this.http.get<PasantesAll>(`${this.URL}Intern/${id}`, { headers })
     .pipe(
       tap(()=>{
@@ -53,7 +53,7 @@ export class AdminService {
     );
   }
 
-  
+
   DeletedPasantes(id: any): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')

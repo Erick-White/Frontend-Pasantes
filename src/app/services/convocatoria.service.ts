@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ConvocatoriaService {
 
-  URL = 'https://internshipailogic.azurewebsites.net/api/Internship';
+  URL = 'https://ailogicinternship.azurewebsites.net/api/Internship';
 
   constructor(private http: HttpClient) { }
 
@@ -50,7 +50,7 @@ export class ConvocatoriaService {
     return this.http
     .get<Convocatorias>( `${this.URL}/${id}`,{headers})
     .pipe(
-      tap(()=> 
+      tap(()=>
       console.log(`fetch convocatoria id=${id}`))
       )
   }

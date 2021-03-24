@@ -13,16 +13,19 @@ import { PasantesAll } from '../../models/pasantes-all';
 export class RecuperarClaveComponent implements OnInit {
   
   Password: Password = {
-    idInternt:"",
+    idUser:"",
     password: "",
     confirmpassword:""
-
   }
+  id: string = "";
   constructor(private auth:LoginService) { }
 
   ngOnInit(): void {
   }
   CambiarClave(form: NgForm) {
-  
+    this.auth.RecuperarClave(this.Password, this.id).subscribe(res => {
+      console.log(res);
+    
+  })
   }
 }
