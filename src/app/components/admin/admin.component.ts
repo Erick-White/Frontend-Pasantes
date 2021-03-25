@@ -29,10 +29,10 @@ export class AdminComponent implements OnInit {
 
   }
 
-  
+
 
   ngOnInit(): void {
-    
+
     //Refrescar la pagina para mostrar una nueva Convocatoria
     this.convocatoriaService.refreshNeeded$.subscribe(()=>{
       this.getAllConvocatorias();
@@ -57,13 +57,16 @@ export class AdminComponent implements OnInit {
 
     this.convocatoriaService.addNewConvocatoria(this.convito).subscribe(response =>{
       console.log(response);
-      Swal.fire({
-        icon: 'success',
-        title: 'La Convocatoria ha sido Creada.',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    },error =>{console.log(<any>error)
+     Swal.fire({
+     title: this.convito.name,
+     input: 'textarea',
+     inputValue:this.convito.description + '\n' + 'APLICA YA'  + '\n' + 'https://frontend-pasantes.vercel.app/registro',
+    showCancelButton: true,
+    confirmButtonText: 'Look up',
+    showLoaderOnConfirm: true,
+    });
+    },
+    error =>{console.log(<any>error)
     })
     console.log(this.convito)
   }

@@ -1,0 +1,17 @@
+/* #innerbox
+{
+
+} */
+
+
+a{
+  text-decoration: none;
+}
+
+#innerbox{
+  overflow-y: hidden;
+}
+
+ng-sidebar{
+  overflow: hidden;
+}
