@@ -18,9 +18,13 @@
               <div class="d-flex justify-content-center">
                 <div
                   id="dropContainer"
+                  (click)="fileInput.click()"
                   style="border: 1px solid black; height: 30%; width: 50%"
                 >
-                  Arrastra
+                <div
+                *ngIf="archivos == 0"
+                >
+                    Arrastra
                   <p class="mt-4">
                     Permite:
                     <i
@@ -36,16 +40,24 @@
                       style="background-color: rgba(67, 127, 255, 0.863)"
                     ></i>
                     <i class="fas fa-file-archive fa-2x p-1"></i>
-                  </p>
+                  </p>     
+                </div>
+                
+                <div
+                *ngIf="archivos"
+                >
+                <h4>{{archivos?.name}}</h4>
+                </div>
                 </div>
               </div>
               <br />
               <div class="d-flex justify-content-center">
                 <input
+                  style="display: none;"
                   type="file"
-                  id="fileInput"
                   name="profile"
                   (change)="capturarFile($event)"
+                  #fileInput
                 />
               </div>
               <button

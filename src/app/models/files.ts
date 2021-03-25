@@ -1,4 +1,6 @@
 export interface Files {
+  idFiles: 0
   idUser: string;
-  file: string;
+  fileName: string;
+  path: string;
 }

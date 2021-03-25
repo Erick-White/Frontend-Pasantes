@@ -10,6 +10,8 @@ import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+declare var jQuery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-solicitudes',
@@ -21,7 +23,7 @@ export class SolicitudesComponent implements OnInit {
  pasante: Pasantes[] = [];
  loading = false;
  pasantes  = new Pasantes();
- 
+
  counter: number = 0;
 
 // Informacion de la Pasantia en la que se encuetra
@@ -60,6 +62,9 @@ _opened = true;
   }
   ngOnInit(): void {
 
+
+
+
     //Variable para mostrar la Convocatoria en la que se encuentra
     this.convocatoriaId = +this.activerouter.snapshot.params['id'];
 
@@ -68,7 +73,7 @@ _opened = true;
     this.convoPasantes = data;
   });
 
-    
+
     // tslint:disable-next-line: deprecation
     //  this.updateSubscription = interval(1000).subscribe(
     //    (val) => {
@@ -77,12 +82,12 @@ _opened = true;
     //   }
     // );
 
-      this.Services.refreshNeeded$.subscribe(
-        resp => {
-          this.getAll();
+      // this.Services.refreshNeeded$.subscribe(
+      //   resp => {
+      //     this.getAll();
 
-        }
-      );
+      //   }
+      // );
 
       this.loading = true;
       this.getAll();
@@ -124,6 +129,9 @@ _opened = true;
           // tslint:disable-next-line: deprecation
           .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
     console.log(id);
+    //window.location.reload()
+
+
 
 
 
@@ -152,19 +160,27 @@ _opened = true;
         text: `Esta seguro de aceptar a: ${user?.name} ${ user?.lastname}`,
         icon: 'question',
         showConfirmButton: true,
+        confirmButtonText:"Si",
         showCancelButton: true
       }).then(resp => {
         if (resp.value){
           if (!user) { return; }
           this.Services.AcceptIntern(userToSend)
+
             .pipe(first())
             // tslint:disable-next-line: deprecation
             .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+
+
             this.counter++
             console.log(this.counter)
-          this.borrar(id);
+            this.borrar(id);
+
         }
       });
+
+
+
 
   }
 
@@ -179,6 +195,8 @@ _opened = true;
 
 
   }*/
+
+
 
 
 }
