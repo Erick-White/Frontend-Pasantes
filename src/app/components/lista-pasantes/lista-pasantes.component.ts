@@ -23,12 +23,17 @@ export class ListaPasantesComponent implements OnInit {
   loading: boolean = false;
   name : any;
   p : number = 1;
-  
+  _opened = true;
 //Algo
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
               private Roles : RolesService
 
-    ) { }
+  ) { }
+  
+  _toggleSidebar(_opened : any) {
+    this._opened = _opened;
+
+  }
 
   ngOnInit(): void {
     // this.admin.refreshNeeded$.subscribe(res => {
@@ -106,7 +111,7 @@ export class ListaPasantesComponent implements OnInit {
    });
   }
 
-  // tslint:disable-next-line: typedef
+  // Actualizar los roles de los pasantes
   Update(id: any) {
     const user = this.pasantes.find(x => x.idUser === id);
     console.log(user);
@@ -123,7 +128,7 @@ export class ListaPasantesComponent implements OnInit {
 
     
   }
-
+// Filtro
   search(){
     if(this.name === ""){
       this.ngOnInit();

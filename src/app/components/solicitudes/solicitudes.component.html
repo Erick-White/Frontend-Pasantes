@@ -1,293 +1,174 @@
-<app-navbar></app-navbar>
-<div id="page-content-wrapper">
-  <div class="container mb-5">
-    <h1 class="mt-3">Solicitudes</h1>
-    <!--INICIO SOLICITUD-->
-    <div id="solicitud">
-      <div
-        class="card text-center mt-3"
-        *ngFor="let p of pasante; index as i"
-      >
-        <div class="card-body">
-          <form id="msform" #f="ngForm">
-            <button
-              type="button"
-              (click)="Update(p.idRequestInternship)"
-              class="btn btn-primary float-right ml-2"
-            >
-              Aceptar
-            </button>
-            <button
-              type="button"
-              (click)="borrar(p.idRequestInternship)"
-              class="btn btn-danger float-right ml-2"
-              style="margin-left: 12px"
-            >
-              Declinar
-            </button>
+<app-navbar (isOpen)="_toggleSidebar($event)">
+</app-navbar>
 
-            <div class="row" style="margin-top: 19px">
-              <div class="col-xs-2 text-center">
-                <img src="/assets/user.svg" class="" alt="" />
-                <p class="text-center m-1">
-                  <a
-                    class="text-sm-left text-secondary"
-                    href="https://github.com/David-PX"
-                  >
-                    <i class="fab fa-github"></i>
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/david-solano-a766731b0/"
-                    class="text-sm-left text-secondary"
-                  >
-                    <i class="fab fa-linkedin" style="margin-left: 10px"></i>
-                  </a>
-                </p>
-              </div>
-              <div class="col-xs-3">
-                <h5 class="card-title text-sm-left">
-                  {{ p.name }} {{ p.lastname }}
-                </h5>
-                <p class="text-sm-left text-secondary">{{ p.email }}</p>
-                <p class="text-sm-left text-secondary">{{ p.phone }}</p>
-              </div>
-              <div class="col-xs-3 ml-5">
-                <h5 class="card-title text-sm-left">&nbsp;</h5>
-                <p class="text-sm-left text-secondary">{{ p.cedula }}</p>
-                <p class="text-sm-left text-secondary">
-                  {{ p.birthDate | date }}
-                </p>
-              </div>
-              <!-- <label for="nombre1">Nombre</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                id="nombre1"
-                name="name"
-                [(ngModel)]="p.name"
-                placeholder="Nombre"
-              />
-              <!-- <label for="apellido1">Apellido</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                name="lastname"
-                [(ngModel)]="p.lastname"
-                id="apellido1"
-                placeholder="Apellido"
-              />
-              <!-- <label for="cedula1">Cedula</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                name="cedula"
-                [(ngModel)]="p.cedula"
-                id="cedula1"
-                placeholder="Cedula"
-              />
-              <!-- <label for="telefono1">Telefono</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                name="phone"
-                [(ngModel)]="p.phone"
-                id="telefono1"
-                placeholder="Telefono"
-              />
-              <!-- <label for="email1">Email</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                name="email"
-                [(ngModel)]="p.email"
-                id="email1"
-                placeholder="Email"
-              />
-              <!-- <label for="linkedin1">Linkedin</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                name="linkendin"
-                [(ngModel)]="p.linkedin"
-                id="linkedin1"
-                placeholder="Enlace de Linkedin (Opcional)"
-              />
-              <!-- <label for="nacimiento1">Fecha de Nacimiento</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                name="p.birthDate"
-                value="p.birthDate"
-                [(ngModel)]="p.birthDate"
-                id="nacimiento1"
-              />
-              <!-- <label for="github1">Github</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                name="github"
-                [(ngModel)]="p.github"
-                id="github1"
-                placeholder="Enlace de Github (Opcional)"
-              />
-              <!-- <label for="github1">CV</label> -->
-              <input
-                type="hidden"
-                class="form-control"
-                name="cv"
-                [(ngModel)]="p.cv"
-                id="github1"
-                placeholder="Curriculum"
-              />
-            </div>
-
-            <br />
-
-            <div class="row">
-              <div class="col-md-6">
-                <button
-                  class="btn btn-info btn-block"
-                  role="button"
-                  data-toggle="collapse"
-                   [attr.data-target] = "'#somestring' + p.idRequestInternship"
-                  aria-expanded="false"
-                  aria-controls="collapseExample"
-
-                >
-                  Informacion adicional.
-                </button>
-                <div class="collapse" id="somestring{{p.idRequestInternship}}" >
-                  <div class="card mt-3 card-body text-left">
-                    <p>
-                      <b>Carrera:</b> <br />
-                      Desarrollo de Software.
-                    </p>
-                    <p>
-                      <b>¿Cuanto tiempo le falta para terminar su carrera?</b>
-                      <br />
-                      2 Cuatrimestres.
-                    </p>
-                    <p>
-                      <b>¿Trabaja actualmente?</b> <br />
-                      Si
-                    </p>
-                    <p>
-                      <b>¿Por que quiere realizar la pasantia con AI Logic?</b>
-                      <br />
-                      Porque es una empresa muy competente y puedo aprender
-                      muchas cosas nuevas y poner en practica las que ya se y
-                      asimismo aportar todo lo que pueda a la empresa dando lo
-                      mejor de mi.
-                    </p>
-                    <hr />
-                    <p><a href="">Descargar carta de pasantia.</a></p>
-                    <p><a href="">Descargar Curriculum Vitae.</a></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <button
-                  class="btn btn-info btn-block"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="i"
-                  aria-expanded="false"
-                  aria-controls="collapseExample"
-                  [attr.data-target] = "'#somestring2' + p.idRequestInternship"
-                >
-                  Auto Evaluaciones.
-                </button>
-                <div class="collapse" id="somestring2{{p.idRequestInternship}}">
-                  <div class="card mt-3 card-body">
-                    <h3 class="text-left">Auto evaluaciones</h3>
-                    <p class="text-left m-0">HTML</p>
-                    <div class="progress m-2">
-                      <div
-                        class="progress-bar m-2"
-                        role="progressbar"
-                        aria-valuenow="0"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <p class="text-left m-0">CSS</p>
-                    <div class="progress m-2">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 25%"
-                        aria-valuenow="25"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <p class="text-left m-0">JAVASCRIPT</p>
-                    <div class="progress m-2">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 50%"
-                        aria-valuenow="50"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <p class="text-left m-0">PHP</p>
-                    <div class="progress m-2">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 75%"
-                        aria-valuenow="75"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <p class="text-left m-0">C#</p>
-                    <div class="progress m-2">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 100%"
-                        aria-valuenow="100"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+<ng-sidebar-container>
+    <ng-sidebar class="m-4" [opened]="_opened">
+        <div class="list-group list-group-flush rounded mx-3 mt-2">
+            <a routerLink="/admin" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-th-list"></i> Pasantias</a>
+            <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-book"></i> Formulario</a>
+            <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-upload"></i> Repositorio</a>
+            <a routerLink="/lista-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-users"></i> Pasantes</a>
         </div>
-      </div>
+    </ng-sidebar>
+
+    <div id="page-content-wrapper" ng-sidebar-content>
+        <div class="container mb-5">
+            <h1 class="mt-3">Solicitudes</h1>
+            <!--INICIO SOLICITUD-->
+            <div id="solicitud">
+                <div class="card text-center mt-5" *ngFor="let p of pasante; let i = index">
+                    <div class="card-body">
+                        <form id="msform" #f="ngForm">
+                            <button type="button" (click)="Update(p.idRequestInternship)" class="btn btn-primary float-right ml-2">
+                Aceptar
+              </button>
+                            <button type="button" (click)="borrar(p.idRequestInternship)" class="btn btn-danger float-right ml-2" style="margin-left: 12px">
+                Declinar
+              </button>
+
+                            <div class="row" style="margin-top: 19px">
+                                <div class="col-xs-2 text-center">
+                                    <img src="/assets/user.svg" class="" alt="" />
+                                    <p class="text-center m-1">
+                                        <a class="text-sm-left text-secondary" href="https://github.com/David-PX">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/david-solano-a766731b0/" class="text-sm-left text-secondary">
+                                            <i class="fab fa-linkedin" style="margin-left: 10px"></i>
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <h5 class="card-title text-sm-left">
+                                        {{ p.name }} {{ p.lastname }}
+                                    </h5>
+                                    <p class="text-sm-left text-secondary">{{ p.email }}</p>
+                                    <p class="text-sm-left text-secondary">{{ p.phone }}</p>
+                                </div>
+                                <div class="col-xs-3 ml-5">
+                                    <h5 class="card-title text-sm-left">&nbsp;</h5>
+                                    <p class="text-sm-left text-secondary">{{ p.cedula }}</p>
+                                    <p class="text-sm-left text-secondary">
+                                        {{ p.birthDate | date }}
+                                    </p>
+                                </div>
+                                <!-- <label for="nombre1">Nombre</label> -->
+                                <input type="hidden" class="form-control" id="nombre1" name="name" [(ngModel)]="p.name" placeholder="Nombre" />
+                                <!-- <label for="apellido1">Apellido</label> -->
+                                <input type="hidden" class="form-control" name="lastname" [(ngModel)]="p.lastname" id="apellido1" placeholder="Apellido" />
+                                <!-- <label for="cedula1">Cedula</label> -->
+                                <input type="hidden" class="form-control" name="cedula" [(ngModel)]="p.cedula" id="cedula1" placeholder="Cedula" />
+                                <!-- <label for="telefono1">Telefono</label> -->
+                                <input type="hidden" class="form-control" name="phone" [(ngModel)]="p.phone" id="telefono1" placeholder="Telefono" />
+                                <!-- <label for="email1">Email</label> -->
+                                <input type="hidden" class="form-control" name="email" [(ngModel)]="p.email" id="email1" placeholder="Email" />
+                                <!-- <label for="linkedin1">Linkedin</label> -->
+                                <input type="hidden" class="form-control" name="linkendin" [(ngModel)]="p.linkedin" id="linkedin1" placeholder="Enlace de Linkedin (Opcional)" />
+                                <!-- <label for="nacimiento1">Fecha de Nacimiento</label> -->
+                                <input type="hidden" class="form-control" name="p.birthDate" value="p.birthDate" [(ngModel)]="p.birthDate" id="nacimiento1" />
+                                <!-- <label for="github1">Github</label> -->
+                                <input type="hidden" class="form-control" name="github" [(ngModel)]="p.github" id="github1" placeholder="Enlace de Github (Opcional)" />
+                                <!-- <label for="github1">CV</label> -->
+                                <input type="hidden" class="form-control" name="cv" [(ngModel)]="p.cv" id="github1" placeholder="Curriculum" />
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Informacion adicional.
+                  </button>
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="card mt-3 card-body text-left">
+                                            <p>
+                                                <b>Carrera:</b> <br /> Desarrollo de Software.
+                                            </p>
+                                            <p>
+                                                <b>¿Cuanto tiempo le falta para terminar su carrera?</b>
+                                                <br /> 2 Cuatrimestres.
+                                            </p>
+                                            <p>
+                                                <b>¿Trabaja actualmente?</b> <br /> Si
+                                            </p>
+                                            <p>
+                                                <b>¿Por que quiere realizar la pasantia con AI Logic?</b>
+                                                <br /> Porque es una empresa muy competente y puedo aprender muchas cosas nuevas y poner en practica las que ya se y asimismo aportar todo lo que pueda a la empresa dando lo mejor de mi.
+                                            </p>
+                                            <hr />
+                                            <p><a href="">Descargar carta de pasantia.</a></p>
+                                            <p><a href="">Descargar Curriculum Vitae.</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                    Auto Evaluaciones.
+                  </button>
+                                    <div class="collapse" id="collapseExample2">
+                                        <div class="card mt-3 card-body">
+                                            <h3 class="text-left">Auto evaluaciones</h3>
+                                            <p class="text-left m-0">HTML</p>
+                                            <div class="progress m-2">
+                                                <div class="progress-bar m-2" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p class="text-left m-0">CSS</p>
+                                            <div class="progress m-2">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p class="text-left m-0">JAVASCRIPT</p>
+                                            <div class="progress m-2">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p class="text-left m-0">PHP</p>
+                                            <div class="progress m-2">
+                                                <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p class="text-left m-0">C#</p>
+                                            <div class="progress m-2">
+                                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<div
-  *ngIf="!loading && pasante.length === 0"
-  class="m-5 alert-warning text-center mt-3 animated fadeIn fast col-md-11"
->
-  <h4 class="alert-heading">No Hay Solicitudes</h4>
-  <p>
-    <i class="fa fa-exclamation fa-2x"></i>
-  </p>
-</div>
+    <div *ngIf="!loading && pasante.length === 0" class="m-5 alert-warning text-center mt-3 animated fadeIn fast col-md-11">
+        <h4 class="alert-heading">No Hay Solicitudes</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
 
-<div
-  *ngIf="loading"
-  class="alert alert-info text-center mt-3 animated fadeIn fast"
->
-  <h4 class="alert-heading">Cargando</h4>
-  <p>
-    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
-  </p>
-  <p class="mb-0">Espere Por favor...</p>
+    <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast">
+        <h4 class="alert-heading">Cargando</h4>
+        <p>
+            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+        </p>
+        <p class="mb-0">Espere Por favor...</p>
+    </div>
+</ng-sidebar-container>
+
+<div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">Espere Por favor...</p>
 </div>
 
 <script>
-$(document).ready(function() {
-    console.log("ready!");
-});
+    $(document).ready(function() {
+        console.log("ready!");
+    });
 </script>

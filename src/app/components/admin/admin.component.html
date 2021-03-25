@@ -1,6 +1,6 @@
-<app-navbar (isOpen)="_toggleSidebar($event)" >
+<app-navbar (isOpen)="_toggleSidebar($event)">
 
-</app-navbar >
+</app-navbar>
 <ng-sidebar-container>
 <ng-sidebar class="ml-3 mt-3" [opened]="_opened"  >
          <div class="list-group list-group-flush rounded mx-2  mt-2 col-md-12">
@@ -56,9 +56,9 @@
 
 
 
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 </ng-sidebar-container>
 <!-- /#page-content-wrapper -->
@@ -66,105 +66,52 @@
 <!-- /#wrapper -->
 <!--Modal Crear Pasantia-->
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Crear Convocatoria</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Convocatoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-        <form #f="ngForm"  >
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input
-            type="text"
-            name="name"
-            #name = "ngModel"
-            class="form-control"
-            id="nombre"
-            [(ngModel)]="convito.name"/>
-          </div>
-          <div class="form-group">
-            <label for="cantidad">Cantidad de pasantes</label>
-            <input
-            type="number"
-            name="intern_limit"
-            #description = "ngModel"
-            class="form-control"
-            id="cantidad"
-            [(ngModel)]="convito.intern_limit"/>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="fecha1">Desde</label>
-              <input
-              type="date"
-              name="initial_date"
-              #date = "ngModel"
-              class="form-control"
-              id="fecha1"
-              datepicker ="true"
-              datepicker_format ="yyyy-MM-dd"
-              [(ngModel)]="convito.initial_date"/>
             </div>
-            <div class="form-group col-md-6">
-              <label for="fecha2">Hasta</label>
-              <input
-              type="date"
-              name="final_date"
-              class="form-control"
-              id="fecha2"
-              datepicker ="true"
-              datepicker_format ="yyyy-MM-dd"
-              [(ngModel)]="convito.final_date"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="nombre">Descripcion</label>
-            <textarea
-            type="text"
-            name="description"
-            #name = "ngModel"
-            class="form-control"
-            id="nombre"
-            [(ngModel)]="convito.description">
+            <div class="modal-body">
+                <form #f="ngForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="name" #name="ngModel" class="form-control" id="nombre" [(ngModel)]="convito.name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="cantidad">Cantidad de pasantes</label>
+                        <input type="number" name="intern_limit" #description="ngModel" class="form-control" id="cantidad" [(ngModel)]="convito.intern_limit" />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="fecha1">Desde</label>
+                            <input type="date" name="initial_date" #date="ngModel" class="form-control" id="fecha1" datepicker="true" datepicker_format="yyyy-MM-dd" [(ngModel)]="convito.initial_date" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fecha2">Hasta</label>
+                            <input type="date" name="final_date" class="form-control" id="fecha2" datepicker="true" datepicker_format="yyyy-MM-dd" [(ngModel)]="convito.final_date" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Descripcion</label>
+                        <textarea type="text" name="description" #name="ngModel" class="form-control" id="nombre" [(ngModel)]="convito.description">
           </textarea>
-          </div>
+                    </div>
 
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
               Cancelar
             </button>
-            <button
-            type="submit"
-            class="btn btn-primary"
-            (click)="saveNew()"
-            data-dismiss="modal">
+                        <button type="submit" class="btn btn-primary" (click)="saveNew()" data-dismiss="modal">
               Guardar
             </button>
-          </div>
-        </form>
-      </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-  <!--Fin Modal Crear Pasantia-->
+    <!--Fin Modal Crear Pasantia-->
 </div>

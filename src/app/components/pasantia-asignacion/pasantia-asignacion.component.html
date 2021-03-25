@@ -3,284 +3,163 @@
 
 <!-- Page Content -->
 <ng-sidebar-container>
-  <ng-sidebar class="m-4" [opened]="_opened">
-    <div class="list-group list-group-flush rounded mx-3 mt-2">
-      <a
-        [routerLink]="['/admin']"
-        class="list-group-item list-group-item-action bg-light m-1 border"
-      >
-        <i class="fas fa-th-list"></i> Pasantias</a
-      >
-      <a
-        routerLink="/formulario"
-        class="list-group-item list-group-item-action bg-light m-1 border"
-      >
-        <i class="fas fa-book"></i> Formulario</a
-      >
-      <a
-        href="repo.html"
-        class="list-group-item list-group-item-action bg-light m-1 border"
-      >
-        <i class="fas fa-upload"></i> Repositorio</a
-      >
-      <a
-        [routerLink]="['/lista-pasante']"
-        class="list-group-item list-group-item-action bg-light m-1 border"
-      >
-        <i class="fas fa-users"></i> Pasantes</a
-      >
-    </div>
-  </ng-sidebar>
-  <!-- Page Content -->
-  <div id="page-content-wrapper" ng-sidebar-content>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="mt-3 ml-5">{{ convoAsig.name }}</h2>
-          <div class="container bg-light p-3 mt-4">
-            <button
-              class="btn btn-light"
-              data-toggle="modal"
-              data-target="#exampleModal"
-            >
+    <ng-sidebar class="m-4" [opened]="_opened">
+        <div class="list-group list-group-flush rounded mx-3 mt-2">
+            <a [routerLink]="['/admin']" class="list-group-item list-group-item-action bg-light m-1 border">
+                <i class="fas fa-th-list"></i> Pasantias</a>
+            <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border">
+                <i class="fas fa-book"></i> Formulario</a>
+            <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border">
+                <i class="fas fa-upload"></i> Repositorio</a>
+            <a href="lista.html" class="list-group-item list-group-item-action bg-light m-1 border">
+                <i class="fas fa-users"></i> Pasantes</a>
+        </div>
+    </ng-sidebar>
+    <!-- Page Content -->
+    <div id="page-content-wrapper" ng-sidebar-content>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h2 class="mt-3 ml-5">{{ convoAsig.name }}</h2>
+                    <div class="container bg-light p-3 mt-4">
+                        <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
               <i class="fas fa-plus"></i> Asignaciones
             </button>
-            <a [routerLink]="'/solicitudes'" class="m-2 text-dark">
-              <i class="fas fa-user-plus"></i> Solicitudes
-            </a>
-            <a [routerLink]="'/lista-pasante'" class="m-2 text-dark">
-              <i class="fas fa-users"></i> Lista Pasantes
-            </a>
-            <a
-              [routerLink]="'/admin/config/' + convoAsig.idInternship"
-              class="m-2 text-dark"
-            >
-              <i class="fas fa-cog"></i> Configuracion
-            </a>
-            <a [routerLink]="'/admin'" class="m-2 text-dark">
-              <i class="fas fa-backspace"></i> Volver
-            </a>
-            <div class="row" id="divCartas">
-              <div
-                class="col-md-3 shadow-sm rounded m-4  border-dark  "
-                style="background-color: #efefef"
-                *ngFor="let asigna of asignacionesArray"
-              >
-                <div>
-                  <a
-                    class="text-dark text-center"
-                    [routerLink]="'/admin/asignacion/' + asigna.id_Assignment"
-                  >
-                    <h5 class="m-2 mt-4">{{ asigna.title }}</h5>
-                    <p>{{ asigna.description }}</p>
-                    <p>{{ asigna.limitDate | date }}</p>
-                  </a>
-                </div>
-              </div>
+                        <a [routerLink]="'/solicitudes'" class="m-2 text-dark">
+                            <i class="fas fa-user-plus"></i> Solicitudes
+                        </a>
+                        <a [routerLink]="'/lista-pasante'" class="m-2 text-dark">
+                            <i class="fas fa-users"></i> Lista Pasantes
+                        </a>
+                        <a [routerLink]="'/admin/config/' + convoAsig.idInternship" class="m-2 text-dark">
+                            <i class="fas fa-cog"></i> Configuracion
+                        </a>
+                        <a [routerLink]="'/admin'" class="m-2 text-dark">
+                            <i class="fas fa-backspace"></i> Volver
+                        </a>
+                        <div class="row" id="divCartas">
+                            <div class="col-md-5 shadow-sm rounded m-4" style="background-color: #efefef" *ngFor="let asigna of asignacionesArray">
+                                <div>
+                                    <a class="text-dark text-center" [routerLink]="'/admin/asignacion/' + asigna.id_Assignment">
+                                        <h3 class="m-2 mt-4">{{ asigna.title }}</h3>
+                                        <p>{{ asigna.description }}</p>
+                                        <p>{{ asigna.limitDate | date }}</p>
+                                    </a>
+                                </div>
+                            </div>
 
 
-              <!-- /#page-content-wrapper -->
+                            <!-- /#page-content-wrapper -->
 
-              <!-- /#wrapper -->
-              <!-- /#Modal crear asignación -->
-              <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Crear Asignacion
-                      </h5>
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
+                            <!-- /#wrapper -->
+                            <!-- /#Modal crear asignación -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                Crear Asignacion
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="inputAddress">Titulo</label>
-                          <input
-                            name="title"
-                            type="text"
-                            class="form-control"
-                            [(ngModel)]="asigna.title"
-                          />
-                        </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="inputAddress">Titulo</label>
+                                                    <input name="title" type="text" class="form-control" [(ngModel)]="asigna.title" />
+                                                </div>
 
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="inputEmail4">Tipo</label>
-                            <select
-                              name="modality"
-                              class="form-control"
-                              [(ngModel)]="asigna.modality"
-                            >
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Tipo</label>
+                                                        <select name="modality" class="form-control" [(ngModel)]="asigna.modality">
                               <option value="">Individual</option>
                               <option value="">Grupal</option>
                             </select>
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="inputPassword4">Hasta</label>
-                            <input
-                              name="date"
-                              type="date"
-                              class="form-control"
-                              datepicker="true"
-                              datepicker_format="yyyy-MM-dd"
-                              [(ngModel)]="asigna.limitDate"
-                            />
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="">Descripcion</label>
-                          <textarea
-                            name="description"
-                            cols="30"
-                            rows="10"
-                            class="form-control"
-                            [(ngModel)]="asigna.description"
-                          ></textarea>
-                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputPassword4">Hasta</label>
+                                                        <input name="date" type="date" class="form-control" datepicker="true" datepicker_format="yyyy-MM-dd" [(ngModel)]="asigna.limitDate" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Descripcion</label>
+                                                    <textarea name="description" cols="30" rows="10" class="form-control" [(ngModel)]="asigna.description"></textarea>
+                                                </div>
 
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal"
-                          >
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Cancelar
                           </button>
-                          <button
-                            type="submit"
-                            class="btn btn-primary"
-                            (click)="saveNewAsigna()"
-                            data-dismiss="modal"
-                          >
+                                                    <button type="submit" class="btn btn-primary" (click)="saveNewAsigna()" data-dismiss="modal">
                             Guardar
                           </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--Fin Modal Crear Asignacion-->
-              <div
-                class="modal fade"
-                id="exampleModal1"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Configuracion de Asignacion
-                      </h5>
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin Modal Crear Asignacion-->
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                Configuracion de Asignacion
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="inputAddress">Titulo</label>
-                          <input
-                            name="title"
-                            type="text"
-                            class="form-control"
-                            value="{{ asigna.title }}"
-                            [(ngModel)]="asigna.title"
-                          />
-                        </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="inputAddress">Titulo</label>
+                                                    <input name="title" type="text" class="form-control" value="{{ asigna.title }}" [(ngModel)]="asigna.title" />
+                                                </div>
 
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="inputEmail4">Tipo</label>
-                            <select
-                              name="modality"
-                              class="form-control"
-                              [(ngModel)]="asigna.modality"
-                            >
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Tipo</label>
+                                                        <select name="modality" class="form-control" [(ngModel)]="asigna.modality">
                               <option value="">Individual</option>
                               <option value="">Grupal</option>
                             </select>
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="inputPassword4">Hasta</label>
-                            <input
-                              name="date"
-                              type="text"
-                              class="form-control"
-                              datepicker="true"
-                              datepicker_format="yyyy-MM-dd"
-                              value="{{ asigna.limitDate }}"
-                              [(ngModel)]="asigna.limitDate"
-                            />
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="">Descripcion</label>
-                          <textarea
-                            name="description"
-                            cols="30"
-                            rows="10"
-                            class="form-control"
-                            value="{{ asigna.description }}"
-                            [(ngModel)]="asigna.description"
-                          ></textarea>
-                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputPassword4">Hasta</label>
+                                                        <input name="date" type="text" class="form-control" datepicker="true" datepicker_format="yyyy-MM-dd" value="{{ asigna.limitDate }}" [(ngModel)]="asigna.limitDate" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Descripcion</label>
+                                                    <textarea name="description" cols="30" rows="10" class="form-control" value="{{ asigna.description }}" [(ngModel)]="asigna.description"></textarea>
+                                                </div>
 
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal"
-                          >
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Cancelar
                           </button>
-                          <button
-                            type="button"
-                            class="btn btn-danger"
-                            data-dismiss="modal"
-                          >
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
                             Eliminar
                           </button>
-                          <button
-                            type="submit"
-                            class="btn btn-primary"
-                            (click)="updateInfo()"
-                            data-dismiss="modal"
-                          >
+                                                    <button type="submit" class="btn btn-primary" (click)="updateInfo()" data-dismiss="modal">
                             Guardar
                           </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </form>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
 </ng-sidebar-container>
