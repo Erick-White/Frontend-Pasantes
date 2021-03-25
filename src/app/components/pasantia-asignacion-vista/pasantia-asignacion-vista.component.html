@@ -7,32 +7,84 @@
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <a
           class="nav-link active"
-          id="nav-home-tab"
+          id="nav-info-tab"
           data-toggle="tab"
-          href="#nav-home"
+          href="#nav-info"
           role="tab"
-          aria-controls="nav-home"
+          aria-controls="nav-info"
           aria-selected="true"
-          >Repositorio</a
+          >Info</a
         >
         <a
           class="nav-link"
-          id="nav-profile-tab"
+          id="nav-repo-tab"
           data-toggle="tab"
-          href="#nav-profile"
+          href="#nav-repo"
           role="tab"
-          aria-controls="nav-profile"
+          aria-controls="nav-repo"
           aria-selected="false"
-          >Editar Asignaciones</a
+          >Repositorio</a
         >
+        <a
+        class="nav-link"
+        id="nav-edit-tab"
+        data-toggle="tab"
+        href="#nav-edit"
+        role="tab"
+        aria-controls="nav-edit"
+        aria-selected="false"
+        >Editar Asignaciones</a
+      >
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div
         class="tab-pane fade show active"
-        id="nav-home"
+        id="nav-info"
         role="tabpanel"
-        aria-labelledby="nav-home-tab"
+        aria-labelledby="nav-info-tab"
+      >
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+              </h2>
+            </div>
+
+            <div>
+              <div class="card-body">
+                <div class="divdetalle">
+                  <div class="d-block justify-content-center">
+                    <div class="card bg-light">
+                      <div class="card-body">
+                        <h2>{{asigna.title}}</h2>
+
+                        <h3 class="card-title"></h3>
+                        <p>
+                          {{asigna.description}}
+                        </p>
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <img
+                          src="../../assets/ppticon.svg"
+                          width="250"
+                          height="205"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="nav-repo"
+        role="tabpanel"
+        aria-labelledby="nav-repo-tab"
       >
         <div class="accordion" id="accordionExample">
           <div class="card">
@@ -87,9 +139,9 @@
       </div>
       <div
         class="tab-pane fade"
-        id="nav-profile"
+        id="nav-edit"
         role="tabpanel"
-        aria-labelledby="nav-profile-tab"
+        aria-labelledby="nav-edit-tab"
       >
       <div class="row">
         <div class="col-lg-9">

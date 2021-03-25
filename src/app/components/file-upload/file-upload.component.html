@@ -17,18 +17,38 @@
             <h5 style="margin-left: 25%">Subir Asignación</h5>
             <div class="d-flex justify-content-center">
               <div
-                id="dropContainer"
-                style="border: 1px solid black; height: 30%; width: 50%"
-              >
-                Arrastra
-                <p class="mt-4">
-                  Permite:
-                  <i class="fas fa-file-powerpoint fa-2x p-1 text-warning"></i>
-                  <i class="fas fa-file-pdf fa-2x p-1 text-danger"></i>
-                  <i class="fas fa-file-word fa-2x p-1 text-info"></i>
-                  <i class="fas fa-file-archive fa-2x p-1"></i>
-                </p>
-              </div>
+                  id="dropContainer"
+                  (click)="fileInput.click()"
+                  style="border: 1px solid black; height: 30%; width: 50%"
+                >
+                <div
+                *ngIf="archivos == 0"
+                >
+                    Arrastra
+                  <p class="mt-4">
+                    Permite:
+                    <i
+                      class="fas fa-file-powerpoint fa-2x p-1"
+                      style="background-color: orange"
+                    ></i>
+                    <i
+                      class="fas fa-file-pdf fa-2x p-1"
+                      style="background-color: red"
+                    ></i>
+                    <i
+                      class="fas fa-file-word fa-2x p-1"
+                      style="background-color: rgba(67, 127, 255, 0.863)"
+                    ></i>
+                    <i class="fas fa-file-archive fa-2x p-1"></i>
+                  </p>     
+                </div>
+                
+                <div
+                *ngIf="archivos"
+                >
+                <h4>{{archivos?.name}}</h4>
+                </div>
+                </div>
             </div>
             <br />
             <div class="d-flex justify-content-center">
@@ -37,6 +57,7 @@
                   type="file"
                   name="profile"
                   (change)="capturarFile($event)"
+                  #fileInput
                 />
 
                 <button

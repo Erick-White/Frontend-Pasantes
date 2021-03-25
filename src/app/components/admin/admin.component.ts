@@ -55,8 +55,7 @@ export class AdminComponent implements OnInit {
   //Guardar una nueva Convocatoria
   saveNew(){
 
-    this.convocatoriaService.addNewConvocatoria(this.convito).subscribe(response =>{
-      console.log(response);
+    this.convocatoriaService.addNewConvocatoria(this.convito).subscribe(() =>{
       Swal.fire({
         icon: 'success',
         title: 'La Convocatoria ha sido Creada.',
@@ -65,7 +64,6 @@ export class AdminComponent implements OnInit {
       })
     },error =>{console.log(<any>error)
     })
-    console.log(this.convito)
   }
 
 }

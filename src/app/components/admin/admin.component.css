@@ -1,0 +1,6 @@
+a {
+    color: inherit;
+  }
+a:link, a:hover {
+  text-decoration: none
+}

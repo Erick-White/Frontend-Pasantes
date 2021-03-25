@@ -22,8 +22,6 @@ export class FileUploadComponent implements OnInit {
 
   }
 
-
-
   ngOnInit() {
 
 
