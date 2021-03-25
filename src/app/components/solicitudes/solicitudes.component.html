@@ -5,8 +5,8 @@
     <!--INICIO SOLICITUD-->
     <div id="solicitud">
       <div
-        class="card text-center mt-5"
-        *ngFor="let p of pasante; let i = index"
+        class="card text-center mt-3"
+        *ngFor="let p of pasante; index as i"
       >
         <div class="card-body">
           <form id="msform" #f="ngForm">
@@ -147,15 +147,16 @@
               <div class="col-md-6">
                 <button
                   class="btn btn-info btn-block"
-                  type="button"
+                  role="button"
                   data-toggle="collapse"
-                  data-target="#collapseExample"
+                   [attr.data-target] = "'#somestring' + p.idRequestInternship"
                   aria-expanded="false"
                   aria-controls="collapseExample"
+
                 >
                   Informacion adicional.
                 </button>
-                <div class="collapse" id="collapseExample">
+                <div class="collapse" id="somestring{{p.idRequestInternship}}" >
                   <div class="card mt-3 card-body text-left">
                     <p>
                       <b>Carrera:</b> <br />
@@ -189,13 +190,14 @@
                   class="btn btn-info btn-block"
                   type="button"
                   data-toggle="collapse"
-                  data-target="#collapseExample2"
+                  data-target="i"
                   aria-expanded="false"
                   aria-controls="collapseExample"
+                  [attr.data-target] = "'#somestring2' + p.idRequestInternship"
                 >
                   Auto Evaluaciones.
                 </button>
-                <div class="collapse" id="collapseExample2">
+                <div class="collapse" id="somestring2{{p.idRequestInternship}}">
                   <div class="card mt-3 card-body">
                     <h3 class="text-left">Auto evaluaciones</h3>
                     <p class="text-left m-0">HTML</p>
@@ -283,3 +285,9 @@
   </p>
   <p class="mb-0">Espere Por favor...</p>
 </div>
+
+<script>
+$(document).ready(function() {
+    console.log("ready!");
+});
+</script>

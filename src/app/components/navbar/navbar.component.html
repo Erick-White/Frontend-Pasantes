@@ -11,9 +11,7 @@
             <span class="navbar-toggler-icon text-primary"></span>
         </button>
 
-    <button class="btn btn-outline-danger" (click)="logout()">
-            Salir
-        </button>
+    
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -24,8 +22,8 @@
                         {{username}}
                     </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Salir</a>
                     <a class="dropdown-item" href="#">Perfil</a>
+                    <a class="dropdown-item" (click)="logout()" href="#">Salir</a>
                 </div>
 
             </div>

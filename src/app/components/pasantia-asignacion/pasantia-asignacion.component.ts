@@ -100,7 +100,7 @@ export class PasantiaAsignacionComponent implements OnInit {
     })
   }
 
-   _toggleSidebar(_opened : any) {
+   _toggleSidebar(_opened : boolean) {
      console.log("Desde asignaciones "+_opened);
     this._opened = _opened;
 

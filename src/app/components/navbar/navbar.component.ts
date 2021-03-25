@@ -29,7 +29,7 @@ public _toggleSidebar() {
 
     this._opened = !this._opened;
 
-  if(this._opened == true){
+  if(this._opened === true){
      _opened = false;
   }
   else{

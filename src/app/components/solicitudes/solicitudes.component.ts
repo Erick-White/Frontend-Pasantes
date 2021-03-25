@@ -8,6 +8,8 @@ import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+declare var jQuery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-solicitudes',
@@ -19,8 +21,8 @@ export class SolicitudesComponent implements OnInit {
  pasante: Pasantes[] = [];
  loading = false;
  pasantes  = new Pasantes();
- 
- counter: number = 0;
+
+// counter: number = 0;
 
 // Informacion de la Pasantia en la que se encuetra
 convoAsig: Convocatorias = new Convocatorias;
@@ -51,7 +53,9 @@ convoAsig: Convocatorias = new Convocatorias;
 
   ngOnInit(): void {
 
-    
+
+
+
     // tslint:disable-next-line: deprecation
     //  this.updateSubscription = interval(1000).subscribe(
     //    (val) => {
@@ -60,12 +64,12 @@ convoAsig: Convocatorias = new Convocatorias;
     //   }
     // );
 
-      this.Services.refreshNeeded$.subscribe(
-        resp => {
-          this.getAll();
+      // this.Services.refreshNeeded$.subscribe(
+      //   resp => {
+      //     this.getAll();
 
-        }
-      );
+      //   }
+      // );
 
       this.loading = true;
       this.getAll();
@@ -105,6 +109,9 @@ convoAsig: Convocatorias = new Convocatorias;
           // tslint:disable-next-line: deprecation
           .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
     console.log(id);
+    //window.location.reload()
+
+
 
 
 
@@ -133,18 +140,25 @@ convoAsig: Convocatorias = new Convocatorias;
         text: `Esta seguro de aceptar a: ${user?.name} ${ user?.lastname}`,
         icon: 'question',
         showConfirmButton: true,
+        confirmButtonText:"Si",
         showCancelButton: true
       }).then(resp => {
         if (resp.value){
           if (!user) { return; }
           this.Services.AcceptIntern(userToSend)
+
             .pipe(first())
             // tslint:disable-next-line: deprecation
             .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
 
+
           this.borrar(id);
+
         }
       });
+
+
+
 
   }
 
@@ -159,6 +173,8 @@ convoAsig: Convocatorias = new Convocatorias;
 
 
   }*/
+
+
 
 
 }
