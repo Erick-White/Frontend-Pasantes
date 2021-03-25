@@ -13,11 +13,16 @@ export class FilesService {
   constructor(private http: HttpClient, private router: Router, ) { }
 
 
-  URL = "https://internshipailogic.azurewebsites.net"
+  URL = "https://ailogicinternship.azurewebsites.net/api/Files"
 
-  // FileUpload(File:Files): Observable<any> {
-  //   const Filess = {Filename: File.fileName,Path: File.path};
-  //   const header = new HttpHeaders().set('Content-Type', 'application/json');
-  //   return this.http.post(`${this.URL}/api/Files`, Filess, { headers: header });
-  // }
+  files(id:number):Observable<Files[]>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http
+    .get<Files[]>(`${this.URL}/${id}`,{headers});
+  }
+
+
 }

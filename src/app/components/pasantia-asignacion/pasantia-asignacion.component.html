@@ -1,10 +1,12 @@
 <app-navbar (isOpen)="_toggleSidebar($event)"></app-navbar>
 
+
+<!-- Page Content -->
 <ng-sidebar-container>
   <ng-sidebar class="m-4" [opened]="_opened">
     <div class="list-group list-group-flush rounded mx-3 mt-2">
       <a
-        href="index.html"
+        [routerLink]="['/admin']"
         class="list-group-item list-group-item-action bg-light m-1 border"
       >
         <i class="fas fa-th-list"></i> Pasantias</a
@@ -22,7 +24,7 @@
         <i class="fas fa-upload"></i> Repositorio</a
       >
       <a
-        href="lista.html"
+        [routerLink]="['/lista-pasante']"
         class="list-group-item list-group-item-action bg-light m-1 border"
       >
         <i class="fas fa-users"></i> Pasantes</a
@@ -58,19 +60,6 @@
             <a [routerLink]="'/admin'" class="m-2 text-dark">
               <i class="fas fa-backspace"></i> Volver
             </a>
-
-            <p
-              *ngIf="convoAsig.status == true"
-              class="float-right text-success mt-3"
-            >
-              Estado: Activa
-            </p>
-            <p
-              *ngIf="convoAsig.status == false"
-              class="float-right text-danger mt-3"
-            >
-              Estado: Inactiva
-            </p>
             <div class="row" id="divCartas">
               <div
                 class="col-md-3 shadow-sm rounded m-4  border-dark  "
@@ -293,4 +282,5 @@
       </div>
     </div>
   </div>
+
 </ng-sidebar-container>

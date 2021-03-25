@@ -10,7 +10,7 @@ export class Asignaciones {
         initial_date?: string;
         final_date?: string;
         intern_limit?: 0; 
-        status?: boolean;
+        status?: string;
     
     }
     title?: string

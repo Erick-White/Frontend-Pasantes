@@ -8,7 +8,7 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class AsignacionesService {
 
-  URL = 'https://ailogicinternship.azurewebsites.net/api/assignments'
+  URL = 'https://ailogicinternship.azurewebsites.net/api/Assignments'
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class AsignacionesService {
 
     });
     return this.http
-    .get<Asignaciones[]>(`${this.URL}/Internship/active`,{headers});
+    .get<Asignaciones[]>(`${this.URL}`,{headers});
   }
 
   asignaciones(id:number):Observable<Asignaciones[]>{

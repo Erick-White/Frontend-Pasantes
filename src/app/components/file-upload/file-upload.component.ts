@@ -61,5 +61,7 @@ export class FileUploadComponent implements OnInit {
     },error => {
       console.log(error);
     });
+
+    
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute } from '@angular/router';
+
 import { first } from 'rxjs/operators';
 import { Pasantes } from 'src/app/models/pasantes';
 import { PasantesService } from 'src/app/services/pasantes.service';
@@ -22,10 +24,11 @@ export class SolicitudesComponent implements OnInit {
  loading = false;
  pasantes  = new Pasantes();
 
-// counter: number = 0;
+ counter: number = 0;
 
 // Informacion de la Pasantia en la que se encuetra
-convoAsig: Convocatorias = new Convocatorias;
+convoPasantes: Convocatorias = new Convocatorias;
+
 
 
   // tslint:disable-next-line: new-parens
@@ -49,11 +52,23 @@ convoAsig: Convocatorias = new Convocatorias;
   // tslint:disable-next-line: new-parens
 
 
-  constructor(private Services: PasantesService) { }
+  constructor(private Services: PasantesService, private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService) { }
+
+  convocatoriaId: number = 0;
+
 
   ngOnInit(): void {
 
 
+
+
+    //Variable para mostrar la Convocatoria en la que se encuentra
+    this.convocatoriaId = +this.activerouter.snapshot.params['id'];
+
+    //Servicio para traer la informacion de una sola Convocatoria
+    this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
+    this.convoPasantes = data;
+  });
 
 
     // tslint:disable-next-line: deprecation
@@ -87,8 +102,10 @@ convoAsig: Convocatorias = new Convocatorias;
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
         this.loading = false;
-
-
+        if(this.convoPasantes.intern_limit == this.counter){
+         return;
+        }
+        console.log(this.convoPasantes.intern_limit)
 
       });
 
@@ -152,7 +169,9 @@ convoAsig: Convocatorias = new Convocatorias;
             .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
 
 
-          this.borrar(id);
+            this.counter++
+            console.log(this.counter)
+            this.borrar(id);
 
         }
       });

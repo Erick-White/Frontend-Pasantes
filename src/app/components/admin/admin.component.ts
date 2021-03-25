@@ -25,7 +25,6 @@ export class AdminComponent implements OnInit {
 
 
    _toggleSidebar(_opened : any) {
-     console.log("Desde admin "+_opened);
     this._opened = _opened;
 
   }
