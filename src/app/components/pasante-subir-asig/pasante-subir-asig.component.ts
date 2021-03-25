@@ -58,6 +58,7 @@ export class PasanteSubirAsigComponent implements OnInit {
     this.archivos = archivoCapturado;
   }
 
+
   subirArchivo(): any {
     const formularioDatos = new FormData();
     formularioDatos.append('EmailUser', this.userEmail);
@@ -69,10 +70,11 @@ export class PasanteSubirAsigComponent implements OnInit {
     this.http.post('https://ailogicinternship.azurewebsites.net/api/Files', formularioDatos )
     .subscribe(res => {
       console.log(res);
-      this.router.navigate(['/home-pasante'])
     },error => {
       console.log(error);
     });
+
+    this.router.navigate(['/home-pasantes'])
 
   }
 
