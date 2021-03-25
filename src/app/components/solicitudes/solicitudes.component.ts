@@ -27,7 +27,7 @@ export class SolicitudesComponent implements OnInit {
 // Informacion de la Pasantia en la que se encuetra
 convoPasantes: Convocatorias = new Convocatorias;
 
-
+_opened = true;
 
   // tslint:disable-next-line: new-parens
 
@@ -54,7 +54,10 @@ convoPasantes: Convocatorias = new Convocatorias;
 
   convocatoriaId: number = 0;
 
+  _toggleSidebar(_opened : any) {
+    this._opened = _opened;
 
+  }
   ngOnInit(): void {
 
     //Variable para mostrar la Convocatoria en la que se encuentra

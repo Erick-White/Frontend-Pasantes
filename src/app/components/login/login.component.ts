@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  // tslint:disable-next-line: typedef
+  // Metodo login
   login(form: NgForm) {
     this.loading = true;
     this.Auth.login(this.Usuario).subscribe(resp => {

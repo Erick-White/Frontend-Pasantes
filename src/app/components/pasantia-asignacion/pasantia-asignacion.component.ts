@@ -29,6 +29,8 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
+
+  
   convocatoriaId: number = 0;
 
   asignacionId: number = 0;
@@ -100,8 +102,7 @@ export class PasantiaAsignacionComponent implements OnInit {
     })
   }
 
-   _toggleSidebar(_opened : any) {
-     console.log("Desde asignaciones "+_opened);
+  _toggleSidebar(_opened : any) {
     this._opened = _opened;
 
   }
