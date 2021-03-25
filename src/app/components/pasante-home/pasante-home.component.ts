@@ -5,12 +5,16 @@ import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { AsignacionesService } from "../../services/asignaciones.service";
 import {Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { PasantesService } from 'src/app/services/pasantes.service';
 
 @Component({
   selector: 'app-pasante-home',
   templateUrl: './pasante-home.component.html',
   styleUrls: ['./pasante-home.component.css']
 })
+
+
+
 export class PasanteHomeComponent implements OnInit {
 
   //Informacion de la Pasantia en la que se encuetra
@@ -23,7 +27,8 @@ export class PasanteHomeComponent implements OnInit {
   //Variable para traer Asignaciones
   asigna = new Asignaciones()
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
+  constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService
+    , private asignacionesService: AsignacionesService) { }
 
   // convocatoriaId: number = 0;
 
@@ -54,5 +59,7 @@ export class PasanteHomeComponent implements OnInit {
       });
       console.log(this.asigna.id_Assignment)
   }
+
+  
 
 }

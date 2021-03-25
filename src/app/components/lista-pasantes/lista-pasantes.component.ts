@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { PasantesAll} from '../../models/pasantes-all';
 import { Pasantes } from 'src/app/models/pasantes';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RolesService } from '../../services/roles.service';
 import { RolesResponse } from 'src/app/models/Roles';
 import { first } from 'rxjs/operators';

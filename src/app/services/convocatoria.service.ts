@@ -50,7 +50,7 @@ export class ConvocatoriaService {
     return this.http
     .get<Convocatorias>( `${this.URL}/${id}`,{headers})
     .pipe(
-      tap(()=> 
+      tap(()=>
       console.log(`fetch convocatoria id=${id}`))
       )
   }

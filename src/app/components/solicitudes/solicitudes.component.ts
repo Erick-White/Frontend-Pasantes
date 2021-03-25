@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { Pasantes } from 'src/app/models/pasantes';
 import { PasantesService } from 'src/app/services/pasantes.service';
+import { Convocatorias } from '../../models/convocatorias';
+import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -15,8 +17,15 @@ import { DatePipe } from '@angular/common';
 export class SolicitudesComponent implements OnInit {
 
  pasante: Pasantes[] = [];
-  loading = false;
+ loading = false;
  pasantes  = new Pasantes();
+ pages = 1;
+ 
+ counter = 0;
+
+// Informacion de la Pasantia en la que se encuetra
+convoAsig: Convocatorias = new Convocatorias;
+
 
   // tslint:disable-next-line: new-parens
 
@@ -42,6 +51,8 @@ export class SolicitudesComponent implements OnInit {
   constructor(private Services: PasantesService) { }
 
   ngOnInit(): void {
+
+    
     // tslint:disable-next-line: deprecation
     //  this.updateSubscription = interval(1000).subscribe(
     //    (val) => {

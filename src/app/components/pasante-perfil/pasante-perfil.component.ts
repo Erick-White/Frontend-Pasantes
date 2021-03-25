@@ -27,7 +27,7 @@ export class PasantePerfilComponent implements OnInit {
   ngOnInit(): void {
     let pasantesId = this.route.snapshot.params['id'];
     this.admin.getPasantesById(pasantesId).subscribe(res => {
-      this.pasantee = res;  
+      this.pasantee = res; 
     })
     
   }

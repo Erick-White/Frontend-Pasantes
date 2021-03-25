@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedService } from 'src/app/shared/shared';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../services/admin.service';
 import { CookieService } from 'ngx-cookie-service';
 import { RolesResponse } from '../../models/Roles';
+import { PasantesService } from '../../services/pasantes.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,14 +12,18 @@ import { RolesResponse } from '../../models/Roles';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  
+ 
   Mostrar = false;
   username: any = null;
+  Intern : any;
   public _opened: boolean = true;
   @Output() isOpen = new EventEmitter<boolean>();
 
 
-  constructor(private _adminService: AdminService, private router: Router, private cookie : CookieService ) { }
+  constructor(private _adminService: AdminService, private router: Router, private cookie : CookieService,
+    private route: ActivatedRoute, private pasante : PasantesService
+    ) { }
 
 
 
@@ -46,6 +51,8 @@ public _toggleSidebar() {
 
   ngOnInit(): void {
       this.username = localStorage.getItem('email');
+      //this.getEmail(this.username);
+      
   }
 
   // tslint:disable-next-line: typedef
@@ -59,6 +66,12 @@ public _toggleSidebar() {
     this.router.navigateByUrl('/login');
   }
 
-
-
+ /* getEmail(email: any) {
+    this.pasante.GetEmail(email).subscribe(
+      resp => {
+        this.Intern = resp.idInternt;
+        console.log(resp);
+      }
+    );
+  }*/
 }
