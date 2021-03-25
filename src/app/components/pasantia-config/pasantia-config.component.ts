@@ -14,12 +14,15 @@ export class PasantiaConfigComponent implements OnInit {
   //Informacion de la convocatoria en la que se encuentra
   convoConfig: Convocatorias = new Convocatorias();
   
-
+  _opened = true;
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService) { }
 
   //Variable que guarda el Id de la convocatoria
    convocatoriaId: number = 0;
-  
+   _toggleSidebar(_opened : any) {
+    this._opened = _opened;
+
+  }
   ngOnInit(): void {
     
     //Aqui se le pasa el Id a la variable

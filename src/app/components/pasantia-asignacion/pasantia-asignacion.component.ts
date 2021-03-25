@@ -31,6 +31,8 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
+
+  
   convocatoriaId: number = 0;
 
   ngOnInit(): void {
@@ -81,7 +83,7 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   }
 
-   _toggleSidebar(_opened : boolean) {
+  _toggleSidebar(_opened : any) {
     this._opened = _opened;
   }
 

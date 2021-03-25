@@ -14,12 +14,17 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
 
   //Informacion de la asignacion en la que se encuentra
   asigna: Asignaciones = new Asignaciones();
-
+  _opened = true;
   constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private location: Location) { }
   
   //Variable que guarda el Id de la asignacion
   asignacionId: number = 0;
 
+
+  _toggleSidebar(_opened : any) {
+    this._opened = _opened;
+
+  }
   ngOnInit(): void {
 
     //Aqui se le pasa el Id a la variable
