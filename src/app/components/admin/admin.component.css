@@ -4,9 +4,7 @@
 } */
 
 
-a{
-  text-decoration: none;
-}
+
 
 #innerbox{
   overflow-y: hidden;
@@ -14,4 +12,10 @@ a{
 
 ng-sidebar{
   overflow: hidden;
+}
+a {
+    color: inherit;
+  }
+a:link, a:hover {
+  text-decoration: none
 }

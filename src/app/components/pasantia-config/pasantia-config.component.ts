@@ -54,7 +54,7 @@ export class PasantiaConfigComponent implements OnInit {
   //Funcion para actualizar la Convocatoria
   updateInfo():void{
     this.convocatoriaService.updateConvo(this.convoConfig,this.convocatoriaId).subscribe(() =>{
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/admin/'+this.convocatoriaId])
     },
     error =>{console.log(<any>error)
     })
@@ -87,7 +87,6 @@ export class PasantiaConfigComponent implements OnInit {
           'success'
         )
         this.router.navigate(['/admin']).then(() => {
-          window.location.reload();
         });
       }
     })

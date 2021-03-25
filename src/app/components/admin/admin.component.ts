@@ -68,7 +68,6 @@ export class AdminComponent implements OnInit {
     },
     error =>{console.log(<any>error)
     })
-    console.log(this.convito)
   }
 
 }
