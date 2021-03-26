@@ -75,6 +75,100 @@
                           <h3 class="card-title"></h3>
                           <p>
                             {{asigna.description}}
+<app-navbar (isOpen)="_toggleSidebar($event)"> </app-navbar>
+<!-- Page Content -->
+<ng-sidebar-container>
+  <ng-sidebar class="m-4" [opened]="_opened">
+    <div class="list-group list-group-flush rounded mx-3 mt-2">
+      <a
+        routerLink="/admin"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-th-list"></i> Pasantias</a
+      >
+      <a
+        routerLink="/formulario"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-book"></i> Formulario</a
+      >
+      <a
+        href="repo.html"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-upload"></i> Repositorio</a
+      >
+      <a
+        routerLink="/lista-pasante"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-users"></i> Pasantes</a
+      >
+    </div>
+  </ng-sidebar>
+
+  <div id="page-content-wrapper" ng-sidebar-content>
+    <div class="container">
+      <nav class="mt-4">
+        <h1>Vista de Asignacion</h1>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a
+            class="nav-link active"
+            id="nav-info-tab"
+            data-toggle="tab"
+            href="#nav-info"
+            role="tab"
+            aria-controls="nav-info"
+            aria-selected="true"
+            >Info</a
+          >
+          <a
+            class="nav-link"
+            id="nav-repo-tab"
+            data-toggle="tab"
+            href="#nav-repo"
+            role="tab"
+            aria-controls="nav-repo"
+            aria-selected="true"
+            >Repositorio</a
+          >
+          <a
+            class="nav-link"
+            id="nav-edit-tab"
+            data-toggle="tab"
+            href="#nav-edit"
+            role="tab"
+            aria-controls="nav-edit"
+            aria-selected="false"
+            >Editar Asignaciones</a
+          >
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div
+          class="tab-pane fade show active"
+          id="nav-info"
+          role="tabpanel"
+          aria-labelledby="nav-info-tab"
+        >
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                </h2>
+              </div>
+              <div
+              >
+                <div class="card-body">
+                  <div class="divdetalle">
+                    <div class="d-block justify-content-center">
+                      <div class="card bg-light">
+                        <div class="card-body">
+                          <h2>{{ asigna.title }}</h2>
+
+                          <h3 class="card-title"></h3>
+                          <p>
+                            {{ asigna.description }}
                           </p>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -186,6 +280,153 @@
                 >
                   Guardar
                 </button>
+          class="tab-pane fade show"
+          id="nav-repo"
+          role="tabpanel"
+          aria-labelledby="nav-repo-tab"
+        >
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link btn-block text-left"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    David Solano
+                  </button>
+                </h2>
+              </div>
+
+              <div
+                id="collapseOne"
+                class="collapse"
+                aria-labelledby="headingOne"
+                data-parent="#accordionExample"
+              >
+                <div class="card-body">
+                  <div class="divdetalle float-left p-1">
+                    <div class="d-block justify-content-center">
+                      <div class="card bg-light">
+                        <div class="card-body">
+                          <h2>{{ asigna.title }}</h2>
+
+                          <h3 class="card-title"></h3>
+                          <p>
+                            {{ asigna.description }}
+                          </p>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                          <img
+                            src="../../assets/ppticon.svg"
+                            width="250"
+                            height="205"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="nav-edit"
+          role="tabpanel"
+          aria-labelledby="nav-edit-tab"
+        >
+          <div class="row">
+            <div class="col-lg-9">
+              <h2 class="mt-5 ml-5">Editar Asignacion</h2>
+              <div class="container bg-light p-3 shadow-sm mt-3">
+                <div class="col-md-12">
+                  <form>
+                    <div>
+                      <div>
+                        <p>Nombre de la Asignacion</p>
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control"
+                          value="{{ asigna.title }}"
+                          [(ngModel)]="asigna.title"
+                        />
+                        <div>
+                          <p>Tipo</p>
+                          <select
+                            name="modality"
+                            class="form-control"
+                            [(ngModel)]="asigna.modality"
+                          >
+                            <option value="">Individual</option>
+                            <option value="">Grupal</option>
+                          </select>
+                        </div>
+                        <div>
+                          <p>Fecha de Finalización</p>
+                          <input
+                            type="hidden"
+                            name="initial_date"
+                            class="form-control"
+                            value=""
+                          />
+                          <input
+                            type="date"
+                            name="limitDate"
+                            class="form-control"
+                            datepicker="true"
+                            datepicker_format="yyyy-MM-dd"
+                            value="{{ asigna.limitDate | date: 'yyyy-MM-dd' }}"
+                            [(ngModel)]="asigna.limitDate"
+                          />
+                        </div>
+                        <div>
+                          <p>Descripcion</p>
+                          <div class="input-group">
+                            <textarea
+                              name="description"
+                              class="form-control"
+                              cols="30"
+                              aria-label="With textarea"
+                              value="{{ asigna.description }}"
+                              [(ngModel)]="asigna.description"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <a
+                    type="button"
+                    [routerLink]="'/admin/' + asigna.id_Internship"
+                    name="volver inicio"
+                    class="volver btn btn-info float-left mt-5 text-white"
+                    style="background-color: #49abc6"
+                    >Volver</a
+                  >
+                  <button
+                    type="button"
+                    class="btn btn-danger mt-5 m-2"
+                    (click)="confirmBox()"
+                  >
+                    Eliminar Asignacion
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-info mt-5 right float-right text-white"
+                    style="background-color: #49abc6"
+                    (click)="updateInfo()"
+                  >
+                    Guardar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -202,5 +443,17 @@
     <!--Fin Modal Crear Pasantia-->
   </div>
   
+  </div>
+
+
+        <!-- /#page-content-wrapper -->
+      </div>
+      <!-- /#wrapper -->
+
+      <!--Modal Crear Pasantia-->
+      <!-- Modal -->
+
+      <!--Fin Modal Crear Pasantia-->
+    </div>
   </div>
 </ng-sidebar-container>

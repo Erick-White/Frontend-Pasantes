@@ -26,9 +26,8 @@ export class AdminService {
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
-    return this.http.get<any>(this.URL + 'Intern', { headers })
-    .pipe(
-      tap(()=>{
+    return this.http.get<any>(this.URL + 'Intern', { headers }).pipe(
+      tap(() => {
         this._refreshNeeded$.next();
       })
     );
@@ -45,12 +44,8 @@ export class AdminService {
 
     });
 
-    return this.http.get<PasantesAll>(`${this.URL}Intern/${id}`, { headers })
-    .pipe(
-      tap(()=>{
-        this._refreshNeeded$.next();
-      })
-    );
+    return this.http.get<PasantesAll>(`${this.URL}Intern/${id}`, { headers });
+    
   }
 
 
@@ -59,12 +54,8 @@ export class AdminService {
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
-    return this.http.delete<any>(`${this.URL}Intern/${id}`, { headers })
-    .pipe(
-      tap(()=>{
-        this._refreshNeeded$.next();
-      })
-    );
+    return this.http.delete<any>(`${this.URL}Intern/${id}`, { headers });
+    
   }
 
   UpdatePasantes(id: any,pasante:Object): Observable<any> {

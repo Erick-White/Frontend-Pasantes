@@ -1,7 +1,7 @@
 <!--NAV ADMIN-->
 <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #49abc6">
 
-  <button class="btn btn-light mobile " (click)="_toggleSidebar() " id="menu-toggle" ><i class="fas fa-bars"></i></button>
+    <button class="btn btn-light mobile " (click)="_toggleSidebar() " id="menu-toggle"><i class="fas fa-bars"></i></button>
 
 
     <a href="/admin" class="text-white">
@@ -18,9 +18,8 @@
         <ul class="navbar-nav ml-auto ">
             <div class="dropdown">
                 <a class="btn text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/assets/user.svg" width="35" alt="">
-                        {{username}}
-                    </a>
+                    <img src="/assets/user.svg" width="35" alt=""> {{username}}
+                </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Perfil</a>
                     <a class="dropdown-item" (click)="logout()" href="#">Salir</a>

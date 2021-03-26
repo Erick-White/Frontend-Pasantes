@@ -22,11 +22,11 @@
                     <div class="card-body">
                         <form id="msform" #f="ngForm">
                             <button type="button" (click)="Update(p.idRequestInternship)" class="btn btn-primary float-right ml-2">
-                    Aceptar
-                  </button>
+                                Aceptar
+                            </button>
                             <button type="button" (click)="borrar(p.idRequestInternship)" class="btn btn-danger float-right ml-2" style="margin-left: 12px">
-                    Declinar
-                  </button>
+                                Declinar
+                            </button>
 
                             <div class="row" style="margin-top: 19px">
                                 <div class="col-xs-2 text-center">
@@ -79,8 +79,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+
                         Informacion adicional.
-                      </button>
+                      </button> Informacion adicional.
+
+
                                     <div class="collapse" id="collapseExample">
                                         <div class="card mt-3 card-body text-left">
                                             <p>
@@ -105,8 +108,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+
                         Auto Evaluaciones.
-                      </button>
+                      </button> Auto Evaluaciones.
+
                                     <div class="collapse" id="collapseExample2">
                                         <div class="card mt-3 card-body">
                                             <h3 class="text-left">Auto evaluaciones</h3>
@@ -146,7 +151,6 @@
                 <i class="fa fa-exclamation fa-2x"></i>
             </p>
         </div>
-
         <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast">
             <h4 class="alert-heading">Cargando</h4>
             <p>
@@ -154,6 +158,12 @@
             </p>
             <p class="mb-0">Espere Por favor...</p>
         </div>
+
+
+
+
+
+
 
 
 

@@ -39,6 +39,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { AdminFilesComponent } from './components/admin-files/admin-files.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
+import { DndDirective } from './directives/dnd.directive';
+
 
 
 @NgModule({
@@ -69,6 +71,7 @@ import { PreviewComponent } from './components/preview/preview.component';
     AdminFilesComponent,
     HistorialComponent,
     PreviewComponent,
+    DndDirective,
 
 
   ],
