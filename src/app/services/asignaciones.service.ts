@@ -10,7 +10,9 @@ export class AsignacionesService {
 
   URL = 'https://ailogicinternship.azurewebsites.net/api/Assignments'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+
+  }
 
   private _refreshNeeded$ = new Subject<void>();
 
@@ -28,7 +30,7 @@ export class AsignacionesService {
 
   asignaciones(id:number):Observable<Asignaciones[]>{
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + localStorage.getItem('token')
+      'Authorization':'Bearer ' + localStorage.getItem('token') 
 
     });
     return this.http

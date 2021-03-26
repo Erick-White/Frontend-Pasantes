@@ -36,6 +36,8 @@ import { SidebarModule } from 'ng-sidebar';
 
 
 import { CookieService } from 'ngx-cookie-service';
+import { DndDirective } from './directives/dnd.directive';
+
 
 
 @NgModule({
@@ -63,6 +65,7 @@ import { CookieService } from 'ngx-cookie-service';
     PasantiaAsignacionVistaComponent,
     SidebarComponent,
     ErrorComponent,
+    DndDirective,
 
 
   ],

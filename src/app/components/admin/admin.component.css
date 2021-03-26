@@ -1,0 +1,21 @@
+/* #innerbox
+{
+
+} */
+
+#innerbox {
+    overflow-y: hidden;
+}
+
+ng-sidebar {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+}
+
+a:link,
+a:hover {
+    text-decoration: none
+}

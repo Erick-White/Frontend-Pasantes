@@ -27,6 +27,8 @@ export class SolicitudesComponent implements OnInit {
  
  counter = 0;
 
+ 
+
 // Informacion de la Pasantia en la que se encuetra
 convoPasantes: Convocatorias = new Convocatorias;
 
@@ -61,10 +63,14 @@ _opened = true;
     this._opened = _opened;
 
   }
+  
+
+
+
+
+
+  
   ngOnInit(): void {
-
-
-
 
     //Variable para mostrar la Convocatoria en la que se encuentra
     this.convocatoriaId = +this.activerouter.snapshot.params['id'];

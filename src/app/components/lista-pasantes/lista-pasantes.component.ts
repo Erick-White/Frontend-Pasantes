@@ -30,6 +30,7 @@ export class ListaPasantesComponent implements OnInit {
   // tslint:disable-next-line: new-parens
   subcription: Subscription = new Subscription;
 
+//Algo
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
               private Roles : RolesService
 

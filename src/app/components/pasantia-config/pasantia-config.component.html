@@ -42,23 +42,125 @@
                                             <div class="input-group">
                                                 <textarea name="description" class="form-control" cols="30" aria-label="With textarea" value="{{convoConfig.description}}" [(ngModel)]="convoConfig.description"></textarea
                         >
-                      </div>
+<app-navbar (isOpen)="_toggleSidebar($event)"> </app-navbar>
+
+<ng-sidebar-container>
+  <ng-sidebar class="m-4" [opened]="_opened">
+    <div class="list-group list-group-flush rounded mx-3 mt-2">
+      <a
+        routerLink="/admin"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-th-list"></i> Pasantias</a
+      >
+      <a
+        routerLink="/formulario"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-book"></i> Formulario</a
+      >
+      <a
+        href="repo.html"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-upload"></i> Repositorio</a
+      >
+      <a
+        routerLink="/lista-pasante"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-users"></i> Pasantes</a
+      >
+    </div>
+  </ng-sidebar>
+  <!-- Page Content -->
+  <div id="page-content-wrapper" ng-sidebar-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h2 class="mt-5 ml-5">Configuracion de pasantia</h2>
+          <div class="container bg-light p-3 shadow-sm mt-3">
+            <div class="col-md-12">
+              <form>
+                <div>
+                  <div>
+                    <p>Nombre de la pasantia</p>
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-control"
+                      value="{{ convoConfig.name }}"
+                      [(ngModel)]="convoConfig.name"
+                    />
+                    <div>
+                      <p>Cantidad de pasantes</p>
+                      <input
+                        type="text"
+                        name="intern_limit"
+                        class="form-control"
+                        value="{{ convoConfig.intern_limit }}"
+                        [(ngModel)]="convoConfig.intern_limit"
+                      />
                     </div>
-                  </div>
-                </div>
-              </form>
-              <a
-                type="button"
-                [routerLink]="'/admin/'+convoConfig.idInternship"
-                name="volver inicio"
-                class="volver btn btn-info float-left mt-5 text-white"
-                style="background-color: #49abc6"
-                >Volver</a
+                    <div>
+                      <p>Fecha de Finalización</p>
+                      <input
+                        type="hidden"
+                        name="initial_date"
+                        class="form-control"
+                        value="{{
+                          convoConfig.initial_date | date: 'yyyy-MM-dd'
+                        }}"
+                        [(ngModel)]="convoConfig.initial_date"
+                      />
+                      <input
+                        type="date"
+                        name="final_date"
+                        class="form-control"
+                        datepicker="true"
+                        datepicker_format="yyyy-MM-dd"
+                        value="{{
+                          convoConfig.final_date | date: 'yyyy-MM-dd'
+                        }}"
+                        [(ngModel)]="convoConfig.final_date"
+                      />
+                    </div>
+                    <div>
+                      <p>Descripcion</p>
+                      <div class="input-group">
+                        <textarea
+                          name="description"
+                          class="form-control"
+                          cols="30"
+                          aria-label="With textarea"
+                          value="{{ convoConfig.description }}"
+                          [(ngModel)]="convoConfig.description"
+                        ></textarea>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p>Status</p>
+                                            <div>
+                                                <select name="status" class="form-control" [(ngModel)]="convoConfig.status"> 
+                        <option value="">En Convocatoria</option>
+                        <option value="">En Proceso</option>
+                        <option value="">Finalizada</option>
+                        <option value="">Inactiva</option>
+                      </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <a type="button" [routerLink]="'/admin/'+convoConfig.idInternship" [routerLink]="'/admin/' + convoConfig.idInternship" name="volver inicio" class="volver btn btn-info float-left mt-5 text-white" style="background-color: #49abc6">Volver</a
               >
               <button
               (click)="confirmBox()"
               type="button"
               class="btn btn-danger mt-5 m-2"
+                (click)="confirmBox()"
+                type="button"
+                class="btn btn-danger mt-5 m-2"
               >
                 Eliminar pasantia
               </button>
@@ -66,6 +168,9 @@
                 (click) ="updateInfo()"
                 type="button"
                 class="btn btn-info  mt-5 float-right text-white"
+                (click)="updateInfo()"
+                type="button"
+                class="btn btn-info mt-5 float-right text-white"
                 style="background-color: #49abc6"
               >
                 Guardar
@@ -80,19 +185,19 @@
                 <a href="solicitudes.html" class="m-3 text-dark">
                   <i class="fas fa-user-plus"></i> Solicitudes
                 </a>
-              </li>
-  
-              <li class="list-group-item">
-                <a href="configuraciones.html" class="m-3 text-dark">
-                  <i class="fas fa-cog"></i> Configuracion
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div> -->
-      </div>
-    </div>
-    <!-- /#page-content-wrapper -->
-  </div>
-  <!-- /#wrapper -->
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="configuraciones.html" class="m-3 text-dark">
+                                    <i class="fas fa-cog"></i> Configuracion
+                                </a>
+                            </li>
+                            </ul>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
 </ng-sidebar-container>
