@@ -86,13 +86,15 @@
                   <div class="divdetalle">
                     <div class="d-block justify-content-center">
                       <div class="card bg-light">
-                        <div class="card-body">
+                        <div   class="card-body">
                           <h2>{{ asigna.title }}</h2>
 
                           <h3 class="card-title"></h3>
+                          <div [froalaView]="asigna.description!">
                           <p>
                             {{ asigna.description }}
                           </p>
+                          </div>
                         </div>
                         <div class="d-flex justify-content-center">
                           <img
@@ -147,9 +149,11 @@
                           <h2>{{ asigna.title }}</h2>
 
                           <h3 class="card-title"></h3>
+                          <div [froalaView]="asigna.description!">
                           <p>
                             {{ asigna.description }}
                           </p>
+                          </div>
                         </div>
                         <div class="d-flex justify-content-center">
                           <img
@@ -220,14 +224,18 @@
                         </div>
                         <div>
                           <p>Descripcion</p>
-                          <div class="input-group">
+                          <div   class="input-group">
                             <textarea
+                            [froalaEditor]
+                            [(froalaModel)]="asigna.description"
+
                               name="description"
                               class="form-control"
                               cols="30"
+                              rows="6"
                               aria-label="With textarea"
                               value="{{ asigna.description }}"
-                              [(ngModel)]="asigna.description"
+
                             ></textarea>
                           </div>
                         </div>

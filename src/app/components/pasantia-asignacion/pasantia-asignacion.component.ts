@@ -28,11 +28,16 @@ export class PasantiaAsignacionComponent implements OnInit {
   //Variable para traer Asignaciones
   asigna = new Asignaciones()
 
+  public options: Object = {
+  placeholderText: 'Edit Your Content Here!',
+  charCounterCount: false
+}
+
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
 
-  
+
   convocatoriaId: number = 0;
 
   ngOnInit(): void {
@@ -75,7 +80,7 @@ export class PasantiaAsignacionComponent implements OnInit {
           title: 'La Asignacion ha sido Creada.',
           showConfirmButton: false,
           timer: 1500
-        })     
+        })
       },
       error =>{
         console.log(<any>error)
