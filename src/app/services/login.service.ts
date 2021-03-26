@@ -96,7 +96,7 @@ export class LoginService {
   }
 
 
-  CambiarClave(Recovery: Recovery): Observable<any> {
+  RecuperarCuenta(Recovery: Recovery): Observable<any> {
     const change = { email: Recovery.email};
     const header = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post<any>(`${this.URL}Auth/linkchangepassword`,change,{ headers: header });
@@ -107,9 +107,10 @@ export class LoginService {
 
 
 
-  RecuperarClave(password:Password,id:any): Observable<any> {
-    const Change = { NewPass: password.password, RepeatNewPass: password.confirmpassword };
-    return this.http.post(`${this.URL}Auth/resetpassword/${id}`, Change);
+ CambiarClave(pass: Password, id: string): Observable<any> {
+    const header = new HttpHeaders().set('Content-Type', 'application/json');
+    const Change = { password: pass.password, confirmpassword: pass.confirmpassword };
+    return this.http.post<string>(`${this.URL}Auth/resetpassword/${id}`,Change,{ headers: header });
     
   }
 }

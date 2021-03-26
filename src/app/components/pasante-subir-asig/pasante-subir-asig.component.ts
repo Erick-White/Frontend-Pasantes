@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Asignaciones } from "../../models/asignaciones";
 import { AsignacionesService } from "../../services/asignaciones.service";
-import {Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common'
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-pasante-subir-asig',
   templateUrl: './pasante-subir-asig.component.html',
@@ -11,9 +13,14 @@ import Swal from 'sweetalert2';
 })
 export class PasanteSubirAsigComponent implements OnInit {
 
+  public previsualizacion: string = "";
+  public archivos: any = "";
+  uploadForm: FormGroup | any;
+  userEmail: string | Blob = "";
+
   asigna: Asignaciones = new Asignaciones();
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService) { }
+  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService,private http:HttpClient, private formBuilder: FormBuilder ) { }
 
   asignacionId: number = 0;
 
@@ -23,6 +30,9 @@ export class PasanteSubirAsigComponent implements OnInit {
   buttonDisable : boolean = false;
 
   ngOnInit(): void {
+
+    this.userEmail = localStorage.getItem('email')!;
+
     this.asignacionId = +this.activerouter.snapshot.params['id'];
     this.asignacionesService.getSingleAsignacion(this.asignacionId).subscribe(data =>{
       this.asigna = data
@@ -39,6 +49,32 @@ export class PasanteSubirAsigComponent implements OnInit {
       }
        
     })
+
+  }
+
+  capturarFile(event : any) {
+    const archivoCapturado = event.target.files[0];
+    console.log(archivoCapturado);
+    this.archivos = archivoCapturado;
+  }
+
+
+  subirArchivo(): any {
+    const formularioDatos = new FormData();
+    formularioDatos.append('EmailUser', this.userEmail);
+
+        formularioDatos.append('File' , this.archivos);
+        console.log(this.archivos);
+
+    //  const header = new HttpHeaders().set('Content-Type', 'multipart/form-data');
+    this.http.post('https://ailogicinternship.azurewebsites.net/api/Files', formularioDatos )
+    .subscribe(res => {
+      console.log(res);
+    },error => {
+      console.log(error);
+    });
+
+    this.router.navigate(['/home-pasantes'])
 
   }
 

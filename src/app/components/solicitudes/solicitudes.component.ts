@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute } from '@angular/router';
+
 import { first } from 'rxjs/operators';
 import { Pasantes } from 'src/app/models/pasantes';
 import { PasantesService } from 'src/app/services/pasantes.service';
@@ -8,6 +10,8 @@ import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+declare var jQuery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-solicitudes',
@@ -24,8 +28,9 @@ export class SolicitudesComponent implements OnInit {
  counter = 0;
 
 // Informacion de la Pasantia en la que se encuetra
-convoAsig: Convocatorias = new Convocatorias;
+convoPasantes: Convocatorias = new Convocatorias;
 
+_opened = true;
 
   // tslint:disable-next-line: new-parens
 
@@ -48,11 +53,28 @@ convoAsig: Convocatorias = new Convocatorias;
   // tslint:disable-next-line: new-parens
 
 
-  constructor(private Services: PasantesService) { }
+  constructor(private Services: PasantesService, private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService) { }
 
+  convocatoriaId: number = 0;
+
+  _toggleSidebar(_opened : any) {
+    this._opened = _opened;
+
+  }
   ngOnInit(): void {
 
-    
+
+
+
+    //Variable para mostrar la Convocatoria en la que se encuentra
+    this.convocatoriaId = +this.activerouter.snapshot.params['id'];
+
+    //Servicio para traer la informacion de una sola Convocatoria
+    this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
+    this.convoPasantes = data;
+  });
+
+
     // tslint:disable-next-line: deprecation
     //  this.updateSubscription = interval(1000).subscribe(
     //    (val) => {
@@ -61,12 +83,12 @@ convoAsig: Convocatorias = new Convocatorias;
     //   }
     // );
 
-      this.Services.refreshNeeded$.subscribe(
-        resp => {
-          this.getAll();
+      // this.Services.refreshNeeded$.subscribe(
+      //   resp => {
+      //     this.getAll();
 
-        }
-      );
+      //   }
+      // );
 
       this.loading = true;
       this.getAll();
@@ -84,8 +106,10 @@ convoAsig: Convocatorias = new Convocatorias;
         // tslint:disable-next-line: semicolon
         this.pasante = (resp as Pasantes[]);
         this.loading = false;
-
-
+        if(this.convoPasantes.intern_limit == this.counter){
+         return;
+        }
+        console.log(this.convoPasantes.intern_limit)
 
       });
 
@@ -106,6 +130,9 @@ convoAsig: Convocatorias = new Convocatorias;
           // tslint:disable-next-line: deprecation
           .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
     console.log(id);
+    //window.location.reload()
+
+
 
 
 
@@ -134,18 +161,27 @@ convoAsig: Convocatorias = new Convocatorias;
         text: `Esta seguro de aceptar a: ${user?.name} ${ user?.lastname}`,
         icon: 'question',
         showConfirmButton: true,
+        confirmButtonText:"Si",
         showCancelButton: true
       }).then(resp => {
         if (resp.value){
           if (!user) { return; }
           this.Services.AcceptIntern(userToSend)
+
             .pipe(first())
             // tslint:disable-next-line: deprecation
             .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
 
-          this.borrar(id);
+
+            this.counter++
+            console.log(this.counter)
+            this.borrar(id);
+
         }
       });
+
+
+
 
   }
 
@@ -160,6 +196,8 @@ convoAsig: Convocatorias = new Convocatorias;
 
 
   }*/
+
+
 
 
 }

@@ -7,6 +7,7 @@ import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { AsignacionesService } from "../../services/asignaciones.service";
 
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-pasantia-asignacion',
   templateUrl: './pasantia-asignacion.component.html',
@@ -24,11 +25,15 @@ export class PasantiaAsignacionComponent implements OnInit {
   ];
 
   //Variable para traer Asignaciones
-  asigna: Asignaciones = new Asignaciones()
+  asigna: Asignaciones = new Asignaciones();
+
+  
 
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
+
+  
   convocatoriaId: number = 0;
 
   asignacionId: number = 0;
@@ -37,9 +42,9 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     //Variable para mostrar la Convocatoria en la que se encuentra
       this.convocatoriaId = +this.activerouter.snapshot.params['id'];
-
       //Servicio para traer la informacion de una sola Convocatoria
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoAsig = data;
@@ -47,13 +52,14 @@ export class PasantiaAsignacionComponent implements OnInit {
       console.log(data)
 
     });
-
+    
     //Servicio para refrescar las pagina la agregar una nueva asignacion
-    this.asignacionesService.refreshNeeded$.subscribe(
-      response =>{
-        this.getAllAsignaciones();
-      });
+
+    
     this.getAllAsignaciones();
+   this.asignacionesService.refreshNeeded$.subscribe(() => {
+      this.getAllAsignaciones();
+    });
 
   }
 
@@ -100,8 +106,7 @@ export class PasantiaAsignacionComponent implements OnInit {
     })
   }
 
-   _toggleSidebar(_opened : any) {
-     console.log("Desde asignaciones "+_opened);
+  _toggleSidebar(_opened : any) {
     this._opened = _opened;
 
   }

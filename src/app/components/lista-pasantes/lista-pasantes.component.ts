@@ -7,6 +7,7 @@ import { RolesService } from '../../services/roles.service';
 import { RolesResponse } from 'src/app/models/Roles';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -23,20 +24,39 @@ export class ListaPasantesComponent implements OnInit {
   loading: boolean = false;
   name : any;
   p : number = 1;
+  _opened = true;
   
-//Algo
+  // tslint:disable-next-line: new-parens
+  // tslint:disable-next-line: new-parens
+  subcription: Subscription = new Subscription;
+
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
               private Roles : RolesService
 
-    ) { }
+  ) { }
+  
+  _toggleSidebar(_opened : any) {
+    this._opened = _opened;
+
+  }
 
   ngOnInit(): void {
     // this.admin.refreshNeeded$.subscribe(res => {
     //   this.GetAllPasantes();
     //   console.log(res);
     // })
+
     this.loading = true;
     this.GetAllPasantes();
+
+    this.subcription = this.admin.refreshNeeded$.subscribe(() =>{
+      
+      
+      this.GetAllPasantes();
+
+    });
+
+   
    
     
   //   this.route.params.subscribe(params => {
@@ -106,7 +126,7 @@ export class ListaPasantesComponent implements OnInit {
    });
   }
 
-  // tslint:disable-next-line: typedef
+  // Actualizar los roles de los pasantes
   Update(id: any) {
     const user = this.pasantes.find(x => x.idUser === id);
     console.log(user);
@@ -123,7 +143,7 @@ export class ListaPasantesComponent implements OnInit {
 
     
   }
-
+// Filtro
   search(){
     if(this.name === ""){
       this.ngOnInit();

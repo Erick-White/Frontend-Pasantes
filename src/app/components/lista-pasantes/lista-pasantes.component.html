@@ -1,68 +1,84 @@
-<app-navbar>
+<app-navbar (isOpen)="_toggleSidebar($event)">
+
 </app-navbar>
 
 
-
 <!-- Page Content -->
+<ng-sidebar-container>
+    <ng-sidebar class="m-4" [opened]="_opened">
+        <div class="list-group list-group-flush rounded mx-3 mt-2">
+            <a routerLink="/admin" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-th-list"></i> Pasantias</a>
+            <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-book"></i> Formulario</a>
+            <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-upload"></i> Repositorio</a>
+            <a routerLink="/lista-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-users"></i> Pasantes</a>
+        </div>
+    </ng-sidebar>
 
-<div class="container ">
-    <div class="row">
-        <div class="col-lg-9">
-            <h2 class="mt-3 ml-5">Lista Pasantes</h2>
-            <nav class="navbar">
-                <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" class="form-control col-md-6" placeholder="Ingrese el primer Nombre para buscar...">
-            </nav>
-            <div class="container p-3">
-                <div class="row" id="divCartas">
-                    <div class="table-responsive animated fadeIn fast">
-                        <table class="table mb-5">
+    <div class="container" ng-sidebar-content>
+        <div class="row">
+            <div class="col-lg-9">
+                <h2 class="mt-3 ml-5">Lista Pasantes</h2>
+                <nav class="navbar">
+                    <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" class="form-control" placeholder="Ingrese el primer Nombre para buscar...">
+                </nav>
+                <div class="container p-3">
+                    <div class="row" id="divCartas">
+                        <div class="table-responsive animated fadeIn fast">
+                            <table class="table mb-5">
 
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th width="5">Pasante</th>
-                                    <th></th>
-                                    <th>Rol</th>
-                                    <th>Estado</th>
-                                    <th>Configuración</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let Pasantes of pasantes |paginate: {itemsPerPage:5,currentPage:p};" class="shadow-sm bg-light">
-                                    <td>
-                                        <img src="/assets/user.svg" alt="" width="60" class="img-fluid rounded-circle" />
-                                    </td>
-                                    <td>
-                                        <span class="d-block mt-2">{{Pasantes.name}}</span>
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th width="5">Pasante</th>
+                                        <th></th>
+                                        <th>Rol</th>
+                                        <th>Estado</th>
+                                        <th>Configuración</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let Pasantes of pasantes |paginate: {itemsPerPage:5,currentPage:p} ;" class="shadow-sm bg-light">
+                                        <td>
+                                            <img src="/assets/user.svg" alt="" width="60" class="img-fluid rounded-circle" />
+                                        </td>
+                                        <td>
+                                            <span class="d-block mt-2">{{Pasantes.name}}</span>
 
-                                        <!-- <small>Gamma</small>-->
+                                            <!-- <small>Gamma</small>-->
 
 
 
-                                    </td>
+                                        </td>
 
-                                    <td class=""> <button class="btn btn-light text-decoration-none">Usuario</button> </td>
-                                    <td class="text-success"><button class="btn btn-light text-success"> Activo </button> </td>
+                                        <td class=""> <button class="btn btn-light text-decoration-none">Usuario</button> </td>
+                                        <td class="text-success"><button class="btn btn-light text-success"> Activo
+                                            </button> </td>
 
-                                    <td class="text-center">
+                                        <td class="text-center">
 
-                                        <a class="text-center btn btn-secondary" (click)="contactInfo(Pasantes.idInternt)" data-toggle="modal" data-target="#exampleModal">Configuracion<i class="fas fa-cog"></i>
+                                            <a class="text-center btn btn-secondary" (click)="contactInfo(Pasantes.idInternt)" data-toggle="modal" data-target="#exampleModal">Configuracion<i class="fas fa-cog"></i>
 
                                             </a>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)=" p = $event"></pagination-controls>
+                            <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)=" p = $event"></pagination-controls>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
+</ng-sidebar-container>
+
 
 
 
@@ -79,8 +95,8 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Información</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast">
@@ -98,7 +114,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary shadow-sm" data-dismiss="modal">
-                     Cerrar
+                    Cerrar
                 </button>
 
                 <td class="text-center"><button type="button" class="btn btn-success shadow-sm" (click)="Update(currentContactInfo.idUser)" data-dismiss="modal">Asignar
@@ -106,11 +122,11 @@
 
                 <a [routerLink]="['/perfil', currentContactInfo.idInternt]" data-dismiss="modal" class="btn btn-primary shadow-sm">Ver Perfil</a>
 
-                <button type="button " (click)="
+                <button type="button" data-dismiss="modal" (click)="
             DeletedPasante(currentContactInfo, currentContactInfo.idInternt)
           " class="btn btn-danger shadow-sm">
-          Eliminar Pasante.
-        </button>
+                    Eliminar Pasante.
+                </button>
             </div>
         </div>
     </div>

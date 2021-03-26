@@ -1,9 +1,11 @@
-<app-navbar></app-navbar>
+<app-navbar (isOpen)="_toggleSidebar($event)"></app-navbar>
 
+
+<!-- Page Content -->
 <ng-sidebar-container>
     <ng-sidebar class="m-4" [opened]="_opened">
         <div class="list-group list-group-flush rounded mx-3 mt-2">
-            <a href="index.html" class="list-group-item list-group-item-action bg-light m-1 border">
+            <a [routerLink]="['/admin']" class="list-group-item list-group-item-action bg-light m-1 border">
                 <i class="fas fa-th-list"></i> Pasantias</a>
             <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border">
                 <i class="fas fa-book"></i> Formulario</a>
@@ -159,4 +161,5 @@
             </div>
         </div>
     </div>
+
 </ng-sidebar-container>

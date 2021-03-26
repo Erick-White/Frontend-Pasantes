@@ -19,6 +19,8 @@ export class PasantePerfilComponent implements OnInit {
   mostrar = true;
   correo: any;
   role : RolesResponse = new RolesResponse();
+  currentContactInfo : any = {};
+
 
   public readonly roleSuper = 'Admin';
   roleIntern = 'Intern';
@@ -28,10 +30,11 @@ export class PasantePerfilComponent implements OnInit {
     let pasantesId = this.route.snapshot.params['id'];
     this.admin.getPasantesById(pasantesId).subscribe(res => {
       this.pasantee = res; 
+       
     })
     
   }
-
+//Obtener los usuarios por su id para llenar la información del perfil
   GetPansantesById(id: string) {
     this.route.paramMap.subscribe(res => {
       this.admin.getPasantesById(res.get('id')).subscribe(pasant => {
@@ -42,7 +45,7 @@ export class PasantePerfilComponent implements OnInit {
     
   }
 
-
+// Actualizar los datos del usuario .
   UpdatePasante(Editar: Edit, i: number,email:string) {
     let userToSend = new Object();
     userToSend = {
@@ -95,43 +98,18 @@ export class PasantePerfilComponent implements OnInit {
   }
 
   
-// Update(id: any) {
-//   const user = this.pasantes.find(x => x.idUser === id);
-//   console.log(user);
-//   let userToSend = new Object();
-//   userToSend = {
-//   idInternt:user?.idUser,
-//    name: user?.name,
-//    lastname: user?.lastname,
-//    cedula: user?.cedula,
-//   phone: user?.phone,
-//   github: user?.github,
-//   linkedin: user?.linkedin,
-//   cv: user?.cv,
-//   birthDate: user?.birthDate,
-//   user: user?.userImg
-//  };
-
-//   Swal.fire({
-//       title: 'Esta Seguro?',
-//       text: 'Deseas actualizar los datos?',
-//       icon: 'question',
-//       showConfirmButton: true,
-//       showCancelButton: true
-//     }).then(resp => {
-//       if (resp.value){
-//         if (!user) { return; }
-//         this.admin.UpdatePasantes(userToSend)
-//           .pipe(first())
-//           // tslint:disable-next-line: deprecation
-//           .subscribe(() => this.pasantes = this.pasantes.filter(x => x.idInternt !== id));
-
-        
-//       }
-//     });
 
 // }
   
+// Metodo extra para obtener los datos del pasante mediante su id
+  contactInfo(id: string) {
+    this.admin.getPasantesById(id).subscribe(res => {
+      this.currentContactInfo = res;
+      
+      
+   });
+  }
+
 
   ChangeButtom(email: string,) {
     
