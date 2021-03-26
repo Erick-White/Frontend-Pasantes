@@ -23,7 +23,7 @@
             <div class="col-lg-9">
                 <h2 class="mt-3 ml-5">Lista Pasantes</h2>
                 <nav class="navbar">
-                    <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" class="form-control" placeholder="Ingrese el primer Nombre para buscar...">
+                    <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" class="form-control col-md-8" placeholder="Ingrese el primer Nombre para buscar...">
                 </nav>
                 <div class="container p-3">
                     <div class="row" id="divCartas">
@@ -59,16 +59,30 @@
                                         <td class="text-center">
 
                                             <a class="text-center btn btn-secondary" (click)="contactInfo(Pasantes.idInternt)" data-toggle="modal" data-target="#exampleModal">Configuracion<i class="fas fa-cog"></i>
-    
-                                                </a>
+
+                                            </a>
 
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <pagination-controls (pageChange)=" p = $event"></pagination-controls>
 
+
+                            <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast col-md-7" style="margin-left: 20%; width: 100%;">
+                                <h4 class="alert-heading">Cargando</h4>
+                                <p>
+                                    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+                                </p>
+                                <p class="mb-0">Espere Por favor...</p>
+                            </div>
+                            <pagination-controls class="text-center" previousLabel="Anterior" nextLabel="Siguiente" (pageChange)=" p = $event"></pagination-controls>
+                            <div *ngIf="!loading && pasantes.length === 0" class=" m-5 alert-warning text-center mt-3 animated fadeIn fast col-md-11">
+                                <h4 class="alert-heading">No Hay Pasantes</h4>
+                                <p>
+                                    <i class="fa fa-exclamation fa-2x"></i>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -133,18 +147,3 @@
 <!--Fin Modal Mostrar Informacion-->
 
 <!-- Menu Toggle Script-->
-
-<div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn fast col-md-7" style="margin-left: 10%;">
-    <h4 class="alert-heading">Cargando</h4>
-    <p>
-        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
-    </p>
-    <p class="mb-0">Espere Por favor...</p>
-</div>
-
-<div *ngIf="!loading && pasantes.length === 0" class=" m-5 alert-warning text-center mt-3 animated fadeIn fast col-md-11">
-    <h4 class="alert-heading">No Hay Pasantes</h4>
-    <p>
-        <i class="fa fa-exclamation fa-2x"></i>
-    </p>
-</div>

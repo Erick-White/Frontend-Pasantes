@@ -1,0 +1,36 @@
+<app-navbar (isOpen)="_toggleSidebar($event)">
+
+</app-navbar>
+<ng-sidebar-container>
+
+    <ng-sidebar class="m-4" [opened]="_opened">
+        <div class="list-group list-group-flush rounded mx-3 mt-2">
+            <a routerLink="/admin" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-th-list"></i> Pasantias</a>
+            <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-book"></i> Formulario</a>
+            <a routerLink="/admin-files" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-upload"></i> Repositorio</a>
+            <a routerLink="/lista-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-users"></i> Pasantes</a>
+        </div>
+    </ng-sidebar>
+    <div id="page-content-wrapper" ng-sidebar-content>
+        <div *ngFor="let files of files" class="container text-center mt-5">
+            <div class="card">
+                <div class="card-columns">
+                    <div class="card-body">
+                        <h5 class="card-title">{{files.fileName}}</h5>
+                        <p class="card-text">{{files.path}}</p>
+                        <button routerLink="/preview" type="button" class="btn btn-outline-primary btn-block">
+                            Ver Más...
+                
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</ng-sidebar-container>
