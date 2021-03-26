@@ -62,9 +62,6 @@ _opened = true;
   }
   ngOnInit(): void {
 
-
-
-
     //Variable para mostrar la Convocatoria en la que se encuentra
     this.convocatoriaId = +this.activerouter.snapshot.params['id'];
 

@@ -18,6 +18,8 @@
             <div class="d-flex justify-content-center">
               <div
                   id="dropContainer"
+                  appDnd
+                  (fileDropped)="onFileDropped($event)"
                   (click)="fileInput.click()"
                   style="border: 1px solid black; height: 30%; width: 50%"
                 >
