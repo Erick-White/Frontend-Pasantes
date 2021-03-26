@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { PasantesAll} from '../../models/pasantes-all';
 import { Pasantes } from 'src/app/models/pasantes';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RolesService } from '../../services/roles.service';
 import { RolesResponse } from 'src/app/models/Roles';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -24,6 +25,11 @@ export class ListaPasantesComponent implements OnInit {
   name : any;
   p : number = 1;
   _opened = true;
+  
+  // tslint:disable-next-line: new-parens
+  // tslint:disable-next-line: new-parens
+  subcription: Subscription = new Subscription;
+
 //Algo
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
               private Roles : RolesService
@@ -40,8 +46,18 @@ export class ListaPasantesComponent implements OnInit {
     //   this.GetAllPasantes();
     //   console.log(res);
     // })
+
     this.loading = true;
     this.GetAllPasantes();
+
+    this.subcription = this.admin.refreshNeeded$.subscribe(() =>{
+      
+      
+      this.GetAllPasantes();
+
+    });
+
+   
    
     
   //   this.route.params.subscribe(params => {

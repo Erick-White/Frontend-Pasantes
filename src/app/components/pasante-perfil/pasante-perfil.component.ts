@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PasantesAll } from '../../models/pasantes-all';
 import { LoginService } from '../../services/login.service';
-import Swal from 'sweetalert2';
-import { Pasantes } from 'src/app/models/pasantes';
-import { first } from 'rxjs/operators';
+import { RolesResponse } from '../../models/Roles';
 import { Edit } from 'src/app/models/Edit';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-pasante-perfil',
   templateUrl: './pasante-perfil.component.html',
@@ -18,13 +18,19 @@ export class PasantePerfilComponent implements OnInit {
   pasantee: any;
   mostrar = true;
   correo: any;
-  currentContactInfo: any = {};
-  constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,private Auth:LoginService) { }
+  role : RolesResponse = new RolesResponse();
+  currentContactInfo : any = {};
+
+
+  public readonly roleSuper = 'Admin';
+  roleIntern = 'Intern';
+  constructor(private admin: AdminService, private router: Router, private route: ActivatedRoute, private Auth: LoginService) { }
 
   ngOnInit(): void {
     let pasantesId = this.route.snapshot.params['id'];
     this.admin.getPasantesById(pasantesId).subscribe(res => {
-      this.pasantee = res;   
+      this.pasantee = res; 
+       
     })
     
   }
@@ -93,6 +99,8 @@ export class PasantePerfilComponent implements OnInit {
 
   
 
+// }
+  
 // Metodo extra para obtener los datos del pasante mediante su id
   contactInfo(id: string) {
     this.admin.getPasantesById(id).subscribe(res => {

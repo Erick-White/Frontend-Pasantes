@@ -5,6 +5,8 @@ import { Convocatorias } from '../../models/convocatorias';
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { AdminService } from '../../services/admin.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -18,7 +20,7 @@ export class AdminComponent implements OnInit {
   ];
   //Variable donde se agrega una nueva Convocatoria
   convito = new Convocatorias();
-
+  pages = 1;
    _opened = true;
 
   constructor(private convocatoriaService: ConvocatoriaService, private router: Router, private sharedService : SharedService) { }
@@ -39,6 +41,8 @@ export class AdminComponent implements OnInit {
     });
     this.getAllConvocatorias();
     this.convito = new Convocatorias();
+    
+
 
   }
 

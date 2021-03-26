@@ -37,7 +37,7 @@ export class AsignacionesService {
     .get<Asignaciones[]>(`${this.URL}/Internship/${id}`,{headers});
   }
 
-  addNewAsignacion(Asig:Asignaciones):Observable<any>{
+  addNewAsignacion(Asig: Asignaciones): Observable<any>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
     });

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Pasantes } from '../models/pasantes';
 import {  Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { PasantesAll } from '../models/pasantes-all';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,7 @@ export class PasantesService {
 
 
 
+
   // tslint:disable-next-line: typedef
   solicitudes(): Observable<any>{
     const header = new HttpHeaders().set('Content-Type', 'application/json');
@@ -79,6 +81,16 @@ export class PasantesService {
 
 
   }
+
+
+  GetEmail(email : string): Observable <PasantesAll>{
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this._http.get<PasantesAll>(`${this.url}/api/Intern/GetInternbyEmail/${email}`,  { headers });
+  }
+
 
   // tslint:disable-next-line: typedef
   decirNumero(){

@@ -7,6 +7,7 @@ import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { AsignacionesService } from "../../services/asignaciones.service";
 
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class PasantiaAsignacionComponent implements OnInit {
   ];
 
   //Variable para traer Asignaciones
-  asigna = new Asignaciones()
+  asigna: Asignaciones = new Asignaciones();
 
   public options: Object = {
   placeholderText: 'Edit Your Content Here!',
@@ -40,11 +41,14 @@ export class PasantiaAsignacionComponent implements OnInit {
 
   convocatoriaId: number = 0;
 
+  asignacionId: number = 0;
+
+
   ngOnInit(): void {
+
 
     //Variable para mostrar la Convocatoria en la que se encuentra
       this.convocatoriaId = +this.activerouter.snapshot.params['id'];
-
       //Servicio para traer la informacion de una sola Convocatoria
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
       this.convoAsig = data;
@@ -52,6 +56,11 @@ export class PasantiaAsignacionComponent implements OnInit {
       console.log(data)
 
     });
+
+    //Servicio para refrescar las pagina la agregar una nueva asignacion
+
+
+
 
     // Servicio para refrescar las pagina al agregar una nueva asignacion
     this.asignacionesService.refreshNeeded$.subscribe(()=>{
