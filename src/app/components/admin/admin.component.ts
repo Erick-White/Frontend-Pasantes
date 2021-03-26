@@ -5,6 +5,8 @@ import { Convocatorias } from '../../models/convocatorias';
 import { ConvocatoriaService } from "../../services/convocatoria.service";
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { AdminService } from '../../services/admin.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -18,7 +20,7 @@ export class AdminComponent implements OnInit {
   ];
   //Variable donde se agrega una nueva Convocatoria
   convito = new Convocatorias();
-
+  pages = 1;
    _opened = true;
 
   constructor(private convocatoriaService: ConvocatoriaService, private router: Router, private sharedService : SharedService) { }
@@ -29,16 +31,18 @@ export class AdminComponent implements OnInit {
 
   }
 
-  
+
 
   ngOnInit(): void {
-    
+
     //Refrescar la pagina para mostrar una nueva Convocatoria
     this.convocatoriaService.refreshNeeded$.subscribe(()=>{
       this.getAllConvocatorias();
     });
     this.getAllConvocatorias();
     this.convito = new Convocatorias();
+    
+
 
   }
 
@@ -57,15 +61,17 @@ export class AdminComponent implements OnInit {
 
     this.convocatoriaService.addNewConvocatoria(this.convito).subscribe(response =>{
       console.log(response);
-      Swal.fire({
-        icon: 'success',
-        title: 'La Convocatoria ha sido Creada.',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    },error =>{console.log(<any>error)
+     Swal.fire({
+     title: this.convito.name,
+     input: 'textarea',
+     inputValue:this.convito.description + '\n' + 'APLICA YA'  + '\n' + 'https://frontend-pasantes.vercel.app/registro',
+    showCancelButton: true,
+    confirmButtonText: 'Look up',
+    showLoaderOnConfirm: true,
+    });
+    },
+    error =>{console.log(<any>error)
     })
-    console.log(this.convito)
   }
 
 }

@@ -22,13 +22,18 @@ export class FileUploadComponent implements OnInit {
 
   }
 
-
-
   ngOnInit() {
 
 
     this.userEmail = localStorage.getItem('email')!;
   }
+
+
+  onFileDropped(event: any) {
+  const archivoCapturado = event.target.files[0];
+  console.log(archivoCapturado);
+  this.archivos = archivoCapturado;
+ }
 
     capturarFile(event : any) {
     const archivoCapturado = event.target.files[0];

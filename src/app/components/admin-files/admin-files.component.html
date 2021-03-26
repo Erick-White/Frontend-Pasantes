@@ -1,0 +1,76 @@
+<app-navbar (isOpen)="_toggleSidebar($event)">
+
+</app-navbar>
+
+<ng-sidebar-container>
+    <ng-sidebar class="m-4" [opened]="_opened">
+        <div class="list-group list-group-flush rounded mx-3 mt-2">
+            <a routerLink="/admin" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-th-list"></i> Pasantias</a>
+            <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-book"></i> Formulario</a>
+            <a routerLink="/admin-files" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-upload"></i> Repositorio</a>
+            <a routerLink="/lista-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <i class="fas fa-users"></i> Pasantes</a>
+        </div>
+    </ng-sidebar>
+
+    <div id="page-content-wrapper" ng-sidebar-content>
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="divs">
+                    <div class="card shadow-sm mr-4 w-100">
+                        <div class="card-body">
+                            <h3 class="d-inline card-title">Subir Archivos</h3>
+                            <br />
+                            <br />
+                            <h5></h5>
+                            <p>
+
+                            </p>
+                            <div class="margin">
+                                <h5 style="margin-left: 25%"></h5>
+                                <div class="d-flex justify-content-center">
+                                    <div id="dropContainer" (click)="fileInput.click()" style="border: 1px solid black; height: 30%; width: 50%">
+                                        <div *ngIf="archivos == 0">
+                                            Arrastra
+                                            <p class="mt-4">
+                                                Permite:
+                                                <i class="fas fa-file-powerpoint fa-2x p-1" style="background-color: orange"></i>
+                                                <i class="fas fa-file-pdf fa-2x p-1" style="background-color: red"></i>
+                                                <i class="fas fa-file-word fa-2x p-1" style="background-color: rgba(67, 127, 255, 0.863)"></i>
+                                                <i class="fas fa-file-archive fa-2x p-1"></i>
+                                            </p>
+                                        </div>
+
+                                        <div *ngIf="archivos">
+                                            <h4></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="d-flex justify-content-center">
+                                    <input style="display: none;" type="file" name="profile" (change)="capturarFile($event)" #fileInput />
+                                </div>
+                                <button routerLink="/Historial" (click)="subirArchivo()" class="text-white btn btn-group-lg float-right" [disabled]="buttonDisable" type="submit " style="background-color: #49abc6">
+                    Enviar
+                  </button>
+                                <a type="button" href="/admin" name="finalizar" class="volver text-white btn btn-group-lg float-left" style="background-color: #49abc6">
+                    Volver
+                  </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    <!-- /#wrapper -->
+    <!--Modal Crear Pasantia-->
+    <!-- Modal -->
+
+    <!--Fin Modal Crear Pasantia-->
+</ng-sidebar-container>
+<!-- Page Content -->

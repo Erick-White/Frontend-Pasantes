@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
@@ -17,6 +17,9 @@ import { GuardGuard } from './guards/guard.guard';
 import { PasantiaAsignacionVistaComponent } from './components/pasantia-asignacion-vista/pasantia-asignacion-vista.component';
 import { PasanteHomeComponent } from './components/pasante-home/pasante-home.component';
 import { RolesResponse } from 'src/app/models/Roles';
+import { AdminFilesComponent } from './components/admin-files/admin-files.component';
+import { HistorialComponent } from './components/historial/historial.component';
+import { PreviewComponent } from './components/preview/preview.component';
 
 const routes: Routes = [
 
@@ -25,23 +28,26 @@ const routes: Routes = [
   { path: 'admin/:id', component: PasantiaAsignacionComponent },
   { path:'admin/config/:id', component: PasantiaConfigComponent },
   { path: 'admin/asignacion/:id', component: PasantiaAsignacionVistaComponent },
-  { path: 'formulario', component: FormularioComponent },
+  { path: 'formulario', component: FormularioComponent ,canActivate: [GuardGuard]},
   { path: 'registro', component: RegisterComponent},
-  { path: 'solicitudes', component: SolicitudesComponent},
-  { path: 'recuperar-clave', component: RecuperarClaveComponent},
+  { path: 'solicitudes', component: SolicitudesComponent,canActivate: [GuardGuard]},
+  { path: 'recuperar-clave', component: RecuperarClaveComponent,canActivate: [GuardGuard]},
   { path: 'admin/:id', component: PasantiaAsignacionComponent, canActivate: [GuardGuard] },
   { path: 'admin/config/:id', component: PasantiaConfigComponent, canActivate: [GuardGuard] },
   { path: 'admin/asignacion/:id', component: PasantiaAsignacionVistaComponent, canActivate: [GuardGuard] },
   { path: 'registro', component: FormularioComponent },
   { path: 'formulario', component: RegisterComponent},
   { path: 'admin/solicitudes/:id', component: SolicitudesComponent, canActivate: [GuardGuard]},
-  { path: 'recuperar-clave/:id', component: RecuperarClaveComponent},
+  { path: 'recuperar-clave/:id', component: RecuperarClaveComponent,canActivate: [GuardGuard]},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
   { path: 'file-upload', component: FileUploadComponent, canActivate: [GuardGuard]},
   { path: 'lista-pasante', component: ListaPasantesComponent, canActivate: [GuardGuard] },
-  { path: 'perfil/:id', component: PasantePerfilComponent },
-  { path: 'pasante-subir-asig/:id',component:PasanteSubirAsigComponent},
-  { path: 'home-pasantes', component:PasanteHomeComponent},
+  { path: 'perfil/:id', component: PasantePerfilComponent,canActivate: [GuardGuard]},
+  { path: 'pasante-subir-asig/:id',component:PasanteSubirAsigComponent,canActivate: [GuardGuard]},
+  { path: 'home-pasantes', component: PasanteHomeComponent, canActivate: [GuardGuard] },
+  { path: 'admin-files', component: AdminFilesComponent, canActivate: [GuardGuard] },
+  { path: 'Historial', component: HistorialComponent, canActivate: [GuardGuard] },
+  {path:'preview',component:PreviewComponent, canActivate: [GuardGuard] },
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];

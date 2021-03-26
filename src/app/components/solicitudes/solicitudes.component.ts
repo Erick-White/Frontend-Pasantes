@@ -10,6 +10,8 @@ import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+declare var jQuery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-solicitudes',
@@ -21,13 +23,16 @@ export class SolicitudesComponent implements OnInit {
  pasante: Pasantes[] = [];
  loading = false;
  pasantes  = new Pasantes();
+ pages = 1;
  
- counter: number = 0;
+ counter = 0;
+
+ 
 
 // Informacion de la Pasantia en la que se encuetra
 convoPasantes: Convocatorias = new Convocatorias;
 
-
+_opened = true;
 
   // tslint:disable-next-line: new-parens
 
@@ -54,7 +59,17 @@ convoPasantes: Convocatorias = new Convocatorias;
 
   convocatoriaId: number = 0;
 
+  _toggleSidebar(_opened : any) {
+    this._opened = _opened;
 
+  }
+  
+
+
+
+
+
+  
   ngOnInit(): void {
 
     //Variable para mostrar la Convocatoria en la que se encuentra
@@ -65,7 +80,7 @@ convoPasantes: Convocatorias = new Convocatorias;
     this.convoPasantes = data;
   });
 
-    
+
     // tslint:disable-next-line: deprecation
     //  this.updateSubscription = interval(1000).subscribe(
     //    (val) => {
@@ -74,12 +89,12 @@ convoPasantes: Convocatorias = new Convocatorias;
     //   }
     // );
 
-      this.Services.refreshNeeded$.subscribe(
-        resp => {
-          this.getAll();
+      // this.Services.refreshNeeded$.subscribe(
+      //   resp => {
+      //     this.getAll();
 
-        }
-      );
+      //   }
+      // );
 
       this.loading = true;
       this.getAll();
@@ -121,6 +136,9 @@ convoPasantes: Convocatorias = new Convocatorias;
           // tslint:disable-next-line: deprecation
           .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
     console.log(id);
+    //window.location.reload()
+
+
 
 
 
@@ -149,19 +167,27 @@ convoPasantes: Convocatorias = new Convocatorias;
         text: `Esta seguro de aceptar a: ${user?.name} ${ user?.lastname}`,
         icon: 'question',
         showConfirmButton: true,
+        confirmButtonText:"Si",
         showCancelButton: true
       }).then(resp => {
         if (resp.value){
           if (!user) { return; }
           this.Services.AcceptIntern(userToSend)
+
             .pipe(first())
             // tslint:disable-next-line: deprecation
             .subscribe(() => this.pasante = this.pasante.filter(x => x.idRequestInternship !== id));
+
+
             this.counter++
             console.log(this.counter)
-          this.borrar(id);
+            this.borrar(id);
+
         }
       });
+
+
+
 
   }
 
@@ -176,6 +202,8 @@ convoPasantes: Convocatorias = new Convocatorias;
 
 
   }*/
+
+
 
 
 }
