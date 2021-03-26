@@ -29,12 +29,16 @@ export class PasantiaAsignacionComponent implements OnInit {
   //Variable para traer Asignaciones
   asigna: Asignaciones = new Asignaciones();
 
-  
+  public options: Object = {
+  placeholderText: 'Edit Your Content Here!',
+  charCounterCount: false
+}
+
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
 
 
-  
+
   convocatoriaId: number = 0;
 
   asignacionId: number = 0;
@@ -52,11 +56,11 @@ export class PasantiaAsignacionComponent implements OnInit {
       console.log(data)
 
     });
-    
+
     //Servicio para refrescar las pagina la agregar una nueva asignacion
 
-    
-  
+
+
 
     // Servicio para refrescar las pagina al agregar una nueva asignacion
     this.asignacionesService.refreshNeeded$.subscribe(()=>{
@@ -85,7 +89,7 @@ export class PasantiaAsignacionComponent implements OnInit {
           title: 'La Asignacion ha sido Creada.',
           showConfirmButton: false,
           timer: 1500
-        })     
+        })
       },
       error =>{
         console.log(<any>error)

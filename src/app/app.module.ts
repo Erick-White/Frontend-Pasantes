@@ -36,6 +36,7 @@ import { SidebarModule } from 'ng-sidebar';
 
 
 import { CookieService } from 'ngx-cookie-service';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { AdminFilesComponent } from './components/admin-files/admin-files.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
@@ -82,7 +83,8 @@ import { DndDirective } from './directives/dnd.directive';
     HttpClientModule,
     ReactiveFormsModule,
     SidebarModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    [FroalaEditorModule.forRoot(), FroalaViewModule]
   ],
   providers: [SharedService,CookieService],
   bootstrap: [AppComponent]
