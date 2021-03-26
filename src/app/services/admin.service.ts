@@ -88,6 +88,15 @@ export class AdminService {
   }
 
 
+  GetFiles(): Observable<any>  {
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.get<any>(this.URL + 'Files', { headers })
+    
+  }
+
   // Holaa
 }
 

@@ -37,6 +37,9 @@ import { SidebarModule } from 'ng-sidebar';
 
 import { CookieService } from 'ngx-cookie-service';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { AdminFilesComponent } from './components/admin-files/admin-files.component';
+import { HistorialComponent } from './components/historial/historial.component';
+import { PreviewComponent } from './components/preview/preview.component';
 import { DndDirective } from './directives/dnd.directive';
 
 
@@ -66,6 +69,9 @@ import { DndDirective } from './directives/dnd.directive';
     PasantiaAsignacionVistaComponent,
     SidebarComponent,
     ErrorComponent,
+    AdminFilesComponent,
+    HistorialComponent,
+    PreviewComponent,
     DndDirective,
 
 
