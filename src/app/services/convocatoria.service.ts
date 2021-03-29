@@ -63,6 +63,14 @@ export class ConvocatoriaService {
     return this.http.put<void>(`${this.URL}/${id}`,convo,{headers})
   }
 
+  statusChange(convo:Convocatorias, id:number):Observable <Convocatorias>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.patch<Convocatorias>(`${this.URL}/${id}`,convo,{headers})
+  }
+
   deleteConvo(id:number):Observable<void>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')

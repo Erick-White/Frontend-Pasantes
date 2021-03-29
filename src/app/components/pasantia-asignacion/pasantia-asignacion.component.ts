@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute } from '@angular/router';
+import { SharedService } from './../../shared/shared';
 
 import { Convocatorias } from "../../models/convocatorias";
 import { Asignaciones } from "../../models/asignaciones";
@@ -16,6 +17,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./pasantia-asignacion.component.css']
 })
 export class PasantiaAsignacionComponent implements OnInit {
+
+  pages = 1;
 
   _opened = true;
 
@@ -35,7 +38,7 @@ export class PasantiaAsignacionComponent implements OnInit {
 }
 
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
+  constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService, private sharedService : SharedService) { }
 
 
 

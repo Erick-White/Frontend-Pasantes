@@ -199,11 +199,15 @@
                           <div class="input-group">
                             <textarea
                               name="description"
+                              [froalaEditor]
+                              [froalaEditor]="options"
                               class="form-control"
                               cols="30"
+                              rows="20"
                               aria-label="With textarea"
                               value="{{ asigna.description }}"
                               [(ngModel)]="asigna.description"
+                              [(froalaModel)]="asigna.description"
                             ></textarea>
                           </div>
                         </div>

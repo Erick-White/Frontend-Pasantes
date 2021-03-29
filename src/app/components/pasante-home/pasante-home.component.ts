@@ -27,6 +27,8 @@ export class PasanteHomeComponent implements OnInit {
   //Variable para traer Asignaciones
   asigna: Asignaciones = new Asignaciones()
 
+  pages = 1;
+
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService
     , private asignacionesService: AsignacionesService) { }
 
