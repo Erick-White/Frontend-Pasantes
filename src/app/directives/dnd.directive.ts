@@ -11,34 +11,34 @@ import {
   selector: '[appDnd]'
 })
 export class DndDirective {
-  @HostBinding('class.fileover') 
-  fileOver: boolean = false;
   @Output() fileDropped = new EventEmitter<any>();
 
-    // Dragover listener
-    @HostListener('dragover', ['$event']) onDragOver(evt: { preventDefault: () => void; stopPropagation: () => void; }) {
-      evt.preventDefault();
-      evt.stopPropagation();
-      this.fileOver = true;
+  @HostBinding('style.background-color') private background = '#ffffff';
+
+  // Dragover Event
+  @HostListener('dragover', ['$event']) dragOver(event:any) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.background = '#e2eefd';
+  }
+
+  // Dragleave Event
+  @HostListener('dragleave', ['$event']) public dragLeave(event:any) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.background = '#ffffff'
+  }
+
+  // Drop Event
+  @HostListener('drop', ['$event']) public drop(event:any) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.background = '#ffffff';
+    const files = event.dataTransfer.files;
+    if (files.length > 0) {
+      this.fileDropped.emit(files)
     }
-  
-    // Dragleave listener
-    @HostListener('dragleave', ['$event']) public onDragLeave(evt: { preventDefault: () => void; stopPropagation: () => void; }) {
-      evt.preventDefault();
-      evt.stopPropagation();
-      this.fileOver = false;
-    }
-  
-    // Drop listener
-    @HostListener('drop', ['$event']) public ondrop(evt: { preventDefault: () => void; stopPropagation: () => void; dataTransfer: { file: any; }; }) {
-      evt.preventDefault();
-      evt.stopPropagation();
-      this.fileOver = false;
-      let file = evt.dataTransfer.file;
-      if (file > 0) {
-        this.fileDropped.emit(file);
-      }
-    }
+  }
 
   constructor() { }
 

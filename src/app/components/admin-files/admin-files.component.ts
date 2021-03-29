@@ -49,7 +49,7 @@ export class AdminFilesComponent implements OnInit {
       console.log(error);
     });
 
-    this.router.navigate(['/admin'])
+    this.router.navigate(['/Historial'])
 
   }
 }

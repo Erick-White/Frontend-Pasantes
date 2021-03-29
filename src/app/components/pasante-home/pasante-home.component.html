@@ -6,7 +6,7 @@
       <div
         class="col-md-5 shadow-sm rounded m-4"
         style="background-color: #efefef"
-        *ngFor="let asigna of asignacionesArray"
+        *ngFor="let asigna of asignacionesArray | paginate: {itemsPerPage:6,currentPage:pages}"
       >
         <div>
           <a
@@ -19,6 +19,10 @@
         </div>
       </div>
     </div>
+
+    <pagination-controls previousLabel="Anterior" class="text-center mt-2" nextLabel="Siguiente" (pageChange)=" pages = $event">
+    </pagination-controls>
+
   </div>
 </div>
 <!-- /#page-content-wrapper -->
