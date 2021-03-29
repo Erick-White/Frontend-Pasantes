@@ -20,7 +20,7 @@
 
     <div class="container" ng-sidebar-content>
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 <h2 class="mt-3 ml-5">Lista Pasantes</h2>
                 <nav class="navbar">
                     <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()" class="form-control col-md-8" placeholder="Ingrese el primer Nombre para buscar...">
@@ -45,7 +45,9 @@
                                             <img src="/assets/user.svg" alt="" width="60" class="img-fluid rounded-circle" />
                                         </td>
                                         <td>
-                                            <span class="d-block mt-2">{{Pasantes.name}}</span>
+                                            <span class="d-block mt-2">{{Pasantes.name}}  {{Pasantes.lastname}}
+                                              <small> Gamma </small>
+                                            </span>
 
                                             <!-- <small>Gamma</small>-->
 
@@ -58,8 +60,9 @@
                                             </button> </td>
 
                                         <td class="text-center">
-
-                                            <a class="text-center btn btn-secondary" (click)="contactInfo(Pasantes.idInternt)" data-toggle="modal" data-target="#exampleModal">Configuracion<i class="fas fa-cog"></i>
+                                            <button type="button" class="btn btn-success shadow-sm w-50 m-0 btn-sm " (click)="Update(currentContactInfo.idUser)" data-dismiss="modal">Asignar
+                                               Secretario</button>
+                                            <a class="text-center btn btn-secondary w-50 btn-sm  " (click)="contactInfo(Pasantes.idInternt)" data-toggle="modal" data-target="#exampleModal">Configuracion <i class="fas fa-cog"></i>
 
                                             </a>
 
@@ -131,8 +134,7 @@
                     Cerrar
                 </button>
 
-                <td class="text-center"><button type="button" class="btn btn-success shadow-sm" (click)="Update(currentContactInfo.idUser)" data-dismiss="modal">Asignar
-                        Secretario</button></td>
+
 
                 <a [routerLink]="['/perfil', currentContactInfo.idInternt]" data-dismiss="modal" class="btn btn-primary shadow-sm">Ver Perfil</a>
 
