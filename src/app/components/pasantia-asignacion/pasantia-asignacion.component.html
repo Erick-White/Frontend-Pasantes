@@ -78,13 +78,6 @@
                   </a>
                 </div>
               </div>
-              <pagination-controls
-                previousLabel="Anterior"
-                class="text-center mt-2"
-                nextLabel="Siguiente"
-                (pageChange)="pages = $event"
-              >
-              </pagination-controls>
 
               <!-- /#page-content-wrapper -->
 
@@ -186,6 +179,15 @@
             </div>
           </div>
         </div>
+        <div class="pagination">
+          <pagination-controls
+           previousLabel="Anterior"
+           class="text-center mt-2"
+           nextLabel="Siguiente"
+           (pageChange)="pages = $event"
+         >
+         </pagination-controls> 
+         </div>
       </div>
     </div>
   </div>
