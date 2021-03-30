@@ -32,7 +32,7 @@
 
 
 
-                <div *ngFor="let convocatoria of convocatoriaArray|paginate: {itemsPerPage:5,currentPage:pages} ;" class="col-md-3 ml-4 bg-light  shadow-sm rounded m-4" id="innerbox">
+                <div *ngFor="let convocatoria of convocatoriaArray|paginate: {itemsPerPage:6,currentPage:pages} ;" class="col-md-3 ml-4 bg-light  shadow-sm rounded m-4" id="innerbox">
                     <div class="">
 
                         <a [routerLink]="'/admin/'+convocatoria.idInternship" class="text-dark text-center">
