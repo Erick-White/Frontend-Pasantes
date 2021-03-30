@@ -68,6 +68,7 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
         
         this.deleteAsig();
         this.router.navigate(['/admin',this.asigna.id_Internship])
+        
         Swal.fire(
           'Borrado!',
           'La Asignacion ha sido Borrada.',

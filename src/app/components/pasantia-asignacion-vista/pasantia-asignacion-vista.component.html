@@ -3,8 +3,8 @@
 <ng-sidebar-container>
     <ng-sidebar class="m-4" [opened]="_opened">
         <div class="list-group list-group-flush rounded mx-3 mt-2">
-            <a routerLink="/admin" class="list-group-item list-group-item-action bg-light m-1 border">
-                <i class="fas fa-th-list"></i> Pasantias</a>
+            <a [routerLink]="'/admin/' + asigna.id_Internship" class="list-group-item list-group-item-action bg-light m-1 border">
+                <i class="fas fa-th-list"></i> Pasantia</a>
             <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border">
                 <i class="fas fa-book"></i> Formulario</a>
             <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border">

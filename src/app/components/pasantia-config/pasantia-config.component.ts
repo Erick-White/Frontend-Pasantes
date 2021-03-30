@@ -67,6 +67,7 @@ export class PasantiaConfigComponent implements OnInit {
 
     this.convocatoriaService.statusChange(this.convoConfig,this.convocatoriaId).subscribe(() =>{
       this.router.navigate(['/admin/'+this.convocatoriaId])
+      window.location.reload();
     })
     
   }

@@ -86,12 +86,14 @@ export class PasantiaAsignacionComponent implements OnInit {
   //Nos guarda las asignaciones creadas
   saveNewAsigna(){
     this.asigna.id_Internship = this.convocatoriaId;
-    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(()=>{
+    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(response=>{
+      console.log(response)
         Swal.fire({
           icon: 'success',
           title: 'La Asignacion ha sido Creada.',
           showConfirmButton: false,
           timer: 1500
+          
         })
       },
       error =>{

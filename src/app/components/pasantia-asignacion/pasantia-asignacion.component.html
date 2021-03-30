@@ -23,7 +23,7 @@
         <i class="fas fa-upload"></i> Repositorio</a
       >
       <a
-        href="lista.html"
+      [routerLink]="'/lista-pasante'"
         class="list-group-item list-group-item-action bg-light m-1 border"
       >
         <i class="fas fa-users"></i> Pasantes</a
@@ -44,11 +44,8 @@
             >
               <i class="fas fa-plus"></i> Asignaciones
             </button>
-            <a [routerLink]="'/solicitudes'" class="m-2 text-dark">
+            <a [routerLink]="'/admin/solicitudes/'+ convoAsig.idInternship" class="m-2 text-dark">
               <i class="fas fa-user-plus"></i> Solicitudes
-            </a>
-            <a [routerLink]="'/lista-pasante'" class="m-2 text-dark">
-              <i class="fas fa-users"></i> Lista Pasantes
             </a>
             <a
               [routerLink]="'/admin/config/' + convoAsig.idInternship"
@@ -58,6 +55,11 @@
             </a>
             <a [routerLink]="'/admin'" class="m-2 text-dark">
               <i class="fas fa-backspace"></i> Volver
+            </a>
+            <a class="font-weight-bold" [ngClass]="{'text-warning': convoAsig.status == 'En Convocatoria'
+            , 'text-primary': convoAsig.status == 'En Proceso'
+            , 'text-danger': convoAsig.status == 'Inactiva'
+            , 'text-success' : convoAsig.status == 'Finalizada'} "> {{convoAsig.status}}
             </a>
             <div class="row" id="divCartas">
               <div
