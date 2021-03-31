@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NgxPaginationModule } from 'ngx-pagination';
+
 
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
@@ -41,6 +41,8 @@ import { AdminFilesComponent } from './components/admin-files/admin-files.compon
 import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { DndDirective } from './directives/dnd.directive';
+import { PerfilComponent } from './components/perfil/perfil.component';
+
 
 
 
@@ -73,7 +75,7 @@ import { DndDirective } from './directives/dnd.directive';
     HistorialComponent,
     PreviewComponent,
     DndDirective,
-
+    PerfilComponent
 
   ],
   imports: [
@@ -84,7 +86,11 @@ import { DndDirective } from './directives/dnd.directive';
     ReactiveFormsModule,
     SidebarModule.forRoot(),
     NgxPaginationModule,
-    [FroalaEditorModule.forRoot(), FroalaViewModule]
+    [FroalaEditorModule.forRoot(), FroalaViewModule],
+  
+
+    
+    
   ],
   providers: [SharedService,CookieService],
   bootstrap: [AppComponent]
