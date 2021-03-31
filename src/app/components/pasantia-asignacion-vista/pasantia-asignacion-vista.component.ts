@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from './../../shared/shared';
 import { Asignaciones } from "../../models/asignaciones";
 import { AsignacionesService } from "../../services/asignaciones.service";
 import {Router, ActivatedRoute } from '@angular/router';
@@ -15,10 +16,15 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
   //Informacion de la asignacion en la que se encuentra
   asigna: Asignaciones = new Asignaciones();
   _opened = true;
-  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private location: Location) { }
+  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService, private location: Location, private sharedService : SharedService) { }
   
   //Variable que guarda el Id de la asignacion
   asignacionId: number = 0;
+
+  public options: Object = {
+    placeholderText: 'Edit Your Content Here!',
+    charCounterCount: false
+  }
 
 
   _toggleSidebar(_opened : any) {
@@ -59,14 +65,16 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
       confirmButtonText: 'Si, Eliminalo!'
     }).then((result) => {
       if (result.isConfirmed) {
+        
         this.deleteAsig();
-  
+        this.router.navigate(['/admin',this.asigna.id_Internship])
+        
         Swal.fire(
           'Borrado!',
           'La Asignacion ha sido Borrada.',
           'success'
         )
-        this.router.navigate(['/admin',this.asigna.id_Internship])
+        
       }
     })
   }

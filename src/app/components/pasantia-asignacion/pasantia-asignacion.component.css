@@ -10,3 +10,7 @@
   border-left:2px solid ;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+}

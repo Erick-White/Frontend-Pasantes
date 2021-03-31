@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute } from '@angular/router';
+import { SharedService } from './../../shared/shared';
 
 import { Convocatorias } from "../../models/convocatorias";
 import { Asignaciones } from "../../models/asignaciones";
@@ -16,6 +17,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./pasantia-asignacion.component.css']
 })
 export class PasantiaAsignacionComponent implements OnInit {
+
+  pages = 1;
 
   _opened = true;
 
@@ -35,7 +38,7 @@ export class PasantiaAsignacionComponent implements OnInit {
 }
 
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
+  constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService, private sharedService : SharedService) { }
 
 
 
@@ -83,12 +86,14 @@ export class PasantiaAsignacionComponent implements OnInit {
   //Nos guarda las asignaciones creadas
   saveNewAsigna(){
     this.asigna.id_Internship = this.convocatoriaId;
-    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(()=>{
+    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(response=>{
+      console.log(response)
         Swal.fire({
           icon: 'success',
           title: 'La Asignacion ha sido Creada.',
           showConfirmButton: false,
           timer: 1500
+          
         })
       },
       error =>{

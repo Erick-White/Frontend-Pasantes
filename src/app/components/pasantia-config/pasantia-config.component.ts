@@ -64,8 +64,15 @@ export class PasantiaConfigComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
+
+    this.convocatoriaService.statusChange(this.convoConfig,this.convocatoriaId).subscribe(() =>{
+      this.router.navigate(['/admin/'+this.convocatoriaId])
+      window.location.reload();
+    })
     
   }
+
+
 
   //Funcion para confirmar la eliminacion de la Convocatoria 
   confirmBox(){

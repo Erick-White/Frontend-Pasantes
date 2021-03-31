@@ -42,7 +42,7 @@ export class AsignacionesService {
       'Authorization':'Bearer ' + localStorage.getItem('token')
     });
     return this.http
-    .post(this.URL, Asig,{headers})
+    .post(this.URL, Asig,{headers, responseType: 'text'})
     .pipe(
       tap(()=>{
         this._refreshNeeded$.next();
@@ -77,13 +77,13 @@ export class AsignacionesService {
     return this.http.put<void>(`${this.URL}/${id1}`,Asig,{headers})
   }
 
-  deleteAsignacion(id:number):Observable<void>{
+  deleteAsignacion(id:number):Observable<any>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
     return this.http
-    .delete<void>( `${this.URL}/${id}`,{headers})
+    .delete( `${this.URL}/${id}`,{headers, responseType: 'text'})
     .pipe(
       tap(()=> {
         this._refreshNeeded$.next();

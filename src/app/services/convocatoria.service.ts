@@ -63,13 +63,21 @@ export class ConvocatoriaService {
     return this.http.put<void>(`${this.URL}/${id}`,convo,{headers})
   }
 
-  deleteConvo(id:number):Observable<void>{
+  statusChange(convo:Convocatorias, id:number):Observable <Convocatorias>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http.patch<Convocatorias>(`${this.URL}/${id}`,convo,{headers})
+  }
+
+  deleteConvo(id:number):Observable<any>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
     return this.http
-    .delete<void>( `${this.URL}/${id}`,{headers})
+    .delete( `${this.URL}/${id}`,{headers, responseType: 'text'})
     .pipe(
       tap(()=> {
         this._refreshNeeded$.next();
