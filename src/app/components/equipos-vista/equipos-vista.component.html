@@ -4,7 +4,7 @@
   <ng-sidebar class="m-4" [opened]="_opened">
     <div class="list-group list-group-flush rounded mx-3 mt-2">
       <a
-      [routerLink]="'/admin/' + equi.idInternship"
+        [routerLink]="'/admin/' + equi.idInternship"
         class="list-group-item list-group-item-action bg-light m-1 border"
       >
         <i class="fas fa-th-list"></i> Pasantia</a
@@ -22,13 +22,13 @@
         <i class="fas fa-upload"></i> Repositorio</a
       >
       <a
-      [routerLink]="'/lista-pasante/'+ equi.idInternship" 
+        [routerLink]="'/lista-pasante/' + equi.idInternship"
         class="list-group-item list-group-item-action bg-light m-1 border"
       >
         <i class="fas fa-users"></i> Pasantes</a
       >
       <a
-      [routerLink]="'/equipos/'+ equi.idInternship"
+        [routerLink]="'/equipos/' + equi.idInternship"
         class="list-group-item list-group-item-action bg-light m-1 border"
       >
         <i class="fas fa-users"></i> Equipos</a
@@ -41,10 +41,53 @@
       <div class="row">
         <div class="col-lg-9">
           <h2 class="mt-5 ml-5">Configuracion del Equipo {{ equi.name }}</h2>
-          <div class="container bg-light p-3 shadow-sm mt-3">
+
+          <div class="container bg-light p-4 shadow-sm ">
             <div class="col-md-12">
-              <form>
-                <div>
+              <button
+                class="btn btn-light text-center shadow-sm float-right "
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                <i class="fas fa-cog"></i>
+                Configuracion
+              </button>
+              <a
+                type="button"
+                [routerLink]="'/equipos/'+ equi.idInternship"
+                name="volver inicio"
+                class="volver btn btn-info float-left mt-5 text-white"
+                style="background-color: #49abc6"
+              >
+                Volver</a
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Configuracion de Equipo
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
                   <div>
                     <p>Nombre del Equipo</p>
                     <input
@@ -55,56 +98,32 @@
                       [(ngModel)]="equi.name"
                     />
                   </div>
-                </div>
-              </form>
-              <a
-                type="button"
-                [routerLink]="'/equipos/'+ equi.idInternship"
-                name="volver inicio"
-                class="volver btn btn-info float-left mt-5 text-white"
-                style="background-color: #49abc6"
-              >
-                Volver</a
-              >
-              <button
-                (click)="confirmBox()"
-                type="button"
-                class="btn btn-danger mt-5 m-2"
-              >
-                Eliminar Equipo
-              </button>
-              <button
-                (click)="updateInfo()"
-                type="button"
-                class="btn btn-info mt-5 float-right text-white"
-                style="background-color: #49abc6"
-              >
-                Guardar
-              </button>
+
+                  <div class="modal-footer">
+                    <button
+                      (click)="confirmBox()"
+                      type="button"
+                      class="btn btn-danger mt-5 m-2"
+                    >
+                      Eliminar Equipo
+                    </button>
+                    <button
+                      (click)="updateInfo()"
+                      type="button"
+                      class="btn btn-info mt-5 float-right text-white"
+                      style="background-color: #49abc6"
+                    >
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-        <!-- <div class="col-md-3 mt-5">
-          <div class="card mt-5 mr-3 bg-light">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <a href="solicitudes.html" class="m-3 text-dark">
-                  <i class="fas fa-user-plus"></i> Solicitudes
-                </a>
-              </li>
-
-              <li class="list-group-item">
-                <a href="configuraciones.html" class="m-3 text-dark">
-                  <i class="fas fa-cog"></i> Configuracion
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div> -->
       </div>
     </div>
     <!-- /#page-content-wrapper -->
   </div>
   <!-- /#wrapper -->
 </ng-sidebar-container>
-
