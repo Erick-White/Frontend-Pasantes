@@ -1,3 +1,6 @@
+import { PasanteAsignacionesComponent } from './components/pasante-asignaciones/pasante-asignaciones.component';
+import { PasanteRepoVistaComponent } from './components/pasante-repo-vista/pasante-repo-vista.component';
+import { PasanteCalificacionesComponent } from './components/pasante-calificaciones/pasante-calificaciones.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -45,6 +48,9 @@ const routes: Routes = [
   { path: 'perfil/:id', component: PasantePerfilComponent,canActivate: [GuardGuard]},
   { path: 'pasante-subir-asig/:id',component:PasanteSubirAsigComponent,canActivate: [GuardGuard]},
   { path: 'home-pasantes', component: PasanteHomeComponent, canActivate: [GuardGuard] },
+  {path: 'pasantes-grades', component: PasanteCalificacionesComponent, canActivate: [GuardGuard]},
+  {path: 'pasantes-asignaciones', component: PasanteAsignacionesComponent, canActivate: [GuardGuard]},
+  {path: 'pasantes-calificar/:id', component: PasanteRepoVistaComponent, canActivate: [GuardGuard]},
   { path: 'admin-files', component: AdminFilesComponent, canActivate: [GuardGuard] },
   { path: 'Historial', component: HistorialComponent, canActivate: [GuardGuard] },
   {path:'preview',component:PreviewComponent, canActivate: [GuardGuard] },

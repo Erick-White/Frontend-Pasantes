@@ -66,9 +66,9 @@
                           <h2>{{ asigna.title }}</h2>
 
                           <h3 class="card-title"></h3>
-                          <p>
+                          <div [froalaView]="asigna.description!">
                             {{ asigna.description }}
-                          </p>
+                          </div>
                         </div>
                         <div class="d-flex justify-content-center">
                           <img
@@ -123,9 +123,9 @@
                           <h2>{{ asigna.title }}</h2>
 
                           <h3 class="card-title"></h3>
-                          <p>
+                          <div [froalaView]="asigna.description!">
                             {{ asigna.description }}
-                          </p>
+                          </div>
                         </div>
                         <div class="d-flex justify-content-center">
                           <img

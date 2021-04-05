@@ -20,14 +20,16 @@ export class PasanteSubirAsigComponent implements OnInit {
 
   asigna: Asignaciones = new Asignaciones();
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService,private http:HttpClient, private formBuilder: FormBuilder ) { }
-
   asignacionId: number = 0;
 
   currentDate = new Date;
-  
+
 
   buttonDisable : boolean = false;
+
+  constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService,private http:HttpClient, private formBuilder: FormBuilder ) { }
+
+
 
   ngOnInit(): void {
 
@@ -41,14 +43,16 @@ export class PasanteSubirAsigComponent implements OnInit {
         const month = limitDate.getMonth() + 1;
         const day = limitDate.getDate();
         const year = limitDate.getFullYear();
-        this.asigna.limitDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}` 
-        
+        this.asigna.limitDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+
         if(this.currentDate > limitDate){
           this.buttonDisable = true
         }
       }
-       
-    })
+
+    });
+
+    console.log(this.asignacionId);
 
   }
 
@@ -62,19 +66,22 @@ export class PasanteSubirAsigComponent implements OnInit {
   subirArchivo(): any {
     const formularioDatos = new FormData();
     formularioDatos.append('EmailUser', this.userEmail);
+    formularioDatos.append('id_assignments',this.asignacionId.toLocaleString());
 
         formularioDatos.append('File' , this.archivos);
-        console.log(this.archivos);
+        console.log(formularioDatos);
+
 
     //  const header = new HttpHeaders().set('Content-Type', 'multipart/form-data');
     this.http.post('https://ailogicinternship.azurewebsites.net/api/Files', formularioDatos )
     .subscribe(res => {
+      
       console.log(res);
     },error => {
       console.log(error);
     });
 
-    this.router.navigate(['/home-pasantes'])
+   // this.router.navigate(['/home-pasantes'])
 
   }
 

@@ -41,6 +41,8 @@ import { AdminFilesComponent } from './components/admin-files/admin-files.compon
 import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { DndDirective } from './directives/dnd.directive';
+import { PasanteAsignacionesComponent } from './components/pasante-asignaciones/pasante-asignaciones.component';
+import { TreePipe } from './Pipes/tree-pipe.pipe';
 
 
 
@@ -73,6 +75,9 @@ import { DndDirective } from './directives/dnd.directive';
     HistorialComponent,
     PreviewComponent,
     DndDirective,
+    PasanteAsignacionesComponent,
+    TreePipe,
+
 
 
   ],

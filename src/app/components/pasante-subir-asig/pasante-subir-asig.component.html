@@ -10,7 +10,7 @@
             <br />
             <br />
             <h5>{{ asigna.title }}</h5>
-            <p>
+            <p [froalaView]="asigna.description!">
               {{ asigna.description }}
             </p>
             <div class="margin">
@@ -40,9 +40,9 @@
                       style="background-color: rgba(67, 127, 255, 0.863)"
                     ></i>
                     <i class="fas fa-file-archive fa-2x p-1"></i>
-                  </p>     
+                  </p>
                 </div>
-                
+
                 <div
                 *ngIf="archivos"
                 >
