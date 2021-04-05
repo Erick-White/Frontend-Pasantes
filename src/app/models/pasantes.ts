@@ -11,5 +11,7 @@ export class Pasantes {
   birthDate?: string;
   email?: string;
 
-  
+
 }
+
+

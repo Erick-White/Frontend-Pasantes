@@ -41,6 +41,8 @@ import { AdminFilesComponent } from './components/admin-files/admin-files.compon
 import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { DndDirective } from './directives/dnd.directive';
+import { PasanteAsignacionesComponent } from './components/pasante-asignaciones/pasante-asignaciones.component';
+import { TreePipe } from './Pipes/tree-pipe.pipe';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { EquiposComponent } from './components/equipos/equipos.component';
@@ -77,6 +79,10 @@ import { EquiposComponent } from './components/equipos/equipos.component';
     HistorialComponent,
     PreviewComponent,
     DndDirective,
+    PasanteAsignacionesComponent,
+    TreePipe,
+
+
     PerfilComponent,
     EquiposComponent
 
@@ -91,10 +97,10 @@ import { EquiposComponent } from './components/equipos/equipos.component';
     NgxPaginationModule,
     [FroalaEditorModule.forRoot(), FroalaViewModule],
     PdfViewerModule
-  
 
-    
-    
+
+
+
   ],
   providers: [SharedService,CookieService],
   bootstrap: [AppComponent]

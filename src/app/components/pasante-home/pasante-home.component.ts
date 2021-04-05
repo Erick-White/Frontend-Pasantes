@@ -29,8 +29,16 @@ export class PasanteHomeComponent implements OnInit {
 
   pages = 1;
 
+  _opened = true;
+
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService
     , private asignacionesService: AsignacionesService) { }
+
+      _toggleSidebar(_opened : any) {
+    this._opened = _opened;
+
+  }
+
 
   // convocatoriaId: number = 0;
 
@@ -40,7 +48,7 @@ export class PasanteHomeComponent implements OnInit {
     //   this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
     //   this.convoAsig = data;
     //   console.log(data)
-      
+
     // });
 
 
@@ -61,6 +69,6 @@ export class PasanteHomeComponent implements OnInit {
       });
   }
 
-  
+
 
 }

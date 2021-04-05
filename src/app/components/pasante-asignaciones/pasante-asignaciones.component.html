@@ -1,0 +1,58 @@
+<app-navbar  (isOpen)="_toggleSidebar($event)"></app-navbar>
+<ng-sidebar-container>
+<ng-sidebar [opened]="_opened" class="px-3">
+  <div class="list-group list-group-flush mx-2 mt-1   rounded">
+                <a
+                routerLink="/home-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
+                    <i class="fas fa-th-list"></i> Asignaciones</a>
+                <a routerLink="/pasantes-grades" class="list-group-item list-group-item-action bg-light m-1 border ">
+                    <i class="fas fa-book"></i> Calificaciones</a>
+                <a routerLink="/pasantes-asignaciones" class="list-group-item list-group-item-action bg-light m-1 border ">
+                    <i class="fas fa-upload"></i> Repositorio</a>
+
+            </div>
+</ng-sidebar>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" ng-sidebar-content>
+
+            <div class="container">
+              <h3 class=" mt-4">Lista de asignaciones subidas.</h3>
+                <div class=" justify-content-center mt-1">
+                    <div class="divs">
+                        <div class="size">
+                            <table class="table table-striped">
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col ">Asignación</th>
+
+                                        <th scope="col">Fecha Fin</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  *ngFor="let asigna of asignacionesArray">
+                                        <td>
+                                            <a class="text-dark text-center"  [routerLink]="'/pasantes-calificar/'+asigna.id_Assignment">{{
+
+                                            asigna.id_Assignment}}</a>
+                                        </td>
+
+                                        <td>{{asigna.limitDate}}</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </ng-sidebar-container>
+        <!-- /#page-content-wrapper -->
