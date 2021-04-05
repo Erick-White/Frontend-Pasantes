@@ -55,6 +55,22 @@ export class EquiposService {
     );
   }
 
+  addNewPasanteEnEquipo(equipo:Equipos):Observable<any>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http
+    .post(`${this.URL}/addInternToTeam`, equipo, {headers, responseType: 'text'})
+    .pipe(
+      tap(()=>{
+        this._refreshNeeded$.next();
+      })
+    ).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   handleError(error: HttpErrorResponse){
     return throwError(error)
   }
