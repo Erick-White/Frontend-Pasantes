@@ -42,6 +42,7 @@ import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { DndDirective } from './directives/dnd.directive';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 
@@ -87,6 +88,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     SidebarModule.forRoot(),
     NgxPaginationModule,
     [FroalaEditorModule.forRoot(), FroalaViewModule],
+    PdfViewerModule
   
 
     

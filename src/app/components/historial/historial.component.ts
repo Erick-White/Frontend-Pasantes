@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { Files } from '../../models/files';
-import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
+
 
 @Component({
   selector: 'app-historial',
@@ -11,7 +11,7 @@ import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 export class HistorialComponent implements OnInit {
   files: Files[] = [];
   constructor(private admin: AdminService) {
-    pdfDefaultOptions.assetsFolder = 'bleeding-edge';
+   
    }
   _opened = true;
   ngOnInit(): void {
@@ -21,12 +21,12 @@ export class HistorialComponent implements OnInit {
     this._opened = _opened;
 
   }
-  
+  pdfSource =  "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
   
   GetFiles() {
-    console.log()
     this.admin.GetFiles().subscribe(res => {
       this.files = <Files[]>res
     })
+    
   }
 }
