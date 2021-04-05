@@ -27,6 +27,8 @@ export class PasanteSubirAsigComponent implements OnInit {
 
   buttonDisable : boolean = false;
 
+  _opened = true;
+
   constructor(private activerouter: ActivatedRoute, private router: Router, private asignacionesService: AsignacionesService,private http:HttpClient, private formBuilder: FormBuilder ) { }
 
 
@@ -54,6 +56,9 @@ export class PasanteSubirAsigComponent implements OnInit {
 
     console.log(this.asignacionId);
 
+  }
+  _toggleSidebar(_opened : any) {
+    this._opened = _opened;
   }
 
   capturarFile(event : any) {
