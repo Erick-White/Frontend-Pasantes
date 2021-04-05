@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <pagination-controls previousLabel="Anterior" class="text-center mt-2" nextLabel="Siguiente" (pageChange)=" pages = $event">
+        <pagination-controls [autoHide]="true" previousLabel="Anterior" class="text-center mt-2" nextLabel="Siguiente" (pageChange)=" pages = $event">
         </pagination-controls>
 
 
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="nombre">Descripcion</label>
+                        <label for="description">Descripcion</label>
                         <textarea type="text" name="description" #name="ngModel" class="form-control" id="nombre" [(ngModel)]="convito.description">
           </textarea>
                     </div>
