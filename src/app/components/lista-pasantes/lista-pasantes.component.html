@@ -7,13 +7,13 @@
 <ng-sidebar-container>
     <ng-sidebar class="m-4" [opened]="_opened">
         <div class="list-group list-group-flush rounded mx-3 mt-2">
-            <a routerLink="/admin" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <a [routerLink]="'/admin/'+ convoLista.idInternship" class="list-group-item list-group-item-action bg-light m-1 border ">
                 <i class="fas fa-th-list"></i> Pasantia</a>
             <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border ">
                 <i class="fas fa-book"></i> Formulario</a>
             <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border ">
                 <i class="fas fa-upload"></i> Repositorio</a>
-            <a routerLink="/lista-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <a [routerLink]="'/lista-pasante/'+ convoLista.idInternship" class="list-group-item list-group-item-action bg-light m-1 border ">
                 <i class="fas fa-users"></i> Pasantes</a>
                 <a
       [routerLink]="'/equipos/'+ convoLista.idInternship"
