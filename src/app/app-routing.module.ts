@@ -25,6 +25,7 @@ import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { EquiposComponent } from './components/equipos/equipos.component';
+import { EquiposVistaComponent } from './components/equipos-vista/equipos-vista.component';
 
 const routes: Routes = [
 
@@ -58,6 +59,7 @@ const routes: Routes = [
   { path: 'preview', component: PreviewComponent, canActivate: [GuardGuard] },
   {path:'profile/:id',component:PerfilComponent, canActivate: [GuardGuard] },
   {path:'equipos/:id',component:EquiposComponent, canActivate: [GuardGuard] },
+  {path:'equipos-vista/:id',component:EquiposVistaComponent, canActivate: [GuardGuard] },
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];

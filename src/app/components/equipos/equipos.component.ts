@@ -75,7 +75,9 @@ export class EquiposComponent implements OnInit {
    //Nos trae todas las asignaciones por convocatoria
    private getAllEquipos(){
 
-    this.equiposService.equipo().subscribe(equi => {this.equiposArray = equi
+    this.equiposService.equipos(this.convocatoriaId).subscribe(equi => {this.equiposArray = equi
+    this.equipoId = this.equi.idTeam
+    console.log(this.equi)
     },
       error =>{console.log(<any>error)
       });
@@ -99,6 +101,8 @@ export class EquiposComponent implements OnInit {
 
   }
   
+  
+
   _toggleSidebar(_opened : any) {
     this._opened = _opened;
   }

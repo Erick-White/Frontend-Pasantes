@@ -36,7 +36,7 @@ export class EquiposService {
 
     });
     return this.http
-    .get<Equipos[]>(`${this.URL}/${id}`,{headers});
+    .get<Equipos[]>(`${this.URL}/GetByInternship/${id}`,{headers});
   }
 
   addNewEquipos(equipo:Equipos):Observable<any>{
@@ -72,7 +72,7 @@ export class EquiposService {
       )
   }
 
-  updateConvo(equipo:Equipos,id: number):Observable<void>{
+  updateEquipo(equipo:Equipos,id: number):Observable<void>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
