@@ -1,6 +1,19 @@
-<app-navbar></app-navbar>
+<app-navbar (isOpen)="_toggleSidebar($event)"></app-navbar>
+<ng-sidebar-container>
+  <ng-sidebar [opened]="_opened" class="px-3">
+    <div class="list-group list-group-flush mx-2 mt-1   rounded">
+                  <a
+                  routerLink="/home-pasantes" class="list-group-item list-group-item-action bg-light m-1 border ">
+                      <i class="fas fa-th-list"></i> Asignaciones</a>
+                  <a routerLink="/pasantes-grades" class="list-group-item list-group-item-action bg-light m-1 border ">
+                      <i class="fas fa-book"></i> Calificaciones</a>
+                  <a routerLink="/pasantes-asignaciones" class="list-group-item list-group-item-action bg-light m-1 border ">
+                      <i class="fas fa-upload"></i> Repositorio</a>
+  
+              </div>
+  </ng-sidebar>
 <!-- Page Content -->
-<div id="page-content-wrapper">
+<div id="page-content-wrapper" ng-sidebar-content>
   <div class="container">
     <div class="d-flex justify-content-center">
       <div class="divs">
@@ -85,6 +98,7 @@
     </div>
   </div>
 </div>
+</ng-sidebar-container>
 <!-- /#page-content-wrapper -->
 <!-- /#wrapper -->
 <!--Modal Crear Pasantia-->

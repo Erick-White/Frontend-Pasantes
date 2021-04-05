@@ -46,6 +46,7 @@ import { TreePipe } from './Pipes/tree-pipe.pipe';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { EquiposComponent } from './components/equipos/equipos.component';
+import { EquiposVistaComponent } from './components/equipos-vista/equipos-vista.component';
 
 
 
@@ -84,7 +85,8 @@ import { EquiposComponent } from './components/equipos/equipos.component';
 
 
     PerfilComponent,
-    EquiposComponent
+    EquiposComponent,
+    EquiposVistaComponent
 
   ],
   imports: [

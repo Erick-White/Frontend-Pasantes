@@ -1,5 +1,5 @@
 export class Equipos {
-    idTeam?: number;
+    idTeam!: number;
     idInternship?: number;
     name?: string;
 

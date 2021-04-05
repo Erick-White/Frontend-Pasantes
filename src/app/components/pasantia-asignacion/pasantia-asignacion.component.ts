@@ -60,11 +60,6 @@ export class PasantiaAsignacionComponent implements OnInit {
 
     });
 
-    //Servicio para refrescar las pagina la agregar una nueva asignacion
-
-
-
-
     // Servicio para refrescar las pagina al agregar una nueva asignacion
     this.asignacionesService.refreshNeeded$.subscribe(()=>{
         this.getAllAsignaciones();
