@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { Files } from '../../models/files';
 
-
 @Component({
   selector: 'app-historial',
   templateUrl: './historial.component.html',

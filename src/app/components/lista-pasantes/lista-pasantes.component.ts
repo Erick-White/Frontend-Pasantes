@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from 'src/app/services/admin.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
+
 import { PasantesAll} from '../../models/pasantes-all';
 import { Pasantes } from 'src/app/models/pasantes';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Convocatorias } from "../../models/convocatorias";
+
+import { ConvocatoriaService } from "../../services/convocatoria.service";
+import { AdminService } from 'src/app/services/admin.service';
 import { RolesService } from '../../services/roles.service';
 import { RolesResponse } from 'src/app/models/Roles';
 import { first } from 'rxjs/operators';
@@ -16,6 +21,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./lista-pasantes.component.css']
 })
 export class ListaPasantesComponent implements OnInit {
+
+  //Informacion de la convocatoria en la que se encuentra
+  convoLista: Convocatorias = new Convocatorias();
+
   currentContactInfo: any = {};
   pasantee: any;
   pasantes: PasantesAll[] = [];
@@ -32,7 +41,7 @@ export class ListaPasantesComponent implements OnInit {
 
 //Algo
   constructor(private admin: AdminService,private router: Router,private route: ActivatedRoute,
-              private Roles : RolesService
+              private Roles : RolesService,  private convocatoriaService: ConvocatoriaService,
 
   ) { }
   
@@ -40,12 +49,23 @@ export class ListaPasantesComponent implements OnInit {
     this._opened = _opened;
 
   }
+  convocatoriaId: number = 0;
 
   ngOnInit(): void {
     // this.admin.refreshNeeded$.subscribe(res => {
     //   this.GetAllPasantes();
     //   console.log(res);
     // })
+
+    //Variable para mostrar la Convocatoria en la que se encuentra
+    this.convocatoriaId = +this.route.snapshot.params['id'];
+    //Servicio para traer la informacion de una sola Convocatoria
+    this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
+    this.convoLista = data;
+    // this.internLimit;
+    console.log(data)
+
+  })
 
     this.loading = true;
     this.GetAllPasantes();

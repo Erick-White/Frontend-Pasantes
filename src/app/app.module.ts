@@ -43,6 +43,7 @@ import { PreviewComponent } from './components/preview/preview.component';
 import { DndDirective } from './directives/dnd.directive';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { EquiposComponent } from './components/equipos/equipos.component';
 
 
 
@@ -76,7 +77,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     HistorialComponent,
     PreviewComponent,
     DndDirective,
-    PerfilComponent
+    PerfilComponent,
+    EquiposComponent
 
   ],
   imports: [
