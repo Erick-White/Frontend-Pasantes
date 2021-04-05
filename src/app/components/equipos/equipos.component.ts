@@ -37,7 +37,7 @@ export class EquiposComponent implements OnInit {
   equiposArray: Equipos[] = [
   ];
 
-  //Variable para traer Asignaciones
+  //Variable para traer Equipos
   equi: Equipos = new Equipos();
 
 
@@ -48,6 +48,8 @@ export class EquiposComponent implements OnInit {
 
   convocatoriaId: number = 0;
 
+  equipoId: number = 0;
+
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService,private admin: AdminService, private Roles : RolesService, private equiposService: EquiposService) { }
 
   ngOnInit(): void {
@@ -57,7 +59,6 @@ export class EquiposComponent implements OnInit {
     //Servicio para traer la informacion de una sola Convocatoria
     this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
     this.convoEquipos = data;
-    // this.internLimit;
     console.log(data)
 
   });
@@ -74,7 +75,7 @@ export class EquiposComponent implements OnInit {
    //Nos trae todas las asignaciones por convocatoria
    private getAllEquipos(){
 
-    this.equiposService.equipos(this.convocatoriaId).subscribe(equi => {this.equiposArray = equi
+    this.equiposService.equipo().subscribe(equi => {this.equiposArray = equi
     },
       error =>{console.log(<any>error)
       });

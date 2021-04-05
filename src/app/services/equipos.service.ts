@@ -39,13 +39,13 @@ export class EquiposService {
     .get<Equipos[]>(`${this.URL}/${id}`,{headers});
   }
 
-  addNewEquipos(equipo:Equipos):Observable<Equipos>{
+  addNewEquipos(equipo:Equipos):Observable<any>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
     return this.http
-    .post<Equipos>(this.URL, equipo, {headers})
+    .post(this.URL, equipo, {headers, responseType: 'text'})
     .pipe(
       tap(()=>{
         this._refreshNeeded$.next();

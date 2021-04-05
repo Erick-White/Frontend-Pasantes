@@ -55,7 +55,8 @@
               <div
                 class="col-md-3 shadow-sm rounded m-4 border-dark"
                 style="background-color: #efefef"
-                *ngFor="let equi of equiposArray"
+                *ngFor="let equi of equiposArray
+                | paginate: { itemsPerPage: 6, currentPage: pages }"
               >
                 <div>
                   <a
