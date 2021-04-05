@@ -15,5 +15,6 @@ export interface PasantesAll {
 
 export class User {
     email?: string;
-   
+
 }
+
