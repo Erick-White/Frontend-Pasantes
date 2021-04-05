@@ -50,7 +50,7 @@ export class PasantiaAsignacionComponent implements OnInit {
   ngOnInit(): void {
 
 
-    //Variable para mostrar la Convocatoria en la que se encuentra
+      //Variable para mostrar la Convocatoria en la que se encuentra
       this.convocatoriaId = +this.activerouter.snapshot.params['id'];
       //Servicio para traer la informacion de una sola Convocatoria
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{

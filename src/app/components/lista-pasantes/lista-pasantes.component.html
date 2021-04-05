@@ -15,6 +15,12 @@
                 <i class="fas fa-upload"></i> Repositorio</a>
             <a routerLink="/lista-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
                 <i class="fas fa-users"></i> Pasantes</a>
+                <a
+      [routerLink]="'/equipos/'+ convoLista.idInternship"
+        class="list-group-item list-group-item-action bg-light m-1 border"
+      >
+        <i class="fas fa-users"></i> Equipos</a
+      >
         </div>
     </ng-sidebar>
 
@@ -80,7 +86,7 @@
                                 </p>
                                 <p class="mb-0">Espere Por favor...</p>
                             </div>
-                            <pagination-controls class="text-center" previousLabel="Anterior" nextLabel="Siguiente" (pageChange)=" p = $event"></pagination-controls>
+                            <pagination-controls [autoHide]="true" class="text-center" previousLabel="Anterior" nextLabel="Siguiente" (pageChange)=" p = $event"></pagination-controls>
                             <div *ngIf="!loading && pasantes.length === 0" class=" m-5 alert-warning text-center mt-3 animated fadeIn fast col-md-11">
                                 <h4 class="alert-heading">No Hay Pasantes</h4>
                                 <p>
