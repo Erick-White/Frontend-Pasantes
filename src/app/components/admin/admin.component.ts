@@ -20,8 +20,10 @@ export class AdminComponent implements OnInit {
   ];
   //Variable donde se agrega una nueva Convocatoria
   convito = new Convocatorias();
+  
   pages = 1;
-   _opened = true;
+  
+  _opened = true;
 
   constructor(private convocatoriaService: ConvocatoriaService, private router: Router, private sharedService : SharedService) { }
 

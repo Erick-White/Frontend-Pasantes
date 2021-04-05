@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute } from '@angular/router';
+import { SharedService } from './../../shared/shared';
 
 import { Convocatorias } from "../../models/convocatorias";
 import { Asignaciones } from "../../models/asignaciones";
@@ -17,6 +18,8 @@ import { Subscription } from 'rxjs';
 })
 export class PasantiaAsignacionComponent implements OnInit {
 
+  pages = 1;
+
   _opened = true;
 
   // Informacion de la Pasantia en la que se encuetra
@@ -29,12 +32,16 @@ export class PasantiaAsignacionComponent implements OnInit {
   //Variable para traer Asignaciones
   asigna: Asignaciones = new Asignaciones();
 
-  
+  public options: Object = {
+  placeholderText: 'Edit Your Content Here!',
+  charCounterCount: false
+}
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService) { }
+
+  constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService, private asignacionesService: AsignacionesService, private sharedService : SharedService) { }
 
 
-  
+
   convocatoriaId: number = 0;
 
   asignacionId: number = 0;
@@ -52,11 +59,11 @@ export class PasantiaAsignacionComponent implements OnInit {
       console.log(data)
 
     });
-    
+
     //Servicio para refrescar las pagina la agregar una nueva asignacion
 
-    
-  
+
+
 
     // Servicio para refrescar las pagina al agregar una nueva asignacion
     this.asignacionesService.refreshNeeded$.subscribe(()=>{
@@ -79,13 +86,15 @@ export class PasantiaAsignacionComponent implements OnInit {
   //Nos guarda las asignaciones creadas
   saveNewAsigna(){
     this.asigna.id_Internship = this.convocatoriaId;
-    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(()=>{
+    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(response=>{
+      console.log(response)
         Swal.fire({
           icon: 'success',
           title: 'La Asignacion ha sido Creada.',
           showConfirmButton: false,
           timer: 1500
-        })     
+          
+        })
       },
       error =>{
         console.log(<any>error)

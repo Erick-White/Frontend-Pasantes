@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NgxPaginationModule } from 'ngx-pagination';
+
 
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
@@ -36,10 +36,14 @@ import { SidebarModule } from 'ng-sidebar';
 
 
 import { CookieService } from 'ngx-cookie-service';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { AdminFilesComponent } from './components/admin-files/admin-files.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { DndDirective } from './directives/dnd.directive';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 
 
 
@@ -72,7 +76,7 @@ import { DndDirective } from './directives/dnd.directive';
     HistorialComponent,
     PreviewComponent,
     DndDirective,
-
+    PerfilComponent
 
   ],
   imports: [
@@ -82,7 +86,13 @@ import { DndDirective } from './directives/dnd.directive';
     HttpClientModule,
     ReactiveFormsModule,
     SidebarModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    [FroalaEditorModule.forRoot(), FroalaViewModule],
+    PdfViewerModule
+  
+
+    
+    
   ],
   providers: [SharedService,CookieService],
   bootstrap: [AppComponent]

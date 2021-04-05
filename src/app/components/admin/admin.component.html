@@ -4,11 +4,11 @@
 <ng-sidebar-container>
     <ng-sidebar class="ml-3 mt-3" [opened]="_opened">
         <div class="list-group list-group-flush rounded mx-2  mt-2 col-md-12">
-            <a href="index.html" class="list-group-item list-group-item-action bg-light m-1 my-1 border ">
+            <a routerLink="/admin" class="list-group-item list-group-item-action bg-light m-1 my-1 border ">
                 <i class="fas fa-th-list"></i> Pasantias</a>
             <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 my-1 border ">
                 <i class="fas fa-book"></i> Formularios</a>
-            <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 my-1 border ">
+            <a routerLink="/admin-files" class="list-group-item list-group-item-action bg-light m-1 my-1 border ">
                 <i class="fas fa-upload"></i> Repositorio</a>
         </div>
     </ng-sidebar>
@@ -32,7 +32,7 @@
 
 
 
-                <div *ngFor="let convocatoria of convocatoriaArray|paginate: {itemsPerPage:5,currentPage:pages} ;" class="col-md-3 ml-4 bg-light  shadow-sm rounded m-4" id="innerbox">
+                <div *ngFor="let convocatoria of convocatoriaArray|paginate: {itemsPerPage:6,currentPage:pages} ;" class="col-md-3 ml-4 bg-light  shadow-sm rounded m-4" id="innerbox">
                     <div class="">
 
                         <a [routerLink]="'/admin/'+convocatoria.idInternship" class="text-dark text-center">
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)=" pages = $event">
+        <pagination-controls previousLabel="Anterior" class="text-center mt-2" nextLabel="Siguiente" (pageChange)=" pages = $event">
         </pagination-controls>
 
 

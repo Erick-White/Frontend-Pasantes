@@ -3,13 +3,13 @@
 <ng-sidebar-container>
     <ng-sidebar class="m-4" [opened]="_opened">
         <div class="list-group list-group-flush rounded mx-3 mt-2">
-            <a routerLink="/admin" class="list-group-item list-group-item-action bg-light m-1 border ">
-                <i class="fas fa-th-list"></i> Pasantias</a>
-            <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <a [routerLink]="'/admin/' + convoPasantes.idInternship" class="list-group-item list-group-item-action bg-light m-1 border">
+                <i class="fas fa-th-list"></i> Pasantia</a>
+            <a routerLink="/formulario" class="list-group-item list-group-item-action bg-light m-1 border">
                 <i class="fas fa-book"></i> Formulario</a>
-            <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <a href="repo.html" class="list-group-item list-group-item-action bg-light m-1 border">
                 <i class="fas fa-upload"></i> Repositorio</a>
-            <a routerLink="/lista-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
+            <a routerLink="/lista-pasante" class="list-group-item list-group-item-action bg-light m-1 border">
                 <i class="fas fa-users"></i> Pasantes</a>
         </div>
     </ng-sidebar>
@@ -22,11 +22,11 @@
                     <div class="card-body">
                         <form id="msform" #f="ngForm">
                             <button type="button" (click)="Update(p.idRequestInternship)" class="btn btn-primary float-right ml-2">
-                                Aceptar
-                            </button>
+                    Aceptar
+                  </button>
                             <button type="button" (click)="borrar(p.idRequestInternship)" class="btn btn-danger float-right ml-2" style="margin-left: 12px">
-                                Declinar
-                            </button>
+                    Declinar
+                  </button>
 
                             <div class="row" style="margin-top: 19px">
                                 <div class="col-xs-2 text-center">
@@ -79,11 +79,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-
                         Informacion adicional.
-                      </button> Informacion adicional.
-
-
+                      </button>
                                     <div class="collapse" id="collapseExample">
                                         <div class="card mt-3 card-body text-left">
                                             <p>
@@ -108,10 +105,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-
                         Auto Evaluaciones.
-                      </button> Auto Evaluaciones.
-
+                      </button>
                                     <div class="collapse" id="collapseExample2">
                                         <div class="card mt-3 card-body">
                                             <h3 class="text-left">Auto evaluaciones</h3>
@@ -144,8 +139,8 @@
                 </div>
             </div>
         </div>
-
-        <div *ngIf="!loading && pasante.length === 0" class="m-5 alert-warning text-center mt-3 animated fadeIn fast col-md-11">
+        <div class="container">
+        <div *ngIf="!loading && pasante.length === 0" class="mx-5 alert-warning text-center mt-1 animated fadeIn fast    ">
             <h4 class="alert-heading">No Hay Solicitudes</h4>
             <p>
                 <i class="fa fa-exclamation fa-2x"></i>
@@ -159,7 +154,7 @@
             <p class="mb-0">Espere Por favor...</p>
         </div>
 
-
+        </div>
 
 
 

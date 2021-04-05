@@ -3,7 +3,7 @@ import { SharedService } from 'src/app/shared/shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../services/admin.service';
 import { CookieService } from 'ngx-cookie-service';
-import { RolesResponse } from '../../models/Roles';
+import { PasantesAll } from 'src/app/models/pasantes-all';
 import { PasantesService } from '../../services/pasantes.service';
 
 @Component({
@@ -12,7 +12,8 @@ import { PasantesService } from '../../services/pasantes.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  
+ 
+  pasantes: PasantesAll[] = [];
  
   Mostrar = false;
   username: any = null;
@@ -21,8 +22,8 @@ export class NavbarComponent implements OnInit {
   @Output() isOpen = new EventEmitter<boolean>();
 
 
-  constructor(private _adminService: AdminService, private router: Router, private cookie : CookieService,
-    private route: ActivatedRoute, private pasante : PasantesService
+  constructor(private admin: AdminService, private router: Router, private cookie : CookieService,
+    private route: ActivatedRoute,private pasante:PasantesService
     ) { }
 
 
@@ -50,8 +51,8 @@ public _toggleSidebar() {
 
 
   ngOnInit(): void {
-      this.username = localStorage.getItem('email');
-      //this.getEmail(this.username);
+    this.username = localStorage.getItem('email');
+      this.getEmail(this.username);
       
   }
 
@@ -61,17 +62,21 @@ public _toggleSidebar() {
   // }
 
   logout() {
-    this._adminService.logout();
+    this.admin.logout();
     this.cookie.delete('token_access');
     this.router.navigateByUrl('/login');
   }
 
- /* getEmail(email: any) {
+ getEmail(email: any) {
     this.pasante.GetEmail(email).subscribe(
       resp => {
         this.Intern = resp.idInternt;
         console.log(resp);
       }
     );
-  }*/
+  }
+
+
+
+  
 }

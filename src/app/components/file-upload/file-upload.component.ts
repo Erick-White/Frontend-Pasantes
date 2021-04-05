@@ -18,6 +18,8 @@ export class FileUploadComponent implements OnInit {
   uploadForm: FormGroup | any;
   userEmail: string | Blob = "";
 
+ 
+
   constructor(private http:HttpClient, private formBuilder: FormBuilder) {
 
   }

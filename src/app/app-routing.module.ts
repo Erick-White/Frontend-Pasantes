@@ -20,6 +20,7 @@ import { RolesResponse } from 'src/app/models/Roles';
 import { AdminFilesComponent } from './components/admin-files/admin-files.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
 
@@ -47,7 +48,8 @@ const routes: Routes = [
   { path: 'home-pasantes', component: PasanteHomeComponent, canActivate: [GuardGuard] },
   { path: 'admin-files', component: AdminFilesComponent, canActivate: [GuardGuard] },
   { path: 'Historial', component: HistorialComponent, canActivate: [GuardGuard] },
-  {path:'preview',component:PreviewComponent, canActivate: [GuardGuard] },
+  { path: 'preview', component: PreviewComponent, canActivate: [GuardGuard] },
+  {path:'profile/:id',component:PerfilComponent, canActivate: [GuardGuard] },
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];
