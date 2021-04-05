@@ -1,48 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Asignaciones } from "../models/asignaciones";
-import { Observable, Subject, throwError } from "rxjs";
+import {Equipos} from '../models/equipos';
+import { Observable, Subject, Subscription, throwError } from "rxjs";
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { tap, catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
-export class AsignacionesService {
+export class EquiposService {
 
-  URL = 'https://ailogicinternship.azurewebsites.net/api/Assignments'
+  URL = 'https://ailogicinternship.azurewebsites.net/api/Team';
 
-  constructor(private http: HttpClient) { 
-
-  }
+  constructor(private http: HttpClient) { }
 
   private _refreshNeeded$ = new Subject<void>();
 
   get refreshNeeded$(){
     return this._refreshNeeded$;
   }
-  asignacion():Observable<Asignaciones[]>{
+
+  equipo():Observable<Equipos[]>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
     return this.http
-    .get<Asignaciones[]>(`${this.URL}`,{headers});
-  }
+    .get<Equipos[]>(this.URL,{headers});
 
-  asignaciones(id:number):Observable<Asignaciones[]>{
+    
+  }
+  
+  equipos(id:number):Observable<Equipos[]>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token') 
 
     });
     return this.http
-    .get<Asignaciones[]>(`${this.URL}/Internship/${id}`,{headers});
+    .get<Equipos[]>(`${this.URL}/${id}`,{headers});
   }
 
-  addNewAsignacion(Asig: Asignaciones): Observable<any>{
+  addNewEquipos(equipo:Equipos):Observable<Equipos>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
+
     });
     return this.http
-    .post(this.URL, Asig,{headers, responseType: 'text'})
+    .post<Equipos>(this.URL, equipo, {headers})
     .pipe(
       tap(()=>{
         this._refreshNeeded$.next();
@@ -56,28 +59,28 @@ export class AsignacionesService {
     return throwError(error)
   }
 
-  getSingleAsignacion(id: number):Observable<Asignaciones>{
+  getSingleEquipo(id: number):Observable<Equipos>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
     return this.http
-    .get<Asignaciones>( `${this.URL}/${id}`,{headers})
+    .get<Equipos>( `${this.URL}/${id}`,{headers})
     .pipe(
       tap(()=>
-      console.log(`fetch asignacion id=${id}` ))
+      console.log())
       )
   }
 
-  updateAsig(Asig:Asignaciones,id1: number):Observable<void>{
+  updateConvo(equipo:Equipos,id: number):Observable<void>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 
     });
-    return this.http.put<void>(`${this.URL}/${id1}`,Asig,{headers})
+    return this.http.put<void>(`${this.URL}/${id}`,equipo,{headers})
   }
 
-  deleteAsignacion(id:number):Observable<any>{
+  deleteEquipo(id:number):Observable<any>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
 

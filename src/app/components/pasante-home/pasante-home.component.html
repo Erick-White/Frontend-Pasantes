@@ -33,7 +33,12 @@
       </div>
     </div>
 
-    <pagination-controls previousLabel="Anterior" class="text-center mt-2" nextLabel="Siguiente" (pageChange)=" pages = $event">
+    <pagination-controls 
+    [autoHide]="true"
+    previousLabel="Anterior" 
+    class="text-center mt-2" 
+    nextLabel="Siguiente" 
+    (pageChange)=" pages = $event">
     </pagination-controls>
 
   </div>

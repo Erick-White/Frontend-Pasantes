@@ -23,6 +23,8 @@ import { RolesResponse } from 'src/app/models/Roles';
 import { AdminFilesComponent } from './components/admin-files/admin-files.component';
 import { HistorialComponent } from './components/historial/historial.component';
 import { PreviewComponent } from './components/preview/preview.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { EquiposComponent } from './components/equipos/equipos.component';
 
 const routes: Routes = [
 
@@ -44,7 +46,7 @@ const routes: Routes = [
   { path: 'recuperar-clave/:id', component: RecuperarClaveComponent,canActivate: [GuardGuard]},
   { path: 'recuperar-cuenta', component: RecuperarCuentaComponent },
   { path: 'file-upload', component: FileUploadComponent, canActivate: [GuardGuard]},
-  { path: 'lista-pasante', component: ListaPasantesComponent, canActivate: [GuardGuard] },
+  { path: 'lista-pasante/:id', component: ListaPasantesComponent, canActivate: [GuardGuard] },
   { path: 'perfil/:id', component: PasantePerfilComponent,canActivate: [GuardGuard]},
   { path: 'pasante-subir-asig/:id',component:PasanteSubirAsigComponent,canActivate: [GuardGuard]},
   { path: 'home-pasantes', component: PasanteHomeComponent, canActivate: [GuardGuard] },
@@ -53,7 +55,9 @@ const routes: Routes = [
   {path: 'pasantes-calificar/:id', component: PasanteRepoVistaComponent, canActivate: [GuardGuard]},
   { path: 'admin-files', component: AdminFilesComponent, canActivate: [GuardGuard] },
   { path: 'Historial', component: HistorialComponent, canActivate: [GuardGuard] },
-  {path:'preview',component:PreviewComponent, canActivate: [GuardGuard] },
+  { path: 'preview', component: PreviewComponent, canActivate: [GuardGuard] },
+  {path:'profile/:id',component:PerfilComponent, canActivate: [GuardGuard] },
+  {path:'equipos/:id',component:EquiposComponent, canActivate: [GuardGuard] },
   { path : '**', pathMatch: 'full' , redirectTo: 'login'},
 
 ];

@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NgxPaginationModule } from 'ngx-pagination';
+
 
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
@@ -43,6 +43,10 @@ import { PreviewComponent } from './components/preview/preview.component';
 import { DndDirective } from './directives/dnd.directive';
 import { PasanteAsignacionesComponent } from './components/pasante-asignaciones/pasante-asignaciones.component';
 import { TreePipe } from './Pipes/tree-pipe.pipe';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { EquiposComponent } from './components/equipos/equipos.component';
+
 
 
 
@@ -79,6 +83,8 @@ import { TreePipe } from './Pipes/tree-pipe.pipe';
     TreePipe,
 
 
+    PerfilComponent,
+    EquiposComponent
 
   ],
   imports: [
@@ -89,7 +95,12 @@ import { TreePipe } from './Pipes/tree-pipe.pipe';
     ReactiveFormsModule,
     SidebarModule.forRoot(),
     NgxPaginationModule,
-    [FroalaEditorModule.forRoot(), FroalaViewModule]
+    [FroalaEditorModule.forRoot(), FroalaViewModule],
+    PdfViewerModule
+
+
+
+
   ],
   providers: [SharedService,CookieService],
   bootstrap: [AppComponent]

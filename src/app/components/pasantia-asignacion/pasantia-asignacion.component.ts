@@ -50,7 +50,7 @@ export class PasantiaAsignacionComponent implements OnInit {
   ngOnInit(): void {
 
 
-    //Variable para mostrar la Convocatoria en la que se encuentra
+      //Variable para mostrar la Convocatoria en la que se encuentra
       this.convocatoriaId = +this.activerouter.snapshot.params['id'];
       //Servicio para traer la informacion de una sola Convocatoria
       this.convocatoriaService.getSingleConvocatoria(this.convocatoriaId).subscribe(data =>{
@@ -86,12 +86,14 @@ export class PasantiaAsignacionComponent implements OnInit {
   //Nos guarda las asignaciones creadas
   saveNewAsigna(){
     this.asigna.id_Internship = this.convocatoriaId;
-    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(()=>{
+    this.asignacionesService.addNewAsignacion(this.asigna).subscribe(response=>{
+      console.log(response)
         Swal.fire({
           icon: 'success',
           title: 'La Asignacion ha sido Creada.',
           showConfirmButton: false,
           timer: 1500
+          
         })
       },
       error =>{

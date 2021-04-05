@@ -65,14 +65,16 @@ export class PasantiaAsignacionVistaComponent implements OnInit {
       confirmButtonText: 'Si, Eliminalo!'
     }).then((result) => {
       if (result.isConfirmed) {
+        
         this.deleteAsig();
-  
+        this.router.navigate(['/admin',this.asigna.id_Internship])
+        
         Swal.fire(
           'Borrado!',
           'La Asignacion ha sido Borrada.',
           'success'
         )
-        this.router.navigate(['/admin',this.asigna.id_Internship])
+        
       }
     })
   }
