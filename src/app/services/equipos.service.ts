@@ -39,6 +39,15 @@ export class EquiposService {
     .get<Equipos[]>(`${this.URL}/GetByInternship/${id}`,{headers});
   }
 
+  pasantePorEquipos(id:number):Observable<Equipos[]>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token') 
+
+    });
+    return this.http
+    .get<Equipos[]>(`${this.URL}/GetInternsByTeam/${id}`,{headers});
+  }
+
   addNewEquipos(equipo:Equipos):Observable<any>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('token')
@@ -110,5 +119,18 @@ export class EquiposService {
       )
   }
 
+  deletePasante(id:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('token')
+
+    });
+    return this.http
+    .delete( `${this.URL}/DeleteInternTeam/${id}`,{headers, responseType: 'text'})
+    .pipe(
+      tap(()=> {
+        this._refreshNeeded$.next();
+      })
+      )
+  }
 
 }

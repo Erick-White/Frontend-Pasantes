@@ -42,143 +42,133 @@
         <div class="col-lg-9">
           <h2 class="mt-5 ml-5">Configuracion del Equipo {{ equi.name }}</h2>
           <button
-                class="btn btn-light text-center shadow-sm float-right mt-2"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                <i class="fas fa-cog"></i>
-                Configuracion
-              </button>
+            class="btn btn-light text-center shadow-sm float-right mt-2"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            <i class="fas fa-cog"></i>
+            Configuracion
+          </button>
 
-          <div class="container bg-light p-4 shadow-sm ">
+          <div class="container bg-light p-4 shadow-sm">
             <div class="col-md-12">
-              
-              <a
-                type="button"
-                [routerLink]="'/equipos/'+ equi.idInternship"
-                name="volver inicio"
-                class="volver btn btn-info float-left text-white"
-                style="background-color: #49abc6"
-              >
-                Volver</a
-              >
+              <table class="table mt-3">
+                <thead class="thead-dark">
+                  <tr>
+                    <th width="5">Pasantes</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let pas of pasante2"
+                    class="shadow-sm bg-light"
+                  >
+                    <td>
+                      <img
+                        src="/assets/user.svg"
+                        alt=""
+                        width="60"
+                        class="img-fluid rounded-circle"
+                      />
+                    </td>
+                    <td>
+                      <span class="d-block mt-2"
+                        >{{ pas.name }} {{pas.lastname}} <button  class="float-right"><i class="fas fa-minus-circle  float-right"></i></button>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+                <a
+                  type="button"
+                  [routerLink]="'/equipos/' + equi.idInternship"
+                  name="volver inicio"
+                  class="volver btn btn-info float-left text-white mb-2"
+                  style="background-color: #49abc6"
+                >
+                  Volver</a
+                >
+              </table>
             </div>
           </div>
         </div>
-    </ng-sidebar>
-    <!-- Page Content -->
-    <div id="page-content-wrapper" ng-sidebar-content>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <h2 class="mt-5 ml-5">Configuracion del Equipo {{ equi.name }}</h2>
-
-                    <div class="container bg-light p-4 shadow-sm ">
-                        <div class="col-md-12">
-                            <div class="table-responsive animated fadeIn fast">
-                                <table class="table mb-5">
-
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th width="5">Pasantes</th>
-                                            <th></th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let Pasantes of pasantes" class="shadow-sm bg-light">
-                                            <td>
-                                                <img src="/assets/user.svg" alt="" width="60" class="img-fluid rounded-circle" />
-                                            </td>
-                                            <td>
-                                                <span class="d-block mt-2">{{Pasantes.name}}  {{Pasantes.lastname}}
-                                              
-                                            </span>
-
-                                                <!-- <small>Gamma</small>-->
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button class="btn btn-light text-center shadow-sm float-right " data-toggle="modal" data-target="#exampleModal">
-                                  <i class="fas fa-cog"></i>
-                                  Configuracion
-                                </button>
-
-                                <a type="button" [routerLink]="'/equipos/'+ equi.idInternship" name="volver inicio" class="volver btn btn-info float-left  text-white" style="background-color: #49abc6">
-                              Volver</a
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Configuracion de Equipo
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div>
+                          <p>Nombre del Equipo</p>
+                          <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            value="{{ equi.name }}"
+                            [(ngModel)]="equi.name"
+                          />
+                        </div>
+                        <div>
+                          <p>Pasante</p>
+                          <select
+                            class="form-control"
+                            name="pasantes1"
+                            [(ngModel)]="equi.idInternt"
+                          >
+                            <option
+                              *ngFor="let pasante of pasantes"
+                              [value]="pasante.idInternt"
                             >
-                            </div>
-
-
-
-
+                              {{ pasante.name }}
+                            </option>
+                          </select>
                         </div>
+                        <div class="modal-footer">
+                          <button
+                            (click)="confirmBox()"
+                            type="button"
+                            class="btn btn-danger mt-5 float-left"
+                          >
+                            Eliminar Equipo
+                          </button>
+                          <button
+                            (click)="updateInfo()"
+                            type="button"
+                            class="btn btn-info mt-5 float-right text-white"
+                            style="background-color: #49abc6"
+                          >
+                            Guardar
+                          </button>
+                        </div>
+                      </form>
                     </div>
+                  </div>
                 </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    Configuracion de Equipo
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
               </div>
-              <div class="modal-body">
-                <form>
-                  <div>
-                    <p>Nombre del Equipo</p>
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      value="{{ equi.name }}"
-                      [(ngModel)]="equi.name"
-                    />
-                  </div>
-                  <div>
-                    <p>Pasante</p>    
-                    <select 
-                    
-                    class="form-control"
-                    name="pasantes1" 
-                    [(ngModel)]="equi.idInternt"
-                    >
-                      <option *ngFor="let pasante of pasantes" [value]="pasante.idInternt">
-                          {{pasante.name}}
-                      </option>
-                  </select>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      (click)="confirmBox()"
-                      type="button"
-                      class="btn btn-danger mt-5 float-left"
-                    >
-                      Eliminar Equipo
-                    </button>
-                    <button
-                      (click)="updateInfo(); agregarPasante()"
-
-                      type="button"
-                      class="btn btn-info mt-5 float-right text-white"
-                      style="background-color: #49abc6"
-                    >
-                      Guardar
-                    </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+            
+          
+          <!-- /#page-content-wrapper -->
+        
+        <!-- /#wrapper -->
+      </div>
     </div>
-    <!-- /#wrapper -->
-</ng-sidebar-container>
+  </div></ng-sidebar-container
+>
