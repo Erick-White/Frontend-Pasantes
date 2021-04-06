@@ -98,7 +98,8 @@ import { EquiposVistaComponent } from './components/equipos-vista/equipos-vista.
     SidebarModule.forRoot(),
     NgxPaginationModule,
     [FroalaEditorModule.forRoot(), FroalaViewModule],
-    PdfViewerModule
+    PdfViewerModule,
+
 
 
 

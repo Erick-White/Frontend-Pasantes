@@ -1,5 +1,5 @@
-export interface PasantesAll {
-    idInternt: string;
+export class Pasantes2 {
+    idInternt?: number;
     name?: string;
     lastname?: string;
     idUser?: string;
@@ -12,9 +12,7 @@ export interface PasantesAll {
     cv?: string;
     birthDate?: string;
 }
-
 export class User {
     email?: string;
 
 }
-
