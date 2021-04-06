@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./equipos-vista.component.css']
 })
 export class EquiposVistaComponent implements OnInit {
-
+ 
   //Informacion de los Equipos
   equi: Equipos = new Equipos();
 
@@ -99,7 +99,7 @@ export class EquiposVistaComponent implements OnInit {
         
         Swal.fire(
           'Borrado!',
-          'La Equipo ha sido Borrada.',
+          'El Equipo ha sido Borrado.',
           'success'
         )
         

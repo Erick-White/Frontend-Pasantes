@@ -92,30 +92,41 @@
                     </div>
                 </div>
                 <label for="nombre1">Nombre</label>
-                <input type="nombre" class="form-control" id="nombre1" name="name" required [(ngModel)]="registro.name" placeholder="Nombre">
+                <input type="nombre" class="form-control" id="nombre1" name="name" required [(ngModel)]="registro.name" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" placeholder="Nombre">
+                <small *ngIf="name.invalid && name.touched" class="text-form text-danger">Este campo es requerido </small>
+                <br>
                 <label for="apellido1">Apellido</label>
-                <input type="telefono" class="form-control" name="lastname" required [(ngModel)]="registro.lastname" id="apellido1" placeholder="Apellido">
+                <input type="apellido" class="form-control" name="lastname" required [(ngModel)]="registro.lastname" #lastname="ngModel" [class.is-invalid]="lastname.invalid && lastname.touched" id="apellido1" placeholder="Apellido">
+                <small *ngIf="lastname.invalid && lastname.touched" class="text-form text-danger">Este campo es requerido </small>
+                <br>
                 <label for="cedula1">Cedula</label>
-                <input type="cedula" class="form-control" name="cedula" required [(ngModel)]="registro.cedula" id="cedula1" placeholder="Cedula">
+                <input type="cedula" class="form-control" name="cedula" required [(ngModel)]="registro.cedula" #cedula="ngModel" [class.is-invalid]="cedula.invalid && cedula.touched" id="cedula1" minlength="13" maxlength="13" placeholder="Cedula">
+                <small *ngIf="cedula.invalid && cedula.touched" class="text-form text-danger">Este campo debe tener 11 digitos </small>
+                <br>
                 <label for="telefono1">Telefono</label>
-                <input type="telefono" class="form-control" name="phone" required [(ngModel)]="registro.phone" id="telefono1" placeholder="Telefono">
+                <input type="telefono" class="form-control" name="phone" required [(ngModel)]="registro.phone" id="telefono1" #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched" minlength="12" maxlength="12" placeholder="Telefono">
+                <small *ngIf="phone.invalid && phone.touched" class="text-form text-danger">Este campo debe tener 10 digitos </small>
+                <br>
                 <label for="email1">Email</label>
-                <input type="email" class="form-control" name="email" required [(ngModel)]="registro.email" id="email1" placeholder="Email">
+                <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" name="email" required [(ngModel)]="registro.email" id="email1" placeholder="Email">
+                <small *ngIf="email.invalid && email.touched" class="text-form text-danger">El Correo es Obligatorio</small>
+                <br>
                 <label for="linkedin1">Linkedin</label>
                 <input type="linkedin" class="form-control" name="linkendin" required [(ngModel)]="registro.linkedin" id="linkedin1" placeholder="Enlace de Linkedin (Opcional)">
+                <br>
                 <label for="nacimiento1">Fecha de Nacimiento</label>
                 <input type="date" class="form-control " name="birthDate" value="{{registro.birthDate |date: 'yyyy-MM-dd'}}" required [(ngModel)]="registro.birthDate" id="nacimiento1">
+                <br>
                 <label for="github1">Github</label>
-                <input type="github" class="form-control" name="github" required [(ngModel)]="registro.github" id="github1" placeholder="Enlace de Github (Opcional)">
-
+                <input type="github" class="form-control" name="github" required [(ngModel)]="registro.github" #github="ngModel" [class.is-invalid]="github.invalid && github.touched" id="github1" placeholder="Enlace de Github (Opcional)">
+                <small *ngIf="github.invalid && github.touched" class="text-form text-danger">Este campo es requerido </small>
+                <br>
                 <label for="github1">CV</label>
-
-                <input type="github" class="form-control" name="cv" required [(ngModel)]="registro.cv" id="github1" placeholder="Curriculum">
+                <input type="github" class="form-control" name="cv" required [(ngModel)]="registro.cv" id="github1" #cv="ngModel" [class.is-invalid]="cv.invalid && cv.touched" placeholder="Curriculum">
+                <small *ngIf="cv.invalid && cv.touched" class="text-form text-danger">Este campo es requerido </small>
             </div>
-            <a type="button" href="https://ailogicinternship.azurewebsites.net/api/index.html" name="volver inicio" class="volver btn btn-primary m-2 mt-5 text-white  " style="background-color: #49abc6" >Volver Inicio</a>
-            <input type="submit" name="siguiente" class="siguiente btn btn-primary m-2 mt-5" style="background-color: #49abc6" value="Finalizar" />
+            <a type="button" href="https://ailogicinternship.azurewebsites.net" name="volver inicio" class="volver btn btn-primary m-2 mt-5 text-white  " style="background-color: #49abc6">Volver Inicio</a>
+            <input type="submit" name="siguiente" class="siguiente btn btn-primary m-2 mt-5" style="background-color: #49abc6" [disabled]="f.invalid" value="Finalizar" />
         </fieldset>
-
-
     </form>
 </div>
