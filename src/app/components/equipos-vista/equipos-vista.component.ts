@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./equipos-vista.component.css']
 })
 export class EquiposVistaComponent implements OnInit {
-
+  pasantes: PasantesAll[] = [];
   //Informacion de los Equipos
   equi: Equipos = new Equipos();
 
@@ -44,6 +44,8 @@ export class EquiposVistaComponent implements OnInit {
     this.equiposService.getSingleEquipo(this.equipoId).subscribe(response =>{
       this.equi = response
     })
+
+    this.GetAllPasantes();
   }
 
   //Funcion para confirmar la eliminacion de la equipo
@@ -65,7 +67,7 @@ export class EquiposVistaComponent implements OnInit {
         
         Swal.fire(
           'Borrado!',
-          'La Equipo ha sido Borrada.',
+          'El Equipo ha sido Borrado.',
           'success'
         )
         
@@ -96,4 +98,11 @@ export class EquiposVistaComponent implements OnInit {
     })
   }
 
+  GetAllPasantes() {
+    this.admin.getAllPasantes().subscribe(resp => {
+      this.pasantes = <PasantesAll[]>resp
+      
+
+    })
+  }
 }

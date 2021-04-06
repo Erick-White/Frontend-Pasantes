@@ -68,7 +68,8 @@ export class AdminComponent implements OnInit {
      input: 'textarea',
      inputValue:this.convito.description + '\n' + 'APLICA YA'  + '\n' + 'https://frontend-pasantes.vercel.app/registro',
     showCancelButton: true,
-    confirmButtonText: 'Look up',
+    confirmButtonText: 'Buscar',
+    cancelButtonText: 'Cancelar',
     showLoaderOnConfirm: true,
     });
     },
