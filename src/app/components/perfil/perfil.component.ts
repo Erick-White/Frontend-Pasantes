@@ -13,6 +13,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
+ pasantess: PasantesAll = {
+  idInternt: "",
+  name: "",
+  lastname: "",
+  idUser: "",
+  cedula: "",
+  phone: "",
+  userImg: "",
+  github: "",
+  linkedin: "",
+  cv: "",
+  birthDate: ""
+ }
   pasantes: PasantesAll[] = [];
   EditPasante: Edit[] = [];
   pasantee: any;
@@ -37,6 +50,13 @@ export class PerfilComponent implements OnInit {
     this.route.paramMap.subscribe(res => {
       this.admin.getPasantesById(res.get('id')).subscribe(pasant => {
        this.pasantee = pasant.idInternt;
+       if(pasant.birthDate){
+        const birthDate = new Date(pasant.birthDate)
+        const month = birthDate.getMonth() + 1;
+        const day = birthDate.getDate();
+        const year = birthDate.getFullYear();
+        this.pasantess.birthDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}` 
+       }
        
      })
    })

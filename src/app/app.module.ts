@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { RecuperarClaveComponent } from './components/recuperar-clave/recuperar-clave.component';
@@ -98,7 +99,8 @@ import { EquiposVistaComponent } from './components/equipos-vista/equipos-vista.
     SidebarModule.forRoot(),
     NgxPaginationModule,
     [FroalaEditorModule.forRoot(), FroalaViewModule],
-    PdfViewerModule
+    PdfViewerModule,
+
 
 
 

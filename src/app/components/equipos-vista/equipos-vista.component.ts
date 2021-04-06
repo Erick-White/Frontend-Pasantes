@@ -26,6 +26,15 @@ export class EquiposVistaComponent implements OnInit {
   //Informacion de los Equipos
   equi: Equipos = new Equipos();
 
+  //Array de Pasantes
+  pasantes: PasantesAll[]=[];
+
+  //Info del Pasante
+  pasante = new Pasantes();
+
+  pasantee: any;
+
+
   _opened = true;
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private convocatoriaService: ConvocatoriaService,private admin: AdminService, private Roles : RolesService, private equiposService: EquiposService) { }
@@ -44,6 +53,31 @@ export class EquiposVistaComponent implements OnInit {
     this.equiposService.getSingleEquipo(this.equipoId).subscribe(response =>{
       this.equi = response
     })
+
+    this.GetAllPasantes();
+
+    
+
+    
+
+  }
+
+  //Traer todos los Pasantes
+  GetAllPasantes() {
+    this.admin.getAllPasantes().subscribe(resp => {
+      this.pasantes = <PasantesAll[]>resp
+    })
+  }
+
+  //Obtener los pasantes ByID
+  GetPansantesById(id: string) {
+    this.activerouter.paramMap.subscribe(res => {
+      this.admin.getPasantesById(res.get('id')).subscribe(pasant => {
+       this.pasantee = pasant.idInternt;
+      
+     })
+   })
+
   }
 
   //Funcion para confirmar la eliminacion de la equipo
@@ -93,6 +127,13 @@ export class EquiposVistaComponent implements OnInit {
       title: 'Los Cambios han sido Guardados.',
       showConfirmButton: false,
       timer: 1500
+    })
+  }
+
+  //Agregar Integrantes a Equipo
+  agregarPasante(){
+    this.equiposService.addNewPasanteEnEquipo(this.equi).subscribe(()=>{
+      this.router.navigate(['/equipos/',this.equi.idInternship])
     })
   }
 

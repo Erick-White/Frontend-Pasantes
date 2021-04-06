@@ -3,11 +3,11 @@
 <ng-sidebar [opened]="_opened" class="px-3">
   <div class="list-group list-group-flush mx-2 mt-1   rounded">
                 <a
-                routerLink="/home-pasante" class="list-group-item list-group-item-action bg-light m-1 border ">
+                routerLink="/home-pasantes" class="list-group-item list-group-item-action bg-light m-1 border ">
                     <i class="fas fa-th-list"></i> Asignaciones</a>
                 <a routerLink="/pasantes-grades" class="list-group-item list-group-item-action bg-light m-1 border ">
                     <i class="fas fa-book"></i> Calificaciones</a>
-                <a routerLink="/pasantes-calificar" class="list-group-item list-group-item-action bg-light m-1 border ">
+                <a [routerLink]="'/pasantes-asignaciones'" class="list-group-item list-group-item-action bg-light m-1 border ">
                     <i class="fas fa-upload"></i> Repositorio</a>
 
             </div>

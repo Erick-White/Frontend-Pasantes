@@ -86,7 +86,13 @@ export class PasanteSubirAsigComponent implements OnInit {
       console.log(error);
     });
 
-   // this.router.navigate(['/home-pasantes'])
+    Swal.fire({
+      icon: 'success',
+      title: 'Su archivo a sido Subido',
+      showConfirmButton: false,
+      timer: 1500
+    })
+   this.router.navigate(['/home-pasantes'])
 
   }
 

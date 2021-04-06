@@ -41,22 +41,23 @@
       <div class="row">
         <div class="col-lg-9">
           <h2 class="mt-5 ml-5">Configuracion del Equipo {{ equi.name }}</h2>
-
-          <div class="container bg-light p-4 shadow-sm ">
-            <div class="col-md-12">
-              <button
-                class="btn btn-light text-center shadow-sm float-right "
+          <button
+                class="btn btn-light text-center shadow-sm float-right mt-2"
                 data-toggle="modal"
                 data-target="#exampleModal"
               >
                 <i class="fas fa-cog"></i>
                 Configuracion
               </button>
+
+          <div class="container bg-light p-4 shadow-sm ">
+            <div class="col-md-12">
+              
               <a
                 type="button"
                 [routerLink]="'/equipos/'+ equi.idInternship"
                 name="volver inicio"
-                class="volver btn btn-info float-left mt-5 text-white"
+                class="volver btn btn-info float-left text-white"
                 style="background-color: #49abc6"
               >
                 Volver</a
@@ -98,17 +99,30 @@
                       [(ngModel)]="equi.name"
                     />
                   </div>
-
+                  <div>
+                    <p>Pasante</p>    
+                    <select 
+                    
+                    class="form-control"
+                    name="pasantes1" 
+                    [(ngModel)]="equi.idInternt"
+                    >
+                      <option *ngFor="let pasante of pasantes" [value]="pasante.idInternt">
+                          {{pasante.name}}
+                      </option>
+                  </select>
+                  </div>
                   <div class="modal-footer">
                     <button
                       (click)="confirmBox()"
                       type="button"
-                      class="btn btn-danger mt-5 m-2"
+                      class="btn btn-danger mt-5 float-left"
                     >
                       Eliminar Equipo
                     </button>
                     <button
-                      (click)="updateInfo()"
+                      (click)="updateInfo(); agregarPasante()"
+
                       type="button"
                       class="btn btn-info mt-5 float-right text-white"
                       style="background-color: #49abc6"

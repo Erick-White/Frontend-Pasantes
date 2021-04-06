@@ -10,7 +10,7 @@ export interface PasantesAll {
     github?: string;
     linkedin?: string;
     cv?: string;
-    birthDate?: Date;
+    birthDate?: string;
 }
 
 export class User {
